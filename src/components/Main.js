@@ -1,12 +1,9 @@
 import React from 'react';
 
-const Main = () => {
-
-    return (
-        <div >
-            This is a main page
-        </div>
-    );
-};
+const Main = () => (
+  <div>
+    This is a main page
+  </div>
+);
 
 export default Main;
