@@ -5,20 +5,20 @@ import Login from './Login';
 import Main from './Main';
 
 const App = () => (
-    <AppContext.Provider value={{}}>
-        <Router>
-            <Switch>
-                <Route path="/login" exact>
-                    <Login />
-                </Route>
-            </Switch>
-            <Switch>
-                <Route path="/contents">
-                    <Main />
-                </Route>
-            </Switch>
-        </Router>
-    </AppContext.Provider>
+  <AppContext.Provider value={{}}>
+    <Router>
+      <Switch>
+        <Route path="/login" exact>
+          <Login />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route path="/contents">
+          <Main />
+        </Route>
+      </Switch>
+    </Router>
+  </AppContext.Provider>
 );
 
 export default App;
