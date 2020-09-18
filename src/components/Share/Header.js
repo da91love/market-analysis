@@ -46,11 +46,11 @@ const Header = props => {
             <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
-                  <span className="mr-2 black-text">{t('hello')}</span>
+                  <span className="mr-2 black-text">{t('lang')}</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem href="#!" onClick={changeLang(LANG.EN)}>EN</MDBDropdownItem>
-                  <MDBDropdownItem href="#!" onClick={changeLang(LANG.KO)}>KO</MDBDropdownItem>
+                  <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.EN); }}>EN</MDBDropdownItem>
+                  <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.KO); }}>KO</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
