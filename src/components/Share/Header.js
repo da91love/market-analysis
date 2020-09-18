@@ -4,8 +4,12 @@ import {
   MDBFormInline, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem,
 } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { LANG } from '../../consts/common';
 
 const Header = props => {
+  const { t, i18n } = useTranslation();
+
   const [isOpen, setIsOpen] = useState({
     isOpen: false,
   });
@@ -14,45 +18,41 @@ const Header = props => {
     setIsOpen(!isOpen);
   };
 
+  const changeLang = lang => {
+    i18n.changeLanguage(lang);
+  };
+
   return (
     <Router>
-      <MDBNavbar color="indigo" dark expand="md">
+      <MDBNavbar color="white" dark expand="md">
         <MDBNavbarBrand>
-          <strong className="white-text">Navbar</strong>
+          <strong className="black-text">Business Analysis</strong>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
           <MDBNavbarNav left>
             <MDBNavItem active>
-              <MDBNavLink to="#!">Home</MDBNavLink>
+              <MDBNavLink to="#!" className="black-text">Field List</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Features</MDBNavLink>
+              <MDBNavLink to="#!" className="black-text">Growing field</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Pricing</MDBNavLink>
+              <MDBNavLink to="#!" className="black-text">Ranking</MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
-              <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <span className="mr-2">Dropdown</span>
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavItem>
+
           </MDBNavbarNav>
           <MDBNavbarNav right>
             <MDBNavItem>
-              <MDBFormInline waves>
-                <div className="md-form my-0">
-                  <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                </div>
-              </MDBFormInline>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2 black-text">{t('hello')}</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem href="#!" onClick={changeLang(LANG.EN)}>EN</MDBDropdownItem>
+                  <MDBDropdownItem href="#!" onClick={changeLang(LANG.KO)}>KO</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavItem>
           </MDBNavbarNav>
         </MDBCollapse>
