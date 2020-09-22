@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-  MDBCol, MDBCard, MDBRow, MDBCardBody, MDBContainer, MDBIcon, MDBCardTitle, MDBCardText, MDBBtn, MDBCardImage, MDBCardHeader,
+  MDBRow, MDBContainer, MDBCol,
 } from 'mdbreact';
+import FieldCard from './FieldCard';
 
 const List = () => (
   <div className="">
@@ -13,22 +14,30 @@ const List = () => (
     <div>
       <MDBContainer>
         <MDBRow>
-          <MDBCol size="2">
-            <MDBCard>
-              <MDBCardBody>
-                <MDBCardTitle>
-                  <MDBIcon fab icon="android" />
-                  Card title
-                </MDBCardTitle>
-                <MDBCardText>
-                  shit
-                </MDBCardText>
-                <MDBBtn href="#">MDBBtn</MDBBtn>
-              </MDBCardBody>
-            </MDBCard>
+          <MDBCol size="auto">
+            <FieldCard title="의료" />
+          </MDBCol>
+          <MDBCol size="auto">
+            <FieldCard title="제조업" />
+          </MDBCol>
+          <MDBCol size="auto">
+            <FieldCard title="도매업" />
+          </MDBCol>
+          <MDBCol size="auto">
+            <FieldCard title="금융업" />
+          </MDBCol>
+          <MDBCol size="auto">
+            <FieldCard title="식료품업" />
+          </MDBCol>
+          <MDBCol size="auto">
+            <FieldCard title="IT" />
+          </MDBCol>
+          <MDBCol size="auto">
+            <FieldCard title="운송업" />
           </MDBCol>
         </MDBRow>
       </MDBContainer>
+
     </div>
 
   </div>
