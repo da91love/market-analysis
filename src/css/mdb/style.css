@@ -1,46 +1,110 @@
 @charset "UTF-8";
 
 :root {
+  /*
+  Color
+   */
+  --pink: rgba(163, 0, 0, 1);
+  --red: rgba(163, 41, 0, 1);
+  --orange: rgba(163, 82, 1, 1);
+  --yellow-orange: rgba(163, 122, 0, 1);
+  --deep-yellow: rgba(163, 163, 0, 1);
+  --orange-green: rgba(122, 163, 0, 1);
+  --green-yellow: rgba(82, 163, 0, 1);
+  --green-yellow-light: rgba(41, 163, 0, 1);
+  --green-dark: rgba(0, 163, 0, 1);
+  --green: rgba(0, 163, 41, 1);
+  --green-light: rgba(0, 163, 82, 1);
+  --green-blue: rgba(0, 163, 122, 1);
+  --green-blue-light1: rgba(0, 163, 163, 1);
+  --green-blue-light2: rgba(0, 122, 163, 1);
+  --green-blue-light3: rgba(0, 82, 163, 1);
+  --green-blue-light4: rgba(0, 62, 165, 1);
+  --green-blue-light5: rgba(0, 41, 163, 1);
+  --blue: rgba(0, 0, 163, 1);
+  --blue-purple: rgba(41, 0, 163, 1);
+  --purple: rgba(82, 0, 163, 1);
+  --purple-light: rgba(122, 0, 163, 1);
+  --purple-red: rgba(163, 0, 163, 1);
+  --pink-light: rgba(163, 0, 122, 1);
+  --salmon-pink: rgba(163, 0, 82, 1);
+  --salmon-pink-light: rgba(163, 0, 41, 1);
+  --salmon-pink-light2: rgba(163, 0, 0, 1);
+
+  --gray-dark: rgba(64, 64, 64, 1);
+  --gray: rgba(0, 0, 0, 0.3);
+  --gray-light: rgba(0, 0, 0, 0.05);
+  --blue-grey-lighten-5: rgba(236, 239, 241, 1);
+
+  --green-blue-light4-opacity-half: rgba(0, 62, 165, 0.5);
+
+  --base-color: var(--green-blue-light4);
+  --base-color-opacity-half: var(--green-blue-light4-opacity-half);
+
+  /*
+  font
+  */
+  --en-font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans';
+  --ja-font-family: 'Meiryo','Yu Gothic','ＭＳ Ｐゴシック','MS PGothic', 'sans-serif';
+  --num-font-family: 'Tahoma', 'sans-serif';
 }
 
-/* footer */
+/* initial setting*/
+html {
+  background-color: var(--blue-grey-lighten-5);
+}
+
+#main {
+  min-height: auto;
+  position: relative;/*←相対位置*/
+  padding-bottom: 1rem;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
 footer {
     position:absolute;
     bottom:0;
     width:100%;
-    height:5rem;
+    height:1rem;
 }
 
-#root {
-  min-height: 100vh;
-  position: relative;/*←相対位置*/
-  padding-bottom: 5rem;/*←footerの高さ*/
-  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
-}
+
+
 
 /* font size */
 h1, .h1 {
-    font-size: 2rem !important;
-    margin-bottom: 0;
-  }
+  font-size: 2rem !important;
+  margin-bottom: 0;
+  color: black !important;
+}
   
-  h2, .h2 {
-    font-size: 1.4rem !important;
-    margin-bottom: 0;
-  }
+h2, .h2 {
+  font-size: 1.4rem !important;
+  margin-bottom: 0;
+  color: black !important;
+}
   
-  h3, p, td, th, .h3 {
-    font-size: 1.2rem !important;
-    margin-bottom: 0;
-  }
-  
-  h4, .h4 {
-    font-size: 1rem !important;
-    margin-bottom: 0;
-  }
+h3, p, td, th, .h3 {
+  font-size: 1.2rem !important;
+  margin-bottom: 0;
+  color: black !important;
+}
 
-    
-  h5, .h5 {
-    font-size: 0.7rem !important;
-    margin-bottom: 0;
-  }
+h4, .h4 {
+  font-size: 1rem !important;
+  margin-bottom: 0;
+  color: black !important;
+}
+
+  
+h5, .h5 {
+  font-size: 0.7rem !important;
+  margin-bottom: 0;
+  color: black !important;
+}
+
+
+/* color */
+.blue-grey-lighten-5 {
+  background-color: var(--blue-grey-lighten-5) !important;
+}

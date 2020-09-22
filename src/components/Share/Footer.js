@@ -4,42 +4,69 @@ import {
 } from 'mdbreact';
 
 const FooterPage = () => (
-  <MDBFooter color="white" className="font-small pt-4 m-0 pl-5 pr-5">
+  <MDBFooter color="white" className="font-small pt-4 mt-4">
     <MDBContainer fluid className="text-center text-md-left">
-      <MDBRow>
+      <MDBRow className="white pl-5 pr-5">
         <MDBCol md="3">
-          <p className="black-text p4">Careers</p>
+          <h4 className="title">Links</h4>
           <ul>
-            <li><a href="#" className="black-text h5">Job openings</a></li>
-            <li><a href="#" className="black-text h5">Employee success</a></li>
-            <li><a href="#" className="black-text h5">Benefits</a></li>
-          </ul>
-        </MDBCol>
-        <MDBCol md="3">
-          <p className="black-text p4">Careers</p>
-          <ul>
-            <li><a href="#" className="black-text h5">Job openings</a></li>
-            <li><a href="#" className="black-text h5">Employee success</a></li>
-            <li><a href="#" className="black-text h5">Benefits</a></li>
-          </ul>
-        </MDBCol>
-        <MDBCol md="3">
-          <p className="black-text p4">Careers</p>
-          <ul>
-            <li><a href="#" className="black-text h5">Job openings</a></li>
-            <li><a href="#" className="black-text h5">Employee success</a></li>
-            <li><a href="#" className="black-text h5">Benefits</a></li>
-          </ul>
-        </MDBCol>
-        <MDBCol md="3">
-          <div className="col-lg-3 item social">
-            <a href="#"><MDBIcon fab icon="facebook" /></a>
-            <a href="#"><MDBIcon fab icon="twitter" /></a>
-            <a href="#"><MDBIcon fab icon="instagram" /></a>
-            <p className="black-text h5">BA © 2020</p>
-          </div>
-        </MDBCol>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 1</h5></a>
+            </li>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 2</h5></a>
+            </li>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 3</h5></a>
 
+            </li>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 4</h5></a>
+
+            </li>
+          </ul>
+        </MDBCol>
+        <MDBCol md="3">
+          <h4 className="title">Links</h4>
+          <ul>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 1</h5></a>
+            </li>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 2</h5></a>
+            </li>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 3</h5></a>
+
+            </li>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 4</h5></a>
+
+            </li>
+          </ul>
+        </MDBCol>
+        <MDBCol md="3">
+          <h4 className="title">Links</h4>
+          <ul>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 1</h5></a>
+            </li>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 2</h5></a>
+            </li>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 3</h5></a>
+
+            </li>
+            <li className="list-unstyled">
+              <a href="#!"><h5>Link 4</h5></a>
+
+            </li>
+          </ul>
+        </MDBCol>
+        <MDBCol md="3">
+          <h4 className="title">Links</h4>
+        </MDBCol>
       </MDBRow>
     </MDBContainer>
   </MDBFooter>
