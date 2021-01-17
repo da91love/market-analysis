@@ -2,6 +2,7 @@
   "name": "market_analysis",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@material-ui/core": "^4.11.0",
@@ -10,6 +11,7 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap-css-only": "^4.4.1",
     "i18next": "^19.7.0",
+    "lodash": "^4.17.20",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
