@@ -2,8 +2,8 @@ const _ = require('lodash');
 
 function getRecentPeriod(tgList, tgPeriod) {
   try {
-    const sorted = _.sortBy(tgList, 'period').slice(tgList.length - tgPeriod, tgList.length);
-    return sorted;
+    const sliced = tgList.slice(tgList.length - tgPeriod, tgList.length);
+    return sliced;
   } catch (error) {
     throw error;
   }
