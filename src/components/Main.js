@@ -6,6 +6,8 @@ import Alert from './Share/Alert';
 import AlertContext from '../contexts/AlertContext';
 
 import List from './List/List';
+import Targeting from './Targeting/Targeting';
+import InputSample from './InputSample/InputSample';
 
 const Main = props => {
   const [alertState, setAlertState] = useState({
@@ -19,8 +21,8 @@ const Main = props => {
       <Header />
       {/* <Alert /> */}
       <main className="blue-grey lighten-5">
-        <Route path="/list" exact>
-          <List />
+        <Route path="/targeting" exact>
+          <Targeting />
         </Route>
       </main>
       <Footer />

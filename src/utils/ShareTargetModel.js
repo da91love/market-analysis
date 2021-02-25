@@ -25,7 +25,6 @@ class ShareTargetModel {
 
       // This period should be (+)
       if (tgPeriodData[tgPeriodData.length - 1]['영업이익'] > 0) {
-
         // Past consecutive 4periods should be (-)
         if (_.every(tgPeriodData.slice(0, tgPeriodData.length - 1), o => o['영업이익'] < 0)) {
           tgShares.push(tgPeriodData[tgPeriodData.length - 1]);
