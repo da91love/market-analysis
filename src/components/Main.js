@@ -19,7 +19,7 @@ const Main = props => {
   return (
     <AlertContext.Provider value={{ alertState, setAlertState }}>
       <Header />
-      {/* <Alert /> */}
+      <Alert />
       <main className="blue-grey lighten-5">
         <Route path="/targeting" exact>
           <Targeting />

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbfc288f-2a6a-4199-91e4-44f389cba678" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Targeting/ModelBox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Targeting/Targeting.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ShareTargetModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ShareTargetModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Targeting/ModelBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Targeting/ModelBox.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +74,7 @@
       <workItem from="1614232267069" duration="1383000" />
       <workItem from="1614238391054" duration="5000" />
       <workItem from="1614245525334" duration="605000" />
+      <workItem from="1614308130889" duration="6000" />
     </task>
     <servers />
   </component>
