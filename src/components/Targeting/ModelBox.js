@@ -7,16 +7,42 @@ import _ from "lodash";
 
 import TargetDataTable from './TargetDataTable';
 import NoModelSelected from './NoModelSelected';
+import RawData2TableData from './RawData2TableData';
 import AlertContext from "../../contexts/AlertContext";
+import ShareDataContext from "../../contexts/ShareDataContext";
 import { DANGER } from "../../consts/alert";
 import { MODELS } from "../../consts/model";
+import { MODEL_NAME } from "../../consts/model";
 import { MSG } from "../../consts/message"
 
+import ShareTargetModelEngine from '../../utils/ShareTargetModelEngine';
+
+
 const ModelBox = (props) => {
-   const {alertState,setAlertState} = useContext(AlertContext);
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
+
+   const {alertState,setAlertState} = useContext(AlertContext);
+   const {yearData, quarterData} = useContext(ShareDataContext);
+   const [datatable, setDatatable] = useState(null);
    
    const applyModelBtn = (value) => {
+      // Run model
+      if (value == MODELS.VALUE) {
+
+      } else if (value == MODELS.TURNOVER) {
+         const shareTargetModelEngine = new ShareTargetModelEngine(yearData, quarterData);
+         const tgData = shareTargetModelEngine.getTurnAroundModel();
+
+         setDatatable(RawData2TableData(tgData, ['period', 'shareName', 'shareCode', 'marketName', '매출액', '영업이익', '당기순이익', 'graph']));
+      } else if (value == MODELS.GROWTH) {
+
+      } else if (value == MODELS.COLLAPSE) {
+
+      } else if (value == MODELS.BLUECHIP) {
+
+      }
+
+      // update modelBoxStatus
       const dcModelBoxStatus = [...modelBoxStatus];
       dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = value;
       setModelBoxStatus(dcModelBoxStatus);
@@ -44,11 +70,9 @@ const ModelBox = (props) => {
                <div className="float-left w-25">
                   <select className="browser-default custom-select" onChange={(e) => {applyModelBtn(e.target.value)}}>
                      <option value="default" selected={model=="default"}>Choose your model</option>
-                     <option value={MODELS.VALUE} selected={model==MODELS.VALUE}>Value Stock Model</option>
-                     <option value={MODELS.GROWTH} selected={model==MODELS.GROWTH}>Growth Stock Model</option>
-                     <option value={MODELS.TURNOVER} selected={model==MODELS.TURNOVER}>Turnover Stock Model</option>
-                     <option value={MODELS.BLUECHIP} selected={model==MODELS.BLUECHIP}>BlueChip Stock Model</option>
-                     <option value={MODELS.COLLAPSE} selected={model==MODELS.COLLAPSE}>Collapse Stock Model</option>
+                     {Object.keys(MODELS).map((v, i) => {
+                        return <option value={MODELS[v]} selected={model==MODELS[v]}>{MODEL_NAME[v]}</option>
+                     })}
                   </select>
                </div>
                <div className="">
@@ -61,7 +85,7 @@ const ModelBox = (props) => {
                </div>
             </MDBCardTitle>
             <MDBCardText>
-               {model !== "default"? <TargetDataTable/>:<NoModelSelected/>}
+               {model !== "default"? <TargetDataTable datatable={datatable}/>:<NoModelSelected/>}
             </MDBCardText>
          </MDBCardBody>
       </MDBCard>

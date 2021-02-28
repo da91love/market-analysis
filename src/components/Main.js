@@ -4,10 +4,7 @@ import Header from './Share/Header';
 import Footer from './Share/Footer';
 import Alert from './Share/Alert';
 import AlertContext from '../contexts/AlertContext';
-
-import List from './List/List';
 import Targeting from './Targeting/Targeting';
-import InputSample from './InputSample/InputSample';
 
 const Main = props => {
   const [alertState, setAlertState] = useState({

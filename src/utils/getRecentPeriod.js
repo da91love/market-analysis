@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import _ from "lodash";
 
 function getRecentPeriod(tgList, tgPeriod) {
   try {
@@ -9,4 +9,4 @@ function getRecentPeriod(tgList, tgPeriod) {
   }
 }
 
-module.exports = getRecentPeriod;
+export default getRecentPeriod;
