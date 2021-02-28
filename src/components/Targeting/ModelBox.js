@@ -23,7 +23,7 @@ const ModelBox = (props) => {
 
    const {alertState,setAlertState} = useContext(AlertContext);
    const {yearData, quarterData} = useContext(ShareDataContext);
-   const [datatable, setDatatable] = useState(null);
+   const [datatable, setDatatable] = useState(null);   
    
    const applyModelBtn = (value) => {
       // Run model
