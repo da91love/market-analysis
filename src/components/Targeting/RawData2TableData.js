@@ -23,7 +23,7 @@ const RawData2TableData = (rawData, tgColList=null) => {
             if (col === "shareName") {
                 row[col] = <a href={`https://finance.naver.com/item/main.nhn?code=${data['shareCode']}`} target="_blank">{data[col]}</a>
             } else if (col === "graph") {
-                row[col] = <GraphModal />
+                row[col] = <GraphModal shareCode={data['shareCode']}/>
             } else {
                 row[col] = data[col];
             }

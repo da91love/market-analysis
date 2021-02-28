@@ -19,6 +19,8 @@ const Targeting = () => {
   const {alertState,setAlertState} = useContext(AlertContext);
   const [yearData,setYearData] = useState(null);
   const [quarterData,setQuarterData] = useState(null);
+  const [yearDataByShareCode,setYearDataByShareCode] = useState(null);
+  const [quarterDataByShareCode,setQuarterDataByShareCode] = useState(null);
   const [modelBoxStatus, setModelBoxStatus] = useState([{
     id: 0,
     model: "default"
@@ -41,12 +43,31 @@ const Targeting = () => {
 
   useEffect(() => {
     // Get share data from DB(temporary from json)
+    let yearDataByGroup = _.groupBy(yData, v => v.shareCode);
+    let quarterDataByGroup = _.groupBy(qData, v => v.shareCode);
+
+    // sortBy
+    yearDataByGroup = _.forEach(yearDataByGroup, (v, k) => {
+      yearDataByGroup[k] = _.sortBy(v, o => o.period);
+    });
+
+    quarterDataByGroup = _.forEach(quarterDataByGroup, (v, k) => {
+      quarterDataByGroup[k] = _.sortBy(v, o => o.period);
+    });
+
     setYearData(yData);
     setQuarterData(qData);
+    setYearDataByShareCode(yearDataByGroup);
+    setQuarterDataByShareCode(quarterDataByGroup);
   }, [])
 
   return (
-    <ShareDataContext.Provider value={{ yearData, setYearData, quarterData, setQuarterData }}>
+    <ShareDataContext.Provider value={{
+      yearData, setYearData, 
+      quarterData, setQuarterData,
+      yearDataByShareCode, setYearDataByShareCode,
+      quarterDataByShareCode, setQuarterDataByShareCode
+      }}>
       <div className="">
         <MDBContainer>
           <div>

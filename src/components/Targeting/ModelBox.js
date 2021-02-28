@@ -22,23 +22,21 @@ const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
 
    const {alertState,setAlertState} = useContext(AlertContext);
-   const {yearData, quarterData} = useContext(ShareDataContext);
+   const {quarterDataByShareCode} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);   
    
    const applyModelBtn = (value) => {
       // Run model
-      if (value == MODELS.VALUE) {
+      if (value === MODELS.VALUE) {
 
       } else if (value == MODELS.TURNOVER) {
-         const shareTargetModelEngine = new ShareTargetModelEngine(yearData, quarterData);
-         const tgData = shareTargetModelEngine.getTurnAroundModel();
-
+         const tgData = ShareTargetModelEngine.getTurnAroundModel(quarterDataByShareCode);
          setDatatable(RawData2TableData(tgData, ['period', 'shareName', 'shareCode', 'marketName', '매출액', '영업이익', '당기순이익', 'graph']));
-      } else if (value == MODELS.GROWTH) {
+      } else if (value === MODELS.GROWTH) {
 
-      } else if (value == MODELS.COLLAPSE) {
+      } else if (value === MODELS.COLLAPSE) {
 
-      } else if (value == MODELS.BLUECHIP) {
+      } else if (value === MODELS.BLUECHIP) {
 
       }
 
