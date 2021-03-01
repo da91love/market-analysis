@@ -1,5 +1,5 @@
 import React from 'react';
-import GraphModal from './GraphModal';
+import GraphModalBtn from './GraphModalBtn';
 import { KEY_NAME } from "../../consts/keyName";
 
 const RawData2TableData = (rawData, tgColList=null) => {
@@ -21,10 +21,10 @@ const RawData2TableData = (rawData, tgColList=null) => {
         const row = {};
 
         for (const col of tgColList) {
-            if (col === "shareName") {
+            if (col === KEY_NAME.SHARE_NAME) {
                 row[col] = <a href={`https://finance.naver.com/item/main.nhn?code=${data[KEY_NAME.SHARE_CODE]}`} target="_blank">{data[col]}</a>
             } else if (col === "graph") {
-                row[col] = <GraphModal shareCode={data[KEY_NAME.SHARE_CODE]}/>
+                row[col] = <GraphModalBtn shareCode={data[KEY_NAME.SHARE_CODE]}/>
             } else {
                 row[col] = data[col];
             }

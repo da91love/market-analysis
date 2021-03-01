@@ -78,7 +78,7 @@ const Targeting = () => {
           </div>
           <div>
             {modelBoxStatus.map((v, i) => {
-              return <ModelBox className="w-50" id={v.id} model={v.model} modelBoxStatus={modelBoxStatus} setModelBoxStatus={setModelBoxStatus}/>
+              return <ModelBox className="w-75" id={v.id} model={v.model} modelBoxStatus={modelBoxStatus} setModelBoxStatus={setModelBoxStatus}/>
             })}
           </div>
         </MDBContainer>

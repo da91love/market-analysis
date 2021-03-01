@@ -8,6 +8,7 @@ import _ from "lodash";
 import TargetDataTable from './TargetDataTable';
 import NoModelSelected from './NoModelSelected';
 import RawData2TableData from './RawData2TableData';
+import FilterModalBtn from './FilterModalBtn';
 import AlertContext from "../../contexts/AlertContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import { DANGER } from "../../consts/alert";
@@ -22,7 +23,7 @@ const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
 
    const {alertState,setAlertState} = useContext(AlertContext);
-   const {quarterDataByShareCode} = useContext(ShareDataContext);
+   const {yearDataByShareCode, quarterDataByShareCode} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);   
    
    const applyModelBtn = (value) => {
@@ -37,16 +38,22 @@ const ModelBox = (props) => {
       } else {
       // Run model
          if (value === MODELS.VALUE) {
-
+            const tgData = ShareTargetModelEngine.getValueModel(quarterDataByShareCode);
+            setDatatable(RawData2TableData(tgData, MODEL_TABLE_COL.VALUE));
          } else if (value == MODELS.TURNAROUND) {
             const tgData = ShareTargetModelEngine.getTurnAroundModel(quarterDataByShareCode);
             setDatatable(RawData2TableData(tgData, MODEL_TABLE_COL.TURNAROUND));
-         } else if (value === MODELS.GROWTH) {
+         } else if (value === MODELS.CPGROWTH) {
+            const tgData = ShareTargetModelEngine.getCpGrowthModel(quarterDataByShareCode);
+            setDatatable(RawData2TableData(tgData, MODEL_TABLE_COL.CPGROWTH));
+         } else if (value === MODELS.MRKGROWTH) {
 
          } else if (value === MODELS.COLLAPSE) {
-
+            const tgData = ShareTargetModelEngine.getCollapseModel(yearDataByShareCode);
+            setDatatable(RawData2TableData(tgData, MODEL_TABLE_COL.COLLAPSE));
          } else if (value === MODELS.BLUECHIP) {
-
+            const tgData = ShareTargetModelEngine.getBluechipModel(quarterDataByShareCode);
+            setDatatable(RawData2TableData(tgData, MODEL_TABLE_COL.BLUECHIP));
          }
 
          // update modelBoxStatus
@@ -84,9 +91,7 @@ const ModelBox = (props) => {
                   </select>
                </div>
                <div className="">
-                  <IconButton color="default" aria-label="upload picture" component="span">
-                     <MDBIcon icon="filter" />
-                  </IconButton>
+                  <FilterModalBtn model={model}/>
                   <IconButton className="float-right" color="secondary" aria-label="upload picture" component="span">
                      <MDBIcon onClick={() => {removeModelBtn()}} icon="times" />
                   </IconButton>

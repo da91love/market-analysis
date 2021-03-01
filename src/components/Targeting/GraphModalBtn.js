@@ -8,7 +8,7 @@ import ShareDataContext from '../../contexts/ShareDataContext';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import { GRAPH_ANALYSIS_COL } from "../../consts/model";
 
-const GraphModal = (props) => {
+const GraphModalBtn = (props) => {
     const {shareCode} = props;
     const {yearDataByShareCode, quarterDataByShareCode} = useContext(ShareDataContext);
     const [modalState, setModalState] = useState(false);
@@ -80,4 +80,4 @@ const GraphModal = (props) => {
    )
 };
 
-export default GraphModal;
+export default GraphModalBtn;
