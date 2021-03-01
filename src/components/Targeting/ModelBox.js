@@ -11,7 +11,7 @@ import RawData2TableData from './RawData2TableData';
 import AlertContext from "../../contexts/AlertContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import { DANGER } from "../../consts/alert";
-import { MODELS } from "../../consts/model";
+import { MODELS, MODEL_TABLE_COL } from "../../consts/model";
 import { MODEL_NAME } from "../../consts/model";
 import { MSG } from "../../consts/message"
 
@@ -26,24 +26,34 @@ const ModelBox = (props) => {
    const [datatable, setDatatable] = useState(null);   
    
    const applyModelBtn = (value) => {
+      // Validation
+      if (_.find(modelBoxStatus, ['model', value])) {
+         // Show status msg
+         setAlertState({
+            eventType: DANGER, //ここでSUCCESS,WARNING,DANGERを選択
+            eventMessage: MSG.BOX_ALREADY_EXIST,
+            eventCount: alertState.eventCount + 1,
+         });
+      } else {
       // Run model
-      if (value === MODELS.VALUE) {
+         if (value === MODELS.VALUE) {
 
-      } else if (value == MODELS.TURNOVER) {
-         const tgData = ShareTargetModelEngine.getTurnAroundModel(quarterDataByShareCode);
-         setDatatable(RawData2TableData(tgData, ['period', 'shareName', 'shareCode', 'marketName', '매출액', '영업이익', '당기순이익', 'graph']));
-      } else if (value === MODELS.GROWTH) {
+         } else if (value == MODELS.TURNAROUND) {
+            const tgData = ShareTargetModelEngine.getTurnAroundModel(quarterDataByShareCode);
+            setDatatable(RawData2TableData(tgData, MODEL_TABLE_COL.TURNAROUND));
+         } else if (value === MODELS.GROWTH) {
 
-      } else if (value === MODELS.COLLAPSE) {
+         } else if (value === MODELS.COLLAPSE) {
 
-      } else if (value === MODELS.BLUECHIP) {
+         } else if (value === MODELS.BLUECHIP) {
 
+         }
+
+         // update modelBoxStatus
+         const dcModelBoxStatus = [...modelBoxStatus];
+         dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = value;
+         setModelBoxStatus(dcModelBoxStatus);
       }
-
-      // update modelBoxStatus
-      const dcModelBoxStatus = [...modelBoxStatus];
-      dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = value;
-      setModelBoxStatus(dcModelBoxStatus);
    }
 
    const removeModelBtn = () => {

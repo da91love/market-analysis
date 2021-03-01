@@ -5,6 +5,8 @@ import {
   } from 'mdbreact';
 import AnalysisGraph from './AnalysisGraph';
 import ShareDataContext from '../../contexts/ShareDataContext';
+import rawData2GraphData from '../../utils/rawData2GraphData';
+import { GRAPH_ANALYSIS_COL } from "../../consts/model";
 
 const GraphModal = (props) => {
     const {shareCode} = props;
@@ -20,6 +22,22 @@ const GraphModal = (props) => {
     }
 
     const modalHandler = () => {
+        if (!graphData && !modalState) {
+
+            const idcByYear = {};
+            const idcByQuarter = {};
+
+            GRAPH_ANALYSIS_COL.forEach((v, i) => {
+                idcByYear[v] = rawData2GraphData(yearDataByShareCode[shareCode], v);
+                idcByQuarter[v] = rawData2GraphData(quarterDataByShareCode[shareCode], v);
+            })
+            
+            setGraphData({
+                year: idcByYear,
+                quarter: idcByQuarter
+            })
+        }
+
         setModalState(!modalState);
     }
 
@@ -43,12 +61,14 @@ const GraphModal = (props) => {
                     </MDBNav>
                     <MDBTabContent activeItem={activeTab} >
                         <MDBTabPane tabId="1" role="tabpanel">
-                            <AnalysisGraph />   
+                            {graphData? Object.keys(graphData['year']).map((v, i) => {
+                                return <AnalysisGraph graphData={graphData['year'][v]} id={i}/>})
+                                : null}                        
                         </MDBTabPane>
                         <MDBTabPane tabId="2" role="tabpanel">
-                            <p className="mt-2">
-                            Quisquam
-                            </p>
+                            {graphData? Object.keys(graphData['quarter']).map((v, i) => {
+                                return <AnalysisGraph graphData={graphData['quarter'][v]} id={i}/>})
+                                : null}         
                         </MDBTabPane>
                     </MDBTabContent>
                 </MDBModalBody>
