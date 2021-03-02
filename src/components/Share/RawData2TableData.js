@@ -2,9 +2,7 @@ import React from 'react';
 import GraphModalBtn from './GraphModalBtn';
 import { KEY_NAME } from "../../consts/keyName";
 
-const RawData2TableData = (rawData, tgColList=null) => {
-    // TODO: handling when tgColList is null
-
+const RawData2TableData = (rawData, tgColList, hyperlink=false, graph=false) => {
     const testHandler = () => {
         console.log("really?")
     }

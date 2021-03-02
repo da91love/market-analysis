@@ -8,7 +8,7 @@ const App = () => (
   <AppContext.Provider value={{}}>
     <Router>
       <Switch>
-        <Route path="/login" exact>
+        <Route path="/login">
           <Login />
         </Route>
       </Switch>

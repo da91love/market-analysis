@@ -7,6 +7,7 @@ import AnalysisGraph from './AnalysisGraph';
 import ShareDataContext from '../../contexts/ShareDataContext';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import { GRAPH_ANALYSIS_COL } from "../../consts/model";
+import { KEY_NAME } from "../../consts/keyName";
 
 const GraphModalBtn = (props) => {
     const {shareCode} = props;
@@ -14,6 +15,8 @@ const GraphModalBtn = (props) => {
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState("1");
     const [graphData, setGraphData] = useState(null);
+
+    const shareName = quarterDataByShareCode[shareCode][0][KEY_NAME.SHARE_NAME];
     
     const tabHandler = (tab) => {
         if (activeTab !== tab) {
@@ -45,7 +48,7 @@ const GraphModalBtn = (props) => {
         <IconButton className="p-0" color="default" aria-label="upload picture" component="span">
             <MDBIcon icon="chart-bar" onClick={() => {modalHandler()}}/>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
-                <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
+                <MDBModalHeader toggle={modalHandler}>{`${shareName}: ${shareCode}`}</MDBModalHeader>
                 <MDBModalBody>
                     <MDBNav className="nav-tabs">
                         <MDBNavItem>

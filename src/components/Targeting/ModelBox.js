@@ -1,13 +1,12 @@
 import React, { useState, useContext } from 'react';
 import {
-  MDBCol, MDBCard, MDBCardBody, MDBIcon, MDBCardTitle, MDBCardText, MDBDataTable
+  MDBCol, MDBCard, MDBCardBody, MDBIcon, MDBCardTitle, MDBCardText, MDBDataTableV5 
 } from 'mdbreact';
 import IconButton from '@material-ui/core/IconButton';
 import _ from "lodash";
 
-import TargetDataTable from './TargetDataTable';
 import NoModelSelected from './NoModelSelected';
-import RawData2TableData from './RawData2TableData';
+import RawData2TableData from '../Share/RawData2TableData';
 import FilterModalBtn from './FilterModalBtn';
 import AlertContext from "../../contexts/AlertContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
@@ -79,7 +78,7 @@ const ModelBox = (props) => {
    }
 
    return (
-      <MDBCard className="mb-3">
+      <MDBCard className="mt-3 mb-3">
          <MDBCardBody>
             <MDBCardTitle>
                <div className="float-left w-25">
@@ -98,7 +97,7 @@ const ModelBox = (props) => {
                </div>
             </MDBCardTitle>
             <MDBCardText>
-               {model !== "default"? <TargetDataTable datatable={datatable}/>:<NoModelSelected/>}
+               {model !== "default"? <MDBDataTableV5  striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={datatable} />:<NoModelSelected/>}
             </MDBCardText>
          </MDBCardBody>
       </MDBCard>

@@ -45,3 +45,8 @@ export const KEY_NAME = {
     DVD_RATIO:"현금배당성향(%)",
     SHARE_NUM:"발행주식수(보통주)"
  }
+
+ export const OTHER_KEY_NAME = {
+    GRAPH:"graph",
+    SCORE:"score"
+ }

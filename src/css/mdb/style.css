@@ -309,6 +309,10 @@ optgroup option::before{
   color: var(--base-color) !important;
 }
 
+.text-tranparent {
+  opacity: 0 !important;
+}
+
 .border-pink {
   border-color: var(--pink) !important;
 }
