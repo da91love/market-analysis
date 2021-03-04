@@ -2,12 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import {
   MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBDataTableV5 
 } from 'mdbreact';
-import Icon from '@material-ui/core/Icon';
-import { green } from '@material-ui/core/colors';
-import { red } from '@material-ui/core/colors';
 import _ from "lodash";
 
-import RawData2TableData from '../Share/RawData2TableData';
 import AlertContext from "../../contexts/AlertContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import { DANGER } from "../../consts/alert";
@@ -16,24 +12,62 @@ import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { MSG } from "../../consts/message"
 
 import ShareTargetModelEngine from '../../utils/ShareTargetModelEngine';
+import GraphModalBtn from '../Share/GraphModalBtn';
+import HyperlinkBtn from '../Share/HyperlinkBtn';
 
 
 const ModelBox = (props) => {
    const {alertState,setAlertState} = useContext(AlertContext);
-   const {yearDataByShareCode, quarterDataByShareCode} = useContext(ShareDataContext);
+   const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);   
-   
-   useEffect(() => {
-      if (yearDataByShareCode && quarterDataByShareCode) {
-         // Run model
-         const valueModelData = ShareTargetModelEngine.getValueModel(quarterDataByShareCode);
-         const turnAroundModelData = ShareTargetModelEngine.getTurnAroundModel(quarterDataByShareCode);
-         const cpGrowthModelData = ShareTargetModelEngine.getCpGrowthModel(quarterDataByShareCode);
-         const collapseModelData = ShareTargetModelEngine.getCollapseModel(yearDataByShareCode);
-         const blueChipModelData = ShareTargetModelEngine.getBluechipModel(quarterDataByShareCode);
+  
+   const rawData2TableData = (rawData, tgColList) => {
+      // Create columns
+      const columns = tgColList.map((v,i) => {
+         return {
+            label: v,
+            field: v,
+         }
+      })
 
-         const dataTableInput = (Object.keys(quarterDataByShareCode).map((shareCode, i) => {
-            const tgShare = quarterDataByShareCode[shareCode];
+      // Create rows
+      const rows = []
+      for (const data of rawData) {
+            const row = {};
+            for (const col of tgColList) {
+               if (col === KEY_NAME.SHARE_NAME) {
+                  row[col] = data[col]
+               } else if (col === OTHER_KEY_NAME.GRAPH) {
+                  row[col] = <GraphModalBtn 
+                     shareName={data[KEY_NAME.SHARE_NAME]} 
+                     shareCode={data[KEY_NAME.SHARE_CODE]} 
+                     yearRawDataPerShare={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
+                     quarterRawDataPerShare={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
+                  />
+               } else {
+                  row[col] = data[col];
+               }
+            }
+            rows.push(row);
+      }
+
+      return {
+            columns: columns,
+            rows: rows
+      }
+   }
+
+   useEffect(() => {
+      if (yearRawDataByShare && quarterRawDataByShare) {
+         // Run model
+         const valueModelData = ShareTargetModelEngine.getValueModel(quarterRawDataByShare);
+         const turnAroundModelData = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare);
+         const cpGrowthModelData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare);
+         const collapseModelData = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare);
+         const blueChipModelData = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare);
+
+         const dataTableInput = (Object.keys(quarterRawDataByShare).map((shareCode, i) => {
+            const tgShareData = quarterRawDataByShare[shareCode];
 
             const isValueModelMatched = _.find(valueModelData, [KEY_NAME.SHARE_CODE, shareCode]);
             const isTurnAroundModelMatched = _.find(turnAroundModelData, [KEY_NAME.SHARE_CODE, shareCode]);
@@ -43,11 +77,10 @@ const ModelBox = (props) => {
             const numOfMatched = [isValueModelMatched, isTurnAroundModelMatched, isCpGrowthModelMatched, isCollapseModelMatched, isBlueChipModelMatched].filter(Boolean).length;
 
             return {
-               [KEY_NAME.PERIOD]: _.last(tgShare)[KEY_NAME.PERIOD],
-               [KEY_NAME.SHARE_NAME]: _.last(tgShare)[KEY_NAME.SHARE_NAME],
-               [KEY_NAME.SHARE_CODE]: _.last(tgShare)[KEY_NAME.SHARE_CODE],
-               [KEY_NAME.MV]: _.last(tgShare)[KEY_NAME.MV],
-               [KEY_NAME.SALES]: _.last(tgShare)[KEY_NAME.SALES],
+               [KEY_NAME.PERIOD]: _.last(tgShareData)[KEY_NAME.PERIOD],
+               [KEY_NAME.SHARE_NAME]: _.last(tgShareData)[KEY_NAME.SHARE_NAME],
+               [KEY_NAME.SHARE_CODE]: _.last(tgShareData)[KEY_NAME.SHARE_CODE],
+               [KEY_NAME.MV]: _.last(tgShareData)[KEY_NAME.MV],
                [OTHER_KEY_NAME.SCORE]: numOfMatched,
                [OTHER_KEY_NAME.GRAPH]: null,
                [MODELS.VALUE]: isValueModelMatched?"O":"X",
@@ -55,13 +88,12 @@ const ModelBox = (props) => {
                [MODELS.CPGROWTH]: isCpGrowthModelMatched?"O":"X",
                [MODELS.COLLAPSE]: isCollapseModelMatched?"O":"X",
                [MODELS.BLUECHIP]: isBlueChipModelMatched?"O":"X",
-               
             }
          }));
          
-         setDatatable(RawData2TableData(dataTableInput, MODEL_HIT_TABLE_COL));
+         setDatatable(rawData2TableData(dataTableInput, MODEL_HIT_TABLE_COL));
       }
-   }, [yearDataByShareCode, quarterDataByShareCode])
+   }, [yearRawDataByShare, quarterRawDataByShare])
 
    return (
       <MDBCard className="mt-3 mb-3">
@@ -69,7 +101,17 @@ const ModelBox = (props) => {
             <MDBCardTitle>
             </MDBCardTitle>
             <MDBCardText>
-               {datatable?<MDBDataTableV5 striped bordered smallhover entriesOptions={[20, 30, 40, 50]} entries={20} pagesAmount={4} data={datatable} />: null}
+               {datatable?<MDBDataTableV5 
+               responsive 
+               striped 
+               bordered 
+               small 
+               hover 
+               entriesOptions={[20, 30, 40, 50]} 
+               entries={20} 
+               pagesAmount={4} 
+               data={datatable} 
+               />: null}
             </MDBCardText>
          </MDBCardBody>
       </MDBCard>

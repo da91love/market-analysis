@@ -7,6 +7,7 @@ const RawData2TableData = (rawData, tgColList, hyperlink=false, graph=false) => 
         console.log("really?")
     }
 
+    // Create columns
     const columns = tgColList.map((v,i) => {
         return {
             label: v,
@@ -14,6 +15,9 @@ const RawData2TableData = (rawData, tgColList, hyperlink=false, graph=false) => 
         }
     })
 
+    // Create rows
+
+    
     const rows = []
     for (const data of rawData) {
         const row = {};

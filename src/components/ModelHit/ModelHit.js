@@ -15,10 +15,10 @@ import yData from "../../statics/year_result.json";
 import qData from "../../statics/quarter_result.json";
 
 const ModelHit = () => {
-  const [yearData,setYearData] = useState(null);
-  const [quarterData,setQuarterData] = useState(null);
-  const [yearDataByShareCode,setYearDataByShareCode] = useState(null);
-  const [quarterDataByShareCode,setQuarterDataByShareCode] = useState(null);
+  const [yearRawData,setYearRawData] = useState(null);
+  const [quarterRawData,setQuarterRawData] = useState(null);
+  const [yearRawDataByShare,setyearRawDataByShare] = useState(null);
+  const [quarterRawDataByShare,setquarterRawDataByShare] = useState(null);
 
   useEffect(() => {
     // Get share data from DB(temporary from json)
@@ -34,18 +34,18 @@ const ModelHit = () => {
       quarterDataByGroup[k] = _.sortBy(v, o => o.period);
     });
 
-    setYearData(yData);
-    setQuarterData(qData);
-    setYearDataByShareCode(yearDataByGroup);
-    setQuarterDataByShareCode(quarterDataByGroup);
+    setYearRawData(yData);
+    setQuarterRawData(qData);
+    setyearRawDataByShare(yearDataByGroup);
+    setquarterRawDataByShare(quarterDataByGroup);
   }, [])
 
   return (
     <ShareDataContext.Provider value={{
-      yearData, setYearData, 
-      quarterData, setQuarterData,
-      yearDataByShareCode, setYearDataByShareCode,
-      quarterDataByShareCode, setQuarterDataByShareCode
+      yearRawData, setYearRawData, 
+      quarterRawData, setQuarterRawData,
+      yearRawDataByShare, setyearRawDataByShare,
+      quarterRawDataByShare, setquarterRawDataByShare
       }}>
       <MDBContainer>
         <ModelBox/>

@@ -10,13 +10,10 @@ import { GRAPH_ANALYSIS_COL } from "../../consts/model";
 import { KEY_NAME } from "../../consts/keyName";
 
 const GraphModalBtn = (props) => {
-    const {shareCode} = props;
-    const {yearDataByShareCode, quarterDataByShareCode} = useContext(ShareDataContext);
+    const {shareCode, shareName, yearRawDataPerShare, quarterRawDataPerShare} = props;
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState("1");
     const [graphData, setGraphData] = useState(null);
-
-    const shareName = quarterDataByShareCode[shareCode][0][KEY_NAME.SHARE_NAME];
     
     const tabHandler = (tab) => {
         if (activeTab !== tab) {
@@ -31,8 +28,8 @@ const GraphModalBtn = (props) => {
             const idcByQuarter = {};
 
             GRAPH_ANALYSIS_COL.forEach((v, i) => {
-                idcByYear[v] = rawData2GraphData(yearDataByShareCode[shareCode], v);
-                idcByQuarter[v] = rawData2GraphData(quarterDataByShareCode[shareCode], v);
+                idcByYear[v] = rawData2GraphData(yearRawDataPerShare, v);
+                idcByQuarter[v] = rawData2GraphData(quarterRawDataPerShare, v);
             })
             
             setGraphData({

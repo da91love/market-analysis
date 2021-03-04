@@ -4,10 +4,10 @@ import { KEY_NAME } from '../consts/keyName';
 
 class ShareTargetModelEngine {
 
-  static getTurnAroundModel(quarterDataByShareCode) {
+  static getTurnAroundModel(quarterRawDataByShare) {
     const tgShares = [];
 
-    _.forEach(quarterDataByShareCode, (v, k) => {
+    _.forEach(quarterRawDataByShare, (v, k) => {
       const tgPeriodData = getRecentPeriod(v, 5);
 
       // This period should be (+)
@@ -22,10 +22,10 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getValueModel(quarterDataByShareCode) {
+  static getValueModel(quarterRawDataByShare) {
     const tgShares = [];
 
-    _.forEach(quarterDataByShareCode, (v, k) => {
+    _.forEach(quarterRawDataByShare, (v, k) => {
       const tgPer = v[v.length-1][KEY_NAME.PER];
       const tgRoe = v[v.length-1][KEY_NAME.ROE];
 
@@ -38,10 +38,10 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getBluechipModel(quarterDataByShareCode) {
+  static getBluechipModel(quarterRawDataByShare) {
     const tgShares = [];
 
-    _.forEach(quarterDataByShareCode, (v, k) => {
+    _.forEach(quarterRawDataByShare, (v, k) => {
       const tgPer = v[v.length-1][KEY_NAME.PER];
       const tgRoe = v[v.length-1][KEY_NAME.ROE];
       const tgSales = v[v.length-1][KEY_NAME.SALES];
@@ -55,10 +55,10 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getCollapseModel(yearDataByShareCode) {
+  static getCollapseModel(yearRawDataByShare) {
     const tgShares = [];
 
-    _.forEach(yearDataByShareCode, (v, k) => {
+    _.forEach(yearRawDataByShare, (v, k) => {
       const pastMv = v[0][KEY_NAME.MV];
       const latestMv = v[v.length-1][KEY_NAME.MV];
 
@@ -71,10 +71,10 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getCpGrowthModel(quarterDataByShareCode) {
+  static getCpGrowthModel(quarterRawDataByShare) {
     const tgShares = [];
 
-    _.forEach(quarterDataByShareCode, (v, k) => {
+    _.forEach(quarterRawDataByShare, (v, k) => {
       const pastOp = v[0][KEY_NAME.OP];
       const latestOp = v[v.length-1][KEY_NAME.OP];
 
