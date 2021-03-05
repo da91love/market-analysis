@@ -2,4 +2,7 @@
 - [update]주식별비교
 - [update]투자증가주: 투자현금흐름 전분기 2배이상 증가
 - [update]키네임 변경
-- [update]전체검색기능
+- [update]전체검색기능, 마켓 검색기능
+- [update]mdb datatable에 component searchable
+   - https://mdbootstrap.com/support/react/mdbdatatable-search-not-returning-results-if-rendered-by-another-component/
+   - https://mdbootstrap.com/docs/react/tables/datatables-1/#docsTabsAPI

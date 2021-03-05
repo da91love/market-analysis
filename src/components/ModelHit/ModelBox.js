@@ -4,20 +4,14 @@ import {
 } from 'mdbreact';
 import _ from "lodash";
 
-import AlertContext from "../../contexts/AlertContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
-import { DANGER } from "../../consts/alert";
-import { MODELS, MODEL_HIT_TABLE_COL } from "../../consts/model";
-import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
-import { MSG } from "../../consts/message"
-
 import ShareTargetModelEngine from '../../utils/ShareTargetModelEngine';
 import GraphModalBtn from '../Share/GraphModalBtn';
-import HyperlinkBtn from '../Share/HyperlinkBtn';
 
+import { MODELS, MODEL_HIT_TABLE_COL } from "../../consts/model";
+import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 
 const ModelBox = (props) => {
-   const {alertState,setAlertState} = useContext(AlertContext);
    const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);   
   
@@ -35,9 +29,7 @@ const ModelBox = (props) => {
       for (const data of rawData) {
             const row = {};
             for (const col of tgColList) {
-               if (col === KEY_NAME.SHARE_NAME) {
-                  row[col] = data[col]
-               } else if (col === OTHER_KEY_NAME.GRAPH) {
+               if (col === OTHER_KEY_NAME.GRAPH) {
                   row[col] = <GraphModalBtn 
                      shareName={data[KEY_NAME.SHARE_NAME]} 
                      shareCode={data[KEY_NAME.SHARE_CODE]} 
@@ -111,6 +103,7 @@ const ModelBox = (props) => {
                entries={20} 
                pagesAmount={4} 
                data={datatable} 
+
                />: null}
             </MDBCardText>
          </MDBCardBody>

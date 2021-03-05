@@ -45,7 +45,12 @@ const GraphModalBtn = (props) => {
         <IconButton className="p-0" color="default" aria-label="upload picture" component="span">
             <MDBIcon icon="chart-bar" onClick={() => {modalHandler()}}/>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
-                <MDBModalHeader toggle={modalHandler}>{`${shareName}: ${shareCode}`}</MDBModalHeader>
+                <MDBModalHeader toggle={modalHandler}>
+                    {`${shareName}:${shareCode}`}
+                    <a href={`https://finance.naver.com/item/main.nhn?code=${shareCode}`} target="_blank">
+                        <MDBIcon icon="external-link-alt" />
+                    </a>
+                </MDBModalHeader>
                 <MDBModalBody>
                     <MDBNav className="nav-tabs">
                         <MDBNavItem>
