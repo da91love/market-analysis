@@ -2,7 +2,7 @@ import _ from "lodash";
 import getRecentPeriodData from "./getRecentPeriodData";
 import EconoIndicator from "../utils/EconoIndicator";
 import { KEY_NAME } from '../consts/keyName';
-import { MODELS } from '../consts/model';
+import { MODELS, FILTER_TYPE } from '../consts/model';
 
 class ShareTargetModelEngine {
 
@@ -15,14 +15,22 @@ class ShareTargetModelEngine {
     const tgShares = [];
     const modelFilter = filterStatus?.[MODELS.TURNAROUND];
 
-    _.forEach(quarterRawDataByShare, (v, k) => {
-      const tgPeriodData = getRecentPeriodData(v, 5);
+    // Assign default filter value
+    // periodFilter의 default(각 종목의 최신 period값)값은 종목마다 다르므로, getRecentPeriodData에서 설정
+    const termFilter = modelFilter?.[FILTER_TYPE.TERM] || 5;
 
-      // This period should be (+)
-      if (tgPeriodData[tgPeriodData.length - 1][KEY_NAME.OP] > 0) {
-        // Past consecutive 4periods should be (-)
-        if (_.every(tgPeriodData.slice(0, tgPeriodData.length - 1), o => o[KEY_NAME.OP] < 0)) {
-          tgShares.push(tgPeriodData[tgPeriodData.length - 1]);
+    _.forEach(quarterRawDataByShare, (v, k) => {
+      const tgPeriodData = getRecentPeriodData(v, modelFilter?.[FILTER_TYPE.PERIOD], termFilter);
+      const tgPeriodDataLen = tgPeriodData.length;
+
+      // tgPeriodData should not be null: 원바이오젠과 같이 2019년 데이터까지 밖에 없는 지정 기간이 존재하지 않으므로 걸러냄
+      if (tgPeriodDataLen > 0) {
+        // Latest period should be (+)
+        if (tgPeriodData[tgPeriodDataLen - 1][KEY_NAME.OP] > 0) {
+          // Past consecutive periods should be (-)
+          if (_.every(tgPeriodData.slice(0, tgPeriodDataLen - 1), o => o[KEY_NAME.OP] < 0)) {
+            tgShares.push(tgPeriodData[tgPeriodDataLen - 1]);
+          }
         }
       }
     });

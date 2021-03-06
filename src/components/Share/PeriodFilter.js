@@ -2,7 +2,7 @@ import React from "react";
 import {FILTER_TYPE} from '../../consts/model';
 
 const PeriodFilter = (props) => {
-    const {title, options, model, mdlFilterStatus, setMdlFilterStatus} = props;
+    const {title, options, mdlFilterStatus, setMdlFilterStatus} = props;
 
     const filterHandler = (value) => {
         setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.PERIOD]:value})
@@ -14,7 +14,7 @@ const PeriodFilter = (props) => {
                 {title?title:"Period"}
             </p>
             <select className="browser-default custom-select" onChange={(e) => {filterHandler(e.target.value)}}>
-                <option value="default">Choose your option</option>
+                <option value="default">Choose target period</option>
                 {options.map((v, i) => {
                         return <option value={v}>{v}</option>
                 })}

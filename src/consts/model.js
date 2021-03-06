@@ -47,6 +47,7 @@ export const GRAPH_ANALYSIS_COL = [
 
 export const FILTER_TYPE = {
     PERIOD: "periodFilter",
+    TERM: "termFilter",
     PER: "perFilter",
     SALES: "salesFilter",
     ROE: "roeFilter",

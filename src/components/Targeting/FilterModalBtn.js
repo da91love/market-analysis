@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import { MDBContainer, MDBBtn, MDBModal, MDBIcon, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import PeriodFilter from '../Share/PeriodFilter';
-import PerFilter from '../Share/PerFilter';
+import TermFilter from '../Share/TermFilter';
 import { MODELS } from '../../consts/model';
 
 const FilterModalBtn = (props) => {
@@ -24,8 +24,8 @@ const FilterModalBtn = (props) => {
 
     if (model === MODELS.VALUE) {
     } else if (model == MODELS.TURNAROUND) {
-      inputs.push(<PeriodFilter options={['2021/03', '2021/06', '2021/09']} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
-      inputs.push(<PerFilter />);
+      inputs.push(<PeriodFilter options={['2020/03', '2020/06', '2020/09', '2020/12']} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+      inputs.push(<TermFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     } else if (model === MODELS.CPGROWTH) {
     } else if (model === MODELS.MRKGROWTH) {
     } else if (model === MODELS.COLLAPSE) {
