@@ -6,11 +6,6 @@ import { MODELS, FILTER_TYPE } from '../consts/model';
 
 class ShareTargetModelEngine {
 
-  /* 기준기간, 몇분기연속, 
-  (required)지난 4분기 이상 영업이익 (-)
-  (required)이번분기 영업이익 흑자전환
-  (optional)영업이익 상승률의 지속적 +
-  */
   static getTurnAroundModel(quarterRawDataByShare, filterStatus) {
     const tgShares = [];
     const modelFilter = filterStatus?.[MODELS.TURNAROUND];
@@ -38,16 +33,24 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getValueModel(quarterRawDataByShare) {
+  static getValueModel(quarterRawDataByShare, filterStatus) {
     const tgShares = [];
+    const modelFilter = filterStatus?.[MODELS.VALUE];
+
+    // Assign default filter value
+    const perFilterMin = modelFilter?.[FILTER_TYPE.PER_MIN] || 0;
+    const perFilterMax = modelFilter?.[FILTER_TYPE.PER_MAX] || 12;
+    const roeFilterMin = modelFilter?.[FILTER_TYPE.ROE_MIN] || 15;
 
     _.forEach(quarterRawDataByShare, (v, k) => {
       const tgPer = v[v.length-1][KEY_NAME.PER];
       const tgRoe = v[v.length-1][KEY_NAME.ROE];
 
       // 0 < PER < 10 and  ROE > 15
-      if (0 < tgPer && tgPer < 10 && tgRoe >= 15) {
-        tgShares.push(v[v.length-1]);
+      if (perFilterMin < tgPer && tgPer <= perFilterMax) {
+        if (tgRoe >= roeFilterMin) {
+          tgShares.push(v[v.length-1]);
+        }
       }
     });
 
