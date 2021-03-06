@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   MDBCol, MDBCard, MDBCardBody, MDBIcon, MDBCardTitle, MDBCardText, MDBDataTableV5 
 } from 'mdbreact';
@@ -15,7 +15,7 @@ import { MODEL_NAME } from "../../consts/model";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { MSG } from "../../consts/message"
 
-import ShareTargetModelEngine from '../../utils/ShareTargetModelEngine';
+import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
 
 const ModelBox = (props) => {
@@ -23,7 +23,8 @@ const ModelBox = (props) => {
 
    const {alertState,setAlertState} = useContext(AlertContext);
    const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
-   const [datatable, setDatatable] = useState(null);   
+   const [datatable, setDatatable] = useState(null);
+   const [filterStatus, setFilterStatus] = useState(null);
    
    const rawData2TableData = (rawData, tgColList) => {
       // Create columns
@@ -39,9 +40,7 @@ const ModelBox = (props) => {
       for (const data of rawData) {
             const row = {};
             for (const col of tgColList) {
-               if (col === KEY_NAME.SHARE_NAME) {
-                  row[col] = <a href={`https://finance.naver.com/item/main.nhn?code=${data[KEY_NAME.SHARE_CODE]}`} target="_blank">{data[col]}</a>
-               } else if (col === OTHER_KEY_NAME.GRAPH) {
+               if (col === OTHER_KEY_NAME.GRAPH) {
                   row[col] = <GraphModalBtn 
                      shareName={data[KEY_NAME.SHARE_NAME]} 
                      shareCode={data[KEY_NAME.SHARE_CODE]} 
@@ -71,25 +70,9 @@ const ModelBox = (props) => {
             eventCount: alertState.eventCount + 1,
          });
       } else {
-      // Run model
-         if (value === MODELS.VALUE) {
-            const tgData = ShareTargetModelEngine.getValueModel(quarterRawDataByShare);
-            setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL.VALUE));
-         } else if (value == MODELS.TURNAROUND) {
-            const tgData = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare);
-            setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL.TURNAROUND));
-         } else if (value === MODELS.CPGROWTH) {
-            const tgData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare);
-            setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL.CPGROWTH));
-         } else if (value === MODELS.MRKGROWTH) {
-
-         } else if (value === MODELS.COLLAPSE) {
-            const tgData = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare);
-            setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL.COLLAPSE));
-         } else if (value === MODELS.BLUECHIP) {
-            const tgData = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare);
-            setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL.BLUECHIP));
-         }
+         // Run model
+         const tgData = getModelData(value, yearRawDataByShare, quarterRawDataByShare, filterStatus);
+         setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === value)]));
 
          // update modelBoxStatus
          const dcModelBoxStatus = [...modelBoxStatus];
@@ -112,6 +95,13 @@ const ModelBox = (props) => {
          });
       }
    }
+   
+   useEffect(() => {
+      if(filterStatus){
+         const tgData = getModelData(model, yearRawDataByShare, quarterRawDataByShare, filterStatus);
+         setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === model)]));
+      }
+   }, [filterStatus])
 
    return (
       <MDBCard className="mt-3 mb-3">
@@ -126,7 +116,7 @@ const ModelBox = (props) => {
                   </select>
                </div>
                <div className="">
-                  <FilterModalBtn model={model}/>
+                  <FilterModalBtn model={model} filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
                   <IconButton className="float-right" color="secondary" aria-label="upload picture" component="span">
                      <MDBIcon onClick={() => {removeModelBtn()}} icon="times" />
                   </IconButton>

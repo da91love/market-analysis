@@ -6,7 +6,8 @@ export const MODELS = {
     CPGROWTH: 'cpgrowth',
     MRKGROWTH: 'mrkgrowth',
     COLLAPSE: 'collapse',
-    BLUECHIP: 'bluechip'
+    BLUECHIP: 'bluechip',
+    INVGROWTH: 'invgrowth'
 }
 
 export const MODEL_NAME = {
@@ -15,7 +16,8 @@ export const MODEL_NAME = {
     CPGROWTH: 'CpGrowth Stock Model',
     MRKGROWTH: 'MrkGrowth Stock Model',
     COLLAPSE: 'Collapse Stock Model',
-    BLUECHIP: 'Bluechip Stock Model'
+    BLUECHIP: 'Bluechip Stock Model',
+    INVGROWTH: 'Investment Growth Stock Model',
 }
 
 export const MODEL_TABLE_COL = {
@@ -25,18 +27,27 @@ export const MODEL_TABLE_COL = {
     MRKGROWTH: [KEY_NAME.PERIOD, KEY_NAME.SHARE_NAME, KEY_NAME.MARKET_NAME, KEY_NAME.MV, KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL, OTHER_KEY_NAME.GRAPH],
     COLLAPSE: [KEY_NAME.PERIOD, KEY_NAME.SHARE_NAME, KEY_NAME.MARKET_NAME, KEY_NAME.MV, KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL, OTHER_KEY_NAME.GRAPH],
     BLUECHIP: [KEY_NAME.PERIOD, KEY_NAME.SHARE_NAME, KEY_NAME.MARKET_NAME, KEY_NAME.MV, KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL, KEY_NAME.PER, KEY_NAME.ROE, OTHER_KEY_NAME.GRAPH],
+    INVGROWTH: [KEY_NAME.PERIOD, KEY_NAME.SHARE_NAME, KEY_NAME.MARKET_NAME, KEY_NAME.MV, KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL, OTHER_KEY_NAME.GRAPH],
 }
 
 export const MODEL_HIT_TABLE_COL = [KEY_NAME.PERIOD, KEY_NAME.SHARE_NAME, OTHER_KEY_NAME.SCORE, KEY_NAME.MV, MODELS.VALUE, MODELS.TURNAROUND, MODELS.CPGROWTH, MODELS.COLLAPSE, MODELS.BLUECHIP, OTHER_KEY_NAME.GRAPH]
 
 export const GRAPH_ANALYSIS_COL = [
-    "시가총액",
-    "매출액",
-    "영업이익",
-    "당기순이익(지배)",
-    "PSR(배)",
-    "POR(배)",
-    "PER(배)",
-    "PCR(배)",
-    "PBR(배)",
+    KEY_NAME.MV,
+    KEY_NAME.SALES,
+    KEY_NAME.OP,
+    KEY_NAME.NP_CTRL,
+    KEY_NAME.PSR,
+    KEY_NAME.POR,
+    KEY_NAME.PER,
+    KEY_NAME.PCR,
+    KEY_NAME.PBR,
+    KEY_NAME.IA_CF,
 ]
+
+export const FILTER_TYPE = {
+    PERIOD: "periodFilter",
+    PER: "perFilter",
+    SALES: "salesFilter",
+    ROE: "roeFilter",
+}

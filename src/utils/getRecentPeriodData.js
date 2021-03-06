@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-function getRecentPeriod(tgList, tgPeriod) {
+function getRecentPeriodData(tgList, tgPeriod) {
   try {
     const sliced = tgList.slice(tgList.length - tgPeriod, tgList.length);
     return sliced;
@@ -9,4 +9,4 @@ function getRecentPeriod(tgList, tgPeriod) {
   }
 }
 
-export default getRecentPeriod;
+export default getRecentPeriodData;
