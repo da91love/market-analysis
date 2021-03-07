@@ -1,7 +1,7 @@
 import ShareTargetModelEngine from './ShareTargetModelEngine';
 import {MODELS} from './../consts/model';
 
-const getModelData = (model, yearRawDataByShare, quarterRawDataByShare, filterStatus) => {
+const getModelData = (model, yearRawData, quarterRawData, yearRawDataByShare, quarterRawDataByShare, filterStatus) => {
     let tgData = null;
 
     if (model === MODELS.VALUE) {
@@ -11,7 +11,7 @@ const getModelData = (model, yearRawDataByShare, quarterRawDataByShare, filterSt
      } else if (model === MODELS.CPGROWTH) {
         tgData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare, filterStatus);
      } else if (model === MODELS.MRKGROWTH) {
-        tgData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare, filterStatus);
+        tgData = ShareTargetModelEngine.getMrkGrowthModel(yearRawData, quarterRawData, filterStatus);
      } else if (model === MODELS.COLLAPSE) {
         tgData = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare, filterStatus);
      } else if (model === MODELS.BLUECHIP) {

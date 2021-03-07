@@ -23,7 +23,7 @@ const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
 
    const {alertState,setAlertState} = useContext(AlertContext);
-   const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+   const {yearRawData, quarterRawData, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);
    const [filterStatus, setFilterStatus] = useState(FILTER);
    
@@ -72,7 +72,7 @@ const ModelBox = (props) => {
          });
       } else {
          // Run model
-         const tgData = getModelData(value, yearRawDataByShare, quarterRawDataByShare, filterStatus);
+         const tgData = getModelData(value, yearRawData, quarterRawData, yearRawDataByShare, quarterRawDataByShare, filterStatus);
          setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === value)]));
 
          // update modelBoxStatus
@@ -98,8 +98,8 @@ const ModelBox = (props) => {
    }
    
    useEffect(() => {
-      if(quarterRawDataByShare){ // Do not run on first running
-         const tgData = getModelData(model, yearRawDataByShare, quarterRawDataByShare, filterStatus);
+      if(model !== 'default'){ // Do not run on first running
+         const tgData = getModelData(model, yearRawData, quarterRawData, yearRawDataByShare, quarterRawDataByShare, filterStatus);
          setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === model)]));
       }
    }, [filterStatus])

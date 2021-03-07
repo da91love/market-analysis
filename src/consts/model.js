@@ -54,4 +54,5 @@ export const FILTER_TYPE = {
     ROE_MIN: "roeMinFilter",
     OP_TIMES: "opTimesFilter",
     IA_CF_TIMES: "iaCfTimesFilter",
+    MV_TIMES: "mvTimesFilter"
 }

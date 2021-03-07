@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _, { last } from "lodash";
 import cutPeriodWithCondition from "./cutPeriodWithCondition";
 import EconoIndicator from "../utils/EconoIndicator";
 import { KEY_NAME } from '../consts/keyName';
@@ -93,20 +93,60 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getCollapseModel(yearRawDataByShare) {
+  static getCollapseModel(yearRawDataByShare, filterStatus) {
     const tgShares = [];
 
-    _.forEach(yearRawDataByShare, (v, k) => {
-      const pastMv = v[0][KEY_NAME.MV];
-      const latestMv = v[v.length-1][KEY_NAME.MV];
+    // Assign default filter value
+    const mvTimesFilter = filterStatus[MODELS.COLLAPSE][FILTER_TYPE.MV_TIMES];
+    const termFilter = filterStatus[MODELS.COLLAPSE][FILTER_TYPE.TERM];
 
-      // if latest marketvalue is smaller than past marketvalue
-      if (_.isNumber(pastMv) && _.isNumber(latestMv)) {
-        if ((pastMv/5) > latestMv) {
-          tgShares.push(v[v.length-1]);
+    _.forEach(yearRawDataByShare, (v, k) => {
+      const periodFilter = filterStatus[MODELS.COLLAPSE][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const tgPeriodData = cutPeriodWithCondition(v, periodFilter, termFilter);
+      const tgPeriodDataLen = tgPeriodData.length;
+
+      if (tgPeriodDataLen > 0) {
+        const lastMv = tgPeriodData[0][KEY_NAME.MV];
+        const thisMv = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.MV];
+  
+        // if latest marketvalue is smaller than past marketvalue
+        if (_.isNumber(lastMv) && _.isNumber(thisMv)) {
+          if (EconoIndicator.getGrowthRate(lastMv, thisMv) < mvTimesFilter) {
+            tgShares.push(tgPeriodData[tgPeriodDataLen-1]);
+          }
         }
       }
     });
+
+    return tgShares;
+  }
+
+  static getMrkGrowthModel(yearRawData, quarterRawData, filterStatus) {
+    const tgShares = [];
+
+    // Get share data from DB(temporary from json)
+    let yearDataByMrk = _.groupBy(yearRawData, v => v[KEY_NAME.MARKET_CODE]);
+    let quarterDataByMrk = _.groupBy(quarterRawData, v => v[KEY_NAME.MARKET_CODE]);
+
+    for (const mrk in yearDataByMrk) {
+      const yearDataByMrkNPrd = _.groupBy(yearDataByMrk[mrk], v => v[KEY_NAME.PERIOD]);
+      yearDataByMrk[mrk] = yearDataByMrkNPrd;
+    }
+
+    for (const mrk in quarterDataByMrk) {
+      const yearDataByMrkNPrd = _.groupBy(quarterDataByMrk[mrk], v => v[KEY_NAME.PERIOD]);
+      quarterDataByMrk[mrk] = yearDataByMrkNPrd;
+    }
+
+    for (const mrk in yearDataByMrk) {
+      const sumByMrkNPrd = {};
+      for (const period in yearDataByMrk[mrk]) {
+        for (const key in KEY_NAME) {
+          sumByMrkNPrd[KEY_NAME[key]] = _.sumBy(yearDataByMrk[mrk][period], v => v[KEY_NAME[key]]);
+        }
+        mrk[period] = sumByMrkNPrd;
+      }
+    }
 
     return tgShares;
   }
@@ -168,11 +208,6 @@ class ShareTargetModelEngine {
     });
 
     return tgShares;
-
-
-
-
-    
   }
 }
 
