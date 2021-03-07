@@ -12,6 +12,9 @@ export const FILTER = {
         [FILTER_TYPE.TERM]: 5,
     },
     [MODELS.CPGROWTH]: {
+        [FILTER_TYPE.PERIOD]:null,
+        [FILTER_TYPE.TERM]: 5,
+        [FILTER_TYPE.OP_TIMES]: 300,
     },
     [MODELS.MRKGROWTH]: {
     },
@@ -24,4 +27,8 @@ export const FILTER = {
         [FILTER_TYPE.PER_MIN]: 0,
         [FILTER_TYPE.ROE_MIN]: 15,
     },
+    [MODELS.INVGROWTH]: {
+        [FILTER_TYPE.PERIOD]:null,
+        [FILTER_TYPE.IA_CF_TIMES]: 300,
+    }
 } 

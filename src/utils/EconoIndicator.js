@@ -1,6 +1,10 @@
 class EconoIndicator{
     static getGrowthRate(_last, _this) {
-        return ((_this - _last)/Math.abs(_last)) * 100
+        if (_last === 0) {
+            return ((_this - 1)/Math.abs(1)) * 100     
+        } else {
+            return ((_this - _last)/Math.abs(_last)) * 100
+        }
     }
 }
 

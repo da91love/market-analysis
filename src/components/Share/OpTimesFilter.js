@@ -6,7 +6,7 @@ import {MSG} from '../../consts/message';
 import {DANGER} from '../../consts/alert';
 import AlertContext from "../../contexts/AlertContext";
 
-const TermFilter = (props) => {
+const OpTimesFilter = (props) => {
     const {title, mdlFilterStatus, setMdlFilterStatus} = props;
     const {alertState,setAlertState} = useContext(AlertContext);
 
@@ -20,24 +20,24 @@ const TermFilter = (props) => {
                 eventCount: alertState.eventCount + 1,
              });
         } else {
-            setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.TERM]:parseInt(value)})
+            setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.OP_TIMES]:parseInt(value)})
         }
     }
 
     return (
         <div className="mt-3">
             <p className="grey-text text-left">
-                {title?title:"Term"}
+                {title?title:"OP ratio"}
             </p>
             <MDBInputGroup
                 onChange={e => filterHandler(e.target.value)}
                 material
+                hint={mdlFilterStatus[FILTER_TYPE.OP_TIMES]}
                 containerClassName="mt-0"
-                hint={mdlFilterStatus[FILTER_TYPE.TERM]}
-                append="periods"
+                append="% higher than"
             />
         </div>
     );
 };
 
-export default TermFilter;
+export default OpTimesFilter;

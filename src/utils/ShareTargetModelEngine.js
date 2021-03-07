@@ -41,7 +41,7 @@ class ShareTargetModelEngine {
     const roeMaxFilter = filterStatus[MODELS.VALUE][FILTER_TYPE.ROE_MIN];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
-      const periodFilter = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const periodFilter = filterStatus[MODELS.VALUE][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
       const tgPeriodData = cutPeriodWithCondition(v, periodFilter);
       const tgPeriodDataLen = tgPeriodData.length;
 
@@ -71,7 +71,7 @@ class ShareTargetModelEngine {
     const roeMaxFilter = filterStatus[MODELS.BLUECHIP][FILTER_TYPE.ROE_MIN];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
-      const periodFilter = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const periodFilter = filterStatus[MODELS.BLUECHIP][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
       const tgPeriodData = cutPeriodWithCondition(v, periodFilter);
       const tgPeriodDataLen = tgPeriodData.length;
 
@@ -111,17 +111,27 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getCpGrowthModel(quarterRawDataByShare) {
+  static getCpGrowthModel(quarterRawDataByShare, filterStatus) {
     const tgShares = [];
 
-    _.forEach(quarterRawDataByShare, (v, k) => {
-      const pastOp = v[0][KEY_NAME.OP];
-      const latestOp = v[v.length-1][KEY_NAME.OP];
+    // Assign default filter value
+    const termFilter = filterStatus[MODELS.CPGROWTH][FILTER_TYPE.TERM];
+    const opTimesFilter = filterStatus[MODELS.CPGROWTH][FILTER_TYPE.OP_TIMES];
 
-      // if latest op is bigger than past op more than twice
-      if (_.isNumber(pastOp) && _.isNumber(latestOp)) {
-        if ((pastOp*2) < latestOp) {
-          tgShares.push(v[v.length-1]);
+    _.forEach(quarterRawDataByShare, (v, k) => {
+      const periodFilter = filterStatus[MODELS.CPGROWTH][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const tgPeriodData = cutPeriodWithCondition(v, periodFilter, termFilter);
+      const tgPeriodDataLen = tgPeriodData.length;
+
+      if (tgPeriodDataLen > 0) {
+        const lastOp = tgPeriodData[0][KEY_NAME.OP];
+        const thisOp = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.OP];
+  
+        // if latest op is bigger than past op more than twice
+        if (_.isNumber(lastOp) && _.isNumber(thisOp)) {
+          if (EconoIndicator.getGrowthRate(lastOp, thisOp) > opTimesFilter) {
+            tgShares.push(tgPeriodData[tgPeriodDataLen-1]);
+          }
         }
       }
     });
@@ -129,19 +139,29 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getInvstGrowthModel(quarterRawDataByShare) {
+  static getInvstGrowthModel(quarterRawDataByShare, filterStatus) {
     const tgShares = [];
 
-    _.forEach(quarterRawDataByShare, (v, k) => {
-      const pastIaCf = v[v.length-2]?.[KEY_NAME.IA_CF];
-      const latestIaCf = v[v.length-1][KEY_NAME.IA_CF];
+    // Assign default filter value
+    const termFilter = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.TERM];
+    const iaCfTimesFilter = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.IA_CF_TIMES];
 
-      if (_.isNumber(pastIaCf) && _.isNumber(latestIaCf)) {
-        // 1. lastestIaCf is smaller than 0
-        if (latestIaCf < 0) {
-          // 2. growth rate is over 400%(5times)
-          if (EconoIndicator.getGrowthRate(-pastIaCf, -latestIaCf) > 400) {
-            tgShares.push(v[v.length-1]);
+    _.forEach(quarterRawDataByShare, (v, k) => {
+      const periodFilter = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const tgPeriodData = cutPeriodWithCondition(v, periodFilter);
+      const tgPeriodDataLen = tgPeriodData.length;
+
+      if (tgPeriodDataLen > 0) {
+        const pastIaCf = tgPeriodData[tgPeriodDataLen-2]?.[KEY_NAME.IA_CF];
+        const latestIaCf = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.IA_CF];
+  
+        if (_.isNumber(pastIaCf) && _.isNumber(latestIaCf)) {
+          // 1. lastestIaCf is smaller than 0
+          if (latestIaCf < 0) {
+            // 2. growth rate is over 400%(5times)
+            if (EconoIndicator.getGrowthRate(-pastIaCf, -latestIaCf) > iaCfTimesFilter) {
+              tgShares.push(tgPeriodData[tgPeriodDataLen-1]);
+            }
           }
         }
       }

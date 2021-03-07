@@ -9,6 +9,7 @@ import ShareTargetModelEngine from '../../utils/ShareTargetModelEngine';
 import GraphModalBtn from '../Share/GraphModalBtn';
 
 import { MODELS, MODEL_HIT_TABLE_COL } from "../../consts/model";
+import { FILTER } from "../../consts/filter";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 
 const ModelBox = (props) => {
@@ -52,11 +53,11 @@ const ModelBox = (props) => {
    useEffect(() => {
       if (yearRawDataByShare && quarterRawDataByShare) {
          // Run model
-         const valueModelData = ShareTargetModelEngine.getValueModel(quarterRawDataByShare);
-         const turnAroundModelData = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare);
-         const cpGrowthModelData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare);
-         const collapseModelData = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare);
-         const blueChipModelData = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare);
+         const valueModelData = ShareTargetModelEngine.getValueModel(quarterRawDataByShare, FILTER);
+         const turnAroundModelData = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare, FILTER);
+         const cpGrowthModelData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare, FILTER);
+         const collapseModelData = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare, FILTER);
+         const blueChipModelData = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare, FILTER);
 
          const dataTableInput = (Object.keys(quarterRawDataByShare).map((shareCode, i) => {
             const tgShareData = quarterRawDataByShare[shareCode];

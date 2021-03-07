@@ -9,6 +9,8 @@ import TermFilter from '../Share/TermFilter';
 import SalesFilter from '../Share/SalesFilter';
 import PerFilter from '../Share/PerFilter';
 import RoeFilter from '../Share/RoeFilter';
+import OpTimesFilter from '../Share/OpTimesFilter';
+import IaCfTimesFilter from '../Share/IaCfTimesFilter';
 
 import { MODELS } from '../../consts/model';
 import { KEY_NAME } from '../../consts/keyName';
@@ -46,6 +48,9 @@ const FilterModalBtn = (props) => {
       inputs.push(<PeriodFilter options={uniqQuarterPeriods} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
       inputs.push(<TermFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     } else if (model === MODELS.CPGROWTH) {
+      inputs.push(<PeriodFilter options={uniqQuarterPeriods} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+      inputs.push(<TermFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+      inputs.push(<OpTimesFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     } else if (model === MODELS.MRKGROWTH) {
     } else if (model === MODELS.COLLAPSE) {
     } else if (model === MODELS.BLUECHIP) {
@@ -54,6 +59,8 @@ const FilterModalBtn = (props) => {
       inputs.push(<PerFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
       inputs.push(<RoeFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     } else if (model === MODELS.INVGROWTH) {
+      inputs.push(<PeriodFilter options={uniqQuarterPeriods} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+      inputs.push(<IaCfTimesFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     }
 
     return inputs;

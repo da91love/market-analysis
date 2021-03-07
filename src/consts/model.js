@@ -52,4 +52,6 @@ export const FILTER_TYPE = {
     PER_MAX: "perMaxFilter",
     SALES_MIN: "salesMinFilter",
     ROE_MIN: "roeMinFilter",
+    OP_TIMES: "opTimesFilter",
+    IA_CF_TIMES: "iaCfTimesFilter",
 }
