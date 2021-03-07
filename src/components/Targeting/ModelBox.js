@@ -13,6 +13,7 @@ import { DANGER } from "../../consts/alert";
 import { MODELS, MODEL_TABLE_COL } from "../../consts/model";
 import { MODEL_NAME } from "../../consts/model";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
+import { FILTER } from "../../consts/filter";
 import { MSG } from "../../consts/message"
 
 import getModelData from '../../utils/getModelData';
@@ -24,7 +25,7 @@ const ModelBox = (props) => {
    const {alertState,setAlertState} = useContext(AlertContext);
    const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);
-   const [filterStatus, setFilterStatus] = useState(null);
+   const [filterStatus, setFilterStatus] = useState(FILTER);
    
    const rawData2TableData = (rawData, tgColList) => {
       // Create columns
@@ -97,7 +98,7 @@ const ModelBox = (props) => {
    }
    
    useEffect(() => {
-      if(filterStatus){
+      if(quarterRawDataByShare){ // Do not run on first running
          const tgData = getModelData(model, yearRawDataByShare, quarterRawDataByShare, filterStatus);
          setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === model)]));
       }

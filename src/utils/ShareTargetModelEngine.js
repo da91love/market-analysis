@@ -1,5 +1,5 @@
 import _ from "lodash";
-import getRecentPeriodData from "./getRecentPeriodData";
+import cutPeriodWithCondition from "./cutPeriodWithCondition";
 import EconoIndicator from "../utils/EconoIndicator";
 import { KEY_NAME } from '../consts/keyName';
 import { MODELS, FILTER_TYPE } from '../consts/model';
@@ -8,17 +8,16 @@ class ShareTargetModelEngine {
 
   static getTurnAroundModel(quarterRawDataByShare, filterStatus) {
     const tgShares = [];
-    const modelFilter = filterStatus?.[MODELS.TURNAROUND];
 
-    // Assign default filter value
-    // periodFilter의 default(각 종목의 최신 period값)값은 종목마다 다르므로, getRecentPeriodData에서 설정
-    const termFilter = modelFilter?.[FILTER_TYPE.TERM] || 5;
+    // get filter
+    const termFilter = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.TERM];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
-      const tgPeriodData = getRecentPeriodData(v, modelFilter?.[FILTER_TYPE.PERIOD], termFilter);
+      const periodFilter = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const tgPeriodData = cutPeriodWithCondition(v, periodFilter, termFilter);
       const tgPeriodDataLen = tgPeriodData.length;
 
-      // tgPeriodData should not be null: 원바이오젠과 같이 2019년 데이터까지 밖에 없는 지정 기간이 존재하지 않으므로 걸러냄
+      // tgPeriodData should not be null: 원바이오젠과 같이 2019년 데이터까지 밖에 없는 지정 기간 내의 데이터가 존재하지 않으므로 걸러냄
       if (tgPeriodDataLen > 0) {
         // Latest period should be (+)
         if (tgPeriodData[tgPeriodDataLen - 1][KEY_NAME.OP] > 0) {
@@ -35,21 +34,26 @@ class ShareTargetModelEngine {
 
   static getValueModel(quarterRawDataByShare, filterStatus) {
     const tgShares = [];
-    const modelFilter = filterStatus?.[MODELS.VALUE];
 
-    // Assign default filter value
-    const perFilterMin = modelFilter?.[FILTER_TYPE.PER_MIN] || 0;
-    const perFilterMax = modelFilter?.[FILTER_TYPE.PER_MAX] || 12;
-    const roeFilterMin = modelFilter?.[FILTER_TYPE.ROE_MIN] || 15;
+    // get filter
+    const perMinFilter = filterStatus[MODELS.VALUE][FILTER_TYPE.PER_MIN];
+    const perMaxFilter = filterStatus[MODELS.VALUE][FILTER_TYPE.PER_MAX];
+    const roeMaxFilter = filterStatus[MODELS.VALUE][FILTER_TYPE.ROE_MIN];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
-      const tgPer = v[v.length-1][KEY_NAME.PER];
-      const tgRoe = v[v.length-1][KEY_NAME.ROE];
+      const periodFilter = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const tgPeriodData = cutPeriodWithCondition(v, periodFilter);
+      const tgPeriodDataLen = tgPeriodData.length;
 
-      // 0 < PER < 10 and  ROE > 15
-      if (perFilterMin < tgPer && tgPer <= perFilterMax) {
-        if (tgRoe >= roeFilterMin) {
-          tgShares.push(v[v.length-1]);
+      if (tgPeriodDataLen > 0) {
+        const tgPer = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.PER];
+        const tgRoe = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.ROE];
+  
+        // 0 < PER < 10 and  ROE > 15
+        if (perMinFilter < tgPer && tgPer <= perMaxFilter) {
+          if (roeMaxFilter <= tgRoe) {
+            tgShares.push(tgPeriodData[tgPeriodDataLen-1]);
+          }
         }
       }
     });
@@ -57,17 +61,32 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getBluechipModel(quarterRawDataByShare) {
+  static getBluechipModel(quarterRawDataByShare, filterStatus) {
     const tgShares = [];
 
-    _.forEach(quarterRawDataByShare, (v, k) => {
-      const tgPer = v[v.length-1][KEY_NAME.PER];
-      const tgRoe = v[v.length-1][KEY_NAME.ROE];
-      const tgSales = v[v.length-1][KEY_NAME.SALES];
+    // Assign default filter value
+    const salesMinFilter = filterStatus[MODELS.BLUECHIP][FILTER_TYPE.SALES_MIN];
+    const perMinFilter = filterStatus[MODELS.BLUECHIP][FILTER_TYPE.PER_MIN];
+    const perMaxFilter = filterStatus[MODELS.BLUECHIP][FILTER_TYPE.PER_MAX];
+    const roeMaxFilter = filterStatus[MODELS.BLUECHIP][FILTER_TYPE.ROE_MIN];
 
-      // 0 < PER < 10 and  ROE > 15 and Sales > 2500
-      if (0 < tgPer && tgPer < 10 && tgRoe >= 15 && tgSales > 2500) {
-        tgShares.push(v[v.length-1]);
+    _.forEach(quarterRawDataByShare, (v, k) => {
+      const periodFilter = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const tgPeriodData = cutPeriodWithCondition(v, periodFilter);
+      const tgPeriodDataLen = tgPeriodData.length;
+
+      if (tgPeriodDataLen > 0) {
+        const tgSales = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.SALES];
+        const tgPer = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.PER];
+        const tgRoe = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.ROE];
+  
+        if(salesMinFilter < tgSales) {
+          if (perMinFilter < tgPer && tgPer <= perMaxFilter) {
+            if (roeMaxFilter <= tgRoe) {
+              tgShares.push(tgPeriodData[tgPeriodDataLen-1]);
+            }
+          }
+        }
       }
     });
 

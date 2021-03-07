@@ -33,7 +33,6 @@ const Targeting = () => {
     }
  }
 
-
   return (
     <div className="">
       <MDBContainer>

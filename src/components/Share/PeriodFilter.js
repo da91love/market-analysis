@@ -16,7 +16,7 @@ const PeriodFilter = (props) => {
             <select className="browser-default custom-select" onChange={(e) => {filterHandler(e.target.value)}}>
                 <option value="default">Choose target period</option>
                 {options.map((v, i) => {
-                        return <option value={v}>{v}</option>
+                        return <option value={v} selected={v===mdlFilterStatus?.[FILTER_TYPE.PERIOD]}>{v}</option>
                 })}
             </select>
             <br />

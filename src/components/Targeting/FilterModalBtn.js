@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import { MDBContainer, MDBBtn, MDBModal, MDBIcon, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import _ from "lodash";
+
+import ShareDataContext from "../../contexts/ShareDataContext";
 import PeriodFilter from '../Share/PeriodFilter';
 import TermFilter from '../Share/TermFilter';
+import SalesFilter from '../Share/SalesFilter';
 import PerFilter from '../Share/PerFilter';
 import RoeFilter from '../Share/RoeFilter';
+
 import { MODELS } from '../../consts/model';
+import { KEY_NAME } from '../../consts/keyName';
 
 const FilterModalBtn = (props) => {
   const {model, filterStatus, setFilterStatus} = props;
   const [mdlFilterStatus, setMdlFilterStatus] = useState(null);
   const [modalState, setModalState] = useState(false);
+  const {yearRawData, quarterRawData} = useContext(ShareDataContext);
+
+  useEffect(() => {
+    setMdlFilterStatus(filterStatus?.[model])
+  },[model])
 
   const modalHandler = () => {
     setModalState(!modalState);
@@ -22,19 +33,26 @@ const FilterModalBtn = (props) => {
   }
 
   const getInputsByModel = () => {
-    const inputs = [];
+    const uniqYearPeriods = _.uniq(yearRawData.map((v,i)=> v[KEY_NAME.PERIOD])).sort().reverse();
+    const uniqQuarterPeriods = _.uniq(quarterRawData.map((v,i)=> v[KEY_NAME.PERIOD])).sort().reverse();
 
+    const inputs = [];
     if (model === MODELS.VALUE) {
       // TODO : add periodFilter
+      inputs.push(<PeriodFilter options={uniqQuarterPeriods} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
       inputs.push(<PerFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
       inputs.push(<RoeFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     } else if (model == MODELS.TURNAROUND) {
-      inputs.push(<PeriodFilter options={['2020/03', '2020/06', '2020/09', '2020/12']} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+      inputs.push(<PeriodFilter options={uniqQuarterPeriods} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
       inputs.push(<TermFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     } else if (model === MODELS.CPGROWTH) {
     } else if (model === MODELS.MRKGROWTH) {
     } else if (model === MODELS.COLLAPSE) {
     } else if (model === MODELS.BLUECHIP) {
+      inputs.push(<PeriodFilter options={uniqQuarterPeriods} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+      inputs.push(<SalesFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+      inputs.push(<PerFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+      inputs.push(<RoeFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     } else if (model === MODELS.INVGROWTH) {
     }
 
@@ -47,7 +65,7 @@ const FilterModalBtn = (props) => {
     <MDBModal isOpen={modalState} toggle={modalHandler}>
       <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
       <MDBModalBody>
-        {getInputsByModel()}
+        {model !== "default"?getInputsByModel():null}
       </MDBModalBody>
       <MDBModalFooter>
         <MDBBtn color="secondary" onClick={modalHandler}>Close</MDBBtn>

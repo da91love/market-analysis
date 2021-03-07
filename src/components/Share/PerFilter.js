@@ -48,8 +48,8 @@ const PerFilter = (props) => {
                 containerClassName="m-2"
                 inputs={
                 <>
-                    <MDBInput noTag className="pr-2" type="text" hint="Min" onChange={e => minFilterHandler(e.target.value)}/>
-                    <MDBInput noTag className="pl-2" type="text" hint="Max" onChange={e => maxFilterHandler(e.target.value)}/>
+                    <MDBInput noTag className="pr-2" type="text" hint={mdlFilterStatus[FILTER_TYPE.PER_MIN]} onChange={e => minFilterHandler(e.target.value)}/>
+                    <MDBInput noTag className="pl-2" type="text" hint={mdlFilterStatus[FILTER_TYPE.PER_MAX]} onChange={e => maxFilterHandler(e.target.value)}/>
                 </>
                 }
             />

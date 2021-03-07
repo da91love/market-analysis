@@ -48,8 +48,8 @@ export const GRAPH_ANALYSIS_COL = [
 export const FILTER_TYPE = {
     PERIOD: "periodFilter",
     TERM: "termFilter",
-    PER_MIN: "perFilterMin",
-    PER_MAX: "perFilterMax",
-    SALES: "salesFilter",
-    ROE_MIN: "roeFilterMin",
+    PER_MIN: "perMinFilter",
+    PER_MAX: "perMaxFilter",
+    SALES_MIN: "salesMinFilter",
+    ROE_MIN: "roeMinFilter",
 }

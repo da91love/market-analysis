@@ -32,9 +32,9 @@ const RoeFilter = (props) => {
             <MDBInputGroup
                 onChange={e => filterHandler(e.target.value)}
                 material
+                hint={mdlFilterStatus[FILTER_TYPE.ROE_MIN]}
                 containerClassName="mt-0"
             />
-            <br />
         </div>
     );
 };
