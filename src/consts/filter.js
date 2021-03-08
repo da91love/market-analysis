@@ -17,10 +17,12 @@ export const FILTER = {
         [FILTER_TYPE.OP_TIMES]: 300,
     },
     [MODELS.MRKGROWTH]: {
+        [FILTER_TYPE.PERIOD]:null,
+        [FILTER_TYPE.MV_TIMES]: 50,
     },
     [MODELS.COLLAPSE]: {
         [FILTER_TYPE.PERIOD]:null,
-        [FILTER_TYPE.TERM]: 5,
+        [FILTER_TYPE.TERM]: 3,
         [FILTER_TYPE.MV_TIMES]: -50,
     },
     [MODELS.BLUECHIP]: {

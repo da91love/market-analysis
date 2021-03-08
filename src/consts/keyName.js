@@ -48,5 +48,6 @@ export const KEY_NAME = {
 
  export const OTHER_KEY_NAME = {
     GRAPH:"graph",
-    SCORE:"score"
+    SCORE:"score",
+    NUM_OF_CP: "numOfCp"
  }

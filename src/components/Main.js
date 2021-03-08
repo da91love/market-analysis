@@ -10,6 +10,7 @@ import ShareDataContext from '../contexts/ShareDataContext';
 import Search from './Search/Search';
 import Targeting from './Targeting/Targeting';
 import ModelHit from './ModelHit/ModelHit';
+import rawDataByMarket from '../utils/rawDataByMarket';
 import {KEY_NAME} from '../consts/keyName';
 
 import yData from "../statics/year_result.json";
@@ -23,8 +24,10 @@ const Main = (props) => {
   });
   const [yearRawData,setYearRawData] = useState(null);
   const [quarterRawData,setQuarterRawData] = useState(null);
-  const [yearRawDataByShare,setyearRawDataByShare] = useState(null);
-  const [quarterRawDataByShare,setquarterRawDataByShare] = useState(null);
+  const [yearRawDataByShare,setYearRawDataByShare] = useState(null);
+  const [quarterRawDataByShare,setQuarterRawDataByShare] = useState(null);
+  const [yearRawDataByMrk,setYearRawDataByMrk] = useState(null);
+  const [quarterRawDataByMrk,setQuarterRawDataByMrk] = useState(null);
 
   useEffect(() => {
     // Get share data from DB(temporary from json)
@@ -42,8 +45,10 @@ const Main = (props) => {
 
     setYearRawData(yData);
     setQuarterRawData(qData);
-    setyearRawDataByShare(yearDataByGroup);
-    setquarterRawDataByShare(quarterDataByGroup);
+    setYearRawDataByShare(yearDataByGroup);
+    setQuarterRawDataByShare(quarterDataByGroup);
+    setYearRawDataByMrk(rawDataByMarket(yData));
+    setQuarterRawDataByMrk(rawDataByMarket(qData));
   }, [])
 
   return (
@@ -51,8 +56,10 @@ const Main = (props) => {
       <ShareDataContext.Provider value={{
       yearRawData, setYearRawData, 
       quarterRawData, setQuarterRawData,
-      yearRawDataByShare, setyearRawDataByShare,
-      quarterRawDataByShare, setquarterRawDataByShare
+      yearRawDataByShare, setYearRawDataByShare,
+      quarterRawDataByShare, setQuarterRawDataByShare,
+      yearRawDataByMrk, setYearRawDataByMrk,
+      quarterRawDataByMrk, setQuarterRawDataByMrk
       }}>
         <Header quarterRawData={quarterRawData}/>
         <Alert />

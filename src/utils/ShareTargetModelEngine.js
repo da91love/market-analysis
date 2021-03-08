@@ -1,8 +1,9 @@
 import _, { last } from "lodash";
 import cutPeriodWithCondition from "./cutPeriodWithCondition";
 import EconoIndicator from "../utils/EconoIndicator";
+import rawDataByMarket from "../utils/rawDataByMarket";
 import { KEY_NAME } from '../consts/keyName';
-import { MODELS, FILTER_TYPE } from '../consts/model';
+import { MODELS, FILTER_TYPE,MKRGROWTH_MODEL_RAWDATA_KEYNAME } from '../consts/model';
 
 class ShareTargetModelEngine {
 
@@ -121,32 +122,32 @@ class ShareTargetModelEngine {
     return tgShares;
   }
 
-  static getMrkGrowthModel(yearRawData, quarterRawData, filterStatus) {
+  static getMrkGrowthModel(quarterRawDataByMrk, filterStatus) {
     const tgShares = [];
 
-    // Get share data from DB(temporary from json)
-    let yearDataByMrk = _.groupBy(yearRawData, v => v[KEY_NAME.MARKET_CODE]);
-    let quarterDataByMrk = _.groupBy(quarterRawData, v => v[KEY_NAME.MARKET_CODE]);
+    // Assign default filter value
+    const termFilter = filterStatus[MODELS.MRKGROWTH][FILTER_TYPE.TERM];
+    const mvTimesFilter = filterStatus[MODELS.MRKGROWTH][FILTER_TYPE.MV_TIMES];
 
-    for (const mrk in yearDataByMrk) {
-      const yearDataByMrkNPrd = _.groupBy(yearDataByMrk[mrk], v => v[KEY_NAME.PERIOD]);
-      yearDataByMrk[mrk] = yearDataByMrkNPrd;
-    }
+    _.forEach(quarterRawDataByMrk, (v, k) => {
+      const periodFilter = filterStatus[MODELS.MRKGROWTH][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const tgPeriodData = cutPeriodWithCondition(v, periodFilter);
+      const tgPeriodDataLen = tgPeriodData.length;
 
-    for (const mrk in quarterDataByMrk) {
-      const yearDataByMrkNPrd = _.groupBy(quarterDataByMrk[mrk], v => v[KEY_NAME.PERIOD]);
-      quarterDataByMrk[mrk] = yearDataByMrkNPrd;
-    }
+      if (tgPeriodDataLen > 0) {
+        tgShares.push(tgPeriodData[tgPeriodDataLen-1]);
 
-    for (const mrk in yearDataByMrk) {
-      const sumByMrkNPrd = {};
-      for (const period in yearDataByMrk[mrk]) {
-        for (const key in KEY_NAME) {
-          sumByMrkNPrd[KEY_NAME[key]] = _.sumBy(yearDataByMrk[mrk][period], v => v[KEY_NAME[key]]);
-        }
-        mrk[period] = sumByMrkNPrd;
+        // const lastMv = tgPeriodData[0][KEY_NAME.MV];
+        // const thisMv = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.MV];
+  
+        // // if latest op is bigger than past op more than twice
+        // if (_.isNumber(lastMv) && _.isNumber(thisMv)) {
+        //   if (EconoIndicator.getGrowthRate(lastMv, thisMv) > mvTimesFilter) {
+        //     tgShares.push(tgPeriodData[tgPeriodDataLen-1]);
+        //   }
+        // }
       }
-    }
+    });
 
     return tgShares;
   }
