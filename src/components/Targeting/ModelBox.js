@@ -11,10 +11,11 @@ import AlertContext from "../../contexts/AlertContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import { DANGER } from "../../consts/alert";
 import { MODELS, MODEL_TABLE_COL } from "../../consts/model";
-import { MODEL_NAME } from "../../consts/model";
+import { MODEL_NAME, BY_SHARE_GRAPH_TYPE, BY_MRK_GRAPH_TYPE } from "../../consts/model";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { FILTER } from "../../consts/filter";
 import { MSG } from "../../consts/message"
+import { EXTERNAL_URL } from "../../consts/common"
 
 import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
@@ -27,7 +28,7 @@ const ModelBox = (props) => {
    const [datatable, setDatatable] = useState(null);
    const [filterStatus, setFilterStatus] = useState(FILTER);
    
-   const rawData2TableData = (rawData, tgColList) => {
+   const rawData2TableData = (modelName, rawData, tgColList) => {
       // Create columns
       const columns = tgColList.map((v,i) => {
          return {
@@ -42,12 +43,26 @@ const ModelBox = (props) => {
             const row = {};
             for (const col of tgColList) {
                if (col === OTHER_KEY_NAME.GRAPH) {
-                  row[col] = <GraphModalBtn 
-                     shareName={data[KEY_NAME.SHARE_NAME]} 
-                     shareCode={data[KEY_NAME.SHARE_CODE]} 
-                     yearRawDataPerShare={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
-                     quarterRawDataPerShare={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
-                  />
+
+                  if (modelName === MODELS.MRKGROWTH) {
+                     row[col] = <GraphModalBtn 
+                        tgName={data[KEY_NAME.MARKET_NAME]} 
+                        tgCode={data[KEY_NAME.MARKET_CODE]} 
+                        yearRawDataPerUnit={yearRawDataByMrk[data[KEY_NAME.MARKET_CODE]]} 
+                        quarterRawDataPerUnit={quarterRawDataByMrk[data[KEY_NAME.MARKET_CODE]]}
+                        graphTypes={BY_MRK_GRAPH_TYPE}
+                        url={EXTERNAL_URL.NAVER_MRK_INFO}
+                     />
+                  } else {
+                     row[col] = <GraphModalBtn 
+                        tgName={data[KEY_NAME.SHARE_NAME]} 
+                        tgCode={data[KEY_NAME.SHARE_CODE]} 
+                        yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
+                        quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
+                        graphTypes={BY_SHARE_GRAPH_TYPE}
+                        url={EXTERNAL_URL.NAVER_SHARE_INFO}
+                     />
+                  }
                } else {
                   row[col] = data[col];
                }
@@ -73,7 +88,7 @@ const ModelBox = (props) => {
       } else {
          // Run model
          const tgData = getModelData(value, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
-         setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === value)]));
+         setDatatable(rawData2TableData(value, tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === value)]));
 
          // update modelBoxStatus
          const dcModelBoxStatus = [...modelBoxStatus];
@@ -100,7 +115,7 @@ const ModelBox = (props) => {
    useEffect(() => {
       if(model !== 'default'){ // Do not run on first running
          const tgData = getModelData(model, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
-         setDatatable(rawData2TableData(tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === model)]));
+         setDatatable(rawData2TableData(model, tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === model)]));
       }
    }, [filterStatus])
 

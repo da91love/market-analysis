@@ -6,11 +6,10 @@ import {
 import AnalysisGraph from './AnalysisGraph';
 import ShareDataContext from '../../contexts/ShareDataContext';
 import rawData2GraphData from '../../utils/rawData2GraphData';
-import { GRAPH_ANALYSIS_COL } from "../../consts/model";
 import { KEY_NAME } from "../../consts/keyName";
 
 const GraphModalBtn = (props) => {
-    const {shareCode, shareName, yearRawDataPerShare, quarterRawDataPerShare} = props;
+    const {tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit, graphTypes, url} = props;
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState("1");
     const [graphData, setGraphData] = useState(null);
@@ -27,9 +26,9 @@ const GraphModalBtn = (props) => {
             const idcByYear = {};
             const idcByQuarter = {};
 
-            GRAPH_ANALYSIS_COL.forEach((v, i) => {
-                idcByYear[v] = rawData2GraphData(yearRawDataPerShare, v);
-                idcByQuarter[v] = rawData2GraphData(quarterRawDataPerShare, v);
+            graphTypes.forEach((v, i) => {
+                idcByYear[v] = rawData2GraphData(yearRawDataPerUnit, v);
+                idcByQuarter[v] = rawData2GraphData(quarterRawDataPerUnit, v);
             })
             
             setGraphData({
@@ -46,8 +45,8 @@ const GraphModalBtn = (props) => {
             <MDBIcon icon="chart-bar" onClick={() => {modalHandler()}}/>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
                 <MDBModalHeader toggle={modalHandler}>
-                    {`${shareName}:${shareCode}`}
-                    <a href={`https://finance.naver.com/item/main.nhn?code=${shareCode}`} target="_blank">
+                    {`${tgName}:${tgCode}`}
+                    <a href={`${url}${tgCode}`} target="_blank">
                         <MDBIcon icon="external-link-alt" />
                     </a>
                 </MDBModalHeader>

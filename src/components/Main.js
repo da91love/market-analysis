@@ -12,6 +12,7 @@ import Targeting from './Targeting/Targeting';
 import ModelHit from './ModelHit/ModelHit';
 import rawDataByMarket from '../utils/rawDataByMarket';
 import {KEY_NAME} from '../consts/keyName';
+import {PERIOD_UNIT} from '../consts/common';
 
 import yData from "../statics/year_result.json";
 import qData from "../statics/quarter_result.json";
@@ -47,8 +48,8 @@ const Main = (props) => {
     setQuarterRawData(qData);
     setYearRawDataByShare(yearDataByGroup);
     setQuarterRawDataByShare(quarterDataByGroup);
-    setYearRawDataByMrk(rawDataByMarket(yData));
-    setQuarterRawDataByMrk(rawDataByMarket(qData));
+    setYearRawDataByMrk(rawDataByMarket(PERIOD_UNIT.YEAR, yData));
+    setQuarterRawDataByMrk(rawDataByMarket(PERIOD_UNIT.QUARTER, qData));
   }, [])
 
   return (
