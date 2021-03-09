@@ -1,7 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import {
-  MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBDataTableV5 
-} from 'mdbreact';
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBDataTableV5 } from 'mdbreact';
 import _ from "lodash";
 
 import ShareDataContext from "../../contexts/ShareDataContext";
@@ -14,8 +12,8 @@ import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { EXTERNAL_URL } from "../../consts/common"
 
 const ModelBox = (props) => {
-   const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
-   const [datatable, setDatatable] = useState(null);   
+   const {isInitDataLoaded, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+   const [datatable, setDatatable] = useState(null);
   
    const rawData2TableData = (rawData, tgColList) => {
       // Create columns
@@ -54,7 +52,7 @@ const ModelBox = (props) => {
    }
 
    useEffect(() => {
-      if (yearRawDataByShare && quarterRawDataByShare) {
+      if (isInitDataLoaded) {
          // Run model
          const valueModelData = ShareTargetModelEngine.getValueModel(quarterRawDataByShare, FILTER);
          const turnAroundModelData = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare, FILTER);
@@ -89,7 +87,7 @@ const ModelBox = (props) => {
          
          setDatatable(rawData2TableData(dataTableInput, MODEL_HIT_TABLE_COL));
       }
-   }, [yearRawDataByShare, quarterRawDataByShare])
+   }, [isInitDataLoaded])
 
    return (
       <MDBCard className="mt-3 mb-3">

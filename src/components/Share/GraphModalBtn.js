@@ -6,12 +6,12 @@ import {
 import AnalysisGraph from './AnalysisGraph';
 import ShareDataContext from '../../contexts/ShareDataContext';
 import rawData2GraphData from '../../utils/rawData2GraphData';
-import { KEY_NAME } from "../../consts/keyName";
+import { PERIOD_UNIT } from "../../consts/common";
 
 const GraphModalBtn = (props) => {
     const {tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit, graphTypes, url} = props;
     const [modalState, setModalState] = useState(false);
-    const [activeTab, setActiveTab] = useState("1");
+    const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
     const [graphData, setGraphData] = useState(null);
     
     const tabHandler = (tab) => {
@@ -53,25 +53,25 @@ const GraphModalBtn = (props) => {
                 <MDBModalBody>
                     <MDBNav className="nav-tabs">
                         <MDBNavItem>
-                            <MDBNavLink link to="#" active={activeTab === "1"} onClick={() => tabHandler("1")} role="tab" >
+                            <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.YEAR} onClick={() => tabHandler(PERIOD_UNIT.YEAR)} role="tab" >
                                 Yearly
                             </MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <MDBNavLink link to="#" active={activeTab === "2"} onClick={() => tabHandler("2")} role="tab" >
+                            <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.QUARTER} onClick={() => tabHandler(PERIOD_UNIT.QUARTER)} role="tab" >
                                 Quarterly
                             </MDBNavLink>
                         </MDBNavItem>
                     </MDBNav>
                     <MDBTabContent activeItem={activeTab} >
-                        <MDBTabPane tabId="1" role="tabpanel">
-                            {graphData? Object.keys(graphData['year']).map((v, i) => {
-                                return <AnalysisGraph graphData={graphData['year'][v]} id={i}/>})
+                        <MDBTabPane tabId={PERIOD_UNIT.YEAR} role="tabpanel">
+                            {graphData? Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
+                                return <AnalysisGraph graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>})
                                 : null}                        
                         </MDBTabPane>
-                        <MDBTabPane tabId="2" role="tabpanel">
-                            {graphData? Object.keys(graphData['quarter']).map((v, i) => {
-                                return <AnalysisGraph graphData={graphData['quarter'][v]} id={i}/>})
+                        <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
+                            {graphData? Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
+                                return <AnalysisGraph graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>})
                                 : null}         
                         </MDBTabPane>
                     </MDBTabContent>

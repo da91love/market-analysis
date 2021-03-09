@@ -29,7 +29,13 @@ const Main = (props) => {
   const [quarterRawDataByShare,setQuarterRawDataByShare] = useState(null);
   const [yearRawDataByMrk,setYearRawDataByMrk] = useState(null);
   const [quarterRawDataByMrk,setQuarterRawDataByMrk] = useState(null);
+  const [isInitDataLoaded,setIsInitDataLoaded] = useState(false);
 
+  /**
+   * isInitDataLoaded의 장점: 데이터가 로드되기 전에 컴포넌트를 표시하지 않을거면
+   * useEffect에서 로드할 필요없이, 외부에서 로드한 후 실행시켜도 된다.
+   * 하지만, isInitDataLoaded가 있으면, 로드할 동안 특정 컴포넌트만 표시할 수 있게 되어, 유저빌리티가 높아진다.
+   */
   useEffect(() => {
     // Get share data from DB(temporary from json)
     let yearDataByGroup = _.groupBy(yData, v => v[KEY_NAME.SHARE_CODE]);
@@ -50,17 +56,19 @@ const Main = (props) => {
     setQuarterRawDataByShare(quarterDataByGroup);
     setYearRawDataByMrk(rawDataByMarket(PERIOD_UNIT.YEAR, yData));
     setQuarterRawDataByMrk(rawDataByMarket(PERIOD_UNIT.QUARTER, qData));
+    setIsInitDataLoaded(true);
   }, [])
 
   return (
     <AlertContext.Provider value={{ alertState, setAlertState }}>
       <ShareDataContext.Provider value={{
-      yearRawData, setYearRawData, 
-      quarterRawData, setQuarterRawData,
-      yearRawDataByShare, setYearRawDataByShare,
-      quarterRawDataByShare, setQuarterRawDataByShare,
-      yearRawDataByMrk, setYearRawDataByMrk,
-      quarterRawDataByMrk, setQuarterRawDataByMrk
+        isInitDataLoaded,
+        yearRawData, setYearRawData, 
+        quarterRawData, setQuarterRawData,
+        yearRawDataByShare, setYearRawDataByShare,
+        quarterRawDataByShare, setQuarterRawDataByShare,
+        yearRawDataByMrk, setYearRawDataByMrk,
+        quarterRawDataByMrk, setQuarterRawDataByMrk
       }}>
         <Header quarterRawData={quarterRawData}/>
         <Alert />

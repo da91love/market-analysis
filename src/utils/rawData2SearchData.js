@@ -8,7 +8,8 @@ const rawData2SearchData = (rawData) => {
         if (!(_.find(result, [KEY_NAME.SHARE_CODE, d[KEY_NAME.SHARE_CODE]]))) {
             result.push({
                 target: `${d[KEY_NAME.SHARE_CODE]}:${d[KEY_NAME.SHARE_NAME]}`,
-                shareCode: d[KEY_NAME.SHARE_CODE]
+                shareCode: d[KEY_NAME.SHARE_CODE],
+                shareName: d[KEY_NAME.SHARE_NAME]
             });
         }
     }

@@ -16,6 +16,7 @@ const SearchInput = (props) => {
                 pathname: '/contents/search',
                 state: {
                     [KEY_NAME.SHARE_CODE]: value[KEY_NAME.SHARE_CODE],
+                    [KEY_NAME.SHARE_NAME]: value[KEY_NAME.SHARE_NAME],
                 },
             })
         }
