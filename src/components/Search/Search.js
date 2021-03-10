@@ -2,23 +2,25 @@ import React, { useState, useContext, useEffect } from 'react';
 import {
   MDBRow, MDBContainer, MDBCol, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
 } from 'mdbreact';
+import _ from "lodash";
 import { useLocation } from 'react-router-dom';
 import ShareDataContext from "../../contexts/ShareDataContext";
 import FixedSideTable from '../Share/FixedSideTable';
 import AnalysisGraph from '../Share/AnalysisGraph';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
-import { KEY_NAME } from '../../consts/keyName';
+import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { BY_SHARE_GRAPH_TYPE } from '../../consts/model';
 
 // Temp: import json
 const Search = () => {
   const location = useLocation();
   const shareInfoFromLoc = location.state;
-  const {isInitDataLoaded, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+  const {isInitDataLoaded, shareInfos, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
   const {shareCode, shareName} = shareInfo;
+  const marketType = _.find(shareInfos, [KEY_NAME.SHARE_CODE, shareCode])?.[OTHER_KEY_NAME.MARKET_TYPE];
 
   // Ruturn nothing if init data is loaded
   if (!isInitDataLoaded) {
@@ -55,7 +57,8 @@ const Search = () => {
   return (
       <MDBContainer>
         <div className="mt-3">
-          <span className="h1">{`${shareName}(${shareCode})`}</span>
+          <p className="h4">{marketType}</p>
+          <p className="h1">{`${shareName}(${shareCode})`}</p>
         </div>
         <div>
 

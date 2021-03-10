@@ -16,6 +16,7 @@ import {PERIOD_UNIT} from '../consts/common';
 
 import yData from "../statics/year_result.json";
 import qData from "../statics/quarter_result.json";
+import siData from "../statics/share_infos.json";
 
 const Main = (props) => {
   const [alertState, setAlertState] = useState({
@@ -30,6 +31,7 @@ const Main = (props) => {
   const [yearRawDataByMrk,setYearRawDataByMrk] = useState(null);
   const [quarterRawDataByMrk,setQuarterRawDataByMrk] = useState(null);
   const [isInitDataLoaded,setIsInitDataLoaded] = useState(false);
+  const [shareInfos, setShareInfos] = useState(null);
 
   /**
    * isInitDataLoaded의 장점: 데이터가 로드되기 전에 컴포넌트를 표시하지 않을거면
@@ -56,13 +58,14 @@ const Main = (props) => {
     setQuarterRawDataByShare(quarterDataByGroup);
     setYearRawDataByMrk(rawDataByMarket(PERIOD_UNIT.YEAR, yData));
     setQuarterRawDataByMrk(rawDataByMarket(PERIOD_UNIT.QUARTER, qData));
+    setShareInfos(siData);
     setIsInitDataLoaded(true);
   }, [])
 
   return (
     <AlertContext.Provider value={{ alertState, setAlertState }}>
       <ShareDataContext.Provider value={{
-        isInitDataLoaded,
+        isInitDataLoaded, shareInfos,
         yearRawData, setYearRawData, 
         quarterRawData, setQuarterRawData,
         yearRawDataByShare, setYearRawDataByShare,
