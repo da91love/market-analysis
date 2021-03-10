@@ -8,19 +8,22 @@ import ShareDataContext from "../../contexts/ShareDataContext";
 import FixedSideTable from '../Share/FixedSideTable';
 import AnalysisGraph from '../Share/AnalysisGraph';
 import rawData2GraphData from '../../utils/rawData2GraphData';
+import rawData2FixedTableData from '../../utils/rawData2FixedTableData';
+import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
-import { BY_SHARE_GRAPH_TYPE } from '../../consts/model';
+import { BY_SHARE_GRAPH_TYPE, MODELS } from '../../consts/model';
+import { SEARCH_TABLE_COL } from '../../consts/search';
+import { FILTER } from '../../consts/filter';
 
 // Temp: import json
 const Search = () => {
   const location = useLocation();
   const shareInfoFromLoc = location.state;
-  const {isInitDataLoaded, shareInfos, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+  const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
   const {shareCode, shareName} = shareInfo;
-  const marketType = _.find(shareInfos, [KEY_NAME.SHARE_CODE, shareCode])?.[OTHER_KEY_NAME.MARKET_TYPE];
 
   // Ruturn nothing if init data is loaded
   if (!isInitDataLoaded) {
@@ -31,19 +34,57 @@ const Search = () => {
     setShareInfo(shareInfoFromLoc);
   };
 
-  const graphData = function(){
-      const idcByYear = {};
-      const idcByQuarter = {};
+  // Get nessasary data from rawdata
+  const marketType = _.find(shareInfos, [KEY_NAME.SHARE_CODE, shareCode])[OTHER_KEY_NAME.MARKET_TYPE];
+  const marketCode = quarterRawDataByShare[shareCode][0][KEY_NAME.MARKET_CODE];
 
-      BY_SHARE_GRAPH_TYPE.forEach((v, i) => {
-          idcByYear[v] = rawData2GraphData(yearRawDataByShare[shareCode], v);
-          idcByQuarter[v] = rawData2GraphData(quarterRawDataByShare[shareCode], v);
-      })
-      
+  // Get data for model compare table
+  const allMatchedTgByModel = getAllMatchedTgByModel(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER);
+  const modelCompareTableData = function() {
+    const header = Object.values(MODELS);
+
+    const allMatchedResultByModel = {};
+    for (const model in allMatchedTgByModel) {
+      if (model === MODELS.MRKGROWTH) {
+        allMatchedResultByModel[model] = allMatchedTgByModel[model].includes(marketCode);
+      } else {
+        allMatchedResultByModel[model] = allMatchedTgByModel[model].includes(shareCode);
+      }
+    }
+
+    const records = Object.keys(allMatchedResultByModel).map((v, i) => {
       return ({
-          [PERIOD_UNIT.YEAR]: idcByYear,
-          [PERIOD_UNIT.QUARTER]: idcByQuarter
+        cells: {
+          value: allMatchedResultByModel[v],
+          key: v
+        }
       })
+    })
+
+    return ({
+      header: header,
+      records: records
+    })
+  }();
+
+  // Get data for fixed table
+  const yearFixedTableData = rawData2FixedTableData(SEARCH_TABLE_COL, yearRawDataByShare[shareCode]);
+  const quarterFixedTableData = rawData2FixedTableData(SEARCH_TABLE_COL, quarterRawDataByShare[shareCode]);
+
+  // Get data for graphData
+  const graphData = function(){
+    const idcByYear = {};
+    const idcByQuarter = {};
+
+    BY_SHARE_GRAPH_TYPE.forEach((v, i) => {
+        idcByYear[v] = rawData2GraphData(yearRawDataByShare[shareCode], v);
+        idcByQuarter[v] = rawData2GraphData(quarterRawDataByShare[shareCode], v);
+    })
+    
+    return ({
+        [PERIOD_UNIT.YEAR]: idcByYear,
+        [PERIOD_UNIT.QUARTER]: idcByQuarter
+    })
   }();
 
   const tabHandler = (tab) => {
@@ -52,8 +93,6 @@ const Search = () => {
     }
   }
 
-  
-
   return (
       <MDBContainer>
         <div className="mt-3">
@@ -61,7 +100,10 @@ const Search = () => {
           <p className="h1">{`${shareName}(${shareCode})`}</p>
         </div>
         <div>
-
+          <FixedSideTable
+            header={modelCompareTableData.header}
+            records={modelCompareTableData.records}
+          />
         </div>
         <div>
         <MDBNav className="nav-tabs mt-3">
@@ -83,26 +125,8 @@ const Search = () => {
                   <MDBCardTitle className="h3">Financial Summary</MDBCardTitle>
                   <MDBCardText>
                     <FixedSideTable
-                      header={['a', 'b', 'c', 'd', 'e']}
-                      records={[{cells:[
-                        {value:1, key: 1},
-                        {value:2, key: 2},
-                        {value:3, key: 3},
-                        {value:4, key: 4},
-                        {value:5, key: 5},
-                      ]}, {cells:[
-                        {value:1, key: 1},
-                        {value:2, key: 2},
-                        {value:3, key: 3},
-                        {value:4, key: 4},
-                        {value:5, key: 5},
-                      ]} ,{cells:[
-                        {value:1, key: 1},
-                        {value:2, key: 2},
-                        {value:3, key: 3},
-                        {value:4, key: 4},
-                        {value:5, key: 5},
-                      ]}]}
+                      header={yearFixedTableData.header}
+                      records={yearFixedTableData.records}
                       fixedNum={1}
                     />
                   </MDBCardText>
@@ -114,7 +138,7 @@ const Search = () => {
                     <MDBCardText>
                       {Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
                         return <AnalysisGraph graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>})
-                      }   
+                      }
                     </MDBCardText>
                 </MDBCard>
               </div>                     
@@ -122,29 +146,11 @@ const Search = () => {
           <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
             <div className="mt-3">
               <MDBCard className="card-body">
-                <MDBCardTitle>Financial Summary</MDBCardTitle>
+                <MDBCardTitle className="h3">Financial Summary</MDBCardTitle>
                 <MDBCardText>
                   <FixedSideTable
-                    header={['a', 'b', 'c', 'd', 'e']}
-                    records={[{cells:[
-                      {value:1, key: 1},
-                      {value:2, key: 2},
-                      {value:3, key: 3},
-                      {value:4, key: 4},
-                      {value:5, key: 5},
-                    ]}, {cells:[
-                      {value:1, key: 1},
-                      {value:2, key: 2},
-                      {value:3, key: 3},
-                      {value:4, key: 4},
-                      {value:5, key: 5},
-                    ]} ,{cells:[
-                      {value:1, key: 1},
-                      {value:2, key: 2},
-                      {value:3, key: 3},
-                      {value:4, key: 4},
-                      {value:5, key: 5},
-                    ]}]}
+                      header={quarterFixedTableData.header}
+                      records={quarterFixedTableData.records}
                     fixedNum={1}
                   />
                 </MDBCardText>
@@ -152,7 +158,7 @@ const Search = () => {
             </div>
             <div className="mt-3">
               <MDBCard className="card-body">
-                <MDBCardTitle>주요지표 추세</MDBCardTitle>
+                <MDBCardTitle className="h3">주요지표 추세</MDBCardTitle>
                 <MDBCardText>
                   {Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
                       return <AnalysisGraph graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>})
