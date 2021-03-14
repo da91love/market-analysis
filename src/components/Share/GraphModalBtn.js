@@ -27,22 +27,6 @@ const GraphModalBtn = (props) => {
     }
 
     const modalHandler = () => {
-        if (!graphData && !modalState) {
-
-            const idcByYear = {};
-            const idcByQuarter = {};
-
-            selectedGraphType.forEach((v, i) => {
-                idcByYear[v] = rawData2GraphData(yearRawDataPerUnit, v);
-                idcByQuarter[v] = rawData2GraphData(quarterRawDataPerUnit, v);
-            })
-            
-            setGraphData({
-                year: idcByYear,
-                quarter: idcByQuarter
-            })
-        }
-
         setModalState(!modalState);
     }
 
@@ -55,6 +39,21 @@ const GraphModalBtn = (props) => {
             },
         })
     }
+
+    useEffect(() => {
+            const idcByYear = {};
+            const idcByQuarter = {};
+
+            selectedGraphType.forEach((v, i) => {
+                idcByYear[v] = rawData2GraphData(yearRawDataPerUnit, v);
+                idcByQuarter[v] = rawData2GraphData(quarterRawDataPerUnit, v);
+            })
+            
+            setGraphData({
+                year: idcByYear,
+                quarter: idcByQuarter
+            })
+    }, [selectedGraphType])
 
     return (
         <IconButton className="p-0" color="default" aria-label="upload picture" component="span">

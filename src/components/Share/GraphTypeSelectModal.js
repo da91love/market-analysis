@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBTable, MDBTableBody } from 'mdbreact';
 
 const GraphTypeSelectModal = (props) => {
     const {selectedGraphType, setSelectedGraphType, allGraphType} = props;
@@ -18,7 +18,7 @@ const GraphTypeSelectModal = (props) => {
     }
 
     const radioHandler = (tgIdc) => {
-        setSelectedRadioStatus({...selectedRadioStatus, [tgIdc]:true});
+        setSelectedRadioStatus({...selectedRadioStatus, [tgIdc]:!selectedRadioStatus[tgIdc]});
     }
 
     const radioSaveHandler = () => {
@@ -30,6 +30,27 @@ const GraphTypeSelectModal = (props) => {
         })
 
         setSelectedGraphType(temp);
+        setModalState(!modalState);
+    }
+
+    const getRadioTable = (radioStatus) => {
+        let trs = [];
+        let tds = [];
+        Object.keys(radioStatus).forEach((v, i) => {
+            tds.push(
+                <td>
+                    <input onClick={e=>{radioHandler(e.target.value)}} checked={radioStatus[v]} type="radio" value={v} name={v} id={i}/>
+                    <label>{v}</label>
+                </td>
+            );
+
+            if ((i+1)%4 === 0 || i === Object.keys(radioStatus).length-1) {
+                trs.push(<tr>{tds}</tr>);
+                tds = [];
+            }
+        });
+
+        return <MDBTable><MDBTableBody>{trs}</MDBTableBody></MDBTable>
     }
 
     return (
@@ -38,9 +59,7 @@ const GraphTypeSelectModal = (props) => {
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
             <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
             <MDBModalBody>
-                {Object.keys(selectedRadioStatus).map((v, i) => {
-                    return <MDBInput onChange={radioHandler(v)} checked={selectedRadioStatus[v]} label={v} type="radio" id={i} />
-                })}
+                {getRadioTable(selectedRadioStatus)}
             </MDBModalBody>
             <MDBModalFooter>
                 <MDBBtn color="secondary" onClick={modalHandler}>Close</MDBBtn>
