@@ -4,7 +4,7 @@ import {
     MDBIcon, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
   } from 'mdbreact';
 import AnalysisGraph from './AnalysisGraph';
-import ShareDataContext from '../../contexts/ShareDataContext';
+import GraphTypeSelectModal from './GraphTypeSelectModal';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import { PERIOD_UNIT, EXTERNAL_URL } from "../../consts/common";
 import { KEY_NAME } from "../../consts/keyName";
@@ -16,7 +16,7 @@ const GraphModalBtn = (props) => {
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
     const [graphData, setGraphData] = useState(null);
-    const [selectedGraphTypes, setSelectedGraphType] = useState(isMarket?BY_MRK_DEFAULT_GRAPH_TYPE:BY_SHARE_DEFAULT_GRAPH_TYPE)
+    const [selectedGraphType, setSelectedGraphType] = useState(isMarket?BY_MRK_DEFAULT_GRAPH_TYPE:BY_SHARE_DEFAULT_GRAPH_TYPE)
     const url = isMarket?EXTERNAL_URL.NAVER_MRK_INFO:EXTERNAL_URL.NAVER_SHARE_INFO;
     const history = useHistory();
     
@@ -32,7 +32,7 @@ const GraphModalBtn = (props) => {
             const idcByYear = {};
             const idcByQuarter = {};
 
-            selectedGraphTypes.forEach((v, i) => {
+            selectedGraphType.forEach((v, i) => {
                 idcByYear[v] = rawData2GraphData(yearRawDataPerUnit, v);
                 idcByQuarter[v] = rawData2GraphData(quarterRawDataPerUnit, v);
             })
@@ -58,7 +58,7 @@ const GraphModalBtn = (props) => {
 
     return (
         <IconButton className="p-0" color="default" aria-label="upload picture" component="span">
-            <MDBIcon icon="chart-bar" onClick={() => {modalHandler()}}/>
+            <MDBIcon icon="chart-bar" onClick={modalHandler}/>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
                 <MDBModalHeader toggle={modalHandler}>
                     {`${tgName}:${tgCode}`}
@@ -78,6 +78,9 @@ const GraphModalBtn = (props) => {
                             <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.QUARTER} onClick={() => tabHandler(PERIOD_UNIT.QUARTER)} role="tab" >
                                 Quarterly
                             </MDBNavLink>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={isMarket?BY_MRK_ALL_GRAPH_TYPE:BY_SHARE_ALL_GRAPH_TYPE}/>
                         </MDBNavItem>
                     </MDBNav>
                     <MDBTabContent activeItem={activeTab} >
