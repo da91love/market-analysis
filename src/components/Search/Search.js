@@ -9,12 +9,13 @@ import Icon from '@material-ui/core/Icon';
 import ShareDataContext from "../../contexts/ShareDataContext";
 import FixedSideTable from '../Share/FixedSideTable';
 import AnalysisGraph from '../Share/AnalysisGraph';
+import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import rawData2FixedTableData from '../../utils/rawData2FixedTableData';
 import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
-import { BY_SHARE_DEFAULT_GRAPH_TYPE, MODELS } from '../../consts/model';
+import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, MODELS } from '../../consts/model';
 import { SEARCH_TABLE_COL } from '../../consts/search';
 import { FILTER } from '../../consts/filter';
 
@@ -25,6 +26,7 @@ const Search = () => {
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
+  const [selectedGraphType, setSelectedGraphType] = useState(BY_SHARE_DEFAULT_GRAPH_TYPE);
   const {shareCode, shareName} = shareInfo;
 
   // Ruturn nothing if init data is loaded
@@ -80,7 +82,7 @@ const Search = () => {
     const idcByYear = {};
     const idcByQuarter = {};
 
-    BY_SHARE_DEFAULT_GRAPH_TYPE.forEach((v, i) => {
+    selectedGraphType.forEach((v, i) => {
         idcByYear[v] = rawData2GraphData(yearRawDataByShare[shareCode], v);
         idcByQuarter[v] = rawData2GraphData(quarterRawDataByShare[shareCode], v);
     })
@@ -138,12 +140,15 @@ const Search = () => {
               </div>
               <div className="mt-3">
                 <MDBCard className="card-body">
-                    <MDBCardTitle className="h3">주요지표 추세</MDBCardTitle>
-                    <MDBCardText>
-                      {Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
-                        return <AnalysisGraph graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>})
-                      }
-                    </MDBCardText>
+                  <MDBCardTitle className="h3">
+                    <span>주요지표 추세</span>
+                    <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_GRAPH_TYPE}/>
+                  </MDBCardTitle>
+                  <MDBCardText>
+                    {Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
+                      return <AnalysisGraph graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>})
+                    }
+                  </MDBCardText>
                 </MDBCard>
               </div>                     
           </MDBTabPane>
@@ -162,7 +167,10 @@ const Search = () => {
             </div>
             <div className="mt-3">
               <MDBCard className="card-body">
-                <MDBCardTitle className="h3">주요지표 추세</MDBCardTitle>
+                <MDBCardTitle className="h3">
+                  <span>주요지표 추세</span>
+                  <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_GRAPH_TYPE}/>
+                </MDBCardTitle>
                 <MDBCardText>
                   {Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
                       return <AnalysisGraph graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>})

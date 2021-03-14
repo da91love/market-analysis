@@ -21,6 +21,15 @@ const GraphTypeSelectModal = (props) => {
         setSelectedRadioStatus({...selectedRadioStatus, [tgIdc]:!selectedRadioStatus[tgIdc]});
     }
 
+    const unselectAllHandler = () => {
+        const dpSelectedRadioStatus = {...selectedRadioStatus};
+        for (const key in dpSelectedRadioStatus) {
+            dpSelectedRadioStatus[key] = false;
+        }
+
+        setSelectedRadioStatus(dpSelectedRadioStatus);
+    }
+
     const radioSaveHandler = () => {
         const temp = [];
         Object.keys(selectedRadioStatus).forEach((v, i) => {
@@ -54,19 +63,20 @@ const GraphTypeSelectModal = (props) => {
     }
 
     return (
-        <MDBContainer>
+        <div>
             <MDBBtn onClick={modalHandler}>Modal</MDBBtn>
-            <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
-            <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
-            <MDBModalBody>
-                {getRadioTable(selectedRadioStatus)}
-            </MDBModalBody>
-            <MDBModalFooter>
-                <MDBBtn color="secondary" onClick={modalHandler}>Close</MDBBtn>
-                <MDBBtn color="primary" onClick={radioSaveHandler}>Save changes</MDBBtn>
-            </MDBModalFooter>
+                <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
+                <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
+                <MDBModalBody>
+                    {getRadioTable(selectedRadioStatus)}
+                </MDBModalBody>
+                <MDBModalFooter>
+                    <MDBBtn color="secondary" onClick={unselectAllHandler}>Unselect all</MDBBtn>
+                    <MDBBtn color="secondary" onClick={modalHandler}>Close</MDBBtn>
+                    <MDBBtn color="primary" onClick={radioSaveHandler}>Save changes</MDBBtn>
+                </MDBModalFooter>
             </MDBModal>
-        </MDBContainer>
+        </div>
     );
 
 }
