@@ -14,7 +14,7 @@ import rawData2FixedTableData from '../../utils/rawData2FixedTableData';
 import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
-import { BY_SHARE_GRAPH_TYPE, MODELS } from '../../consts/model';
+import { BY_SHARE_DEFAULT_GRAPH_TYPE, MODELS } from '../../consts/model';
 import { SEARCH_TABLE_COL } from '../../consts/search';
 import { FILTER } from '../../consts/filter';
 
@@ -80,7 +80,7 @@ const Search = () => {
     const idcByYear = {};
     const idcByQuarter = {};
 
-    BY_SHARE_GRAPH_TYPE.forEach((v, i) => {
+    BY_SHARE_DEFAULT_GRAPH_TYPE.forEach((v, i) => {
         idcByYear[v] = rawData2GraphData(yearRawDataByShare[shareCode], v);
         idcByQuarter[v] = rawData2GraphData(quarterRawDataByShare[shareCode], v);
     })

@@ -6,15 +6,18 @@ import {
 import AnalysisGraph from './AnalysisGraph';
 import ShareDataContext from '../../contexts/ShareDataContext';
 import rawData2GraphData from '../../utils/rawData2GraphData';
-import { PERIOD_UNIT } from "../../consts/common";
+import { PERIOD_UNIT, EXTERNAL_URL } from "../../consts/common";
 import { KEY_NAME } from "../../consts/keyName";
+import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, BY_MRK_ALL_GRAPH_TYPE } from "../../consts/model"
 import { useHistory } from 'react-router-dom';
 
 const GraphModalBtn = (props) => {
-    const {tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit, graphTypes, url} = props;
+    const {isMarket=false, tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit} = props;
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
     const [graphData, setGraphData] = useState(null);
+    const [selectedGraphTypes, setSelectedGraphType] = useState(isMarket?BY_MRK_DEFAULT_GRAPH_TYPE:BY_SHARE_DEFAULT_GRAPH_TYPE)
+    const url = isMarket?EXTERNAL_URL.NAVER_MRK_INFO:EXTERNAL_URL.NAVER_SHARE_INFO;
     const history = useHistory();
     
     const tabHandler = (tab) => {
@@ -29,7 +32,7 @@ const GraphModalBtn = (props) => {
             const idcByYear = {};
             const idcByQuarter = {};
 
-            graphTypes.forEach((v, i) => {
+            selectedGraphTypes.forEach((v, i) => {
                 idcByYear[v] = rawData2GraphData(yearRawDataPerUnit, v);
                 idcByQuarter[v] = rawData2GraphData(quarterRawDataPerUnit, v);
             })

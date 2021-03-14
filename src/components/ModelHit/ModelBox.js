@@ -6,7 +6,7 @@ import ShareDataContext from "../../contexts/ShareDataContext";
 import ShareTargetModelEngine from '../../utils/ShareTargetModelEngine';
 import GraphModalBtn from '../Share/GraphModalBtn';
 
-import { MODELS, MODEL_HIT_TABLE_COL, BY_SHARE_GRAPH_TYPE } from "../../consts/model";
+import { MODELS, MODEL_HIT_TABLE_COL } from "../../consts/model";
 import { FILTER } from "../../consts/filter";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { EXTERNAL_URL } from "../../consts/common"
@@ -30,13 +30,11 @@ const ModelBox = (props) => {
             const row = {};
             for (const col of tgColList) {
                if (col === OTHER_KEY_NAME.GRAPH) {
-                  row[col] = <GraphModalBtn 
+                  row[col] = <GraphModalBtn
                      tgName={data[KEY_NAME.SHARE_NAME]} 
                      tgCode={data[KEY_NAME.SHARE_CODE]} 
                      yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
                      quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
-                     graphTypes={BY_SHARE_GRAPH_TYPE}
-                     url={EXTERNAL_URL.NAVER_SHARE_INFO}
                   />
                } else {
                   row[col] = data[col];

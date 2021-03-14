@@ -11,11 +11,10 @@ import AlertContext from "../../contexts/AlertContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import { DANGER } from "../../consts/alert";
 import { MODELS, MODEL_TABLE_COL } from "../../consts/model";
-import { MODEL_NAME, BY_SHARE_GRAPH_TYPE, BY_MRK_GRAPH_TYPE } from "../../consts/model";
+import { MODEL_NAME } from "../../consts/model";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { FILTER } from "../../consts/filter";
 import { MSG } from "../../consts/message"
-import { EXTERNAL_URL } from "../../consts/common"
 
 import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
@@ -43,26 +42,23 @@ const ModelBox = (props) => {
             const row = {};
             for (const col of tgColList) {
                if (col === OTHER_KEY_NAME.GRAPH) {
-
                   if (modelName === MODELS.MRKGROWTH) {
-                     row[col] = <GraphModalBtn 
+                     row[col] = <GraphModalBtn
+                        isMarket={true}
                         tgName={data[KEY_NAME.MARKET_NAME]} 
                         tgCode={data[KEY_NAME.MARKET_CODE]} 
                         yearRawDataPerUnit={yearRawDataByMrk[data[KEY_NAME.MARKET_CODE]]} 
                         quarterRawDataPerUnit={quarterRawDataByMrk[data[KEY_NAME.MARKET_CODE]]}
-                        graphTypes={BY_MRK_GRAPH_TYPE}
-                        url={EXTERNAL_URL.NAVER_MRK_INFO}
                      />
                   } else {
-                     row[col] = <GraphModalBtn 
+                     row[col] = <GraphModalBtn
                         tgName={data[KEY_NAME.SHARE_NAME]} 
                         tgCode={data[KEY_NAME.SHARE_CODE]} 
                         yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
                         quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
-                        graphTypes={BY_SHARE_GRAPH_TYPE}
-                        url={EXTERNAL_URL.NAVER_SHARE_INFO}
                      />
                   }
+
                } else {
                   row[col] = data[col];
                }
