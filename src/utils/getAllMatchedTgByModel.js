@@ -1,19 +1,20 @@
 import { MODELS } from '../consts/model';
+import { KEY_NAME } from '../consts/keyName';
 import ShareTargetModelEngine from '../utils/ShareTargetModelEngine';
 
-const getAllMatchedTgByModel = (yearRawDataByShare ,quarterRawDataByShare, quarterRawDataByMrk, filter) => {
+const getAllMatchedTgByModel = (quarterRawDataByMrk, yearRawDataByShare ,quarterRawDataByShare, filter) => {
 
     const allMatchedTgByModel = {};
 
-    const valueModelMatchedTg = Object.keys(ShareTargetModelEngine.getValueModel(quarterRawDataByShare, filter));
-    const turnAroundModelMatchedTg = Object.keys(ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare, filter));
-    const cpGrowthModelMatchedTg = Object.keys(ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare, filter));
-    const mrkgrowthModelMatchedTg = Object.keys(ShareTargetModelEngine.getMrkGrowthModel(quarterRawDataByMrk, filter));
-    const collapseModelMatchedTg = Object.keys(ShareTargetModelEngine.getCollapseModel(yearRawDataByShare, filter));
-    const blueChipModelMatchedTg = Object.keys(ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare, filter));
-    const invGrowthModelMatchedTg = Object.keys(ShareTargetModelEngine.getInvstGrowthModel(quarterRawDataByShare, filter));
+    const valueModelMatchedTg = ShareTargetModelEngine.getValueModel(quarterRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
+    const turnAroundModelMatchedTg = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
+    const cpGrowthModelMatchedTg = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
+    const mrkgrowthModelMatchedTg = ShareTargetModelEngine.getMrkGrowthModel(quarterRawDataByMrk, filter).map(v => v[KEY_NAME.MARKET_CODE]);
+    const collapseModelMatchedTg = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
+    const blueChipModelMatchedTg = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
+    const invGrowthModelMatchedTg = ShareTargetModelEngine.getInvstGrowthModel(quarterRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
 
-    for (const model in MODELS) {
+    for (const model of Object.values(MODELS)) {
         if (model === MODELS.VALUE) {
             allMatchedTgByModel[model] = valueModelMatchedTg;
         } else if (model == MODELS.TURNAROUND) {

@@ -7,12 +7,15 @@ import AnalysisGraph from './AnalysisGraph';
 import ShareDataContext from '../../contexts/ShareDataContext';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import { PERIOD_UNIT } from "../../consts/common";
+import { KEY_NAME } from "../../consts/keyName";
+import { useHistory } from 'react-router-dom';
 
 const GraphModalBtn = (props) => {
     const {tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit, graphTypes, url} = props;
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
     const [graphData, setGraphData] = useState(null);
+    const history = useHistory();
     
     const tabHandler = (tab) => {
         if (activeTab !== tab) {
@@ -40,7 +43,17 @@ const GraphModalBtn = (props) => {
         setModalState(!modalState);
     }
 
-   return (
+    const searchPageMoveHandler = (shareCode, shareName) => {
+        history.push({
+            pathname: '/contents/search',
+            state: {
+                [KEY_NAME.SHARE_CODE]: shareCode,
+                [KEY_NAME.SHARE_NAME]: shareName,
+            },
+        })
+    }
+
+    return (
         <IconButton className="p-0" color="default" aria-label="upload picture" component="span">
             <MDBIcon icon="chart-bar" onClick={() => {modalHandler()}}/>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
@@ -49,6 +62,7 @@ const GraphModalBtn = (props) => {
                     <a href={`${url}${tgCode}`} target="_blank">
                         <MDBIcon icon="external-link-alt" />
                     </a>
+                    <MDBIcon onClick={() => {searchPageMoveHandler(tgCode, tgName)}} icon="external-link-alt" />
                 </MDBModalHeader>
                 <MDBModalBody>
                     <MDBNav className="nav-tabs">

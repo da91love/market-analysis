@@ -8,7 +8,11 @@ import {
 const FixedSideTable = props => {
   const { header, records, fixedNum, onChange } = props;
 
-  if (records.length === 0) return <></>;
+  console.log(records);
+
+  if (records.length === 0) {
+    return <></>;
+  }
 
   return (
     <MDBTable bordered small responsive scrollx="true">
@@ -41,7 +45,7 @@ const FixedSideTable = props => {
                     }
                     onBlur={onChange}
                     style={{
-                      backgroundColor: c.isEditable ? "" : "rgba(0,0,0,.03)"
+                      backgroundColor: !c.isEditable && c.backgroundColor? c.backgroundColor : (c.isEditable? "rgba(0,0,0,.03)": "")
                     }}
                     name={c.key}
                   > 

@@ -4,6 +4,8 @@ import {
 } from 'mdbreact';
 import _ from "lodash";
 import { useLocation } from 'react-router-dom';
+import Icon from '@material-ui/core/Icon';
+
 import ShareDataContext from "../../contexts/ShareDataContext";
 import FixedSideTable from '../Share/FixedSideTable';
 import AnalysisGraph from '../Share/AnalysisGraph';
@@ -52,14 +54,16 @@ const Search = () => {
       }
     }
 
-    const records = Object.keys(allMatchedResultByModel).map((v, i) => {
+    const records = [];
+    const cells = Object.keys(allMatchedResultByModel).map((v, i) => {
+      // TODO
       return ({
-        cells: {
-          value: allMatchedResultByModel[v],
-          key: v
-        }
+        value: "　",
+        key: v,
+        backgroundColor: allMatchedResultByModel[v]?"#00C851":"#ff4444"
       })
     })
+    records.push({cells: cells});
 
     return ({
       header: header,
@@ -99,14 +103,14 @@ const Search = () => {
           <p className="h4">{marketType}</p>
           <p className="h1">{`${shareName}(${shareCode})`}</p>
         </div>
-        <div>
+        <div className="mt-3">
           <FixedSideTable
             header={modelCompareTableData.header}
             records={modelCompareTableData.records}
           />
         </div>
-        <div>
-        <MDBNav className="nav-tabs mt-3">
+        <div className="mt-3">
+        <MDBNav className="nav-tabs">
           <MDBNavItem>
               <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.YEAR} onClick={() => tabHandler(PERIOD_UNIT.YEAR)} role="tab" >
                   Yearly

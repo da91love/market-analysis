@@ -10,7 +10,7 @@ const rawData2FixedTableData = (fixedCol, periodRawData) => {
       periodRawData.forEach((b, o) => {
         cells.push({
           value: b[v],
-          key: i+o
+          key: i+o,
         })
       })
 
