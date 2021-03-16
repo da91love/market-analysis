@@ -116,9 +116,10 @@ const ModelBox = (props) => {
             rows.push(row);
       }
 
-      return ({
-         cells: cells
-      })
+      return {
+            columns: columns,
+            rows: rows
+      }
    }
 
    const applyModelBtn = (value) => {
@@ -184,7 +185,8 @@ const ModelBox = (props) => {
                </div>
             </MDBCardTitle>
             <MDBCardText>
-               {model !== "default"? <FixedSideTableTest header={datatable.header} records={datatable.records}/>:<NoModelSelected/>}
+               {/* {model !== "default"? <FixedSideTableTest header={datatable.header} records={datatable.records}/>:<NoModelSelected/>} */}
+               {model !== "default"? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={datatable} />:<NoModelSelected/>}
             </MDBCardText>
          </MDBCardBody>
       </MDBCard>
