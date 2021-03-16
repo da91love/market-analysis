@@ -18,6 +18,7 @@ import { MSG } from "../../consts/message"
 
 import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
+import FixedSideTableTest from '../Share/FixedSideTableTest';
 
 const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
@@ -28,6 +29,7 @@ const ModelBox = (props) => {
    const [filterStatus, setFilterStatus] = useState(FILTER);
    
    const rawData2TableData = (modelName, rawData, tgColList) => {
+      /** 
       // Create columns
       const columns = tgColList.map((v,i) => {
          return {
@@ -66,9 +68,55 @@ const ModelBox = (props) => {
             rows.push(row);
       }
 
+      return ({
+         cells: cells
+      })
+      */
+
+      const header = tgColList;
+
+      const records = rawData.map((data, i) => {
+         const cells = [];
+         tgColList.forEach((col, o) => {
+            if (col === OTHER_KEY_NAME.GRAPH) {
+               if (modelName === MODELS.MRKGROWTH) {
+                  cells.push({
+                     value:<GraphModalBtn
+                              isMarket={true}
+                              tgName={data[KEY_NAME.MARKET_NAME]} 
+                              tgCode={data[KEY_NAME.MARKET_CODE]} 
+                              yearRawDataPerUnit={yearRawDataByMrk[data[KEY_NAME.MARKET_CODE]]} 
+                              quarterRawDataPerUnit={quarterRawDataByMrk[data[KEY_NAME.MARKET_CODE]]}
+                           />,
+                     key: i+o,
+                  })
+               } else {
+                  cells.push({
+                     value: <GraphModalBtn
+                        tgName={data[KEY_NAME.SHARE_NAME]} 
+                        tgCode={data[KEY_NAME.SHARE_CODE]} 
+                        yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
+                        quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
+                     />,
+                     key: i+o,
+                  })
+               }
+            } else {
+               cells.push({
+                  value: data[col],
+                  key: i+o,
+               })
+            }
+         })
+
+         return ({
+            cells: cells
+         })
+      })
+
       return {
-            columns: columns,
-            rows: rows
+         header: header,
+         records: records
       }
    }
 
@@ -135,7 +183,7 @@ const ModelBox = (props) => {
                </div>
             </MDBCardTitle>
             <MDBCardText>
-               {model !== "default"? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={datatable} />:<NoModelSelected/>}
+               {model !== "default"? <FixedSideTableTest header={datatable.header} records={datatable.records}/>:<NoModelSelected/>}
             </MDBCardText>
          </MDBCardBody>
       </MDBCard>

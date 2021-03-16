@@ -74,8 +74,8 @@ const Search = () => {
   }();
 
   // Get data for fixed table
-  const yearFixedTableData = rawData2FixedTableData(SEARCH_TABLE_COL, yearRawDataByShare[shareCode]);
-  const quarterFixedTableData = rawData2FixedTableData(SEARCH_TABLE_COL, quarterRawDataByShare[shareCode]);
+  const yearFixedTableData = rawData2FixedTableData(yearRawDataByShare[shareCode], SEARCH_TABLE_COL);
+  const quarterFixedTableData = rawData2FixedTableData(quarterRawDataByShare[shareCode], SEARCH_TABLE_COL);
 
   // Get data for graphData
   const graphData = function(){
@@ -158,8 +158,8 @@ const Search = () => {
                 <MDBCardTitle className="h3">Financial Summary</MDBCardTitle>
                 <MDBCardText>
                   <FixedSideTable
-                      header={quarterFixedTableData.header}
-                      records={quarterFixedTableData.records}
+                    header={quarterFixedTableData.header}
+                    records={quarterFixedTableData.records}
                     fixedNum={1}
                   />
                 </MDBCardText>

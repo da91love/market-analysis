@@ -8,8 +8,6 @@ import {
 const FixedSideTable = props => {
   const { header, records, fixedNum, onChange } = props;
 
-  console.log(records);
-
   if (records.length === 0) {
     return <></>;
   }

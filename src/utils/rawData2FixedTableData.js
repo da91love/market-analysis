@@ -1,9 +1,33 @@
 import {KEY_NAME} from '../consts/keyName';
 
-const rawData2FixedTableData = (fixedCol, periodRawData) => {
+/**
+ * 이 함수 문제 많음
+ * 오로지 search 안에서만 사용할 수 있는 함수로 범용성은 없음
+ * 
+ * @param {*} periodRawData 
+ * @param {*} fixedCol 
+ * return [
+ *  cells: [
+ *    {value: "", key: "", onClick: ""},
+ *    {value: "", key: "", onClick: ""},
+ *    {value: "", key: "", onClick: ""},
+ *  ],
+ *  cells: [
+ *    {value: "", key: "", onClick: ""},
+ *    {value: "", key: "", onClick: ""},
+ *    {value: "", key: "", onClick: ""},
+ *  ]
+ * ]
+ */
+const rawData2FixedTableData = (periodRawData, fixedCol) => {
     const header = periodRawData.map((v, i) => {
       return v[KEY_NAME.PERIOD];
     })
+
+    // FixedCol이 별도로 정의되지 않았을 때
+    if (!fixedCol){
+      fixedCol = header;
+    }
 
     const records = fixedCol.map((v, i) => {
       const cells = [];
