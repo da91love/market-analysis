@@ -28,51 +28,8 @@ const ModelBox = (props) => {
    const [datatable, setDatatable] = useState(null);
    const [filterStatus, setFilterStatus] = useState(FILTER);
    
-   const rawData2TableData = (modelName, rawData, tgColList) => {
-      /** 
-      // Create columns
-      const columns = tgColList.map((v,i) => {
-         return {
-            label: v,
-            field: v,
-         }
-      })
-
-      // Create rows
-      const rows = []
-      for (const data of rawData) {
-            const row = {};
-            for (const col of tgColList) {
-               if (col === OTHER_KEY_NAME.GRAPH) {
-                  if (modelName === MODELS.MRKGROWTH) {
-                     row[col] = <GraphModalBtn
-                        isMarket={true}
-                        tgName={data[KEY_NAME.MARKET_NAME]} 
-                        tgCode={data[KEY_NAME.MARKET_CODE]} 
-                        yearRawDataPerUnit={yearRawDataByMrk[data[KEY_NAME.MARKET_CODE]]} 
-                        quarterRawDataPerUnit={quarterRawDataByMrk[data[KEY_NAME.MARKET_CODE]]}
-                     />
-                  } else {
-                     row[col] = <GraphModalBtn
-                        tgName={data[KEY_NAME.SHARE_NAME]} 
-                        tgCode={data[KEY_NAME.SHARE_CODE]} 
-                        yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
-                        quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
-                     />
-                  }
-
-               } else {
-                  row[col] = data[col];
-               }
-            }
-            rows.push(row);
-      }
-
-      return ({
-         cells: cells
-      })
-      */
-
+   const rawData2CTableData = (modelName, rawData, tgColList) => {
+      
       const header = tgColList;
 
       const records = rawData.map((data, i) => {
@@ -118,6 +75,50 @@ const ModelBox = (props) => {
          header: header,
          records: records
       }
+   }
+
+   const rawData2TableData = (modelName, rawData, tgColList) => {
+      // Create columns
+      const columns = tgColList.map((v,i) => {
+         return {
+            label: v,
+            field: v,
+         }
+      })
+
+      // Create rows
+      const rows = []
+      for (const data of rawData) {
+            const row = {};
+            for (const col of tgColList) {
+               if (col === OTHER_KEY_NAME.GRAPH) {
+                  if (modelName === MODELS.MRKGROWTH) {
+                     row[col] = <GraphModalBtn
+                        isMarket={true}
+                        tgName={data[KEY_NAME.MARKET_NAME]} 
+                        tgCode={data[KEY_NAME.MARKET_CODE]} 
+                        yearRawDataPerUnit={yearRawDataByMrk[data[KEY_NAME.MARKET_CODE]]} 
+                        quarterRawDataPerUnit={quarterRawDataByMrk[data[KEY_NAME.MARKET_CODE]]}
+                     />
+                  } else {
+                     row[col] = <GraphModalBtn
+                        tgName={data[KEY_NAME.SHARE_NAME]} 
+                        tgCode={data[KEY_NAME.SHARE_CODE]} 
+                        yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
+                        quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
+                     />
+                  }
+
+               } else {
+                  row[col] = data[col];
+               }
+            }
+            rows.push(row);
+      }
+
+      return ({
+         cells: cells
+      })
    }
 
    const applyModelBtn = (value) => {
