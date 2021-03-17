@@ -53,7 +53,7 @@ const GraphModalBtn = (props) => {
                 year: idcByYear,
                 quarter: idcByQuarter
             })
-    }, [modalState])
+    }, [modalState, selectedGraphType])
 
     return (
         <IconButton className="p-0" color="default" aria-label="upload picture" component="span">
