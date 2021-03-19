@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import {
-  MDBRow, MDBContainer, MDBCol, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
+  MDBContainer, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBBtn 
 } from 'mdbreact';
 import _ from "lodash";
 import { useLocation } from 'react-router-dom';
@@ -17,6 +17,7 @@ import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, MODELS } from '../../consts/model';
 import { SEARCH_TABLE_COL } from '../../consts/search';
+import { EXTERNAL_URL } from '../../consts/common';
 import { FILTER } from '../../consts/filter';
 
 // Temp: import json
@@ -103,7 +104,15 @@ const Search = () => {
       <MDBContainer>
         <div className="mt-3">
           <p className="h4">{marketType}</p>
-          <p className="h1">{`${shareName}(${shareCode})`}</p>
+          <a href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
+            <span className="h1">{`${shareName}(${shareCode})`}</span>
+          </a>
+          <a href={`${EXTERNAL_URL.GOOGLE_SEARCH}${shareName}`} target="_blank">
+            <MDBIcon fab icon="google" />
+          </a>
+          <a href={`${EXTERNAL_URL.NAVER_SEARCH}${shareName}`} target="_blank">
+            <MDBIcon fab icon="neos" />
+          </a> 
         </div>
         <div className="mt-3">
           <FixedSideTable

@@ -12,7 +12,9 @@ export const PERIOD_UNIT = {
 
 export const EXTERNAL_URL = {
   NAVER_SHARE_INFO: 'https://finance.naver.com/item/main.nhn?code=',
-  NAVER_MRK_INFO: 'https://finance.naver.com/sise/sise_group_detail.nhn?type=upjong&no='
+  NAVER_MRK_INFO: 'https://finance.naver.com/sise/sise_group_detail.nhn?type=upjong&no=',
+  NAVER_SEARCH: 'https://search.naver.com/search.naver?where=news&query=',
+  GOOGLE_SEARCH : 'https://www.google.com/search?tbm=nws&q=',
 }
 
 export const DEFAULT_SHARE_INFO = {

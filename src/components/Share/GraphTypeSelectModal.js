@@ -45,6 +45,7 @@ const GraphTypeSelectModal = (props) => {
     const getRadioTable = (radioStatus) => {
         let trs = [];
         let tds = [];
+        
         Object.keys(radioStatus).forEach((v, i) => {
             tds.push(
                 <td>

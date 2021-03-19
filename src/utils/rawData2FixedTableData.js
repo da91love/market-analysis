@@ -47,8 +47,12 @@ const rawData2FixedTableData = (periodRawData, fixedCol) => {
     fixedCol.forEach((v, i) => {
       (records[i]['cells']).unshift({
         value: v,
-        key: 0
-      })
+        key: 0,
+        popOver: {
+          popOverHeader: v,
+          popOverBody: periodRawData
+        }
+    })
     })
 
     // FixedCol의 1열 이상일 때, header의 앞에 빈값 삽입
@@ -56,7 +60,7 @@ const rawData2FixedTableData = (periodRawData, fixedCol) => {
 
     return ({
       header: header,
-      records: records
+      records: records,
     })
   }
 
