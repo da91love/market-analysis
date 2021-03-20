@@ -10,9 +10,11 @@ import ShareDataContext from '../contexts/ShareDataContext';
 import Search from './Search/Search';
 import Targeting from './Targeting/Targeting';
 import ModelHit from './ModelHit/ModelHit';
+import AllShares from './AllShares/AllShares';
 import rawDataByMarket from '../utils/rawDataByMarket';
 import {KEY_NAME} from '../consts/keyName';
 import {PERIOD_UNIT} from '../consts/common';
+import {ROUTER_URL} from '../consts/rounter';
 
 import yData from "../statics/year_result.json";
 import qData from "../statics/quarter_result.json";
@@ -76,9 +78,10 @@ const Main = (props) => {
         <Header quarterRawData={quarterRawData}/>
         <Alert />
         <main className="blue-grey lighten-5">
-          <Route path="/contents/search" component={Search} exact />
-          <Route path="/contents/targeting" component={Targeting}  exact />
-          <Route path="/contents/model-hit-list" component={ModelHit}  exact />
+          <Route path={ROUTER_URL.SEARCH} component={Search} exact />
+          <Route path={ROUTER_URL.TARGETING} component={Targeting}  exact />
+          <Route path={ROUTER_URL.MODEL_HIT} component={ModelHit}  exact />
+          <Route path={ROUTER_URL.ALL_SHARES} component={AllShares}  exact />
         </main>
         <Footer />
       </ShareDataContext.Provider>

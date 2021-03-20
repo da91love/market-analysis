@@ -6,7 +6,8 @@ import ShareDataContext from "../../contexts/ShareDataContext";
 import ShareTargetModelEngine from '../../utils/ShareTargetModelEngine';
 import GraphModalBtn from '../Share/GraphModalBtn';
 
-import { MODELS, MODEL_HIT_TABLE_COL } from "../../consts/model";
+import { MODELS } from "../../consts/model";
+import { MODEL_HIT_TABLE_COL } from "../../consts/tblCol";
 import { FILTER } from "../../consts/filter";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { EXTERNAL_URL } from "../../consts/common"

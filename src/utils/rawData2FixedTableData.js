@@ -21,7 +21,9 @@ import {KEY_NAME} from '../consts/keyName';
  */
 const rawData2FixedTableData = (periodRawData, fixedCol) => {
     const header = periodRawData.map((v, i) => {
-      return v[KEY_NAME.PERIOD];
+      return {
+        value: v[KEY_NAME.PERIOD]
+      };
     })
 
     // FixedCol이 별도로 정의되지 않았을 때

@@ -4,7 +4,6 @@ import {
 } from 'mdbreact';
 import _ from "lodash";
 import { useLocation } from 'react-router-dom';
-import Icon from '@material-ui/core/Icon';
 
 import ShareDataContext from "../../contexts/ShareDataContext";
 import FixedSideTable from '../Share/FixedSideTable';
@@ -16,7 +15,7 @@ import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, MODELS } from '../../consts/model';
-import { SEARCH_TABLE_COL } from '../../consts/search';
+import { SEARCH_TABLE_COL } from '../../consts/tblCol';
 import { EXTERNAL_URL } from '../../consts/common';
 import { FILTER } from '../../consts/filter';
 
@@ -46,7 +45,11 @@ const Search = () => {
   // Get data for model compare table
   const allMatchedTgByModel = getAllMatchedTgByModel(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER);
   const modelCompareTableData = function() {
-    const header = Object.values(MODELS);
+    const header = Object.values(MODELS).map((model, i) => {
+      return {
+        value: model
+      }
+    });
 
     const allMatchedResultByModel = {};
     for (const model in allMatchedTgByModel) {

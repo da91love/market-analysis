@@ -36,14 +36,14 @@ const FixedSideTable = props => {
     <MDBTable bordered small responsive scrollx="true">
       <MDBTableHead>
         <tr>
-          {header.map((value, i) => {
+          {header.map((col, i) => {
             return (
               <th
                 key={i}
                 className="text-center bg-info text-white border"
                 nowrap="true"
               >
-                {value}
+                {col.value}
               </th>
             );
           })}
@@ -63,11 +63,12 @@ const FixedSideTable = props => {
                     }
                     onBlur={onChange}
                     style={{
+                      width: 'auto',
                       backgroundColor: !c.isEditable && c.backgroundColor? c.backgroundColor : (c.isEditable? "rgba(0,0,0,.03)": "")
                     }}
                     name={c.key}
                   > 
-                  {j < fixedNum ? 
+                  {c.popOver && j < fixedNum ? 
                       <MDBPopover
                         placement="left"
                         popover
