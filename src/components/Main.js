@@ -5,6 +5,7 @@ import _ from "lodash";
 import Header from './Share/Header';
 import Footer from './Share/Footer';
 import Alert from './Share/Alert';
+import Notification from './Share/Notification';
 import AlertContext from '../contexts/AlertContext';
 import ShareDataContext from '../contexts/ShareDataContext';
 import Search from './Search/Search';
@@ -77,6 +78,7 @@ const Main = (props) => {
       }}>
         <Header quarterRawData={quarterRawData}/>
         <Alert />
+        <Notification />
         <main className="blue-grey lighten-5">
           <Route path={`${ROUTER_URL.SEARCH}/:shareCode?/:shareName?`} component={Search} exact />
           <Route path={`${ROUTER_URL.TARGETING}`} component={Targeting}  exact />

@@ -4,25 +4,21 @@ import AlertContext from '../../contexts/AlertContext';
 
 const Alert = () => {
   const { alertState } = useContext(AlertContext);
-  const [message, setMessage] = useState(<></>);
-  let tempMessage = <></>;
+  const [message, setMessage] = useState(alertState);
 
   useEffect(() => {
-    if (alertState.eventType && alertState.eventMessage) {
-      tempMessage = (
-        <MDBContainer key={alertState.eventCount} fluid>
-          <MDBAlert className="fixed-top mt-5" color={alertState.eventType} dismiss>
-            {alertState.eventMessage}
-          </MDBAlert>
-        </MDBContainer>
-      );
-    } else {
-      tempMessage = <></>;
-    }
-    setMessage(tempMessage);
+    setMessage(alertState);
   }, [alertState]);
 
-  return message;
+  return (
+    <MDBContainer key={message.eventCount} fluid>
+      {message? 
+        <MDBAlert className="fixed-top mt-5" color={message.eventType} dismiss>
+          {message.eventMessage}
+        </MDBAlert>
+        :null}
+    </MDBContainer>
+  );
 };
 
 export default Alert;
