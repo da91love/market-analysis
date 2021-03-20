@@ -4,7 +4,6 @@ import { MDBContainer, MDBNotification } from "mdbreact";
 const Notification = () => {
     return (
         <MDBNotification
-            className="fixed-bottom mt-5"
             iconClassName="text-primary"
             show
             fade

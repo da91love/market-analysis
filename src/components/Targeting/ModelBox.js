@@ -167,7 +167,7 @@ const ModelBox = (props) => {
    }, [filterStatus])
 
    return (
-      <MDBCard className="mt-3 mb-3">
+      <MDBCard className="mb-4">
          <MDBCardBody>
             <MDBCardTitle>
                <div className="float-left w-25">

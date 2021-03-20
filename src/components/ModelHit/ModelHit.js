@@ -8,7 +8,7 @@ import ModelBox from './ModelBox';
 const ModelHit = () => {
 
   return (
-      <MDBContainer>
+      <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
         <ModelBox/>
       </MDBContainer>
     )

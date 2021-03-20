@@ -23,7 +23,7 @@ import { FILTER } from '../../consts/filter';
 const Search = () => {
   const location = useLocation();
   const params = useParams();
-  const shareInfoFromExtnl = location.state || params;
+  const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
@@ -31,7 +31,7 @@ const Search = () => {
   const {shareCode, shareName} = shareInfo;
 
   // Ruturn nothing if init data is loaded
-  if (!isInitDataLoaded) {
+  if (!isInitDataLoaded) { 
     return null
   }
 
@@ -105,7 +105,7 @@ const Search = () => {
   }
 
   return (
-      <MDBContainer>
+      <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
         <div className="mt-3">
           <p className="h4">{marketType}</p>
           <a href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">

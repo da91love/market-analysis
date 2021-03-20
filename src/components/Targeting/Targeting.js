@@ -31,25 +31,23 @@ const Targeting = () => {
         model: "default"
       }]);  
     }
- }
+ }  
 
   return (
-    <div className="">
-      <MDBContainer>
-        <div>
-          <span>Add model</span>
-          <IconButton color="primary" aria-label="upload picture" component="span">
-            <MDBIcon onClick={() => appendModelBtn(modelBoxStatus[modelBoxStatus.length - 1].id+1)} icon="plus-square" />
-          </IconButton>
-        </div>
-        <div>
-          {modelBoxStatus.map((v, i) => {
-            return <ModelBox className="w-75" id={v.id} model={v.model} modelBoxStatus={modelBoxStatus} setModelBoxStatus={setModelBoxStatus}/>
-          })}
-        </div>
-      </MDBContainer>
-    </div>
-    )
+    <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
+      <div>
+        <span>Add model</span>
+        <IconButton color="primary" aria-label="upload picture" component="span">
+          <MDBIcon onClick={() => appendModelBtn(modelBoxStatus[modelBoxStatus.length - 1].id+1)} icon="plus-square" />
+        </IconButton>
+      </div>
+      <div>
+        {modelBoxStatus.map((v, i) => {
+          return <ModelBox className="w-75" id={v.id} model={v.model} modelBoxStatus={modelBoxStatus} setModelBoxStatus={setModelBoxStatus}/>
+        })}
+      </div>
+    </MDBContainer>
+  )
 };
 
 export default Targeting;

@@ -89,7 +89,7 @@ const ModelBox = (props) => {
    }, [isInitDataLoaded])
 
    return (
-      <MDBCard className="mt-3 mb-3">
+      <MDBCard>
          <MDBCardBody>
             <MDBCardTitle>
             </MDBCardTitle>

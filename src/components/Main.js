@@ -78,7 +78,6 @@ const Main = (props) => {
       }}>
         <Header quarterRawData={quarterRawData}/>
         <Alert />
-        <Notification />
         <main className="blue-grey lighten-5">
           <Route path={`${ROUTER_URL.SEARCH}/:shareCode?/:shareName?`} component={Search} exact />
           <Route path={`${ROUTER_URL.TARGETING}`} component={Targeting}  exact />

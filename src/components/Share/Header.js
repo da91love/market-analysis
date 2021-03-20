@@ -24,7 +24,7 @@ const Header = (props) => {
   };
 
   return (
-    <MDBNavbar color="white" dark expand="md" className="pl-5 pr-5">
+    <MDBNavbar color="white" dark expand="md" className="fixed-top pl-5 pr-5 mb-5">
       <MDBNavbarBrand>
         <strong className="black-text h2">{t('mainTitle')}</strong>
       </MDBNavbarBrand>
