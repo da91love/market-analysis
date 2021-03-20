@@ -3,7 +3,7 @@ import {
   MDBContainer, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBBtn 
 } from 'mdbreact';
 import _ from "lodash";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import ShareDataContext from "../../contexts/ShareDataContext";
 import FixedSideTable from '../Share/FixedSideTable';
@@ -22,7 +22,8 @@ import { FILTER } from '../../consts/filter';
 // Temp: import json
 const Search = () => {
   const location = useLocation();
-  const shareInfoFromLoc = location.state;
+  const params = useParams();
+  const shareInfoFromExtnl = location.state || params;
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
@@ -34,8 +35,8 @@ const Search = () => {
     return null
   }
 
-  if (shareInfoFromLoc && shareInfoFromLoc !== shareInfo){
-    setShareInfo(shareInfoFromLoc);
+  if (shareInfoFromExtnl && shareInfoFromExtnl !== shareInfo){
+    setShareInfo(shareInfoFromExtnl);
   };
 
   // Get nessasary data from rawdata

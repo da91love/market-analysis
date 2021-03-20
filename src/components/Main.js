@@ -78,10 +78,10 @@ const Main = (props) => {
         <Header quarterRawData={quarterRawData}/>
         <Alert />
         <main className="blue-grey lighten-5">
-          <Route path={ROUTER_URL.SEARCH} component={Search} exact />
-          <Route path={ROUTER_URL.TARGETING} component={Targeting}  exact />
-          <Route path={ROUTER_URL.MODEL_HIT} component={ModelHit}  exact />
-          <Route path={ROUTER_URL.ALL_SHARES} component={AllShares}  exact />
+          <Route path={`${ROUTER_URL.SEARCH}/:shareCode?/:shareName?`} component={Search} exact />
+          <Route path={`${ROUTER_URL.TARGETING}`} component={Targeting}  exact />
+          <Route path={`${ROUTER_URL.MODEL_HIT}`} component={ModelHit}  exact />
+          <Route path={`${ROUTER_URL.ALL_SHARES}`} component={AllShares}  exact />
         </main>
         <Footer />
       </ShareDataContext.Provider>

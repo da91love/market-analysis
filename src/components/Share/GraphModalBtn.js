@@ -7,9 +7,10 @@ import AnalysisGraph from './AnalysisGraph';
 import GraphTypeSelectModal from './GraphTypeSelectModal';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import { PERIOD_UNIT, EXTERNAL_URL } from "../../consts/common";
+import { ROUTER_URL } from "../../consts/rounter";
 import { KEY_NAME } from "../../consts/keyName";
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, BY_MRK_ALL_GRAPH_TYPE } from "../../consts/model"
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const GraphModalBtn = (props) => {
     const {isMarket=false, tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit} = props;
@@ -19,6 +20,7 @@ const GraphModalBtn = (props) => {
     const [selectedGraphType, setSelectedGraphType] = useState(isMarket?BY_MRK_DEFAULT_GRAPH_TYPE:BY_SHARE_DEFAULT_GRAPH_TYPE)
     const url = isMarket?EXTERNAL_URL.NAVER_MRK_INFO:EXTERNAL_URL.NAVER_SHARE_INFO;
     const history = useHistory();
+    const location = useLocation();
     
     const tabHandler = (tab) => {
         if (activeTab !== tab) {
@@ -31,13 +33,8 @@ const GraphModalBtn = (props) => {
     }
 
     const searchPageMoveHandler = (shareCode, shareName) => {
-        history.push({
-            pathname: '/contents/search',
-            state: {
-                [KEY_NAME.SHARE_CODE]: shareCode,
-                [KEY_NAME.SHARE_NAME]: shareName,
-            },
-        })
+        const win = window.open(`${ROUTER_URL.SEARCH}/${shareCode}/${shareName}`, "_blank");
+        win.focus();
     }
 
     useEffect(() => {
