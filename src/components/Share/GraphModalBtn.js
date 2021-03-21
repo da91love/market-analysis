@@ -13,7 +13,7 @@ import { ROUTER_URL } from "../../consts/rounter";
 import { KEY_NAME } from "../../consts/keyName";
 import { SUCCESS } from "../../consts/alert";
 import { MSG } from "../../consts/message";
-import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, BY_MRK_ALL_GRAPH_TYPE } from "../../consts/model"
+import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, BY_MRK_ALL_GRAPH_TYPE } from "../../consts/graph"
 
 const GraphModalBtn = (props) => {
     const {isMarket=false, tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit} = props;
@@ -57,9 +57,9 @@ const GraphModalBtn = (props) => {
             const idcByYear = {};
             const idcByQuarter = {};
 
-            selectedGraphType.forEach((v, i) => {
-                idcByYear[v] = rawData2GraphData(yearRawDataPerUnit, v);
-                idcByQuarter[v] = rawData2GraphData(quarterRawDataPerUnit, v);
+            selectedGraphType.forEach((idc, i) => {
+                idcByYear[idc] = rawData2GraphData(yearRawDataPerUnit, idc);
+                idcByQuarter[idc] = rawData2GraphData(quarterRawDataPerUnit, idc);
             })
             
             setGraphData({

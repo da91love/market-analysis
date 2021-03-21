@@ -37,11 +37,11 @@ const Header = (props) => {
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
-          {/* <MDBNavItem active>
+          <MDBNavItem active>
             <MDBNavLink to={ROUTER_URL.SEARCH} className="black-text h4">{'SEARCH'}</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to={ROUTER_URL.TARGETING} className="black-text h4">{'TARGET'}</MDBNavLink>
+            <MDBNavLink to={ROUTER_URL.TARGET} className="black-text h4">{'TARGET'}</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBNavLink to={ROUTER_URL.MODEL_HIT} className="black-text h4">{'MODELHIT'}</MDBNavLink>
@@ -51,22 +51,22 @@ const Header = (props) => {
           </MDBNavItem>
           <MDBNavItem>
             <MDBNavLink to={ROUTER_URL.COMPARE} className="black-text h4">{'COMPARE'}</MDBNavLink>
-          </MDBNavItem> */}
+          </MDBNavItem>
 
-          <MDBNavItem>
+          {/* <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>
                 <div className="d-none d-md-inline black-text h2">SERVICE</div>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
                 <MDBDropdownItem href={ROUTER_URL.SEARCH}>SEARCH</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.TARGETING}>TARGET</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.TARGET}>TARGET</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.MODEL_HIT}>MODELHIT</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.ALL_SHARES} >ALLSHARES</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.COMPARE}>COMPARE</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
-          </MDBNavItem>
+          </MDBNavItem> */}
 
           <MDBNavItem>
             <MDBDropdown>

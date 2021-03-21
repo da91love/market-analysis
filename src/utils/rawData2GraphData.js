@@ -1,15 +1,15 @@
 import { KEY_NAME } from '../consts/keyName';
 
-const rawData2GraphData = (tgShareRawData, indicator) => {
+const rawData2GraphData = (tgShareRawData, idc) => {
 
     return {
-        name: indicator,
+        name: idc,
         xAxisKeyName: "name",
-        dataKey: [indicator],
-        data: tgShareRawData.map((v, i) => {
+        dataKey: [idc],
+        data: tgShareRawData.map((v) => {
             return {
                 name: v[KEY_NAME.PERIOD],
-                [indicator]: v[indicator] 
+                [idc]: v[idc] 
             }
         })
     };
