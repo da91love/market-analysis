@@ -18,11 +18,9 @@ const FooterPage = () => (
             </li>
             <li className="list-unstyled">
               <a href="#!"><h5>Link 3</h5></a>
-
             </li>
             <li className="list-unstyled">
               <a href="#!"><h5>Link 4</h5></a>
-
             </li>
           </ul>
         </MDBCol>
