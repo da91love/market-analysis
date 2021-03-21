@@ -11,13 +11,15 @@ const Alert = () => {
   }, [alertState]);
 
   return (
-    <MDBContainer key={message.eventCount} fluid>
-      {message? 
-        <MDBAlert className="fixed-top mt-5" color={message.eventType} dismiss>
-          {message.eventMessage}
-        </MDBAlert>
-        :null}
-    </MDBContainer>
+    <>
+      {message.eventCount > 0? 
+        <MDBContainer key={message.eventCount} fluid>
+            <MDBAlert className="fixed-top" color={message.eventType} dismiss>
+              {message.eventMessage}
+            </MDBAlert>
+        </MDBContainer>
+      :null}
+    </>
   );
 };
 

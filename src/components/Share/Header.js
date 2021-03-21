@@ -8,6 +8,7 @@ import { withRouter } from 'react-router'
 import SearchInput from '../Share/SearchInput';
 import rawData2SearchData from '../../utils/rawData2SearchData';
 import { LANG } from '../../consts/common';
+import { ROUTER_URL } from '../../consts/rounter';
 
 const Header = (props) => {
   const {quarterRawData} = props;
@@ -36,15 +37,37 @@ const Header = (props) => {
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
-          <MDBNavItem active>
-            <MDBNavLink to="#!" className="black-text h4">{t('marketList')}</MDBNavLink>
+          {/* <MDBNavItem active>
+            <MDBNavLink to={ROUTER_URL.SEARCH} className="black-text h4">{'SEARCH'}</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="#!" className="black-text h4">{t('growingMarket')}</MDBNavLink>
+            <MDBNavLink to={ROUTER_URL.TARGETING} className="black-text h4">{'TARGET'}</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="#!" className="black-text h4">{t('ranking')}</MDBNavLink>
+            <MDBNavLink to={ROUTER_URL.MODEL_HIT} className="black-text h4">{'MODELHIT'}</MDBNavLink>
           </MDBNavItem>
+          <MDBNavItem>
+            <MDBNavLink to={ROUTER_URL.ALL_SHARES} className="black-text h4">{'ALLSHARES'}</MDBNavLink>
+          </MDBNavItem>
+          <MDBNavItem>
+            <MDBNavLink to={ROUTER_URL.COMPARE} className="black-text h4">{'COMPARE'}</MDBNavLink>
+          </MDBNavItem> */}
+
+          <MDBNavItem>
+            <MDBDropdown>
+              <MDBDropdownToggle nav caret>
+                <div className="d-none d-md-inline black-text h2">SERVICE</div>
+              </MDBDropdownToggle>
+              <MDBDropdownMenu className="dropdown-default">
+                <MDBDropdownItem href={ROUTER_URL.SEARCH}>SEARCH</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.TARGETING}>TARGET</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.MODEL_HIT}>MODELHIT</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.ALL_SHARES} >ALLSHARES</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.COMPARE}>COMPARE</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
+          </MDBNavItem>
+
           <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>

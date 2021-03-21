@@ -23,60 +23,10 @@ import FixedSideTableTest from '../Share/FixedSideTableTest';
 
 const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
-
    const {alertState,setAlertState} = useContext(AlertContext);
    const {yearRawDataByShare, quarterRawDataByShare, yearRawDataByMrk, quarterRawDataByMrk} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);
    const [filterStatus, setFilterStatus] = useState(FILTER);
-   
-   const rawData2CTableData = (modelName, rawData, tgColList) => {
-      
-      const header = tgColList;
-
-      const records = rawData.map((data, i) => {
-         const cells = [];
-         tgColList.forEach((col, o) => {
-            if (col === OTHER_KEY_NAME.GRAPH) {
-               if (modelName === MODELS.MRKGROWTH) {
-                  cells.push({
-                     value:<GraphModalBtn
-                              isMarket={true}
-                              tgName={data[KEY_NAME.MARKET_NAME]} 
-                              tgCode={data[KEY_NAME.MARKET_CODE]} 
-                              yearRawDataPerUnit={yearRawDataByMrk[data[KEY_NAME.MARKET_CODE]]} 
-                              quarterRawDataPerUnit={quarterRawDataByMrk[data[KEY_NAME.MARKET_CODE]]}
-                           />,
-                     key: i+o,
-                  })
-               } else {
-                  cells.push({
-                     value: <GraphModalBtn
-                        tgName={data[KEY_NAME.SHARE_NAME]} 
-                        tgCode={data[KEY_NAME.SHARE_CODE]} 
-                        yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
-                        quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
-                     />,
-                     key: i+o,
-                  })
-               }
-            } else {
-               cells.push({
-                  value: data[col],
-                  key: i+o,
-               })
-            }
-         })
-
-         return ({
-            cells: cells
-         })
-      })
-
-      return {
-         header: header,
-         records: records
-      }
-   }
 
    const rawData2TableData = (modelName, rawData, tgColList) => {
       // Create columns

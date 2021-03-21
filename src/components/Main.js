@@ -9,6 +9,7 @@ import Footer from './Share/Footer';
 import Alert from './Share/Alert';
 import Notification from './Share/Notification';
 import AlertContext from '../contexts/AlertContext';
+import CompareTgContext from '../contexts/CompareTgContext';
 import ShareDataContext from '../contexts/ShareDataContext';
 import Search from './Search/Search';
 import Targeting from './Targeting/Targeting';
@@ -24,17 +25,14 @@ import qData from "../statics/quarter_result.json";
 import siData from "../statics/share_infos.json";
 
 const Main = (props) => {
-  const [alertState, setAlertState] = useState({
-    eventType: '',
-    eventMessage: '',
-    eventCount: 0,
-  });
+  const [alertState, setAlertState] = useState({eventCount: 0});
   const [yearRawData,setYearRawData] = useState(null);
   const [quarterRawData,setQuarterRawData] = useState(null);
   const [yearRawDataByShare,setYearRawDataByShare] = useState(null);
   const [quarterRawDataByShare,setQuarterRawDataByShare] = useState(null);
   const [yearRawDataByMrk,setYearRawDataByMrk] = useState(null);
   const [quarterRawDataByMrk,setQuarterRawDataByMrk] = useState(null);
+  const [compareTg, setCompareTg] = useState([]);
   const [isInitDataLoaded,setIsInitDataLoaded] = useState(false);
   const [shareInfos, setShareInfos] = useState(null);
 
@@ -69,26 +67,28 @@ const Main = (props) => {
 
   return (
     <AlertContext.Provider value={{ alertState, setAlertState }}>
-      <ShareDataContext.Provider value={{
-        isInitDataLoaded, shareInfos,
-        yearRawData, setYearRawData, 
-        quarterRawData, setQuarterRawData,
-        yearRawDataByShare, setYearRawDataByShare,
-        quarterRawDataByShare, setQuarterRawDataByShare,
-        yearRawDataByMrk, setYearRawDataByMrk,
-        quarterRawDataByMrk, setQuarterRawDataByMrk
-      }}>
-        <Header quarterRawData={quarterRawData}/>
-        <Alert />
-        <main className="blue-grey lighten-5">
-          <Route path={`${ROUTER_URL.SEARCH}/:shareCode?/:shareName?`} component={Search} exact />
-          <Route path={`${ROUTER_URL.TARGETING}`} component={Targeting}  exact />
-          <Route path={`${ROUTER_URL.MODEL_HIT}`} component={ModelHit}  exact />
-          <Route path={`${ROUTER_URL.ALL_SHARES}`} component={AllShares}  exact />
-        </main>
-        <Notification />
-        <Footer />
-      </ShareDataContext.Provider>
+    <CompareTgContext.Provider value={{ compareTg, setCompareTg }}>
+    <ShareDataContext.Provider value={{
+      isInitDataLoaded, shareInfos,
+      yearRawData, setYearRawData, 
+      quarterRawData, setQuarterRawData,
+      yearRawDataByShare, setYearRawDataByShare,
+      quarterRawDataByShare, setQuarterRawDataByShare,
+      yearRawDataByMrk, setYearRawDataByMrk,
+      quarterRawDataByMrk, setQuarterRawDataByMrk
+    }}>
+      <Header quarterRawData={quarterRawData}/>
+      <Alert />
+      <Notification />
+      <main className="blue-grey lighten-5">
+        <Route path={`${ROUTER_URL.SEARCH}/:shareCode?/:shareName?`} component={Search} exact />
+        <Route path={`${ROUTER_URL.TARGETING}`} component={Targeting}  exact />
+        <Route path={`${ROUTER_URL.MODEL_HIT}`} component={ModelHit}  exact />
+        <Route path={`${ROUTER_URL.ALL_SHARES}`} component={AllShares}  exact />
+      </main>
+      <Footer />
+    </ShareDataContext.Provider>
+    </CompareTgContext.Provider>
     </AlertContext.Provider>
   );
 };
