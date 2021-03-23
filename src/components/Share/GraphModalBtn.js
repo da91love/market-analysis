@@ -3,6 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import {
     MDBIcon, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
   } from 'mdbreact';
+import _ from "lodash";
 import { useSnackbar } from 'notistack';
 import AnalysisGraph from './AnalysisGraph';
 import CompareTgContext from "../../contexts/CompareTgContext";
@@ -13,7 +14,7 @@ import { PERIOD_UNIT, EXTERNAL_URL } from "../../consts/common";
 import { ROUTER_URL } from "../../consts/rounter";
 import { KEY_NAME } from "../../consts/keyName";
 import { STRG_KEY_NAME } from "../../consts/localStorage";
-import { SUCCESS } from "../../consts/alert";
+import { SUCCESS, ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, BY_MRK_ALL_GRAPH_TYPE } from "../../consts/graph"
 
@@ -43,19 +44,26 @@ const GraphModalBtn = (props) => {
     }
 
     const addToCompareList = (shareCode, shareName) => {
-        SyncStatus.set({
-            storageKey: STRG_KEY_NAME.COMPARE,
-            statusSetter: setCompareTg,
-            data: [...compareTg, {
-              [KEY_NAME.SHARE_CODE]: shareCode,
-              [KEY_NAME.SHARE_NAME]: shareName
-            }]
-        });
-
-        enqueueSnackbar(
-            `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, 
-            {variant: 'success'}
-        );
+        if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
+            enqueueSnackbar(
+                `${MSG.SHARE_CODE_ALREADY_EXIST}(${shareCode}:${shareName})`, 
+                {variant: ERROR}
+            );
+        } else {
+            SyncStatus.set({
+                storageKey: STRG_KEY_NAME.COMPARE,
+                statusSetter: setCompareTg,
+                data: [...compareTg, {
+                  [KEY_NAME.SHARE_CODE]: shareCode,
+                  [KEY_NAME.SHARE_NAME]: shareName
+                }]
+            });
+    
+            enqueueSnackbar(
+                `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, 
+                {variant: SUCCESS}
+            );
+        }
     };
 
     useEffect(() => {

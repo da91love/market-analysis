@@ -23,7 +23,7 @@ import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE } from '../../cons
 import { SEARCH_TABLE_COL } from '../../consts/tblCol';
 import { EXTERNAL_URL } from '../../consts/common';
 import { FILTER } from '../../consts/filter';
-import { SUCCESS } from "../../consts/alert";
+import { SUCCESS, ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
 
 // Temp: import json
@@ -114,17 +114,27 @@ const Search = () => {
   }
 
   const addToCompareList = (shareCode, shareName) => {
-    SyncStatus.set({
-      storageKey: STRG_KEY_NAME.COMPARE,
-      statusSetter: setCompareTg,
-      data: [...compareTg, {
-        [KEY_NAME.SHARE_CODE]: shareCode,
-        [KEY_NAME.SHARE_NAME]: shareName
-      }]
-    });
+    if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
+        enqueueSnackbar(
+            `${MSG.SHARE_CODE_ALREADY_EXIST}(${shareCode}:${shareName})`, 
+            {variant: ERROR}
+        );
+    } else {
+        SyncStatus.set({
+            storageKey: STRG_KEY_NAME.COMPARE,
+            statusSetter: setCompareTg,
+            data: [...compareTg, {
+              [KEY_NAME.SHARE_CODE]: shareCode,
+              [KEY_NAME.SHARE_NAME]: shareName
+            }]
+        });
 
-    enqueueSnackbar(`${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, {variant: SUCCESS});
-  };
+        enqueueSnackbar(
+            `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, 
+            {variant: SUCCESS}
+        );
+    }
+};
 
   return (
       <MDBContainer className="mt-5 mb-5 pt-5 pb-5">

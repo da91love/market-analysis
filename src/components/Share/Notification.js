@@ -21,7 +21,7 @@ const Notification = () => {
   return (
     <div className="fixed-bottom" style={{marginBottom: "25%"}}>
         <Button className="float-right" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} variant="contained" color="secondary">
-          Secondary
+          Compare Target Shares{`(${compareTg.length})`}
         </Button>
         <Menu
           id="simple-menu"

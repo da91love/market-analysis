@@ -6,7 +6,6 @@ import AddIcon from '@material-ui/icons/Add';
 
 import Header from './Share/Header';
 import Footer from './Share/Footer';
-import Alert from './Share/Alert';
 import Notification from './Share/Notification';
 import CompareTgContext from '../contexts/CompareTgContext';
 import ShareDataContext from '../contexts/ShareDataContext';
@@ -76,7 +75,6 @@ const Main = (props) => {
       quarterRawDataByMrk, setQuarterRawDataByMrk
     }}>
       <Header quarterRawData={quarterRawData}/>
-      <Alert />
       <Notification />
       <main className="blue-grey lighten-5">
         <Route path={`${ROUTER_URL.SEARCH}/:shareCode?/:shareName?`} component={Search} exact />
