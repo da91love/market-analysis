@@ -8,6 +8,7 @@ import CompareTgContext from "../../contexts/CompareTgContext";
 import AlertContext from "../../contexts/AlertContext";
 import GraphTypeSelectModal from './GraphTypeSelectModal';
 import rawData2GraphData from '../../utils/rawData2GraphData';
+import SyncStatus from '../../utils/SyncStatus';
 import { PERIOD_UNIT, EXTERNAL_URL } from "../../consts/common";
 import { ROUTER_URL } from "../../consts/rounter";
 import { KEY_NAME } from "../../consts/keyName";
@@ -42,16 +43,14 @@ const GraphModalBtn = (props) => {
     }
 
     const addToCompareList = (shareCode, shareName) => {
-        // setter
-        // localStorage.setItem(STRG_KEY_NAME.COMPARE, {
-        //     [KEY_NAME.SHARE_CODE]: shareCode,
-        //     [KEY_NAME.SHARE_NAME]: shareName
-        // }); 
-      
-        setCompareTg([...compareTg, {
-            [KEY_NAME.SHARE_CODE]: shareCode,
-            [KEY_NAME.SHARE_NAME]: shareName
-        }]);
+        SyncStatus.set({
+            storageKey: STRG_KEY_NAME.COMPARE,
+            statusSetter: setCompareTg,
+            data: [...compareTg, {
+              [KEY_NAME.SHARE_CODE]: shareCode,
+              [KEY_NAME.SHARE_NAME]: shareName
+            }]
+        });
 
         setAlertState({
             eventType: SUCCESS, //ここでSUCCESS,WARNING,DANGERを選択

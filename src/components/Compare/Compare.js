@@ -16,9 +16,10 @@ import { STRG_KEY_NAME } from "../../consts/localStorage";
 // Temp: import json
 const Compare = () => {
     const {alertState,setAlertState} = useContext(AlertContext);
-    const {compareTg, setCompareTg } = useContext(CompareTgContext);
+    const { setCompareTg } = useContext(CompareTgContext);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
     const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+    const compareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || []; 
 
     const tabHandler = (tab) => {
         if (activeTab !== tab) {

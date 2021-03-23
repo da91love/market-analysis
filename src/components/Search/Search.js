@@ -14,6 +14,7 @@ import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import rawData2FixedTableData from '../../utils/rawData2FixedTableData';
 import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
+import SyncStatus from '../../utils/SyncStatus';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { MODELS } from '../../consts/model';
@@ -113,15 +114,14 @@ const Search = () => {
   }
 
   const addToCompareList = (shareCode, shareName) => {
-    // localStorage.setItem(STRG_KEY_NAME.COMPARE, {
-    //   [KEY_NAME.SHARE_CODE]: shareCode,
-    //   [KEY_NAME.SHARE_NAME]: shareName
-    // }); 
-
-    setCompareTg([...compareTg, {
-      [KEY_NAME.SHARE_CODE]: shareCode,
-      [KEY_NAME.SHARE_NAME]: shareName
-    }]);
+    SyncStatus.set({
+      storageKey: STRG_KEY_NAME.COMPARE,
+      statusSetter: setCompareTg,
+      data: [...compareTg, {
+        [KEY_NAME.SHARE_CODE]: shareCode,
+        [KEY_NAME.SHARE_NAME]: shareName
+      }]
+    });
 
     setAlertState({
       eventType: SUCCESS, //ここでSUCCESS,WARNING,DANGERを選択

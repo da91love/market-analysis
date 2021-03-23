@@ -7,7 +7,8 @@ import { STRG_KEY_NAME } from "../../consts/localStorage";
 
 const Notification = () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const { compareTg, setCompareTg } = useContext(CompareTgContext);
+  const { setCompareTg } = useContext(CompareTgContext);
+  const compareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || [];
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
