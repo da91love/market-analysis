@@ -2,17 +2,17 @@ import React, { useState, useContext } from 'react';
 import {
   MDBRow, MDBContainer, MDBCol, MDBIcon
 } from 'mdbreact';
+import { useSnackbar } from 'notistack';
 import IconButton from '@material-ui/core/IconButton';
 import ModelBox from './ModelBox'
-import AlertContext from '../../contexts/AlertContext';
 import _ from "lodash";
-import { DANGER } from "../../consts/alert";
+import { ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
 import { MODELS } from "../../consts/model";
 
 
 const Targeting = () => {
-  const {alertState,setAlertState} = useContext(AlertContext);
+  const { enqueueSnackbar } = useSnackbar();
   const [modelBoxStatus, setModelBoxStatus] = useState([{
     id: 0,
     model: "default"
@@ -20,11 +20,8 @@ const Targeting = () => {
 
   const appendModelBtn = (id) => {
     if (modelBoxStatus.length === Object.keys(MODELS).length) {
-      setAlertState({
-        eventType: DANGER, //ここでSUCCESS,WARNING,DANGERを選択
-        eventMessage: MSG.BOX_OVER_MODEL,
-        eventCount: alertState.eventCount + 1,
-     });
+      enqueueSnackbar(MSG.BOX_OVER_MODEL, {variant: ERROR});
+
     } else {
       setModelBoxStatus([...modelBoxStatus, {
         id: id,

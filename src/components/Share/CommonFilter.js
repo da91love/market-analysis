@@ -3,7 +3,7 @@ import _ from "lodash";
 import { MDBInputGroup, MDBInput } from "mdbreact";
 import {FILTER_TYPE} from '../../consts/model';
 import {MSG} from '../../consts/message';
-import {DANGER} from '../../consts/alert';
+import {ERROR} from '../../consts/alert';
 import AlertContext from "../../contexts/AlertContext";
 
 const CommonFilter = (props) => {
@@ -14,11 +14,7 @@ const CommonFilter = (props) => {
         // Validation
         // TODO
         if(_.isNaN(parseInt(value))){
-            setAlertState({
-                eventType: DANGER, //ここでSUCCESS,WARNING,DANGERを選択
-                eventMessage: MSG.NAN,
-                eventCount: alertState.eventCount + 1,
-             });
+            enqueueSnackbar(MSG.NAN, {variant: ERROR});
         } else {
             setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.PER_MIN]:parseInt(value)})
         }
@@ -28,11 +24,7 @@ const CommonFilter = (props) => {
         // Validation
         // TODO
         if(_.isNaN(parseInt(value))){
-            setAlertState({
-                eventType: DANGER, //ここでSUCCESS,WARNING,DANGERを選択
-                eventMessage: MSG.NAN,
-                eventCount: alertState.eventCount + 1,
-             });
+            enqueueSnackbar(MSG.NAN, {variant: ERROR});
         } else {
             setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.PER_MAX]:parseInt(value)})
         }

@@ -3,6 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import {
     MDBIcon, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
   } from 'mdbreact';
+import { useSnackbar } from 'notistack';
 import AnalysisGraph from './AnalysisGraph';
 import CompareTgContext from "../../contexts/CompareTgContext";
 import AlertContext from "../../contexts/AlertContext";
@@ -25,6 +26,7 @@ const GraphModalBtn = (props) => {
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
     const [graphData, setGraphData] = useState(null);
     const [selectedGraphType, setSelectedGraphType] = useState(isMarket?BY_MRK_DEFAULT_GRAPH_TYPE:BY_SHARE_DEFAULT_GRAPH_TYPE)
+    const { enqueueSnackbar } = useSnackbar();
     const url = isMarket?EXTERNAL_URL.NAVER_MRK_INFO:EXTERNAL_URL.NAVER_SHARE_INFO;
 
     const tabHandler = (tab) => {
@@ -52,11 +54,10 @@ const GraphModalBtn = (props) => {
             }]
         });
 
-        setAlertState({
-            eventType: SUCCESS, //ここでSUCCESS,WARNING,DANGERを選択
-            eventMessage: `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`,
-            eventCount: alertState.eventCount + 1,
-        });
+        enqueueSnackbar(
+            `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, 
+            {variant: 'success'}
+        );
     };
 
     useEffect(() => {

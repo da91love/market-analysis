@@ -8,7 +8,6 @@ import Header from './Share/Header';
 import Footer from './Share/Footer';
 import Alert from './Share/Alert';
 import Notification from './Share/Notification';
-import AlertContext from '../contexts/AlertContext';
 import CompareTgContext from '../contexts/CompareTgContext';
 import ShareDataContext from '../contexts/ShareDataContext';
 import Search from './Search/Search';
@@ -67,7 +66,6 @@ const Main = (props) => {
   }, [])
 
   return (
-    <AlertContext.Provider value={{ alertState, setAlertState }}>
     <CompareTgContext.Provider value={{ compareTg, setCompareTg }}>
     <ShareDataContext.Provider value={{
       isInitDataLoaded, shareInfos,
@@ -91,7 +89,6 @@ const Main = (props) => {
       <Footer />
     </ShareDataContext.Provider>
     </CompareTgContext.Provider>
-    </AlertContext.Provider>
   );
 };
 

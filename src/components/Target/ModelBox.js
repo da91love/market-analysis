@@ -4,12 +4,12 @@ import {
 } from 'mdbreact';
 import IconButton from '@material-ui/core/IconButton';
 import _ from "lodash";
+import { useSnackbar } from 'notistack';
 
 import NoModelSelected from './NoModelSelected';
 import FilterModalBtn from './FilterModalBtn';
-import AlertContext from "../../contexts/AlertContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
-import { DANGER } from "../../consts/alert";
+import { ERROR } from "../../consts/alert";
 import { MODELS } from "../../consts/model";
 import { MODEL_TABLE_COL } from "../../consts/tblCol";
 import { MODEL_NAME } from "../../consts/model";
@@ -23,7 +23,7 @@ import FixedSideTableTest from '../Share/FixedSideTableTest';
 
 const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
-   const {alertState,setAlertState} = useContext(AlertContext);
+   const { enqueueSnackbar } = useSnackbar();
    const {yearRawDataByShare, quarterRawDataByShare, yearRawDataByMrk, quarterRawDataByMrk} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);
    const [filterStatus, setFilterStatus] = useState(FILTER);
@@ -77,11 +77,7 @@ const ModelBox = (props) => {
       // Validation
       if (_.find(modelBoxStatus, ['model', value])) {
          // Show status msg
-         setAlertState({
-            eventType: DANGER, //ここでSUCCESS,WARNING,DANGERを選択
-            eventMessage: MSG.BOX_ALREADY_EXIST,
-            eventCount: alertState.eventCount + 1,
-         });
+         enqueueSnackbar(MSG.BOX_ALREADY_EXIST, {variant: ERROR});
       } else {
          // Run model
          const tgData = getModelData(value, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
@@ -101,11 +97,7 @@ const ModelBox = (props) => {
          setModelBoxStatus(dcModelBoxStatus);
       } else {
          // Show status msg
-         setAlertState({
-            eventType: DANGER, //ここでSUCCESS,WARNING,DANGERを選択
-            eventMessage: MSG.MIN_BOX_NUM,
-            eventCount: alertState.eventCount + 1,
-         });
+         enqueueSnackbar(MSG.MIN_BOX_NUM, {variant: ERROR});
       }
    }
    

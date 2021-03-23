@@ -1,24 +1,20 @@
 import React, { useContext } from "react";
 import _ from "lodash";
+import { useSnackbar } from 'notistack';
 import { MDBInputGroup } from "mdbreact";
 import {FILTER_TYPE} from '../../consts/model';
 import {MSG} from '../../consts/message';
-import {DANGER} from '../../consts/alert';
-import AlertContext from "../../contexts/AlertContext";
+import {ERROR} from '../../consts/alert';
 
 const OpTimesFilter = (props) => {
     const {title, mdlFilterStatus, setMdlFilterStatus} = props;
-    const {alertState,setAlertState} = useContext(AlertContext);
+    const { enqueueSnackbar } = useSnackbar();
 
     const filterHandler = (value) => {
         // Validation
         // TODO
         if(_.isNaN(parseInt(value))){
-            setAlertState({
-                eventType: DANGER, //ここでSUCCESS,WARNING,DANGERを選択
-                eventMessage: MSG.NAN,
-                eventCount: alertState.eventCount + 1,
-             });
+            enqueueSnackbar(MSG.NAN, {variant: ERROR});
         } else {
             setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.OP_TIMES]:parseInt(value)})
         }
