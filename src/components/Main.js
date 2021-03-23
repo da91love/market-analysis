@@ -25,7 +25,6 @@ import qData from "../statics/quarter_result.json";
 import siData from "../statics/share_infos.json";
 
 const Main = (props) => {
-  const [alertState, setAlertState] = useState({eventCount: 0});
   const [yearRawData,setYearRawData] = useState(null);
   const [quarterRawData,setQuarterRawData] = useState(null);
   const [yearRawDataByShare,setYearRawDataByShare] = useState(null);

@@ -6,7 +6,6 @@ import {
 import { useSnackbar } from 'notistack';
 import AnalysisGraph from './AnalysisGraph';
 import CompareTgContext from "../../contexts/CompareTgContext";
-import AlertContext from "../../contexts/AlertContext";
 import GraphTypeSelectModal from './GraphTypeSelectModal';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import SyncStatus from '../../utils/SyncStatus';
@@ -21,7 +20,6 @@ import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GR
 const GraphModalBtn = (props) => {
     const {isMarket=false, tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit} = props;
     const {compareTg, setCompareTg} = useContext(CompareTgContext);
-    const {alertState,setAlertState} = useContext(AlertContext);
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
     const [graphData, setGraphData] = useState(null);

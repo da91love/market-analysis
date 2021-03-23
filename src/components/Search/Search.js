@@ -4,10 +4,10 @@ import {
 } from 'mdbreact';
 import _ from "lodash";
 import { useLocation, useParams } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 import ShareDataContext from "../../contexts/ShareDataContext";
 import CompareTgContext from "../../contexts/CompareTgContext";
-import AlertContext from "../../contexts/AlertContext";
 import FixedSideTable from '../Share/FixedSideTable';
 import AnalysisGraph from '../Share/AnalysisGraph';
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
@@ -29,11 +29,11 @@ import { MSG } from "../../consts/message";
 // Temp: import json
 const Search = () => {
   const location = useLocation();
+  const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
-  const {alertState,setAlertState} = useContext(AlertContext);
   const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
   const [selectedGraphType, setSelectedGraphType] = useState(BY_SHARE_DEFAULT_GRAPH_TYPE);
@@ -123,11 +123,7 @@ const Search = () => {
       }]
     });
 
-    setAlertState({
-      eventType: SUCCESS, //ここでSUCCESS,WARNING,DANGERを選択
-      eventMessage: `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`,
-      eventCount: alertState.eventCount + 1,
-    });
+    enqueueSnackbar(`${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, {variant: SUCCESS});
   };
 
   return (

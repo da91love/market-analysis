@@ -4,7 +4,6 @@ import {
 } from 'mdbreact';
 import _, { isNumber } from "lodash";
 
-import AlertContext from "../../contexts/AlertContext";
 import CompareTgContext from "../../contexts/CompareTgContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import AnalysisGraph from "../Share/AnalysisGraph";
@@ -15,7 +14,6 @@ import { STRG_KEY_NAME } from "../../consts/localStorage";
 
 // Temp: import json
 const Compare = () => {
-    const {alertState,setAlertState} = useContext(AlertContext);
     const { setCompareTg } = useContext(CompareTgContext);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
     const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);

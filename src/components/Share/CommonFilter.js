@@ -4,11 +4,9 @@ import { MDBInputGroup, MDBInput } from "mdbreact";
 import {FILTER_TYPE} from '../../consts/model';
 import {MSG} from '../../consts/message';
 import {ERROR} from '../../consts/alert';
-import AlertContext from "../../contexts/AlertContext";
 
 const CommonFilter = (props) => {
     const {title, mdlFilterStatus, setMdlFilterStatus} = props;
-    const {alertState,setAlertState} = useContext(AlertContext);
 
     const minFilterHandler = (value) => {
         // Validation
