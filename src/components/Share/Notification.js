@@ -19,7 +19,7 @@ const Notification = () => {
   };
 
   return (
-    <div className="fixed-bottom" style={{marginBottom: "25%"}}>
+    <div className="fixed-bottom" style={{marginBottom: "5%"}}>
         <Button className="float-right" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} variant="contained" color="secondary">
           Compare Target Shares{`(${compareTg.length})`}
         </Button>
