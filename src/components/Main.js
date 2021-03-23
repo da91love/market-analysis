@@ -17,7 +17,7 @@ import AllShares from './AllShares/AllShares';
 import rawDataByMarket from '../utils/rawDataByMarket';
 import {KEY_NAME} from '../consts/keyName';
 import {PERIOD_UNIT} from '../consts/common';
-import {ROUTER_URL} from '../consts/rounter';
+import {ROUTER_URL} from '../consts/router';
 
 import yData from "../statics/year_result.json";
 import qData from "../statics/quarter_result.json";
@@ -74,10 +74,10 @@ const Main = (props) => {
       yearRawDataByMrk, setYearRawDataByMrk,
       quarterRawDataByMrk, setQuarterRawDataByMrk
     }}>
-      <Header quarterRawData={quarterRawData}/>
+      <Header rawDataByShare={quarterRawDataByShare} rawDataByMrk={quarterRawDataByMrk}/>
       <Notification />
       <main className="blue-grey lighten-5">
-        <Route path={`${ROUTER_URL.SEARCH}/:shareCode?/:shareName?`} component={Search} exact />
+        <Route path={`${ROUTER_URL.SHARE_SEARCH}/:shareCode?/:shareName?`} component={Search} exact />
         <Route path={`${ROUTER_URL.TARGET}`} component={Target}  exact />
         <Route path={`${ROUTER_URL.MODEL_HIT}`} component={ModelHit}  exact />
         <Route path={`${ROUTER_URL.ALL_SHARES}`} component={AllShares}  exact />

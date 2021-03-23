@@ -47,6 +47,8 @@ export const KEY_NAME = {
  }
 
  export const OTHER_KEY_NAME = {
+    CODE: "code",
+    NAME: "name",
     MARKET_TYPE: "marketType",
     GRAPH:"graph",
     SCORE:"score",

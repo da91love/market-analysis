@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse,
   MDBFormInline, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
 } from 'mdbreact';
 import { useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router'
+import ShareDataContext from "../../contexts/ShareDataContext";
 import SearchInput from '../Share/SearchInput';
-import rawData2SearchData from '../../utils/rawData2SearchData';
 import { LANG } from '../../consts/common';
-import { ROUTER_URL } from '../../consts/rounter';
+import { KEY_NAME } from '../../consts/keyName';
+import { ROUTER_URL } from '../../consts/router';
 
 const Header = (props) => {
-  const {quarterRawData} = props;
+  const {rawDataByShare, rawDataByMrk} = props;
+  const {isInitDataLoaded} = useContext(ShareDataContext);
   const { t, i18n } = useTranslation();
-
   const [isOpen, setIsOpen] = useState(false);
+
+  // Ruturn nothing if init data is loaded
+  if (!isInitDataLoaded) {
+    return null
+  }
 
   const toggleCollapse = () => {
     setIsOpen(!isOpen);
@@ -23,6 +29,36 @@ const Header = (props) => {
   const changeLang = lang => {
     i18n.changeLanguage(lang);
   };
+
+  const rawData2ShareSearchData = (rawDataByS) => {
+    const result = [];
+    for (const shareCode in rawDataByS) {
+        const shareName = rawDataByS[shareCode][0][KEY_NAME.SHARE_NAME];
+        result.push({
+            target: `${shareCode}:${shareName}`,
+            [KEY_NAME.SHARE_CODE]: shareCode,
+            [KEY_NAME.SHARE_NAME]: shareName
+        });
+    }
+
+    return result;
+  }
+
+  const rawData2MrkSearchData = (rawDataByM) => {
+    const result = [];
+    for (const marketCode in rawDataByM) {
+        const marketName = rawDataByM[marketCode][0][KEY_NAME.MARKET_NAME];
+        result.push({
+            target: `${marketCode}:${marketName}`,
+            [KEY_NAME.MARKET_CODE]: marketCode,
+            [KEY_NAME.MARKET_NAME]: marketName
+        });
+    }
+
+    return result;
+  }
+
+  const options = rawData2ShareSearchData(rawDataByShare).concat(rawData2MrkSearchData(rawDataByMrk));
 
   return (
     <MDBNavbar color="white" dark expand="md" className="fixed-top pl-5 pr-5 mb-5">
@@ -33,12 +69,12 @@ const Header = (props) => {
       <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
         <MDBNavbarNav center>
           <MDBNavItem>
-            {quarterRawData?<SearchInput options={rawData2SearchData(quarterRawData)}/>:null}
+            <SearchInput options={options}/>
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
           <MDBNavItem active>
-            <MDBNavLink to={ROUTER_URL.SEARCH} className="black-text h4">{'SEARCH'}</MDBNavLink>
+            <MDBNavLink to={ROUTER_URL.SHARE_SEARCH} className="black-text h4">{'SEARCH'}</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBNavLink to={ROUTER_URL.TARGET} className="black-text h4">{'TARGET'}</MDBNavLink>
@@ -59,7 +95,7 @@ const Header = (props) => {
                 <div className="d-none d-md-inline black-text h2">SERVICE</div>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
-                <MDBDropdownItem href={ROUTER_URL.SEARCH}>SEARCH</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.SHARE_SEARCH}>SEARCH</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.TARGET}>TARGET</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.MODEL_HIT}>MODELHIT</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.ALL_SHARES} >ALLSHARES</MDBDropdownItem>

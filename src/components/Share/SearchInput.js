@@ -2,7 +2,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {KEY_NAME} from '../../consts/keyName';
+import {KEY_NAME, OTHER_KEY_NAME} from '../../consts/keyName';
+import {ROUTER_URL} from '../../consts/router';
 import { useHistory } from 'react-router-dom';
 
 const SearchInput = (props) => {
@@ -13,7 +14,7 @@ const SearchInput = (props) => {
     const searchHandler = (e, value) => {
         if (value) {
             history.push({
-                pathname: '/contents/search',
+                pathname: ROUTER_URL.SHARE_SEARCH,
                 state: {
                     [KEY_NAME.SHARE_CODE]: value[KEY_NAME.SHARE_CODE],
                     [KEY_NAME.SHARE_NAME]: value[KEY_NAME.SHARE_NAME],

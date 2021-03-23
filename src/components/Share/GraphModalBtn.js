@@ -11,7 +11,7 @@ import GraphTypeSelectModal from './GraphTypeSelectModal';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import SyncStatus from '../../utils/SyncStatus';
 import { PERIOD_UNIT, EXTERNAL_URL } from "../../consts/common";
-import { ROUTER_URL } from "../../consts/rounter";
+import { ROUTER_URL } from "../../consts/router";
 import { KEY_NAME } from "../../consts/keyName";
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { SUCCESS, ERROR } from "../../consts/alert";
@@ -39,7 +39,7 @@ const GraphModalBtn = (props) => {
     }
 
     const searchPageMoveHandler = (shareCode, shareName) => {
-        const win = window.open(`${ROUTER_URL.SEARCH}/${shareCode}/${shareName}`, "_blank");
+        const win = window.open(`${ROUTER_URL.SHARE_SEARCH}/${shareCode}/${shareName}`, "_blank");
         win.focus();
     }
 
