@@ -79,7 +79,7 @@ const FixedSideTable = props => {
                       <div>
                         <MDBPopoverHeader>{c.popOver.popOverHeader}</MDBPopoverHeader>
                         <MDBPopoverBody>
-                          <AnalysisGraph graphData={rawData2GraphData(c.popOver.popOverBody, c.value)}/>
+                          <AnalysisGraph label={false} graphData={rawData2GraphData(c.popOver.popOverBody, c.value)}/>
                         </MDBPopoverBody>
                       </div>
                     </MDBPopover>

@@ -6,6 +6,8 @@ import _ from "lodash";
 import { useLocation, useParams } from 'react-router-dom';
 
 import ShareDataContext from "../../contexts/ShareDataContext";
+import CompareTgContext from "../../contexts/CompareTgContext";
+import AlertContext from "../../contexts/AlertContext";
 import FixedSideTable from '../Share/FixedSideTable';
 import AnalysisGraph from '../Share/AnalysisGraph';
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
@@ -15,10 +17,13 @@ import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { MODELS } from '../../consts/model';
+import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE } from '../../consts/graph';
 import { SEARCH_TABLE_COL } from '../../consts/tblCol';
 import { EXTERNAL_URL } from '../../consts/common';
 import { FILTER } from '../../consts/filter';
+import { SUCCESS } from "../../consts/alert";
+import { MSG } from "../../consts/message";
 
 // Temp: import json
 const Search = () => {
@@ -26,6 +31,8 @@ const Search = () => {
   const params = useParams();
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+  const {compareTg, setCompareTg} = useContext(CompareTgContext);
+  const {alertState,setAlertState} = useContext(AlertContext);
   const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
   const [selectedGraphType, setSelectedGraphType] = useState(BY_SHARE_DEFAULT_GRAPH_TYPE);
@@ -105,6 +112,24 @@ const Search = () => {
     }
   }
 
+  const addToCompareList = (shareCode, shareName) => {
+    // localStorage.setItem(STRG_KEY_NAME.COMPARE, {
+    //   [KEY_NAME.SHARE_CODE]: shareCode,
+    //   [KEY_NAME.SHARE_NAME]: shareName
+    // }); 
+
+    setCompareTg([...compareTg, {
+      [KEY_NAME.SHARE_CODE]: shareCode,
+      [KEY_NAME.SHARE_NAME]: shareName
+    }]);
+
+    setAlertState({
+      eventType: SUCCESS, //ここでSUCCESS,WARNING,DANGERを選択
+      eventMessage: `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`,
+      eventCount: alertState.eventCount + 1,
+    });
+  };
+
   return (
       <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
         <div className="mt-3">
@@ -117,7 +142,8 @@ const Search = () => {
           </a>
           <a href={`${EXTERNAL_URL.NAVER_SEARCH}${shareName}`} target="_blank">
             <MDBIcon fab icon="neos" />
-          </a> 
+          </a>
+          <MDBIcon onClick={() => {addToCompareList(shareCode, shareName)}}  icon="list-alt" />
         </div>
         <div className="mt-3">
           <FixedSideTable

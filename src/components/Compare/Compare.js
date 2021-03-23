@@ -11,11 +11,12 @@ import AnalysisGraph from "../Share/AnalysisGraph";
 import {KEY_NAME} from "../../consts/keyName";
 import {COMPARE_GRAPH_TYPE} from "../../consts/graph";
 import {PERIOD_UNIT} from "../../consts/common";
+import { STRG_KEY_NAME } from "../../consts/localStorage";
 
 // Temp: import json
 const Compare = () => {
     const {alertState,setAlertState} = useContext(AlertContext);
-    const {compareTg, setCompareTg} = useContext(CompareTgContext);
+    const {compareTg, setCompareTg } = useContext(CompareTgContext);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
     const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
 

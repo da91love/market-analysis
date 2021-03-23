@@ -13,6 +13,7 @@
 - [update] 실제 엑셀처럼 전체 검색 가능한 페이지
    - 컬럼 선택가능하게, 컬럼별 필터 추가
 - [update] search 화면에서 지표에 hover하면 추세선 나타나게 하기
+- [update] target 화면 테이블 컬럼변경
 
 
 ### Update done

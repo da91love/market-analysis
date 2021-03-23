@@ -11,6 +11,7 @@ import rawData2GraphData from '../../utils/rawData2GraphData';
 import { PERIOD_UNIT, EXTERNAL_URL } from "../../consts/common";
 import { ROUTER_URL } from "../../consts/rounter";
 import { KEY_NAME } from "../../consts/keyName";
+import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { SUCCESS } from "../../consts/alert";
 import { MSG } from "../../consts/message";
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, BY_MRK_ALL_GRAPH_TYPE } from "../../consts/graph"
@@ -41,6 +42,12 @@ const GraphModalBtn = (props) => {
     }
 
     const addToCompareList = (shareCode, shareName) => {
+        // setter
+        // localStorage.setItem(STRG_KEY_NAME.COMPARE, {
+        //     [KEY_NAME.SHARE_CODE]: shareCode,
+        //     [KEY_NAME.SHARE_NAME]: shareName
+        // }); 
+      
         setCompareTg([...compareTg, {
             [KEY_NAME.SHARE_CODE]: shareCode,
             [KEY_NAME.SHARE_NAME]: shareName

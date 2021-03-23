@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import CompareTgContext from '../../contexts/CompareTgContext';
+import { STRG_KEY_NAME } from "../../consts/localStorage";
 
 const Notification = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -17,9 +18,9 @@ const Notification = () => {
   };
 
   return (
-    <div className="fixed-bottom" style={{marginBottom: "7rem"}}>
+    <div className="fixed-bottom" style={{marginBottom: "25%"}}>
         <Button className="float-right" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} variant="contained" color="secondary">
-        Secondary
+          Secondary
         </Button>
         <Menu
           id="simple-menu"
