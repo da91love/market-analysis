@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
     MDBCard, MDBCardBody, MDBCardText, MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
 } from 'mdbreact';
-import _, { isNumber } from "lodash";
+import _ from "lodash";
 
 import CompareTgContext from "../../contexts/CompareTgContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
@@ -14,10 +14,11 @@ import { STRG_KEY_NAME } from "../../consts/localStorage";
 
 // Temp: import json
 const Compare = () => {
-    const { setCompareTg } = useContext(CompareTgContext);
-    const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
-    const {yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
-    const compareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || []; 
+    const { compareTg, setCompareTg } = useContext(CompareTgContext);
+    const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
+    const [graphData, setGraphData] = useState();
+    const {isInitDataLoaded, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+    const compareTgFromStrg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || []; 
 
     const tabHandler = (tab) => {
         if (activeTab !== tab) {
@@ -68,20 +69,26 @@ const Compare = () => {
         };
     }
 
-    const graphData = function() {
-        const idcByYear = {};
-        const idcByQuarter = {};
-
-        COMPARE_GRAPH_TYPE.forEach((idc, i) => {
-            idcByYear[idc] = rawData2GraphData(compareTg, yearRawDataByShare, idc);
-            idcByQuarter[idc] = rawData2GraphData(compareTg, quarterRawDataByShare, idc);
-        })
+    useEffect(() => {
+        if (isInitDataLoaded) {
+            const gData = function() {
+                const idcByYear = {};
+                const idcByQuarter = {};
         
-        return({
-            year: idcByYear,
-            quarter: idcByQuarter
-        })
-    }();
+                COMPARE_GRAPH_TYPE.forEach((idc, i) => {
+                    idcByYear[idc] = rawData2GraphData(compareTgFromStrg, yearRawDataByShare, idc);
+                    idcByQuarter[idc] = rawData2GraphData(compareTgFromStrg, quarterRawDataByShare, idc);
+                })
+                
+                return({
+                    year: idcByYear,
+                    quarter: idcByQuarter
+                })
+            }();
+    
+            setGraphData(gData);
+        }
+    }, [isInitDataLoaded, compareTg]);
 
     return (
         <MDBContainer className="mt-5 mb-5 pt-5 pb-5">

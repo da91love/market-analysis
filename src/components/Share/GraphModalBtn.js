@@ -22,7 +22,7 @@ const GraphModalBtn = (props) => {
     const {isMarket=false, tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit} = props;
     const {compareTg, setCompareTg} = useContext(CompareTgContext);
     const [modalState, setModalState] = useState(false);
-    const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
+    const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [graphData, setGraphData] = useState(null);
     const [selectedGraphType, setSelectedGraphType] = useState(isMarket?BY_MRK_DEFAULT_GRAPH_TYPE:BY_SHARE_DEFAULT_GRAPH_TYPE)
     const { enqueueSnackbar } = useSnackbar();

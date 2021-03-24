@@ -12,12 +12,13 @@
 - [update] 서치 페이지에서 종목명 옆에 마켓명 표시하기
 - [update] 실제 엑셀처럼 전체 검색 가능한 페이지
    - 컬럼 선택가능하게, 컬럼별 필터 추가
-- [update] search 화면에서 지표에 hover하면 추세선 나타나게 하기
 - [update] target 화면 테이블 컬럼변경
-
+- [update] search 화면 responsive 안됨
+- [update] navbar -> hamberger 로 변경하기
 
 ### Update done
 - [update] 투자증가주: 투자현금흐름 전분기 2배이상 증가
 - [update] 210309 전체검색기능
 - [update] 210318 서치 페이지에서 종목명 클릭하면 네이버로 넘어가기
 - [update] Search 화면에서 지표 추가 클릭버튼
+- [update] search 화면에서 지표에 hover하면 추세선 나타나게 하기

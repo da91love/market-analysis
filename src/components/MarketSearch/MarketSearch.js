@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import {
-  MDBContainer, MDBIcon, MDBCard, MDBCardTitle, MDBCardText, MDBCardBody,  MDBDataTableV5
+  MDBContainer, MDBCard, MDBCardTitle, MDBCardText, MDBCardBody,  MDBDataTableV5
 } from 'mdbreact';
 import _ from "lodash";
 import { useLocation, useParams } from 'react-router-dom';
@@ -8,34 +8,24 @@ import { useSnackbar } from 'notistack';
 
 import ShareDataContext from "../../contexts/ShareDataContext";
 import GraphModalBtn from "../Share/GraphModalBtn";
-import Filter from "../../utils/Filter";
 import FilterWrapper from "./FilterWrapper";
 
-import { PERIOD_UNIT, DEFAULT_MARKET_INFO } from '../../consts/common';
+import { DEFAULT_MARKET_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { MODEL_SEARCH_TABLE_COL } from '../../consts/tbCol';
 import { MARKET_SEARCH_FILTER, FILTER_TYPE } from '../../consts/filter';
-
-import { EXTERNAL_URL } from '../../consts/common';
-import { FILTER } from '../../consts/filter';
-import { SUCCESS, ERROR } from "../../consts/alert";
-import { MSG } from "../../consts/message";
 
 // Temp: import json
 const MarketSearch = () => {
     const location = useLocation();
     const [filterStatus, setFilterStatus] = useState(MARKET_SEARCH_FILTER);
+    const [dataTableData, setDataTableData] = useState();
     const { enqueueSnackbar } = useSnackbar();
     const params = useParams();
     const mrkInfoFromExtnl = location.state || (params[KEY_NAME.MARKET_CODE]?params:undefined); // Search page gets locations or params
     const {isInitDataLoaded, quarterRawData, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
     const [marketInfo, setMarketInfo] = useState(DEFAULT_MARKET_INFO);
     const {marketCode, marketName} = marketInfo;
-
-    // Ruturn nothing if init data is loaded
-    if (!isInitDataLoaded) { 
-        return null
-    }
 
     if (mrkInfoFromExtnl && mrkInfoFromExtnl !== marketInfo){
         setMarketInfo(mrkInfoFromExtnl);
@@ -95,18 +85,30 @@ const MarketSearch = () => {
         return tgData;
     }
 
-    const quarterRawDataByMrk = _.groupBy(quarterRawData, v => v[KEY_NAME.MARKET_CODE]);
+    /**
+     * useEffect를 사용하지 않고 외부에서 data를 관리하면, compare데이터 추가 시
+     * 상부의 status 업데이트에 의해, useEffect 외부의 작업도 다시 한번 돌게 되므로
+     * 테이블의 필터가 초기화되는 현상이 발생함.
+     * 이처럼 상부의 status의 변화와 관계없이 필요할 때만 데이터를 업데이트해주는 부분에
+     * useEffect를 사용하면, 어플의 효율이 높아짐
+     **/
+    useEffect(() => {
+        if (isInitDataLoaded) {
+            const quarterRawDataByMrk = _.groupBy(quarterRawData, v => v[KEY_NAME.MARKET_CODE]);
+            const filteredRawData = filterRawData(quarterRawDataByMrk[marketCode], filterStatus);
+            const dtData = rawData2TableData(filteredRawData, MODEL_SEARCH_TABLE_COL);
+            setDataTableData(dtData);
+        }
+    }, [isInitDataLoaded, filterStatus, marketInfo])
 
-    const filteredRawData = filterRawData(quarterRawDataByMrk[marketCode], filterStatus);
-    const dataTableData = rawData2TableData(filteredRawData, MODEL_SEARCH_TABLE_COL);
-
-  return (
+    return (
       <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
         <MDBCard className="mb-4">
             <MDBCardBody>
                 <MDBCardTitle>
                 <div className="">
-                    <FilterWrapper filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
+                    {dataTableData?<FilterWrapper filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
+                    :null}
                 </div>
                 </MDBCardTitle>
                 <MDBCardText>

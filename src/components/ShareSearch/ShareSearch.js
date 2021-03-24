@@ -22,6 +22,7 @@ import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE } from '../../consts/graph';
 import { SEARCH_TABLE_COL } from '../../consts/tbCol';
 import { EXTERNAL_URL } from '../../consts/common';
+import { ROUTER_URL } from '../../consts/router';
 import { FILTER_BY_MDL } from '../../consts/filter';
 import { SUCCESS, ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
@@ -34,7 +35,7 @@ const ShareSearch = () => {
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
-  const [activeTab, setActiveTab] = useState(PERIOD_UNIT.YEAR);
+  const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
   const [selectedGraphType, setSelectedGraphType] = useState(BY_SHARE_DEFAULT_GRAPH_TYPE);
   const {shareCode, shareName} = shareInfo;
@@ -50,8 +51,10 @@ const ShareSearch = () => {
 
   // Get nessasary data from rawdata
   const marketType = _.find(shareInfos, [KEY_NAME.SHARE_CODE, shareCode])[OTHER_KEY_NAME.MARKET_TYPE];
+  const marketName = quarterRawDataByShare[shareCode][0][KEY_NAME.MARKET_NAME];
   const marketCode = quarterRawDataByShare[shareCode][0][KEY_NAME.MARKET_CODE];
 
+  // TODO: 상위 status가 움직일때 아래 함수들이 매번 시행되므로 useEffect안에서 시행할 것
   // Get data for model compare table
   const allMatchedTgByModel = getAllMatchedTgByModel(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL);
   const modelCompareTableData = function() {
@@ -113,33 +116,38 @@ const ShareSearch = () => {
     }
   }
 
-  const addToCompareList = (shareCode, shareName) => {
+  const addToCompareListHandler = (shareCode, shareName) => {
     if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
         enqueueSnackbar(
             `${MSG.SHARE_CODE_ALREADY_EXIST}(${shareCode}:${shareName})`, 
             {variant: ERROR}
         );
     } else {
-        SyncStatus.set({
-            storageKey: STRG_KEY_NAME.COMPARE,
-            statusSetter: setCompareTg,
-            data: [...compareTg, {
-              [KEY_NAME.SHARE_CODE]: shareCode,
-              [KEY_NAME.SHARE_NAME]: shareName
-            }]
-        });
+      SyncStatus.set({
+        storageKey: STRG_KEY_NAME.COMPARE,
+        statusSetter: setCompareTg,
+        data: [...compareTg, {
+          [KEY_NAME.SHARE_CODE]: shareCode,
+          [KEY_NAME.SHARE_NAME]: shareName
+        }]
+      });
 
-        enqueueSnackbar(
-            `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, 
-            {variant: SUCCESS}
-        );
+      enqueueSnackbar(
+        `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, 
+        {variant: SUCCESS}
+      );
     }
-};
+  };
 
   return (
       <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
         <div className="mt-3">
-          <p className="h4">{marketType}</p>
+          <p>
+            <span className="h4">{marketType}</span>
+            <a href={`${ROUTER_URL.MARKET_SEARCH}/${marketCode}/${marketName}`} target="_blank">
+              <span className="h4">{`  ${marketName}`}</span>
+            </a>
+          </p>
           <a href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
             <span className="h1">{`${shareName}(${shareCode})`}</span>
           </a>
@@ -149,7 +157,7 @@ const ShareSearch = () => {
           <a href={`${EXTERNAL_URL.NAVER_SEARCH}${shareName}`} target="_blank">
             <MDBIcon fab icon="neos" />
           </a>
-          <MDBIcon onClick={() => {addToCompareList(shareCode, shareName)}}  icon="list-alt" />
+          <MDBIcon onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="list-alt" />
         </div>
         <div className="mt-3">
           <FixedSideTable

@@ -76,7 +76,10 @@ const Header = (props) => {
         </MDBNavbarNav>
         <MDBNavbarNav right>
           <MDBNavItem active>
-            <MDBNavLink to={ROUTER_URL.SHARE_SEARCH} className="black-text h4">{'SEARCH'}</MDBNavLink>
+            <MDBNavLink to={ROUTER_URL.SHARE_SEARCH} className="black-text h4">{'SHARESEARCH'}</MDBNavLink>
+          </MDBNavItem>
+          <MDBNavItem>
+            <MDBNavLink to={ROUTER_URL.MARKET_SEARCH} className="black-text h4">{'MARKETSEARCH'}</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
             <MDBNavLink to={ROUTER_URL.TARGET} className="black-text h4">{'TARGET'}</MDBNavLink>

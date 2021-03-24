@@ -85,7 +85,6 @@ const Main = (props) => {
         <Route path={`${ROUTER_URL.ALL_SHARES}`} component={AllShares}  exact />
         <Route path={`${ROUTER_URL.COMPARE}`} component={Compare}  exact />
       </main>
-      <Footer />
     </ShareDataContext.Provider>
     </CompareTgContext.Provider>
   );
