@@ -1,6 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import { MDBContainer, MDBBtn, MDBModal, MDBIcon, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import _ from "lodash";
 
 import ShareDataContext from "../../contexts/ShareDataContext";
@@ -69,7 +67,9 @@ const FilterWrapper = (props) => {
 
   return (
     <>
-        {model?<FilterModalBtn filterComponent={getInputsByModel()} saveHandler={saveHandler}/>:null}
+        {model!=="default"?
+        <FilterModalBtn filterComponent={getInputsByModel()} saveHandler={saveHandler}/>
+        :<FilterModalBtn filterComponent={null} />}
     </>
   )
 }

@@ -1,9 +1,9 @@
 import _, { last } from "lodash";
 import cutPeriodWithCondition from "./cutPeriodWithCondition";
 import EconoIndicator from "../utils/EconoIndicator";
-import rawDataByMarket from "../utils/rawDataByMarket";
 import { KEY_NAME } from '../consts/keyName';
-import { MODELS, FILTER_TYPE,MKRGROWTH_MODEL_RAWDATA_KEYNAME } from '../consts/model';
+import { MODELS, MKRGROWTH_MODEL_RAWDATA_KEYNAME } from '../consts/model';
+import {FILTER_TYPE} from '../consts/filter';
 
 class ShareTargetModelEngine {
 
@@ -37,13 +37,14 @@ class ShareTargetModelEngine {
     const tgShares = [];
 
     // get filter
-    const perMinFilter = filterStatus[MODELS.VALUE][FILTER_TYPE.PER_MIN];
-    const perMaxFilter = filterStatus[MODELS.VALUE][FILTER_TYPE.PER_MAX];
-    const roeMaxFilter = filterStatus[MODELS.VALUE][FILTER_TYPE.ROE_MIN];
+    const perMinFilterStatus = filterStatus[MODELS.VALUE][FILTER_TYPE.PER_MIN];
+    const perMaxFilterStatus = filterStatus[MODELS.VALUE][FILTER_TYPE.PER_MAX];
+    const roeMaxFilterStatus = filterStatus[MODELS.VALUE][FILTER_TYPE.ROE_MIN];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
-      const periodFilter = filterStatus[MODELS.VALUE][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
-      const tgPeriodData = cutPeriodWithCondition(v, periodFilter);
+      // cutPeriodWithCondition function working same as period filter + @
+      const periodFilterStatus = filterStatus[MODELS.VALUE][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const tgPeriodData = cutPeriodWithCondition(v, periodFilterStatus);
       const tgPeriodDataLen = tgPeriodData.length;
 
       if (tgPeriodDataLen > 0) {
@@ -51,8 +52,8 @@ class ShareTargetModelEngine {
         const tgRoe = tgPeriodData[tgPeriodDataLen-1][KEY_NAME.ROE];
   
         // 0 < PER < 10 and  ROE > 15
-        if (perMinFilter < tgPer && tgPer <= perMaxFilter) {
-          if (roeMaxFilter <= tgRoe) {
+        if (perMinFilterStatus < tgPer && tgPer <= perMaxFilterStatus) {
+          if (roeMaxFilterStatus <= tgRoe) {
             tgShares.push(tgPeriodData[tgPeriodDataLen-1]);
           }
         }

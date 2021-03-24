@@ -1,5 +1,5 @@
 import React from "react";
-import {FILTER_TYPE} from '../../consts/model';
+import {FILTER_TYPE} from '../../consts/filter';
 
 const PeriodFilter = (props) => {
     const {title, options, mdlFilterStatus, setMdlFilterStatus} = props;

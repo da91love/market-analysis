@@ -39,15 +39,3 @@ export const MKRGROWTH_MODEL_RAWDATA_KEYNAME = [
     KEY_NAME.PCR,
     KEY_NAME.PBR,
 ]
-
-export const FILTER_TYPE = {
-    PERIOD: "periodFilter",
-    TERM: "termFilter",
-    PER_MIN: "perMinFilter",
-    PER_MAX: "perMaxFilter",
-    SALES_MIN: "salesMinFilter",
-    ROE_MIN: "roeMinFilter",
-    OP_TIMES: "opTimesFilter",
-    IA_CF_TIMES: "iaCfTimesFilter",
-    MV_TIMES: "mvTimesFilter"
-}

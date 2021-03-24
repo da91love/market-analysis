@@ -17,7 +17,7 @@ const FilterModalBtn = (props) => {
   }
 
   return (
-  <IconButton color="default" aria-label="upload picture" component="span">
+  <IconButton disabled={filterComponent?false:true} color="default" aria-label="upload picture" component="span">
     <MDBIcon icon="filter" onClick={() => {modalHandler()}}/>
     <MDBModal isOpen={modalState} toggle={modalHandler}>
       <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
@@ -26,7 +26,7 @@ const FilterModalBtn = (props) => {
       </MDBModalBody>
       <MDBModalFooter>
         <MDBBtn color="secondary" onClick={modalHandler}>Close</MDBBtn>
-        <MDBBtn color="primary" onClick={saveHandler}>Save changes</MDBBtn>
+        <MDBBtn color="primary" onClick={modalSaveHandler}>Save changes</MDBBtn>
       </MDBModalFooter>
     </MDBModal>
   </IconButton>

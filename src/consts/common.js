@@ -26,3 +26,8 @@ export const DEFAULT_SHARE_INFO = {
   [KEY_NAME.SHARE_CODE]: '005930',
   [KEY_NAME.SHARE_NAME]: '삼성전자'
 }
+
+export const DEFAULT_MARKET_INFO = {
+  [KEY_NAME.MARKET_CODE]: '202',
+  [KEY_NAME.MARKET_NAME]: '반도체와반도체장비'
+}

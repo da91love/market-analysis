@@ -1,6 +1,18 @@
-import {MODELS, FILTER_TYPE} from './model'
+import {MODELS} from './model'
 
-export const FILTER = {
+export const FILTER_TYPE = {
+    PERIOD: "periodFilter",
+    TERM: "termFilter",
+    PER_MIN: "perMinFilter",
+    PER_MAX: "perMaxFilter",
+    SALES_MIN: "salesMinFilter",
+    ROE_MIN: "roeMinFilter",
+    OP_TIMES: "opTimesFilter",
+    IA_CF_TIMES: "iaCfTimesFilter",
+    MV_TIMES: "mvTimesFilter"
+}
+
+export const FILTER_BY_MDL = {
     [MODELS.VALUE]: {
         [FILTER_TYPE.PERIOD]:null,
         [FILTER_TYPE.PER_MAX]: 12,
@@ -36,4 +48,8 @@ export const FILTER = {
         [FILTER_TYPE.PERIOD]:null,
         [FILTER_TYPE.IA_CF_TIMES]: 300,
     }
+}
+
+export const MARKET_SEARCH_FILTER = {
+    [FILTER_TYPE.PERIOD]:null,
 } 

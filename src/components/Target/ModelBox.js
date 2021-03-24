@@ -14,7 +14,7 @@ import { MODELS } from "../../consts/model";
 import { MODEL_TABLE_COL } from "../../consts/tbCol";
 import { MODEL_NAME } from "../../consts/model";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
-import { FILTER } from "../../consts/filter";
+import { FILTER_BY_MDL } from "../../consts/filter";
 import { MSG } from "../../consts/message"
 
 import getModelData from '../../utils/getModelData';
@@ -26,7 +26,7 @@ const ModelBox = (props) => {
    const { enqueueSnackbar } = useSnackbar();
    const {yearRawDataByShare, quarterRawDataByShare, yearRawDataByMrk, quarterRawDataByMrk} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);
-   const [filterStatus, setFilterStatus] = useState(FILTER);
+   const [filterStatus, setFilterStatus] = useState(FILTER_BY_MDL);
 
    const rawData2TableData = (modelName, rawData, tgColList) => {
       // Create columns

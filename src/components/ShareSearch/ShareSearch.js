@@ -22,7 +22,7 @@ import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE } from '../../consts/graph';
 import { SEARCH_TABLE_COL } from '../../consts/tbCol';
 import { EXTERNAL_URL } from '../../consts/common';
-import { FILTER } from '../../consts/filter';
+import { FILTER_BY_MDL } from '../../consts/filter';
 import { SUCCESS, ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
 
@@ -53,7 +53,7 @@ const ShareSearch = () => {
   const marketCode = quarterRawDataByShare[shareCode][0][KEY_NAME.MARKET_CODE];
 
   // Get data for model compare table
-  const allMatchedTgByModel = getAllMatchedTgByModel(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER);
+  const allMatchedTgByModel = getAllMatchedTgByModel(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL);
   const modelCompareTableData = function() {
     const header = Object.values(MODELS).map((model, i) => {
       return {

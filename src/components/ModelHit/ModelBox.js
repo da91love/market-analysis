@@ -8,7 +8,7 @@ import GraphModalBtn from '../Share/GraphModalBtn';
 
 import { MODELS } from "../../consts/model";
 import { MODEL_HIT_TABLE_COL } from "../../consts/tbCol";
-import { FILTER } from "../../consts/filter";
+import { FILTER_BY_MDL } from "../../consts/filter";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { EXTERNAL_URL } from "../../consts/common"
 
@@ -53,11 +53,11 @@ const ModelBox = (props) => {
    useEffect(() => {
       if (isInitDataLoaded) {
          // Run model
-         const valueModelData = ShareTargetModelEngine.getValueModel(quarterRawDataByShare, FILTER);
-         const turnAroundModelData = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare, FILTER);
-         const cpGrowthModelData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare, FILTER);
-         const collapseModelData = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare, FILTER);
-         const blueChipModelData = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare, FILTER);
+         const valueModelData = ShareTargetModelEngine.getValueModel(quarterRawDataByShare, FILTER_BY_MDL);
+         const turnAroundModelData = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare, FILTER_BY_MDL);
+         const cpGrowthModelData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare, FILTER_BY_MDL);
+         const collapseModelData = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare, FILTER_BY_MDL);
+         const blueChipModelData = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare, FILTER_BY_MDL);
 
          const dataTableInput = (Object.keys(quarterRawDataByShare).map((shareCode, i) => {
             const tgShareData = quarterRawDataByShare[shareCode];

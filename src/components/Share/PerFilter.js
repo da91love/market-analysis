@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import _ from "lodash";
 import { useSnackbar } from 'notistack';
 import { MDBInputGroup, MDBInput } from "mdbreact";
-import {FILTER_TYPE} from '../../consts/model';
+import {FILTER_TYPE} from '../../consts/filter';
 import {MSG} from '../../consts/message';
 import {ERROR} from '../../consts/alert';
 
