@@ -3,6 +3,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {KEY_NAME, OTHER_KEY_NAME} from '../../consts/keyName';
+import {SHARE_OR_MARKET} from '../../consts/common';
 import {ROUTER_URL} from '../../consts/router';
 import { useHistory } from 'react-router-dom';
 
@@ -13,13 +14,23 @@ const SearchInput = (props) => {
 
     const searchHandler = (e, value) => {
         if (value) {
-            history.push({
-                pathname: ROUTER_URL.SHARE_SEARCH,
-                state: {
-                    [KEY_NAME.SHARE_CODE]: value[KEY_NAME.SHARE_CODE],
-                    [KEY_NAME.SHARE_NAME]: value[KEY_NAME.SHARE_NAME],
-                },
-            })
+            if (value[OTHER_KEY_NAME.TYPE] === SHARE_OR_MARKET.SHARE) {
+                history.push({
+                    pathname: ROUTER_URL.SHARE_SEARCH,
+                    state: {
+                        [KEY_NAME.SHARE_CODE]: value[KEY_NAME.SHARE_CODE],
+                        [KEY_NAME.SHARE_NAME]: value[KEY_NAME.SHARE_NAME],
+                    },
+                });
+            } else if (value[OTHER_KEY_NAME.TYPE] === SHARE_OR_MARKET.MARKET) {
+                history.push({
+                    pathname: ROUTER_URL.MARKET_SEARCH,
+                    state: {
+                        [KEY_NAME.MARKET_CODE]: value[KEY_NAME.MARKET_CODE],
+                        [KEY_NAME.MARKET_NAME]: value[KEY_NAME.MARKET_NAME],
+                    },
+                });
+            }
         }
     }
 

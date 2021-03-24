@@ -9,7 +9,7 @@ import FixedSideTable from '../Share/FixedSideTable';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, MODELS } from '../../consts/model';
-import { ALL_SHARE_TABLE_COL } from '../../consts/tblCol';
+import { ALL_SHARE_TABLE_COL } from '../../consts/tbCol';
 import { EXTERNAL_URL } from '../../consts/common';
 import { FILTER } from '../../consts/filter';
 

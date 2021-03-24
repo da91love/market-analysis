@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router'
 import ShareDataContext from "../../contexts/ShareDataContext";
 import SearchInput from '../Share/SearchInput';
-import { LANG } from '../../consts/common';
-import { KEY_NAME } from '../../consts/keyName';
+import { SHARE_OR_MARKET, LANG } from '../../consts/common';
+import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { ROUTER_URL } from '../../consts/router';
 
 const Header = (props) => {
@@ -35,7 +35,8 @@ const Header = (props) => {
     for (const shareCode in rawDataByS) {
         const shareName = rawDataByS[shareCode][0][KEY_NAME.SHARE_NAME];
         result.push({
-            target: `${shareCode}:${shareName}`,
+            [OTHER_KEY_NAME.TYPE]: SHARE_OR_MARKET.SHARE,
+            [OTHER_KEY_NAME.TARGET]: `${shareCode}:${shareName}`,
             [KEY_NAME.SHARE_CODE]: shareCode,
             [KEY_NAME.SHARE_NAME]: shareName
         });
@@ -49,7 +50,8 @@ const Header = (props) => {
     for (const marketCode in rawDataByM) {
         const marketName = rawDataByM[marketCode][0][KEY_NAME.MARKET_NAME];
         result.push({
-            target: `${marketCode}:${marketName}`,
+            [OTHER_KEY_NAME.TYPE]: SHARE_OR_MARKET.MARKET,
+            [OTHER_KEY_NAME.TARGET]: `${marketCode}:${marketName}`,
             [KEY_NAME.MARKET_CODE]: marketCode,
             [KEY_NAME.MARKET_NAME]: marketName
         });

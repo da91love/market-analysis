@@ -52,5 +52,7 @@ export const KEY_NAME = {
     MARKET_TYPE: "marketType",
     GRAPH:"graph",
     SCORE:"score",
-    NUM_OF_CP: "numOfCp"
+    NUM_OF_CP: "numOfCp",
+    TARGET: "target",
+    TYPE: "type"
  }

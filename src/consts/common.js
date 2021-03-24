@@ -10,6 +10,11 @@ export const PERIOD_UNIT = {
   QUARTER: 'quarter',
 }
 
+export const SHARE_OR_MARKET = {
+  SHARE: 'share',
+  MARKET: 'market',
+}
+
 export const EXTERNAL_URL = {
   NAVER_SHARE_INFO: 'https://finance.naver.com/item/main.nhn?code=',
   NAVER_MRK_INFO: 'https://finance.naver.com/sise/sise_group_detail.nhn?type=upjong&no=',

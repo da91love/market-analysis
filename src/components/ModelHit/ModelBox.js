@@ -7,7 +7,7 @@ import ShareTargetModelEngine from '../../utils/ShareTargetModelEngine';
 import GraphModalBtn from '../Share/GraphModalBtn';
 
 import { MODELS } from "../../consts/model";
-import { MODEL_HIT_TABLE_COL } from "../../consts/tblCol";
+import { MODEL_HIT_TABLE_COL } from "../../consts/tbCol";
 import { FILTER } from "../../consts/filter";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { EXTERNAL_URL } from "../../consts/common"

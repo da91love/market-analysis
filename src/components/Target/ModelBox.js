@@ -7,11 +7,11 @@ import _ from "lodash";
 import { useSnackbar } from 'notistack';
 
 import NoModelSelected from './NoModelSelected';
-import FilterModalBtn from './FilterModalBtn';
+import FilterWrapper from './FilterWrapper';
 import ShareDataContext from "../../contexts/ShareDataContext";
 import { ERROR } from "../../consts/alert";
 import { MODELS } from "../../consts/model";
-import { MODEL_TABLE_COL } from "../../consts/tblCol";
+import { MODEL_TABLE_COL } from "../../consts/tbCol";
 import { MODEL_NAME } from "../../consts/model";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { FILTER } from "../../consts/filter";
@@ -121,7 +121,7 @@ const ModelBox = (props) => {
                   </select>
                </div>
                <div className="">
-                  <FilterModalBtn model={model} filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
+                  <FilterWrapper model={model} filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
                   <IconButton className="float-right" color="secondary" aria-label="upload picture" component="span">
                      <MDBIcon onClick={() => {removeModelBtn()}} icon="times" />
                   </IconButton>

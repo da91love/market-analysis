@@ -20,14 +20,14 @@ import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { MODELS } from '../../consts/model';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE } from '../../consts/graph';
-import { SEARCH_TABLE_COL } from '../../consts/tblCol';
+import { SEARCH_TABLE_COL } from '../../consts/tbCol';
 import { EXTERNAL_URL } from '../../consts/common';
 import { FILTER } from '../../consts/filter';
 import { SUCCESS, ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
 
 // Temp: import json
-const Search = () => {
+const ShareSearch = () => {
   const location = useLocation();
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
@@ -234,4 +234,4 @@ const Search = () => {
     )
 };
 
-export default Search;
+export default ShareSearch;

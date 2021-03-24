@@ -9,7 +9,8 @@ import Footer from './Share/Footer';
 import Notification from './Share/Notification';
 import CompareTgContext from '../contexts/CompareTgContext';
 import ShareDataContext from '../contexts/ShareDataContext';
-import Search from './Search/Search';
+import ShareSearch from './ShareSearch/ShareSearch';
+import MarketSearch from './MarketSearch/MarketSearch';
 import Target from './Target/Target';
 import Compare from './Compare/Compare';
 import ModelHit from './ModelHit/ModelHit';
@@ -77,7 +78,8 @@ const Main = (props) => {
       <Header rawDataByShare={quarterRawDataByShare} rawDataByMrk={quarterRawDataByMrk}/>
       <Notification />
       <main className="blue-grey lighten-5">
-        <Route path={`${ROUTER_URL.SHARE_SEARCH}/:shareCode?/:shareName?`} component={Search} exact />
+        <Route path={`${ROUTER_URL.SHARE_SEARCH}/:shareCode?/:shareName?`} component={ShareSearch} exact />
+        <Route path={`${ROUTER_URL.MARKET_SEARCH}/:marketCode?/:marketName?`} component={MarketSearch} exact />
         <Route path={`${ROUTER_URL.TARGET}`} component={Target}  exact />
         <Route path={`${ROUTER_URL.MODEL_HIT}`} component={ModelHit}  exact />
         <Route path={`${ROUTER_URL.ALL_SHARES}`} component={AllShares}  exact />
