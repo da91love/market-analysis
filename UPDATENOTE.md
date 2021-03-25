@@ -15,6 +15,7 @@
 - [update] target 화면 테이블 컬럼변경
 - [update] search 화면 responsive 안됨
 - [update] navbar -> hamberger 로 변경하기
+- [update] PSR PER POR 계산표
 
 ### Update done
 - [update] 투자증가주: 투자현금흐름 전분기 2배이상 증가
