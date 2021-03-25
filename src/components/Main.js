@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import _ from "lodash";
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 
 import Header from './Share/Header';
-import Footer from './Share/Footer';
+import SideBar from './Share/SideBar';
 import Notification from './Share/Notification';
 import CompareTgContext from '../contexts/CompareTgContext';
 import ShareDataContext from '../contexts/ShareDataContext';
@@ -15,6 +13,7 @@ import Target from './Target/Target';
 import Compare from './Compare/Compare';
 import ModelHit from './ModelHit/ModelHit';
 import AllShares from './AllShares/AllShares';
+import CTest from './CTest/CTest';
 import rawDataByMarket from '../utils/rawDataByMarket';
 import {KEY_NAME} from '../consts/keyName';
 import {PERIOD_UNIT} from '../consts/common';
@@ -84,6 +83,7 @@ const Main = (props) => {
         <Route path={`${ROUTER_URL.MODEL_HIT}`} component={ModelHit}  exact />
         <Route path={`${ROUTER_URL.ALL_SHARES}`} component={AllShares}  exact />
         <Route path={`${ROUTER_URL.COMPARE}`} component={Compare}  exact />
+        <Route path={'/contents/test'} component={CTest}  exact />
       </main>
     </ShareDataContext.Provider>
     </CompareTgContext.Provider>
