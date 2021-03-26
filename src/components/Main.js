@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom';
 import _ from "lodash";
 
 import Header from './Share/Header';
-import SideBar from './Share/SideBar';
 import Notification from './Share/Notification';
 import CompareTgContext from '../contexts/CompareTgContext';
 import ShareDataContext from '../contexts/ShareDataContext';

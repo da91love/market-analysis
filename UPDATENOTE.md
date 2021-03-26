@@ -16,6 +16,7 @@
 - [update] search 화면 responsive 안됨
 - [update] navbar -> hamberger 로 변경하기
 - [update] PSR PER POR 계산표
+- [update] 거래정지 유의 종목 표시하기
 
 ### Update done
 - [update] 투자증가주: 투자현금흐름 전분기 2배이상 증가

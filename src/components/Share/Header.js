@@ -3,6 +3,7 @@ import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse,
   MDBFormInline, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
 } from 'mdbreact';
+import IconButton from '@material-ui/core/IconButton';
 import { useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router'
 import ShareDataContext from "../../contexts/ShareDataContext";
@@ -75,29 +76,12 @@ const Header = (props) => {
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
-          <MDBNavItem active>
-            <MDBNavLink to={ROUTER_URL.SHARE_SEARCH} className="black-text h4">{'SHARESEARCH'}</MDBNavLink>
-          </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to={ROUTER_URL.MARKET_SEARCH} className="black-text h4">{'MARKETSEARCH'}</MDBNavLink>
-          </MDBNavItem>
-          <MDBNavItem>
-            <MDBNavLink to={ROUTER_URL.TARGET} className="black-text h4">{'TARGET'}</MDBNavLink>
-          </MDBNavItem>
-          <MDBNavItem>
-            <MDBNavLink to={ROUTER_URL.MODEL_HIT} className="black-text h4">{'MODELHIT'}</MDBNavLink>
-          </MDBNavItem>
-          <MDBNavItem>
-            <MDBNavLink to={ROUTER_URL.ALL_SHARES} className="black-text h4">{'ALLSHARES'}</MDBNavLink>
-          </MDBNavItem>
-          <MDBNavItem>
-            <MDBNavLink to={ROUTER_URL.COMPARE} className="black-text h4">{'COMPARE'}</MDBNavLink>
-          </MDBNavItem>
-
-          {/* <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>
-                <div className="d-none d-md-inline black-text h2">SERVICE</div>
+                <IconButton className="text-center" color="primary" component="span">
+                  <MDBIcon icon="th" />
+                </IconButton>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
                 <MDBDropdownItem href={ROUTER_URL.SHARE_SEARCH}>SEARCH</MDBDropdownItem>
@@ -107,12 +91,14 @@ const Header = (props) => {
                 <MDBDropdownItem href={ROUTER_URL.COMPARE}>COMPARE</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
-          </MDBNavItem> */}
+          </MDBNavItem>
 
           <MDBNavItem>
             <MDBDropdown>
               <MDBDropdownToggle nav caret>
-                <span className="mr-2 black-text h4"><MDBIcon icon="language" /></span>
+                <IconButton className="text-center" color="primary" component="span">
+                  <MDBIcon icon="globe" />
+                </IconButton>
               </MDBDropdownToggle>
               <MDBDropdownMenu>
                 <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.EN); }}>English</MDBDropdownItem>
