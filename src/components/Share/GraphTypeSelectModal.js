@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBTable, MDBTableBody } from 'mdbreact';
+import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBTable, MDBTableBody } from 'mdbreact';
 
 const GraphTypeSelectModal = (props) => {
     const {selectedGraphType, setSelectedGraphType, allGraphType} = props;
@@ -64,9 +64,9 @@ const GraphTypeSelectModal = (props) => {
     }
 
     return (
-        <div>
-            <MDBBtn onClick={modalHandler}>Modal</MDBBtn>
-                <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
+        <>
+            <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} onClick={modalHandler}>Modal</MDBBtn>
+            <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
                 <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
                 <MDBModalBody>
                     {getRadioTable(selectedRadioStatus)}
@@ -77,7 +77,7 @@ const GraphTypeSelectModal = (props) => {
                     <MDBBtn color="primary" onClick={radioSaveHandler}>Save changes</MDBBtn>
                 </MDBModalFooter>
             </MDBModal>
-        </div>
+        </>
     );
 
 }

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {MDBCard, MDBCardTitle, MDBCardText} from 'mdbreact';
+import {MDBCard, MDBCardTitle, MDBCardText, MDBIcon} from 'mdbreact';
 import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
 import FixedSideTable from '../Share/FixedSideTable';
 import { FILTER_BY_MDL } from '../../consts/filter';
@@ -7,6 +7,7 @@ import { MODELS } from '../../consts/model';
 
 const ModelHitTable = (props) => {
     const {shareCode, marketCode, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = props;
+    const [hidden, setHidden] = useState(false);
     const [dataTableData, setDataTableData] = useState();
 
     const createTableData = (quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL) => {
@@ -44,15 +45,22 @@ const ModelHitTable = (props) => {
         })
     };
 
+    const hiddenHandler = () => {
+        setHidden(!hidden);
+    }
+
     useEffect(() => {
         setDataTableData(createTableData(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL));
     }, [shareCode])
 
   return (
     <MDBCard className="card-body">
-        <MDBCardTitle className="h3">Model Hit Summary</MDBCardTitle>
+        <MDBCardTitle>
+            <span className="h3">Model Hit Summary</span>
+            {hidden?<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-down" />:<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-up" />}
+        </MDBCardTitle>
         <MDBCardText>
-            {dataTableData?
+            {dataTableData && !hidden?
                 <FixedSideTable
                     header={dataTableData.header}
                     records={dataTableData.records}
