@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {MDBCard, MDBCardTitle, MDBCardText} from 'mdbreact';
 import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
 import FixedSideTable from '../Share/FixedSideTable';
@@ -7,9 +7,11 @@ import { MODELS } from '../../consts/model';
 
 const ModelHitTable = (props) => {
     const {shareCode, marketCode, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = props;
+    const [dataTableData, setDataTableData] = useState();
 
-    const allMatchedTgByModel = getAllMatchedTgByModel(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL);
-    const modelCompareTableData = function() {
+    const createTableData = (quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL) => {
+        const allMatchedTgByModel = getAllMatchedTgByModel(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL);
+
         const header = Object.values(MODELS).map((model, i) => {
           return {
             value: model
@@ -40,16 +42,22 @@ const ModelHitTable = (props) => {
           header: header,
           records: records
         })
-    }();
+    };
+
+    useEffect(() => {
+        setDataTableData(createTableData(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL));
+    }, [shareCode])
 
   return (
     <MDBCard className="card-body">
         <MDBCardTitle className="h3">Model Hit Summary</MDBCardTitle>
         <MDBCardText>
-            <FixedSideTable
-                header={modelCompareTableData.header}
-                records={modelCompareTableData.records}
-            />
+            {dataTableData?
+                <FixedSideTable
+                    header={dataTableData.header}
+                    records={dataTableData.records}
+                />
+            :null}
         </MDBCardText>
     </MDBCard>
     )
