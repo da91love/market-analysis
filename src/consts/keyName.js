@@ -50,6 +50,7 @@ export const KEY_NAME = {
     CODE: "code",
     NAME: "name",
     MARKET_TYPE: "marketType",
+    PRICE: "주가",
     GRAPH:"graph",
     SCORE:"score",
     NUM_OF_CP: "numOfCp",

@@ -5,6 +5,8 @@ export const LANG = {
   KO: 'ko',
 };
 
+export const BLANK = "　"
+
 export const PERIOD_UNIT = {
   YEAR: 'year',
   QUARTER: 'quarter',

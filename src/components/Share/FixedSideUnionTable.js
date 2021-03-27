@@ -1,10 +1,10 @@
 import React from "react";
 import { MDBTable, MDBTableHead, MDBTableBody } from "mdbreact";
+import GraphPopOver from '../Share/GraphPopOver';
 import {getColor} from "../../utils/colorUtil";
 import {colorPalette} from "../../consts/color";
-import {getLaterDate} from "../../utils/dtUtil";
+import {BLANK} from "../../consts/common";
 import {rgbaToRgb} from "../../utils/colorUtil";
-
 
 const FixedSideUnionTable = (props) => {
   const { header, records, tableId, labelColumnNum, baseDate } = props;
@@ -46,7 +46,7 @@ const FixedSideUnionTable = (props) => {
                 );
               } else {
                 return (
-                  <th key={columnIndex} className={(columnValue < getLaterDate(columnValue, baseDate)) ? "text-center gray text-white border th-sm pt-1 pb-1": "text-center base-color text-white border th-sm pt-1 pb-1"} nowrap="true">
+                  <th key={columnIndex} className={"text-center gray text-white border th-sm pt-1 pb-1"} nowrap="true">
                     <p>{columnValue}</p>
                   </th>
                 );
@@ -61,10 +61,20 @@ const FixedSideUnionTable = (props) => {
                 {rowData.cells.map((cell, columnIndex) => {
                   if (columnIndex < labelColumnNum) {
                     const label = rowData.cells[columnIndex].value;
+                    const popOver = rowData.cells[columnIndex]?.popOver;
                     const isSameCategoryName = records[rowIndex - 1]?.cells[columnIndex].value === label;
                     const left = columnIndex<=0 ? 0 : labelSize.slice(0,columnIndex).reduce(reducer)
 
-                    return <LabelCell isSameCategoryName={isSameCategoryName} key={`${rowIndex}:${columnIndex}`} value={label} rowIndex={rowIndex} columnIndex={columnIndex} labelSize={labelSize[columnIndex]} left={left}/>;
+                    return <LabelCell 
+                      isSameCategoryName={isSameCategoryName} 
+                      key={`${rowIndex}:${columnIndex}`} 
+                      value={label}
+                      popOver={popOver}
+                      rowIndex={rowIndex} 
+                      columnIndex={columnIndex} 
+                      labelSize={labelSize[columnIndex]} 
+                      left={left}
+                    />;
                   } else {
                     return (
                       <td
@@ -94,22 +104,26 @@ const FixedSideUnionTable = (props) => {
 };
 
 const LabelCell = (props) => {
+  const {isSameCategoryName, value, popOver, columnIndex, labelSize, left} = props;
+
   return (
     <td
-      className="text-left text-white pt-1 pb-1"
+      className="text-left pt-1 pb-1"
       style={{
         position: "absolute",
-        width: props.labelSize + "rem",
-        left: props.left + "rem",
+        width: labelSize + "rem",
+        left: left + "rem",
         top: "auto",
-        backgroundColor: rgbaToRgb(getColor(colorPalette.greenBlueLight4, 1-0.2*props.columnIndex)),
-        borderTopColor: props.isSameCategoryName ? rgbaToRgb(getColor(colorPalette.greenBlueLight4, 1-0.2*props.columnIndex)): "",
+        backgroundColor: rgbaToRgb(getColor(colorPalette.blueLight1, 1-0.2*columnIndex)),
+        borderTopColor: isSameCategoryName ? rgbaToRgb(getColor(colorPalette.blueLight1, 1-0.2*columnIndex)): "",
       }}
     >
-      <p className={'pl-1'}>{props.isSameCategoryName ? "　" : props.value}</p>
+      {popOver ? 
+        <GraphPopOver value={value} popOverHeader={popOver.popOverHeader} popOverBody={popOver.popOverBody}/>
+        :<p className={'text-white pl-1'}>{isSameCategoryName ? BLANK : value}</p>
+      }                
     </td>
   );
-  return <></>;
 };
 
 export default FixedSideUnionTable;

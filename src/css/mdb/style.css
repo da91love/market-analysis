@@ -78,13 +78,13 @@ h2, .h2 {
   color: black !important;
 }
   
-h3, p, td, th, .h3 {
+h3, .h3 {
   font-size: 1.2rem !important;
   margin-bottom: 0;
   color: black !important;
 }
 
-h4, .h4 {
+h4, .h4, p, td, th {
   font-size: 1rem !important;
   margin-bottom: 0;
   color: black !important;

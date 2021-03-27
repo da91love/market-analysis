@@ -4,6 +4,7 @@ import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
 import FixedSideTable from '../Share/FixedSideTable';
 import { FILTER_BY_MDL } from '../../consts/filter';
 import { MODELS } from '../../consts/model';
+import { BLANK } from '../../consts/common';
 
 const ModelHitTable = (props) => {
     const {shareCode, marketCode, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = props;
@@ -32,7 +33,7 @@ const ModelHitTable = (props) => {
         const cells = Object.keys(allMatchedResultByModel).map((v, i) => {
           // TODO
           return ({
-            value: "　",
+            value: BLANK,
             key: v,
             backgroundColor: allMatchedResultByModel[v]?"#00C851":"#ff4444"
           })

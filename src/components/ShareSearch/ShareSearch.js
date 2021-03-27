@@ -107,6 +107,7 @@ const ShareSearch = () => {
         </div>
         <div className="mt-3">
           <Valuation
+            lastQuarterRawData={_.last(quarterRawDataByShare[shareCode])}
           />
         </div>
         <div className="mt-3">
