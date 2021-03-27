@@ -1,7 +1,5 @@
-import React, { useState, useContext } from 'react';
-import {
-  MDBRow, MDBContainer, MDBCol, MDBIcon
-} from 'mdbreact';
+import React, { useState } from 'react';
+import {MDBContainer, MDBIcon} from 'mdbreact';
 import { useSnackbar } from 'notistack';
 import IconButton from '@material-ui/core/IconButton';
 import ModelBox from './ModelBox'

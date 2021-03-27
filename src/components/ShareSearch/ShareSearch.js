@@ -9,7 +9,7 @@ import { useSnackbar } from 'notistack';
 import ModelHitTable from "./ModelHitTable";
 import FinancialSummary from "./FinancialSummary";
 import IndicatorGraph from "./IndicatorGraph";
-// import Valuation from "./Valuation";
+import Valuation from "./Valuation";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import CompareTgContext from "../../contexts/CompareTgContext";
 import SyncStatus from '../../utils/SyncStatus';
@@ -103,6 +103,10 @@ const ShareSearch = () => {
             quarterRawDataByMrk={quarterRawDataByMrk}
             yearRawDataByShare={yearRawDataByShare}
             quarterRawDataByShare={quarterRawDataByShare}
+          />
+        </div>
+        <div className="mt-3">
+          <Valuation
           />
         </div>
         <div className="mt-3">
