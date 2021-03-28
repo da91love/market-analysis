@@ -11,13 +11,13 @@ const FixedSideUnionTable = (props) => {
 
   if (records.length === 0) return <></>;
 
-  const labelSize = new Array(records[0].cells.length).fill(10);
+  const labelSize = new Array(records[0].length).fill(10);
   const rightPadding = 2;
   for (let j=0; j<labelColumnNum; j++) {
     labelSize[j] = (header[j].length)+rightPadding;
     for (let i=0; i<records.length; i++) {
-      if(labelSize[j] < records[i].cells[j].value.length+rightPadding)
-        labelSize[j] = records[i].cells[j].value.length+rightPadding;
+      if(labelSize[j] < records[i][j].value.length+rightPadding)
+        labelSize[j] = records[i][j].value.length+rightPadding;
     }
   }
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -58,11 +58,11 @@ const FixedSideUnionTable = (props) => {
           {records.map((rowData, rowIndex, record) => {
             return (
               <tr key={rowIndex}>
-                {rowData.cells.map((cell, columnIndex) => {
+                {rowData.map((cell, columnIndex) => {
                   if (columnIndex < labelColumnNum) {
-                    const label = rowData.cells[columnIndex].value;
-                    const popOver = rowData.cells[columnIndex]?.popOver;
-                    const isSameCategoryName = record[rowIndex - 1]?.cells[columnIndex].value === label;
+                    const label = rowData[columnIndex].value;
+                    const popOver = rowData[columnIndex]?.popOver;
+                    const isSameCategoryName = record[rowIndex - 1]?.[columnIndex].value === label;
                     const left = columnIndex<=0 ? 0 : labelSize.slice(0,columnIndex).reduce(reducer)
 
                     return <LabelCell 

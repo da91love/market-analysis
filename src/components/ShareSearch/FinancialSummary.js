@@ -25,14 +25,12 @@ const FinancialSummary = (props) => {
             })
           })
     
-          return ({
-            cells: cells
-          })
+          return cells;
         })
     
         // cells의 가장 첫번째 엘리먼트로 fixedCol의 값 삽입
         fixedCol.forEach((v, i) => {
-          (records[i]['cells']).unshift({
+          (records[i]).unshift({
             value: v,
             key: 0,
             popOver: {
