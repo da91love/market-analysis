@@ -55,14 +55,14 @@ const FixedSideUnionTable = (props) => {
           </tr>
         </MDBTableHead>
         <MDBTableBody>
-          {records.map((rowData, rowIndex, records) => {
+          {records.map((rowData, rowIndex, record) => {
             return (
               <tr key={rowIndex}>
                 {rowData.cells.map((cell, columnIndex) => {
                   if (columnIndex < labelColumnNum) {
                     const label = rowData.cells[columnIndex].value;
                     const popOver = rowData.cells[columnIndex]?.popOver;
-                    const isSameCategoryName = records[rowIndex - 1]?.cells[columnIndex].value === label;
+                    const isSameCategoryName = record[rowIndex - 1]?.cells[columnIndex].value === label;
                     const left = columnIndex<=0 ? 0 : labelSize.slice(0,columnIndex).reduce(reducer)
 
                     return <LabelCell 
@@ -81,7 +81,7 @@ const FixedSideUnionTable = (props) => {
                         className="td-sm text-right pt-1 pb-1 num-custom-font"
                         contentEditable={cell.isEditable ? true : false}
                         suppressContentEditableWarning={cell.isEditable ? true : false}
-                        onBlur={typeof cell.onBlur === "function" ? (event) => cell.onBlur(event, tableId, rowIndex, columnIndex, labelColumnNum) : undefined}
+                        onBlur={typeof cell.onBlur === "function" ? (event) => cell.onBlur(event, tableId, header, records, rowIndex, columnIndex, labelColumnNum) : undefined}
                         onKeyUp={typeof cell.onKeyUp === "function" ? (event) => cell.onKeyUp(event, tableId, rowIndex, columnIndex, labelColumnNum) : undefined}
                         style={{backgroundColor: cell.isEditable ? "" : "rgba(0,0,0,.03)"}}
                         key={`${rowIndex}:${columnIndex}`}

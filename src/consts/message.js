@@ -5,5 +5,6 @@ export const MSG = {
     SHARE_CODE_ALREADY_EXIST: 'Same share already exists in the compare box',
     NAN: 'Not a number',
     ADD_COMPARE_TG: 'Add to compare list success',
-    REMOVE_COMPARE_TG: 'Remove from compare list success'
+    REMOVE_COMPARE_TG: 'Remove from compare list success',
+    NAN: 'Inserted value is not a number'
 }

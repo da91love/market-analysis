@@ -5,7 +5,15 @@ export const LANG = {
   KO: 'ko',
 };
 
-export const BLANK = "　"
+export const BLANK = "　";
+
+export const NUM_UNIT = {
+  THOU: 1000,
+  MIL: 1000000,
+  BIL: 1000000000,
+  BM: 1000000,
+  OK: 100000000,
+};
 
 export const PERIOD_UNIT = {
   YEAR: 'year',

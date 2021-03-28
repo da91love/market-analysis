@@ -2,32 +2,71 @@ import React, { useState, useContext, useEffect } from 'react';
 import {
     MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
 } from 'mdbreact';
-import _ from "lodash";
+import _, { isEmpty } from "lodash";
+import { useSnackbar } from 'notistack';
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
 import { KEY_NAME, OTHER_KEY_NAME} from '../../consts/keyName';
-import { BLANK } from '../../consts/common';
+import { BLANK, NUM_UNIT } from '../../consts/common';
+import { MSG } from '../../consts/message';
+import { ERROR } from '../../consts/alert';
+import { isNumber } from '../../utils/numUtil';
 
 // Temp: import json
 const Valuation = (props) => {
     const {lastQuarterRawData} = props;
+    const { enqueueSnackbar } = useSnackbar();
     const [activeTab, setActiveTab] = useState(KEY_NAME.PER);
     const [hidden, setHidden] = useState(true);
     const [dataTableData, setDataTableData] = useState(true);
 
-    const fixedCol = [KEY_NAME.PER, KEY_NAME.SHARE_NUM, KEY_NAME.SALES, KEY_NAME.NPM, KEY_NAME.NP_CTRL, KEY_NAME.EPS, OTHER_KEY_NAME.PRICE, KEY_NAME.MV];
+    const pricePrdctnModelOnClick = (e, tableId, header, records, rowIndex, columnIndex, labelColumnNum) => {
+        const editedValue = e.target.innerText;
+        const parsedValue = parseInt(editedValue);
 
+        // Validation
+        if (!_.isEmpty(editedValue)) {
+            if (isNumber(parsedValue)){
+                records[rowIndex]['cells'][columnIndex].value = parsedValue;
+    
+                const tgPer = records[0]['cells'][columnIndex].value;
+                const tgShareNum = records[1]['cells'][columnIndex].value;
+                const tgSales = records[2]['cells'][columnIndex].value;
+                const tgNpm = records[3]['cells'][columnIndex].value;
+        
+                if (tgPer && tgSales && tgNpm) {
+                    const tgNp =  _.round(tgSales*(tgNpm/100), 2);
+                    const tgEps = _.round((tgNp*NUM_UNIT.OK)/tgShareNum, 2);
+                    const tgPrice = _.round(tgPer*tgEps, 2);
+                    const tgMv = _.round((tgPrice*tgShareNum)/NUM_UNIT.OK, 2);                                                                                                                                                                                                                                                                                                                    
+            
+                    records[4]['cells'][columnIndex].value = tgNp;
+                    records[5]['cells'][columnIndex].value = tgEps;
+                    records[6]['cells'][columnIndex].value = tgPrice;
+                    records[7]['cells'][columnIndex].value = tgMv;
+        
+                    setDataTableData({
+                        header: header,
+                        records: records,
+                      });
+                } else {
+                    setDataTableData({
+                        header: header,
+                        records: records,
+                    });
+                }
+            } else {
+                enqueueSnackbar(MSG.NAN, {variant: ERROR});
+            }
+        }
+    }
+
+    const fixedCol = [KEY_NAME.PER, KEY_NAME.SHARE_NUM, KEY_NAME.SALES, KEY_NAME.NPM, KEY_NAME.NP_CTRL, KEY_NAME.EPS, OTHER_KEY_NAME.PRICE, KEY_NAME.MV];
     const rawData2FixedTableData = (periodRawData, fixedCol) => {
         // Add share price to lastQuarterRawData
-        lastQuarterRawData[OTHER_KEY_NAME.PRICE] = _.round(lastQuarterRawData[KEY_NAME.MV]*100000000/lastQuarterRawData[KEY_NAME.SHARE_NUM], 2);
+        lastQuarterRawData[OTHER_KEY_NAME.PRICE] = _.round(lastQuarterRawData[KEY_NAME.MV]*NUM_UNIT.OK/lastQuarterRawData[KEY_NAME.SHARE_NUM], 2);
 
         const header = ['현재', '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5',  '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5',  '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5'];
-        // const header = headerList.map((v, i) => {
-        //     return {
-        //         value: v,
-        //         key: i+1
-        //     }
-        // })
-    
+
         // FixedCol이 별도로 정의되지 않았을 때
         if (!fixedCol){
           fixedCol = header;
@@ -40,14 +79,14 @@ const Valuation = (props) => {
                     cells.push({
                         value: periodRawData[colName],
                         key: rowNum+colNum,
-                        backgroundColor: "#cccccc"
                     })
                 } else {
                     if (colName === KEY_NAME.PER || colName === KEY_NAME.SALES || colName === KEY_NAME.NPM) {
                         cells.push({
                             value: '',
                             key: rowNum+colNum,
-                            isEditable: true
+                            isEditable: true,
+                            onBlur: pricePrdctnModelOnClick,
                         })
                     } else if (colName === KEY_NAME.SHARE_NUM) {
                         cells.push({
@@ -85,7 +124,6 @@ const Valuation = (props) => {
         })
     }
 
-    
     const hiddenHandler = () => {
         setHidden(!hidden);
     }

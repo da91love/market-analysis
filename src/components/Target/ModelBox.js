@@ -19,7 +19,6 @@ import { MSG } from "../../consts/message"
 
 import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
-import FixedSideTableTest from '../Share/FixedSideTableTest';
 
 const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
