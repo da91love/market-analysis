@@ -87,7 +87,7 @@ const FixedSideUnionTable = (props) => {
                         key={`${rowIndex}:${columnIndex}`}
                         name={cell.key}
                       >
-                        <p>{typeof cell.value === "number" ? cell.value.toLocaleString() : cell.value}</p>
+                        <span>{typeof cell.value === "number" ? cell.value.toLocaleString() : cell.value}</span>
                       </td>
                     );
                   }

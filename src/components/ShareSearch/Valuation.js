@@ -10,6 +10,7 @@ import { BLANK, NUM_UNIT } from '../../consts/common';
 import { MSG } from '../../consts/message';
 import { ERROR } from '../../consts/alert';
 import { isNumber } from '../../utils/numUtil';
+import comma from '../../utils/convertComma';
 
 // Temp: import json
 const Valuation = (props) => {
@@ -22,16 +23,17 @@ const Valuation = (props) => {
     const pricePrdctnModelOnClick = (e, tableId, header, records, rowIndex, columnIndex, labelColumnNum) => {
         const editedValue = e.target.innerText;
         const parsedValue = parseInt(editedValue);
+        e.target.innerText = comma(parsedValue);
 
         // Validation
         if (!_.isEmpty(editedValue)) {
             if (isNumber(parsedValue)){
-                records[rowIndex]['cells'][columnIndex].value = parsedValue;
+                records[rowIndex][columnIndex].value = parsedValue;
     
-                const tgPer = records[0]['cells'][columnIndex].value;
-                const tgShareNum = records[1]['cells'][columnIndex].value;
-                const tgSales = records[2]['cells'][columnIndex].value;
-                const tgNpm = records[3]['cells'][columnIndex].value;
+                const tgPer = records[0][columnIndex].value;
+                const tgShareNum = records[1][columnIndex].value;
+                const tgSales = records[2][columnIndex].value;
+                const tgNpm = records[3][columnIndex].value;
         
                 if (tgPer && tgSales && tgNpm) {
                     const tgNp =  _.round(tgSales*(tgNpm/100), 2);
@@ -39,10 +41,10 @@ const Valuation = (props) => {
                     const tgPrice = _.round(tgPer*tgEps, 2);
                     const tgMv = _.round((tgPrice*tgShareNum)/NUM_UNIT.OK, 2);                                                                                                                                                                                                                                                                                                                    
             
-                    records[4]['cells'][columnIndex].value = tgNp;
-                    records[5]['cells'][columnIndex].value = tgEps;
-                    records[6]['cells'][columnIndex].value = tgPrice;
-                    records[7]['cells'][columnIndex].value = tgMv;
+                    records[4][columnIndex].value = tgNp;
+                    records[5][columnIndex].value = tgEps;
+                    records[6][columnIndex].value = tgPrice;
+                    records[7][columnIndex].value = tgMv;
         
                     setDataTableData({
                         header: header,
@@ -134,7 +136,7 @@ const Valuation = (props) => {
 
     useEffect(() => {
         setDataTableData(rawData2FixedTableData(lastQuarterRawData, fixedCol));
-    }, [lastQuarterRawData]);
+    }, []);
 
     return (
     <MDBCard className="card-body">
