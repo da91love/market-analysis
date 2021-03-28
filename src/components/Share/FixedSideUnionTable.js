@@ -32,7 +32,7 @@ const FixedSideUnionTable = (props) => {
                 return (
                   <th
                     key={columnIndex}
-                    className="text-white border th-sm gray-dark pt-1 pb-1"
+                    className="text-white border th-sm bg-info pt-1 pb-1"
                     nowrap="true"
                     style={{
                       position: "absolute",
@@ -83,9 +83,7 @@ const FixedSideUnionTable = (props) => {
                         suppressContentEditableWarning={cell.isEditable ? true : false}
                         onBlur={typeof cell.onBlur === "function" ? (event) => cell.onBlur(event, tableId, rowIndex, columnIndex, labelColumnNum) : undefined}
                         onKeyUp={typeof cell.onKeyUp === "function" ? (event) => cell.onKeyUp(event, tableId, rowIndex, columnIndex, labelColumnNum) : undefined}
-                        style={{
-                          backgroundColor: cell.isEditable ? "" : "rgba(0,0,0,.03)",
-                        }}
+                        style={{backgroundColor: cell.isEditable ? "" : "rgba(0,0,0,.03)"}}
                         key={`${rowIndex}:${columnIndex}`}
                         name={cell.key}
                       >

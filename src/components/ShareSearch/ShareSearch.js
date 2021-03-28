@@ -1,7 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import {
-  MDBContainer, MDBIcon, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
-} from 'mdbreact';
+import {MDBContainer, MDBIcon} from 'mdbreact';
 import _ from "lodash";
 import { useLocation, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -29,7 +27,6 @@ const ShareSearch = () => {
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
-  const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
   const {shareCode, shareName} = shareInfo;
 
@@ -46,12 +43,6 @@ const ShareSearch = () => {
   const marketType = _.find(shareInfos, [KEY_NAME.SHARE_CODE, shareCode])[OTHER_KEY_NAME.MARKET_TYPE];
   const marketName = quarterRawDataByShare[shareCode][0][KEY_NAME.MARKET_NAME];
   const marketCode = quarterRawDataByShare[shareCode][0][KEY_NAME.MARKET_CODE];
-
-  const tabHandler = (tab) => {
-    if (activeTab !== tab) {
-        setActiveTab(tab);
-    }
-  }
 
   const addToCompareListHandler = (shareCode, shareName) => {
     if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
@@ -111,47 +102,17 @@ const ShareSearch = () => {
           />
         </div>
         <div className="mt-3">
-        <MDBNav className="nav-tabs">
-          <MDBNavItem>
-              <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.YEAR} onClick={() => tabHandler(PERIOD_UNIT.YEAR)} role="tab" >
-                  Yearly
-              </MDBNavLink>
-          </MDBNavItem>
-          <MDBNavItem>
-              <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.QUARTER} onClick={() => tabHandler(PERIOD_UNIT.QUARTER)} role="tab" >
-                  Quarterly
-              </MDBNavLink>
-          </MDBNavItem>
-        </MDBNav>
-        <MDBTabContent activeItem={activeTab} >
-          <MDBTabPane tabId={PERIOD_UNIT.YEAR} role="tabpanel">
-              <div className="mt-3">
-                <FinancialSummary
-                  periodRawDataByShare={yearRawDataByShare[shareCode]}
-                />
-              </div>
-              <div className="mt-3">
-                <IndicatorGraph
-                  periodRawDataByShare={yearRawDataByShare[shareCode]}
-                />
-              </div>                     
-          </MDBTabPane>
-          <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
-            <div className="mt-3">
-              <FinancialSummary
-                periodRawDataByShare={quarterRawDataByShare[shareCode]}
-              />
-            </div>
-            <div className="mt-3">
-              <IndicatorGraph
-                periodRawDataByShare={quarterRawDataByShare[shareCode]}
-              />
-            </div>
-          </MDBTabPane>
-        </MDBTabContent>
+          <FinancialSummary
+            yearRawDataByShare={yearRawDataByShare[shareCode]}
+            quarterRawDataByShare={quarterRawDataByShare[shareCode]}
+          />
         </div>
-        <div>
-        </div>
+        <div className="mt-3">
+          <IndicatorGraph
+            yearRawDataByShare={yearRawDataByShare[shareCode]}
+            quarterRawDataByShare={quarterRawDataByShare[shareCode]}
+          />
+        </div>  
       </MDBContainer>
     )
 };

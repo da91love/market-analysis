@@ -14,7 +14,7 @@ const Valuation = (props) => {
     const [hidden, setHidden] = useState(true);
     const [dataTableData, setDataTableData] = useState(true);
 
-    const fixedCol = [KEY_NAME.PER, OTHER_KEY_NAME.PRICE, KEY_NAME.EPS, KEY_NAME.SHARE_NUM, KEY_NAME.MV, KEY_NAME.NP_CTRL, KEY_NAME.NPM, KEY_NAME.SALES];
+    const fixedCol = [KEY_NAME.PER, KEY_NAME.SHARE_NUM, KEY_NAME.SALES, KEY_NAME.NPM, KEY_NAME.NP_CTRL, KEY_NAME.EPS, OTHER_KEY_NAME.PRICE, KEY_NAME.MV];
 
     const rawData2FixedTableData = (periodRawData, fixedCol) => {
         // Add share price to lastQuarterRawData
@@ -43,7 +43,7 @@ const Valuation = (props) => {
                         backgroundColor: "#cccccc"
                     })
                 } else {
-                    if (colName === KEY_NAME.PER || colName === KEY_NAME.MV || colName === KEY_NAME.NPM) {
+                    if (colName === KEY_NAME.PER || colName === KEY_NAME.SALES || colName === KEY_NAME.NPM) {
                         cells.push({
                             value: '',
                             key: rowNum+colNum,
@@ -53,12 +53,6 @@ const Valuation = (props) => {
                         cells.push({
                             value: periodRawData[colName],
                             key: rowNum+colNum,
-                        })
-                    } else if (colName === KEY_NAME.NP_CTRL || colName === KEY_NAME.SALES) {
-                        cells.push({
-                            value: '',
-                            key: rowNum+colNum,
-                            backgroundColor: "#fad161"
                         })
                     } else {
                         cells.push({
