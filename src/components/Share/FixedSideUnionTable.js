@@ -24,7 +24,7 @@ const FixedSideUnionTable = (props) => {
 
   return (
     <div style={{ "padding-left": labelSize.slice(0,labelColumnNum).reduce(reducer) + "rem", position:'relative' }}> 
-      <MDBTable bordered small responsive scrollx autoWidth>
+      <MDBTable id={tableId} bordered small responsive scrollx autoWidth>
         <MDBTableHead>
           <tr>
             {header.map((columnValue, columnIndex) => {

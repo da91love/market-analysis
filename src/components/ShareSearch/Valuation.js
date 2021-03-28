@@ -14,7 +14,8 @@ import comma from '../../utils/convertComma';
 
 // Temp: import json
 const Valuation = (props) => {
-    const {lastQuarterRawData} = props;
+    const {shareCode, lastQuarterRawData} = props;
+    const dpLastQuarterRawData = {...lastQuarterRawData};
     const { enqueueSnackbar } = useSnackbar();
     const [activeTab, setActiveTab] = useState(KEY_NAME.PER);
     const [hidden, setHidden] = useState(true);
@@ -22,8 +23,8 @@ const Valuation = (props) => {
 
     const pricePrdctnModelOnClick = (e, tableId, header, records, rowIndex, columnIndex, labelColumnNum) => {
         const editedValue = e.target.innerText;
-        const parsedValue = parseInt(editedValue);
-        e.target.innerText = comma(parsedValue);
+        const parsedValue = parseFloat(editedValue);
+        e.target.innerText = isNumber(parsedValue)?comma(parsedValue):'';
 
         // Validation
         if (!_.isEmpty(editedValue)) {
@@ -64,10 +65,14 @@ const Valuation = (props) => {
 
     const fixedCol = [KEY_NAME.PER, KEY_NAME.SHARE_NUM, KEY_NAME.SALES, KEY_NAME.NPM, KEY_NAME.NP_CTRL, KEY_NAME.EPS, OTHER_KEY_NAME.PRICE, KEY_NAME.MV];
     const rawData2FixedTableData = (periodRawData, fixedCol) => {
-        // Add share price to lastQuarterRawData
-        lastQuarterRawData[OTHER_KEY_NAME.PRICE] = _.round(lastQuarterRawData[KEY_NAME.MV]*NUM_UNIT.OK/lastQuarterRawData[KEY_NAME.SHARE_NUM], 2);
+        // Update data on lastQuarterRawData
+        periodRawData[KEY_NAME.SALES] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PSR], 2); 
+        periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
+        periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
+        periodRawData[KEY_NAME.EPS] = _.round((periodRawData[KEY_NAME.NP_CTRL]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2); 
+        periodRawData[OTHER_KEY_NAME.PRICE] = _.round(periodRawData[KEY_NAME.MV]*NUM_UNIT.OK/periodRawData[KEY_NAME.SHARE_NUM], 2);
 
-        const header = ['현재', '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5',  '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5',  '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5'];
+        const header = ['현재', '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5',  '시나리오6', '시나리오7', '시나리오8', '시나리오9', '시나리오10',  '시나리오11', '시나리오12', '시나리오13', '시나리오14', '시나리오15'];
 
         // FixedCol이 별도로 정의되지 않았을 때
         if (!fixedCol){
@@ -135,8 +140,8 @@ const Valuation = (props) => {
     }
 
     useEffect(() => {
-        setDataTableData(rawData2FixedTableData(lastQuarterRawData, fixedCol));
-    }, []);
+        setDataTableData(rawData2FixedTableData(dpLastQuarterRawData, fixedCol));
+    }, [shareCode]);
 
     return (
     <MDBCard className="card-body">
@@ -172,7 +177,7 @@ const Valuation = (props) => {
                                 header={dataTableData.header}
                                 records={dataTableData.records}
                                 labelColumnNum={1}
-                                tableId={'test'}
+                                tableId={shareCode}
                             />
                         :null}
                     </div>                     
