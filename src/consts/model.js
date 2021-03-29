@@ -43,5 +43,5 @@ export const MKRGROWTH_MODEL_RAWDATA_KEYNAME = [
 export const VLT_MODELS = {
     PRICE: 'price',
     MLTP: 'multiple',
-    SALES: 'sales',
+    PRFM: 'performance',
 }

@@ -22,8 +22,9 @@ const Valuation = (props) => {
     const [activeTab, setActiveTab] = useState(KEY_NAME.PER);
     const [hidden, setHidden] = useState(true);
     const [dataTableData, setDataTableData] = useState(true);
+    const [updatedRawData, setUpdatedRawData] = useState();
 
-    const pricePrdctnModelOnClick = (e, tableId, header, records, rowIndex, columnIndex, labelColumnNum) => {
+    const pricePrdctnModelOnBlur = (e, tableId, header, records, rowIndex, columnIndex, labelColumnNum) => {
         const editedValue = e.target.innerText;
         const parsedValue = parseFloat(editedValue);
         e.target.innerText = isNumber(parsedValue)?comma(parsedValue):'';
@@ -67,75 +68,83 @@ const Valuation = (props) => {
         }
     }
 
-    const fixedCol = [KEY_NAME.PER, KEY_NAME.SHARE_NUM, KEY_NAME.SALES, KEY_NAME.NPM, KEY_NAME.NP_CTRL, KEY_NAME.EPS, OTHER_KEY_NAME.PRICE, KEY_NAME.MV];
-    const rawData2FixedTableData = (periodRawData, label) => {
+    const updateRawData = (periodRawData) => {
+        // Common
+        periodRawData[KEY_NAME.SALES] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PSR], 2); 
+        periodRawData[OTHER_KEY_NAME.PRICE] = _.round(periodRawData[KEY_NAME.MV]*NUM_UNIT.OK/periodRawData[KEY_NAME.SHARE_NUM], 2);
 
-        for (const mltpIds in VLT_TABLE_LABEL) {
-            for (const vltModel in VLT_TABLE_LABEL[mltpIds]) {
+        // PER
+        periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
+        periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
+        periodRawData[KEY_NAME.EPS] = _.round((periodRawData[KEY_NAME.NP_CTRL]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
 
+        // POR
+        periodRawData[KEY_NAME.OP] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.POR], 2); 
+        periodRawData[KEY_NAME.OPM] = _.round((periodRawData[KEY_NAME.OP]/periodRawData[KEY_NAME.SALES])*100, 2); 
+        periodRawData[OTHER_KEY_NAME.OPS] = _.round((periodRawData[KEY_NAME.OP]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
+
+        // PSR
+        periodRawData[OTHER_KEY_NAME.SPS] = _.round((periodRawData[KEY_NAME.SALES]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
+    
+        return periodRawData;
+    }
+
+    const rawData2FixedTableData = (updatedRawData) => {
+        const byIdc = {};
+        for (const mltpIdc in VLT_TABLE_LABEL) {
+            const byModel = {};
+            for (const vltModel in VLT_TABLE_LABEL[mltpIdc]) {
                 const header = [...VLT_TABLE_COL];
-                let records = [];
-                if (vltModel === VLT_MODELS.PRICE) {
-                    // Update data on lastQuarterRawData
-                    periodRawData[KEY_NAME.SALES] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PSR], 2); 
-                    periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
-                    periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
-                    periodRawData[KEY_NAME.EPS] = _.round((periodRawData[KEY_NAME.NP_CTRL]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2); 
-                    periodRawData[OTHER_KEY_NAME.PRICE] = _.round(periodRawData[KEY_NAME.MV]*NUM_UNIT.OK/periodRawData[KEY_NAME.SHARE_NUM], 2);
-        
-                    records = label.map((colName, rowNum) => {
-                        const cells = [];
-                        header.forEach((h, colNum) => {
-                            if (colNum === 0) {
+                const label = VLT_TABLE_LABEL[mltpIdc][vltModel].label;
+                const editable = VLT_TABLE_LABEL[mltpIdc][vltModel].editable;
+
+                let records = label.map((rowName, rowNum) => {
+                    const cells = [];
+                    header.forEach((colName, colNum) => {
+                        if (colNum === 0) {
+                            cells.push({
+                                value: updatedRawData[rowName],
+                            })
+                        } else {
+                            if (editable.includes(rowName)) {
                                 cells.push({
-                                    value: periodRawData[colName],
+                                    value: '',
+                                    isEditable: true,
+                                    onBlur: pricePrdctnModelOnBlur,
+                                })
+                            } else if (rowName === KEY_NAME.SHARE_NUM) {
+                                cells.push({
+                                    value: updatedRawData[rowName],
                                 })
                             } else {
-                                if (colName === KEY_NAME.PER || colName === KEY_NAME.SALES || colName === KEY_NAME.NPM) {
-                                    cells.push({
-                                        value: '',
-                                        isEditable: true,
-                                        onBlur: pricePrdctnModelOnClick,
-                                    })
-                                } else if (colName === KEY_NAME.SHARE_NUM) {
-                                    cells.push({
-                                        value: periodRawData[colName],
-                                    })
-                                } else {
-                                    cells.push({
-                                        value: '',
-                                    })
-                                }
+                                cells.push({
+                                    value: '',
+                                })
                             }
-                        })
-                        return cells;
+                        }
                     })
-                } else if (vltModel === VLT_MODELS.SALES) {
-        
-                } else if (vltModel === VLT_MODELS.MLTP) {
-        
+                    return cells;
+                })
+
+                // cells의 가장 첫번째 엘리먼트로 fixedCol의 값 삽입
+                label.forEach((v, i) => {
+                    (records[i]).unshift({
+                        value: v,
+                        key: i,
+                    });
+                });
+            
+                // FixedCol의 1열 이상일 때, header의 앞에 빈값 삽입
+                header.unshift(BLANK);
+            
+                byModel[vltModel] = {
+                    header: header,
+                    records: records,
                 }
-
-
             }
+            byIdc[mltpIdc] = byModel
         }
-
-    
-        // cells의 가장 첫번째 엘리먼트로 fixedCol의 값 삽입
-        label.forEach((v, i) => {
-            (records[i]).unshift({
-                value: v,
-                key: i,
-            });
-        });
-    
-        // FixedCol의 1열 이상일 때, header의 앞에 빈값 삽입
-        header.unshift(BLANK);
-    
-        return ({
-          header: header,
-          records: records,
-        })
+        return byIdc;
     }
 
     const hiddenHandler = () => {
@@ -149,7 +158,9 @@ const Valuation = (props) => {
     }
 
     useEffect(() => {
-        setDataTableData(rawData2FixedTableData(dpLastQuarterRawData, fixedCol));
+        const updRawData = updateRawData(dpLastQuarterRawData)
+        setUpdatedRawData(updRawData)
+        setDataTableData(rawData2FixedTableData(updRawData));
     }, [shareCode]);
 
     return (
@@ -177,30 +188,117 @@ const Valuation = (props) => {
                         PCR
                     </MDBNavLink>
                 </MDBNavItem>
+                <MDBNavItem>
+                    <MDBNavLink link to="#" active={activeTab === KEY_NAME.PBR} onClick={() => tabHandler(KEY_NAME.PBR)} role="tab" >
+                        PBR
+                    </MDBNavLink>
+                </MDBNavItem>
             </MDBNav>
             <MDBTabContent activeItem={activeTab} >
                 <MDBTabPane tabId={KEY_NAME.PER} role="tabpanel">
                     <div className="mt-3">
                         {dataTableData?
-                            <FixedSideUnionTable
-                                header={dataTableData.header}
-                                records={dataTableData.records}
-                                labelColumnNum={1}
-                                tableId={shareCode}
-                            />
+                            <div>
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PER][VLT_MODELS.PRICE].header}
+                                    records={dataTableData[KEY_NAME.PER][VLT_MODELS.PRICE].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.PER}:${VLT_MODELS.PRICE}`}
+                                />
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PER][VLT_MODELS.PRFM].header}
+                                    records={dataTableData[KEY_NAME.PER][VLT_MODELS.PRFM].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.PER}:${VLT_MODELS.PRFM}`}
+                                />
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PER][VLT_MODELS.MLTP].header}
+                                    records={dataTableData[KEY_NAME.PER][VLT_MODELS.MLTP].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.PER}:${VLT_MODELS.MLTP}`}
+                                />
+                            </div>
                         :null}
                     </div>                     
                 </MDBTabPane>
                 <MDBTabPane tabId={KEY_NAME.POR} role="tabpanel">
                     <div className="mt-3">
-                        POR
+                        {dataTableData?
+                            <div>
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.POR][VLT_MODELS.PRICE].header}
+                                    records={dataTableData[KEY_NAME.POR][VLT_MODELS.PRICE].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.POR}:${VLT_MODELS.PRICE}`}
+                                />
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.POR][VLT_MODELS.PRFM].header}
+                                    records={dataTableData[KEY_NAME.POR][VLT_MODELS.PRFM].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.POR}:${VLT_MODELS.PRFM}`}
+                                />
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.POR][VLT_MODELS.MLTP].header}
+                                    records={dataTableData[KEY_NAME.POR][VLT_MODELS.MLTP].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.POR}:${VLT_MODELS.MLTP}`}
+                                />
+                            </div>
+                        :null}
                     </div>
                 </MDBTabPane>
                 <MDBTabPane tabId={KEY_NAME.PSR} role="tabpanel">
                     <div className="mt-3">
-                        PSR
+                        {dataTableData?
+                            <div>
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PSR][VLT_MODELS.PRICE].header}
+                                    records={dataTableData[KEY_NAME.PSR][VLT_MODELS.PRICE].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.PSR}:${VLT_MODELS.PRICE}`}
+                                />
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PSR][VLT_MODELS.PRFM].header}
+                                    records={dataTableData[KEY_NAME.PSR][VLT_MODELS.PRFM].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.PSR}:${VLT_MODELS.PRFM}`}
+                                />
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PSR][VLT_MODELS.MLTP].header}
+                                    records={dataTableData[KEY_NAME.PSR][VLT_MODELS.MLTP].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.PSR}:${VLT_MODELS.MLTP}`}
+                                />
+                            </div>
+                        :null}
                     </div>
                 </MDBTabPane>
+                <MDBTabPane tabId={KEY_NAME.PBR} role="tabpanel">
+                    <div className="mt-3">
+                        {dataTableData?
+                            <div>
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRICE].header}
+                                    records={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRICE].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.PBR}:${VLT_MODELS.PRICE}`}
+                                />
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRFM].header}
+                                    records={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRFM].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.PBR}:${VLT_MODELS.PRFM}`}
+                                />
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PBR][VLT_MODELS.MLTP].header}
+                                    records={dataTableData[KEY_NAME.PBR][VLT_MODELS.MLTP].records}
+                                    labelColumnNum={1}
+                                    tableId={`${shareCode}:${KEY_NAME.PBR}:${VLT_MODELS.MLTP}`}
+                                />
+                            </div>
+                        :null}
+                    </div>
+                </MDBTabPane>               
             </MDBTabContent>
             </>
             :null}

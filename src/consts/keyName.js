@@ -56,6 +56,6 @@ export const KEY_NAME = {
    NUM_OF_CP: "numOfCp",
    TARGET: "target",
    TYPE: "type",
-   SPS: "sps",
-   OPS: "ops"
+   SPS: "SPS(원)",
+   OPS: "OPS(원)"
  }
