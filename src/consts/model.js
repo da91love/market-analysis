@@ -39,3 +39,9 @@ export const MKRGROWTH_MODEL_RAWDATA_KEYNAME = [
     KEY_NAME.PCR,
     KEY_NAME.PBR,
 ]
+
+export const VLT_MODELS = {
+    PRICE: 'price',
+    MLTP: 'multiple',
+    SALES: 'sales',
+}

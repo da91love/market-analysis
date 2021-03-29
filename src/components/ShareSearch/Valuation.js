@@ -5,12 +5,14 @@ import {
 import _, { isEmpty } from "lodash";
 import { useSnackbar } from 'notistack';
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
+import { isNumber } from '../../utils/numUtil';
+import comma from '../../utils/convertComma';
 import { KEY_NAME, OTHER_KEY_NAME} from '../../consts/keyName';
 import { BLANK, NUM_UNIT } from '../../consts/common';
 import { MSG } from '../../consts/message';
 import { ERROR } from '../../consts/alert';
-import { isNumber } from '../../utils/numUtil';
-import comma from '../../utils/convertComma';
+import { VLT_TABLE_COL, VLT_TABLE_LABEL} from '../../consts/tbCol';
+import { VLT_MODELS } from '../../consts/model';
 
 // Temp: import json
 const Valuation = (props) => {
@@ -25,6 +27,8 @@ const Valuation = (props) => {
         const editedValue = e.target.innerText;
         const parsedValue = parseFloat(editedValue);
         e.target.innerText = isNumber(parsedValue)?comma(parsedValue):'';
+        // e.target.innerText = '';
+
 
         // Validation
         if (!_.isEmpty(editedValue)) {
@@ -64,56 +68,61 @@ const Valuation = (props) => {
     }
 
     const fixedCol = [KEY_NAME.PER, KEY_NAME.SHARE_NUM, KEY_NAME.SALES, KEY_NAME.NPM, KEY_NAME.NP_CTRL, KEY_NAME.EPS, OTHER_KEY_NAME.PRICE, KEY_NAME.MV];
-    const rawData2FixedTableData = (periodRawData, fixedCol) => {
-        // Update data on lastQuarterRawData
-        periodRawData[KEY_NAME.SALES] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PSR], 2); 
-        periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
-        periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
-        periodRawData[KEY_NAME.EPS] = _.round((periodRawData[KEY_NAME.NP_CTRL]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2); 
-        periodRawData[OTHER_KEY_NAME.PRICE] = _.round(periodRawData[KEY_NAME.MV]*NUM_UNIT.OK/periodRawData[KEY_NAME.SHARE_NUM], 2);
+    const rawData2FixedTableData = (periodRawData, label) => {
 
-        const header = ['현재', '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5',  '시나리오6', '시나리오7', '시나리오8', '시나리오9', '시나리오10',  '시나리오11', '시나리오12', '시나리오13', '시나리오14', '시나리오15'];
+        for (const mltpIds in VLT_TABLE_LABEL) {
+            for (const vltModel in VLT_TABLE_LABEL[mltpIds]) {
 
-        // FixedCol이 별도로 정의되지 않았을 때
-        if (!fixedCol){
-          fixedCol = header;
-        }
-    
-        const records = fixedCol.map((colName, rowNum) => {
-            const cells = [];
-            header.forEach((h, colNum) => {
-                if (colNum === 0) {
-                    cells.push({
-                        value: periodRawData[colName],
-                        key: rowNum+colNum,
+                const header = [...VLT_TABLE_COL];
+                let records = [];
+                if (vltModel === VLT_MODELS.PRICE) {
+                    // Update data on lastQuarterRawData
+                    periodRawData[KEY_NAME.SALES] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PSR], 2); 
+                    periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
+                    periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
+                    periodRawData[KEY_NAME.EPS] = _.round((periodRawData[KEY_NAME.NP_CTRL]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2); 
+                    periodRawData[OTHER_KEY_NAME.PRICE] = _.round(periodRawData[KEY_NAME.MV]*NUM_UNIT.OK/periodRawData[KEY_NAME.SHARE_NUM], 2);
+        
+                    records = label.map((colName, rowNum) => {
+                        const cells = [];
+                        header.forEach((h, colNum) => {
+                            if (colNum === 0) {
+                                cells.push({
+                                    value: periodRawData[colName],
+                                })
+                            } else {
+                                if (colName === KEY_NAME.PER || colName === KEY_NAME.SALES || colName === KEY_NAME.NPM) {
+                                    cells.push({
+                                        value: '',
+                                        isEditable: true,
+                                        onBlur: pricePrdctnModelOnClick,
+                                    })
+                                } else if (colName === KEY_NAME.SHARE_NUM) {
+                                    cells.push({
+                                        value: periodRawData[colName],
+                                    })
+                                } else {
+                                    cells.push({
+                                        value: '',
+                                    })
+                                }
+                            }
+                        })
+                        return cells;
                     })
-                } else {
-                    if (colName === KEY_NAME.PER || colName === KEY_NAME.SALES || colName === KEY_NAME.NPM) {
-                        cells.push({
-                            value: '',
-                            key: rowNum+colNum,
-                            isEditable: true,
-                            onBlur: pricePrdctnModelOnClick,
-                        })
-                    } else if (colName === KEY_NAME.SHARE_NUM) {
-                        cells.push({
-                            value: periodRawData[colName],
-                            key: rowNum+colNum,
-                        })
-                    } else {
-                        cells.push({
-                            value: '',
-                            key: rowNum+colNum,
-                        })
-                    }
+                } else if (vltModel === VLT_MODELS.SALES) {
+        
+                } else if (vltModel === VLT_MODELS.MLTP) {
+        
                 }
-            })
 
-            return cells;
-        })
+
+            }
+        }
+
     
         // cells의 가장 첫번째 엘리먼트로 fixedCol의 값 삽입
-        fixedCol.forEach((v, i) => {
+        label.forEach((v, i) => {
             (records[i]).unshift({
                 value: v,
                 key: i,

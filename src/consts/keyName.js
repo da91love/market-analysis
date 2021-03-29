@@ -47,13 +47,15 @@ export const KEY_NAME = {
  }
 
  export const OTHER_KEY_NAME = {
-    CODE: "code",
-    NAME: "name",
-    MARKET_TYPE: "marketType",
-    PRICE: "주가",
-    GRAPH:"graph",
-    SCORE:"score",
-    NUM_OF_CP: "numOfCp",
-    TARGET: "target",
-    TYPE: "type"
+   CODE: "code",
+   NAME: "name",
+   MARKET_TYPE: "marketType",
+   PRICE: "주가",
+   GRAPH:"graph",
+   SCORE:"score",
+   NUM_OF_CP: "numOfCp",
+   TARGET: "target",
+   TYPE: "type",
+   SPS: "sps",
+   OPS: "ops"
  }
