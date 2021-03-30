@@ -13,7 +13,7 @@ const vltCalc = (result, mltpIdc, vltModel) => {
         } else if (vltModel===VLT_MODELS.PRFM) {
             result[KEY_NAME.EPS] = _.round(result[OTHER_KEY_NAME.PRICE]/result[KEY_NAME.PER], 2);
             result[KEY_NAME.MV] = _.round((result[OTHER_KEY_NAME.PRICE]*result[KEY_NAME.SHARE_NUM])/NUM_UNIT.OK, 2);
-            result[KEY_NAME.NP_CTRL] = _.round(result[KEY_NAME.SALES]*(result[KEY_NAME.NPM]/100), 2);
+            result[KEY_NAME.NP_CTRL] = _.round(result[KEY_NAME.MV]/result[KEY_NAME.PER], 2);
             result[KEY_NAME.SALES] = _.round(result[KEY_NAME.NP_CTRL]/(result[KEY_NAME.NPM]/100), 2);
         } else if (vltModel===VLT_MODELS.MLTP) {
             result[KEY_NAME.NP_CTRL] = _.round(result[KEY_NAME.SALES]*(result[KEY_NAME.NPM]/100), 2);
@@ -30,7 +30,7 @@ const vltCalc = (result, mltpIdc, vltModel) => {
         } else if (vltModel===VLT_MODELS.PRFM) {
             result[OTHER_KEY_NAME.OPS] = _.round(result[OTHER_KEY_NAME.PRICE]/result[KEY_NAME.POR], 2);
             result[KEY_NAME.MV] = _.round((result[OTHER_KEY_NAME.PRICE]*result[KEY_NAME.SHARE_NUM])/NUM_UNIT.OK, 2);
-            result[KEY_NAME.OP] = _.round(result[KEY_NAME.SALES]*(result[KEY_NAME.OPM]/100), 2);
+            result[KEY_NAME.OP] = _.round(result[KEY_NAME.MV]/result[KEY_NAME.POR], 2);
             result[KEY_NAME.SALES] = _.round(result[KEY_NAME.OP]/(result[KEY_NAME.OPM]/100), 2);
         } else if (vltModel===VLT_MODELS.MLTP) {
             result[KEY_NAME.OP] = _.round(result[KEY_NAME.SALES]*(result[KEY_NAME.OPM]/100), 2);
