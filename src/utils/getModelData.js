@@ -6,7 +6,7 @@ const getModelData = (model, yearRawDataByShare, quarterRawDataByShare, quarterR
 
    if (model === MODELS.VALUE) {
       tgData = ShareTargetModelEngine.getValueModel(quarterRawDataByShare, filterStatus);
-   } else if (model == MODELS.TURNAROUND) {
+   } else if (model === MODELS.TURNAROUND) {
       tgData = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare, filterStatus);
    } else if (model === MODELS.CPGROWTH) {
       tgData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare, filterStatus);

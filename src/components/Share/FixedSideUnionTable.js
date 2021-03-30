@@ -78,10 +78,10 @@ const FixedSideUnionTable = (props) => {
                   } else {
                     return (
                       <td
-                        className="td-sm text-right pt-1 pb-1 num-custom-font"
+                        className="td-sm text-right pt-1 pb-1"
                         contentEditable={cell.isEditable ? true : false}
                         suppressContentEditableWarning={cell.isEditable ? true : false}
-                        onBlur={typeof cell.onBlur === "function" ? (event) => cell.onBlur(event, tableId, header, records, rowIndex, columnIndex, labelColumnNum) : undefined}
+                        onBlur={typeof cell.onBlur === "function" ? (event) => cell.onBlur(event, tableId, baseDate, rowIndex, columnIndex, labelColumnNum) : undefined}
                         onKeyUp={typeof cell.onKeyUp === "function" ? (event) => cell.onKeyUp(event, tableId, rowIndex, columnIndex, labelColumnNum) : undefined}
                         style={{backgroundColor: cell.isEditable ? "" : "rgba(0,0,0,.03)"}}
                         key={`${rowIndex}:${columnIndex}`}

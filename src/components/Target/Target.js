@@ -3,7 +3,6 @@ import {MDBContainer, MDBIcon} from 'mdbreact';
 import { useSnackbar } from 'notistack';
 import IconButton from '@material-ui/core/IconButton';
 import ModelBox from './ModelBox'
-import _ from "lodash";
 import { ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
 import { MODELS } from "../../consts/model";

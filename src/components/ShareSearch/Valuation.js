@@ -2,10 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import {
     MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
 } from 'mdbreact';
-import _, { isEmpty } from "lodash";
+import _ from "lodash";
 import { useSnackbar } from 'notistack';
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
-import { isNumber } from '../../utils/numUtil';
+import vltCalc from '../../utils/vltCalc';
+import {isNumber} from '../../utils/numUtil';
 import comma from '../../utils/convertComma';
 import { KEY_NAME, OTHER_KEY_NAME} from '../../consts/keyName';
 import { BLANK, NUM_UNIT } from '../../consts/common';
@@ -21,46 +22,58 @@ const Valuation = (props) => {
     const { enqueueSnackbar } = useSnackbar();
     const [activeTab, setActiveTab] = useState(KEY_NAME.PER);
     const [hidden, setHidden] = useState(true);
-    const [dataTableData, setDataTableData] = useState(true);
-    const [updatedRawData, setUpdatedRawData] = useState();
+    const [dataTableData, setDataTableData] = useState();
 
-    const pricePrdctnModelOnBlur = (e, tableId, header, records, rowIndex, columnIndex, labelColumnNum) => {
+    const pricePrdctnModelOnBlur = (e, tableId, baseDate, rowIdx, colIdx, labelColumnNum) => {
         const editedValue = e.target.innerText;
         const parsedValue = parseFloat(editedValue);
-        e.target.innerText = isNumber(parsedValue)?comma(parsedValue):'';
+        // e.target.innerText = isNumber(parsedValue)?comma(parsedValue):'';
         // e.target.innerText = '';
 
-
-        // Validation
         if (!_.isEmpty(editedValue)) {
             if (isNumber(parsedValue)){
-                records[rowIndex][columnIndex].value = parsedValue;
-    
-                const tgPer = records[0][columnIndex].value;
-                const tgShareNum = records[1][columnIndex].value;
-                const tgSales = records[2][columnIndex].value;
-                const tgNpm = records[3][columnIndex].value;
+                const [mltpIdc, vltModel] = tableId.split(':');
+                const dpBaseData = {...baseDate}
+                const tgData = dpBaseData[mltpIdc][vltModel];
+                const {header, records} = tgData;
+                const result = {};
+                const label = VLT_TABLE_LABEL[mltpIdc][vltModel].label;
+                const editable = VLT_TABLE_LABEL[mltpIdc][vltModel].editable;
         
-                if (tgPer && tgSales && tgNpm) {
-                    const tgNp =  _.round(tgSales*(tgNpm/100), 2);
-                    const tgEps = _.round((tgNp*NUM_UNIT.OK)/tgShareNum, 2);
-                    const tgPrice = _.round(tgPer*tgEps, 2);
-                    const tgMv = _.round((tgPrice*tgShareNum)/NUM_UNIT.OK, 2);                                                                                                                                                                                                                                                                                                                    
-            
-                    records[4][columnIndex].value = tgNp;
-                    records[5][columnIndex].value = tgEps;
-                    records[6][columnIndex].value = tgPrice;
-                    records[7][columnIndex].value = tgMv;
+                // 인풋된 값으로 기존의 records를 update
+                records[rowIdx][colIdx].value = parsedValue;
         
-                    setDataTableData({
-                        header: header,
-                        records: records,
-                      });
-                } else {
-                    setDataTableData({
-                        header: header,
-                        records: records,
+                // 해당 input을 포함하는 동일 column내의 모든 값을 result에 격납
+                records.forEach((row, rIdx) => {
+                    row.forEach((col, cIdx) => {
+                        if (cIdx === colIdx) {
+                            result[label[rIdx]] = col.value;
+                        }
                     });
+                });
+        
+                // 모든 editable의 값들이 들어왔는지 확인
+                if (editable.length === (editable.filter(v => result[v])).length) {
+                    const r = vltCalc(result, mltpIdc, vltModel);
+                    
+                    // update records
+                    label.forEach((idc, idx) => {
+                        records[idx][colIdx].value = r[idc];
+                    });
+
+                    dpBaseData[mltpIdc][vltModel] = {
+                        header: header,
+                        records: records
+                    };
+        
+                    setDataTableData(dpBaseData);
+                } else {
+                    dpBaseData[mltpIdc][vltModel] = {
+                        header: header,
+                        records: records
+                    };
+
+                    setDataTableData(dpBaseData);
                 }
             } else {
                 enqueueSnackbar(MSG.NAN, {variant: ERROR});
@@ -158,8 +171,7 @@ const Valuation = (props) => {
     }
 
     useEffect(() => {
-        const updRawData = updateRawData(dpLastQuarterRawData)
-        setUpdatedRawData(updRawData)
+        const updRawData = updateRawData(dpLastQuarterRawData);
         setDataTableData(rawData2FixedTableData(updRawData));
     }, [shareCode]);
 
@@ -185,7 +197,7 @@ const Valuation = (props) => {
                 </MDBNavItem>
                 <MDBNavItem>
                     <MDBNavLink link to="#" active={activeTab === KEY_NAME.PSR} onClick={() => tabHandler(KEY_NAME.PSR)} role="tab" >
-                        PCR
+                        PSR
                     </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -203,19 +215,22 @@ const Valuation = (props) => {
                                     header={dataTableData[KEY_NAME.PER][VLT_MODELS.PRICE].header}
                                     records={dataTableData[KEY_NAME.PER][VLT_MODELS.PRICE].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.PER}:${VLT_MODELS.PRICE}`}
+                                    tableId={`${KEY_NAME.PER}:${VLT_MODELS.PRICE}`}
+                                    baseDate={dataTableData}
                                 />
                                 <FixedSideUnionTable
                                     header={dataTableData[KEY_NAME.PER][VLT_MODELS.PRFM].header}
                                     records={dataTableData[KEY_NAME.PER][VLT_MODELS.PRFM].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.PER}:${VLT_MODELS.PRFM}`}
+                                    tableId={`${KEY_NAME.PER}:${VLT_MODELS.PRFM}`}
+                                    baseDate={dataTableData}
                                 />
                                 <FixedSideUnionTable
                                     header={dataTableData[KEY_NAME.PER][VLT_MODELS.MLTP].header}
                                     records={dataTableData[KEY_NAME.PER][VLT_MODELS.MLTP].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.PER}:${VLT_MODELS.MLTP}`}
+                                    tableId={`${KEY_NAME.PER}:${VLT_MODELS.MLTP}`}
+                                    baseDate={dataTableData}
                                 />
                             </div>
                         :null}
@@ -229,19 +244,22 @@ const Valuation = (props) => {
                                     header={dataTableData[KEY_NAME.POR][VLT_MODELS.PRICE].header}
                                     records={dataTableData[KEY_NAME.POR][VLT_MODELS.PRICE].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.POR}:${VLT_MODELS.PRICE}`}
+                                    tableId={`${KEY_NAME.POR}:${VLT_MODELS.PRICE}`}
+                                    baseDate={dataTableData}
                                 />
                                 <FixedSideUnionTable
                                     header={dataTableData[KEY_NAME.POR][VLT_MODELS.PRFM].header}
                                     records={dataTableData[KEY_NAME.POR][VLT_MODELS.PRFM].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.POR}:${VLT_MODELS.PRFM}`}
+                                    tableId={`${KEY_NAME.POR}:${VLT_MODELS.PRFM}`}
+                                    baseDate={dataTableData}
                                 />
                                 <FixedSideUnionTable
                                     header={dataTableData[KEY_NAME.POR][VLT_MODELS.MLTP].header}
                                     records={dataTableData[KEY_NAME.POR][VLT_MODELS.MLTP].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.POR}:${VLT_MODELS.MLTP}`}
+                                    tableId={`${KEY_NAME.POR}:${VLT_MODELS.MLTP}`}
+                                    baseDate={dataTableData}
                                 />
                             </div>
                         :null}
@@ -255,19 +273,22 @@ const Valuation = (props) => {
                                     header={dataTableData[KEY_NAME.PSR][VLT_MODELS.PRICE].header}
                                     records={dataTableData[KEY_NAME.PSR][VLT_MODELS.PRICE].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.PSR}:${VLT_MODELS.PRICE}`}
+                                    tableId={`${KEY_NAME.PSR}:${VLT_MODELS.PRICE}`}
+                                    baseDate={dataTableData}
                                 />
                                 <FixedSideUnionTable
                                     header={dataTableData[KEY_NAME.PSR][VLT_MODELS.PRFM].header}
                                     records={dataTableData[KEY_NAME.PSR][VLT_MODELS.PRFM].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.PSR}:${VLT_MODELS.PRFM}`}
+                                    tableId={`${KEY_NAME.PSR}:${VLT_MODELS.PRFM}`}
+                                    baseDate={dataTableData}
                                 />
                                 <FixedSideUnionTable
                                     header={dataTableData[KEY_NAME.PSR][VLT_MODELS.MLTP].header}
                                     records={dataTableData[KEY_NAME.PSR][VLT_MODELS.MLTP].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.PSR}:${VLT_MODELS.MLTP}`}
+                                    tableId={`${KEY_NAME.PSR}:${VLT_MODELS.MLTP}`}
+                                    baseDate={dataTableData}
                                 />
                             </div>
                         :null}
@@ -281,19 +302,22 @@ const Valuation = (props) => {
                                     header={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRICE].header}
                                     records={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRICE].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.PBR}:${VLT_MODELS.PRICE}`}
+                                    tableId={`${KEY_NAME.PBR}:${VLT_MODELS.PRICE}`}
+                                    baseDate={dataTableData}
                                 />
                                 <FixedSideUnionTable
                                     header={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRFM].header}
                                     records={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRFM].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.PBR}:${VLT_MODELS.PRFM}`}
+                                    tableId={`${KEY_NAME.PBR}:${VLT_MODELS.PRFM}`}
+                                    baseDate={dataTableData}
                                 />
                                 <FixedSideUnionTable
                                     header={dataTableData[KEY_NAME.PBR][VLT_MODELS.MLTP].header}
                                     records={dataTableData[KEY_NAME.PBR][VLT_MODELS.MLTP].records}
                                     labelColumnNum={1}
-                                    tableId={`${shareCode}:${KEY_NAME.PBR}:${VLT_MODELS.MLTP}`}
+                                    tableId={`${KEY_NAME.PBR}:${VLT_MODELS.MLTP}`}
+                                    baseDate={dataTableData}
                                 />
                             </div>
                         :null}
