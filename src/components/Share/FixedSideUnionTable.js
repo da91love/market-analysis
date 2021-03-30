@@ -85,9 +85,8 @@ const FixedSideUnionTable = (props) => {
                         onKeyUp={typeof cell.onKeyUp === "function" ? (event) => cell.onKeyUp(event, tableId, rowIndex, columnIndex, labelColumnNum) : undefined}
                         style={{backgroundColor: cell.isEditable ? "" : "rgba(0,0,0,.03)"}}
                         key={`${rowIndex}:${columnIndex}`}
-                        name={`${rowIndex}:${columnIndex}`}
                       >
-                        <span>{typeof cell.value === "number" ? cell.value.toLocaleString() : cell.value}</span>
+                        {typeof cell.value === "number" ? cell.value.toLocaleString() : cell.value}
                       </td>
                     );
                   }
