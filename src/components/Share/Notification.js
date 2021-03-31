@@ -18,7 +18,7 @@ const Notification = () => {
 
   const removeCompareTgBtn = (shareCode) => {
     _.remove(compareTg, v => v[KEY_NAME.SHARE_CODE] == shareCode);
-    SyncStatus.remove({
+    SyncStatus.set({
       storageKey: STRG_KEY_NAME.COMPARE, 
       statusSetter: setCompareTg, 
       data: compareTg
