@@ -2,14 +2,21 @@ class SyncStatus{
     static set({storageKey, statusSetter, data} = {}) {
         localStorage.setItem(storageKey, JSON.stringify(data)); 
 
-        statusSetter(data);
+        if (statusSetter) {
+            statusSetter(data);
+        }
+    }
+
+    static get({storageKey} = {}) {
+        return JSON.parse(localStorage.getItem(storageKey));
     }
 
     static remove({storageKey, statusSetter, data} = {}) {
         localStorage.removeItem(storageKey);
-        localStorage.setItem(storageKey, JSON.stringify(data)); 
         
-        statusSetter(data);
+        if (statusSetter) {
+            statusSetter(data);
+        }
     }
 }
 

@@ -1,18 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
 import {
-    MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
+    MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBBtn
 } from 'mdbreact';
 import _ from "lodash";
 import { useSnackbar } from 'notistack';
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
 import vltCalc from '../../utils/vltCalc';
 import {isNumber} from '../../utils/numUtil';
+import SyncStatus from '../../utils/SyncStatus';
 import { KEY_NAME, OTHER_KEY_NAME} from '../../consts/keyName';
 import { BLANK, NUM_UNIT } from '../../consts/common';
 import { MSG } from '../../consts/message';
-import { ERROR } from '../../consts/alert';
+import { ERROR, SUCCESS } from '../../consts/alert';
 import { VLT_TABLE_COL, VLT_TABLE_LABEL} from '../../consts/tbCol';
 import { VLT_MODELS } from '../../consts/model';
+import { STRG_KEY_NAME } from '../../consts/localStorage';
 
 // Temp: import json
 const Valuation = (props) => {
@@ -167,9 +169,42 @@ const Valuation = (props) => {
         }
     }
 
+    const dataTableDataSaveHandler = () => {
+        const localStrgData = SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT}) || {};
+        localStrgData[shareCode] = dataTableData;
+
+        SyncStatus.set({
+            storageKey: STRG_KEY_NAME.SAVE_VLT,
+            data: localStrgData
+        });
+
+        enqueueSnackbar(MSG.VLT_SAVE, {variant: SUCCESS});
+    }
+
+    const dataTableDataRemoveHandler = () => {
+        const localStrgData = SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT});
+
+        if (!_.isEmpty(localStrgData)) {
+            delete localStrgData[shareCode];
+
+            SyncStatus.remove({torageKey: STRG_KEY_NAME.SAVE_VLT});
+            SyncStatus.set({
+                storageKey: STRG_KEY_NAME.SAVE_VLT,
+                data: localStrgData
+            });
+        }
+
+        enqueueSnackbar(MSG.VLT_REMOVE, {variant: SUCCESS});
+
+        const updRawData = updateRawData(dpLastQuarterRawData);
+        const vltDataByShare = rawData2FixedTableData(updRawData);
+        setDataTableData(vltDataByShare);
+    }
+
     useEffect(() => {
         const updRawData = updateRawData(dpLastQuarterRawData);
-        setDataTableData(rawData2FixedTableData(updRawData));
+        const vltDataByShare = SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT})?.[shareCode] || rawData2FixedTableData(updRawData);
+        setDataTableData(vltDataByShare);
     }, [shareCode]);
 
     return (
@@ -201,6 +236,12 @@ const Valuation = (props) => {
                     <MDBNavLink link to="#" active={activeTab === KEY_NAME.PBR} onClick={() => tabHandler(KEY_NAME.PBR)} role="tab" >
                         PBR
                     </MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
+                    <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} color="secondary" onClick={dataTableDataSaveHandler}>Save</MDBBtn>
+                </MDBNavItem>
+                <MDBNavItem>
+                    <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} color="secondary" onClick={dataTableDataRemoveHandler}>Remove</MDBBtn>
                 </MDBNavItem>
             </MDBNav>
             <MDBTabContent activeItem={activeTab} >

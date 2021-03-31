@@ -1,3 +1,4 @@
 export const STRG_KEY_NAME = {
-    COMPARE: "compare"
+    COMPARE: "compare",
+    SAVE_VLT: "saveVlt"
 }

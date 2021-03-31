@@ -6,5 +6,7 @@ export const MSG = {
     NAN: 'Not a number',
     ADD_COMPARE_TG: 'Add to compare list success',
     REMOVE_COMPARE_TG: 'Remove from compare list success',
-    NAN: 'Inserted value is not a number'
+    NAN: 'Inserted value is not a number',
+    VLT_SAVE: 'Valuation data is saved',
+    VLT_REMOVE: 'Valuation data is removed'
 }
