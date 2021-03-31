@@ -7,7 +7,6 @@ import { useSnackbar } from 'notistack';
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
 import vltCalc from '../../utils/vltCalc';
 import {isNumber} from '../../utils/numUtil';
-import comma from '../../utils/convertComma';
 import { KEY_NAME, OTHER_KEY_NAME} from '../../consts/keyName';
 import { BLANK, NUM_UNIT } from '../../consts/common';
 import { MSG } from '../../consts/message';
@@ -27,8 +26,6 @@ const Valuation = (props) => {
     const pricePrdctnModelOnBlur = (e, tableId, baseDate, rowIdx, colIdx, labelColumnNum) => {
         const editedValue = e.target.innerText;
         const parsedValue = parseFloat(editedValue);
-        // e.target.innerText = isNumber(parsedValue)?comma(parsedValue):'';
-        // e.target.innerText = '';
 
         if (!_.isEmpty(editedValue)) {
             if (isNumber(parsedValue)){
