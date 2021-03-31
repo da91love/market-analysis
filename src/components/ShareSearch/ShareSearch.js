@@ -35,7 +35,7 @@ const ShareSearch = () => {
     return null
   }
 
-  if (shareInfoFromExtnl && shareInfoFromExtnl !== shareInfo){
+  if (shareInfoFromExtnl && shareInfoFromExtnl[KEY_NAME.SHARE_CODE] !== shareInfo[KEY_NAME.SHARE_CODE]){
     setShareInfo(shareInfoFromExtnl);
   };
 

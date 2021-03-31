@@ -27,7 +27,7 @@ const MarketSearch = () => {
     const [marketInfo, setMarketInfo] = useState(DEFAULT_MARKET_INFO);
     const {marketCode, marketName} = marketInfo;
 
-    if (mrkInfoFromExtnl && mrkInfoFromExtnl !== marketInfo){
+    if (mrkInfoFromExtnl && mrkInfoFromExtnl[KEY_NAME.MARKET_CODE] !== marketInfo[KEY_NAME.MARKET_CODE]){
         setMarketInfo(mrkInfoFromExtnl);
     };
 
