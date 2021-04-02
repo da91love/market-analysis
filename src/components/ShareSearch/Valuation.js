@@ -101,7 +101,7 @@ const Valuation = (props) => {
         return periodRawData;
     }
 
-    const rawData2FixedTableData = (updatedRawData) => {
+    const rawData2FixedTableData = (updatedRawData, savedData) => {
         const byIdc = {};
         for (const mltpIdc in VLT_TABLE_LABEL) {
             const byModel = {};
@@ -109,28 +109,35 @@ const Valuation = (props) => {
                 const header = [...VLT_TABLE_COL];
                 const label = VLT_TABLE_LABEL[mltpIdc][vltModel].label;
                 const editable = VLT_TABLE_LABEL[mltpIdc][vltModel].editable;
+                const savedRecords = savedData?.[mltpIdc][vltModel].records;
 
                 let records = label.map((rowName, rowNum) => {
                     const cells = [];
                     header.forEach((colName, colNum) => {
+                        const savedValue = savedRecords?savedRecords[rowNum][colNum].value:null;
+
                         if (colNum === 0) {
                             cells.push({
                                 value: updatedRawData[rowName],
                             })
                         } else {
                             if (editable.includes(rowName)) {
-                                cells.push({
-                                    value: '',
-                                    isEditable: true,
-                                    onBlur: pricePrdctnModelOnBlur,
-                                })
-                            } else if (rowName === KEY_NAME.SHARE_NUM) {
-                                cells.push({
-                                    value: updatedRawData[rowName],
-                                })
+                                if (rowName === KEY_NAME.SHARE_NUM) {
+                                    cells.push({
+                                        value: savedValue || updatedRawData[rowName],
+                                        isEditable: true,
+                                        onBlur: pricePrdctnModelOnBlur,
+                                    })
+                                } else {
+                                    cells.push({
+                                        value: savedValue || '',
+                                        isEditable: true,
+                                        onBlur: pricePrdctnModelOnBlur,
+                                    })
+                                }
                             } else {
                                 cells.push({
-                                    value: '',
+                                    value: savedValue || '',
                                 })
                             }
                         }
@@ -203,7 +210,8 @@ const Valuation = (props) => {
 
     useEffect(() => {
         const updRawData = updateRawData(dpLastQuarterRawData);
-        const vltDataByShare = SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT})?.[shareCode] || rawData2FixedTableData(updRawData);
+        const savedData = SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT})?.[shareCode];
+        const vltDataByShare = rawData2FixedTableData(updRawData, savedData);
         setDataTableData(vltDataByShare);
     }, [shareCode]);
 
