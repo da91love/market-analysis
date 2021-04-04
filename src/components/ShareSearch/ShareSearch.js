@@ -11,6 +11,7 @@ import Valuation from "./Valuation";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import CompareTgContext from "../../contexts/CompareTgContext";
 import SyncStatus from '../../utils/SyncStatus';
+import RawDataFilter from '../../utils/RawDataFilter';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
@@ -99,7 +100,7 @@ const ShareSearch = () => {
         <div className="mt-3">
           <Valuation
             shareCode={shareCode}
-            lastQuarterRawData={_.last(quarterRawDataByShare[shareCode])}
+            lastQuarterRawData={_.last(RawDataFilter.getRealData(quarterRawDataByShare[shareCode]))}
           />
         </div>
         <div className="mt-3">

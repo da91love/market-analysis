@@ -7,6 +7,8 @@ export const LANG = {
 
 export const BLANK = "　";
 
+export const E_PERIOD_DELIMITER = "E";
+
 export const NUM_UNIT = {
   THOU: 1000,
   MIL: 1000000,

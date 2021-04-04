@@ -1,6 +1,7 @@
 import _ from "lodash";
 import cutPeriodWithCondition from "./cutPeriodWithCondition";
 import EconoIndicator from "../utils/EconoIndicator";
+import RawDataFilter from "../utils/RawDataFilter";
 import { KEY_NAME } from '../consts/keyName';
 import { MODELS, MKRGROWTH_MODEL_RAWDATA_KEYNAME } from '../consts/model';
 import {FILTER_TYPE} from '../consts/filter';
@@ -14,8 +15,9 @@ class ShareTargetModelEngine {
     const term = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.TERM];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
-      const period = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
-      const tgPeriodData = cutPeriodWithCondition(v, period, term);
+      const rD = RawDataFilter.getRealData(v);
+      const period = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
+      const tgPeriodData = cutPeriodWithCondition(rD, period, term);
       const tgPeriodDataLen = tgPeriodData.length;
 
       // tgPeriodData should not be null: 원바이오젠과 같이 2019년 데이터까지 밖에 없는 지정 기간 내의 데이터가 존재하지 않으므로 걸러냄
@@ -42,8 +44,9 @@ class ShareTargetModelEngine {
     const roeMax = filterStatus[MODELS.VALUE][FILTER_TYPE.ROE_MIN];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
+      const rD = RawDataFilter.getRealData(v);
       // cutPeriodWithCondition function working same as period filter + @
-      const period = filterStatus[MODELS.VALUE][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const period = filterStatus[MODELS.VALUE][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
       const tgPeriodData = cutPeriodWithCondition(v, period);
       const tgPeriodDataLen = tgPeriodData.length;
 
