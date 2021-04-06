@@ -72,7 +72,7 @@ const IndicatorGraph = (props) => {
                             {Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
                                 return <AnalysisGraph graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
                             })}
-                        </div>                  
+                        </div>
                     </MDBTabPane>
                     <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
                         <div className="mt-3">
