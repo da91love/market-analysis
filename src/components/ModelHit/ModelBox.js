@@ -4,6 +4,7 @@ import _ from "lodash";
 
 import ShareDataContext from "../../contexts/ShareDataContext";
 import ShareTargetModelEngine from '../../utils/ShareTargetModelEngine';
+import RawDataFilter from '../../utils/RawDataFilter';
 import GraphModalBtn from '../Share/GraphModalBtn';
 
 import { MODELS } from "../../consts/model";
@@ -60,7 +61,7 @@ const ModelBox = (props) => {
          const blueChipModelData = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare, FILTER_BY_MDL);
 
          const dataTableInput = (Object.keys(quarterRawDataByShare).map((shareCode, i) => {
-            const tgShareData = quarterRawDataByShare[shareCode];
+            const tgShareData = RawDataFilter.getRealData(quarterRawDataByShare[shareCode]);
 
             const isValueModelMatched = _.find(valueModelData, [KEY_NAME.SHARE_CODE, shareCode]);
             const isTurnAroundModelMatched = _.find(turnAroundModelData, [KEY_NAME.SHARE_CODE, shareCode]);
@@ -95,16 +96,15 @@ const ModelBox = (props) => {
             </MDBCardTitle>
             <MDBCardText>
                {datatable?<MDBDataTableV5 
-               responsive 
-               striped 
-               bordered 
-               small 
-               hover 
-               entriesOptions={[20, 30, 40, 50]} 
-               entries={20} 
-               pagesAmount={4} 
-               data={datatable} 
-
+                  responsive 
+                  striped 
+                  bordered 
+                  small 
+                  hover 
+                  entriesOptions={[20, 30, 40, 50]} 
+                  entries={20} 
+                  pagesAmount={4} 
+                  data={datatable} 
                />: null}
             </MDBCardText>
          </MDBCardBody>

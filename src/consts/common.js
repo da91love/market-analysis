@@ -5,6 +5,8 @@ export const LANG = {
   KO: 'ko',
 };
 
+export const AVG = "AVG";
+
 export const BLANK = "　";
 
 export const E_PERIOD_DELIMITER = "E";

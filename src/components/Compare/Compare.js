@@ -9,7 +9,7 @@ import ShareDataContext from "../../contexts/ShareDataContext";
 import AnalysisGraph from "../Share/AnalysisGraph";
 import {KEY_NAME} from "../../consts/keyName";
 import {COMPARE_GRAPH_TYPE} from "../../consts/graph";
-import {PERIOD_UNIT} from "../../consts/common";
+import {PERIOD_UNIT, AVG} from "../../consts/common";
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 
 // Temp: import json
@@ -51,7 +51,7 @@ const Compare = () => {
         const data = Object.keys(tgRawDataByPeriod).map((period,i) => {
             const d = {}
             d.name = period;
-            d.sum = (_.find(tgRawDataBySum, [[KEY_NAME.PERIOD], period]))[idc];
+            d[AVG] = (_.find(tgRawDataBySum, [[KEY_NAME.PERIOD], period]))[idc];
             tgRawDataByPeriod[period].forEach((rawData,i) => {
                 d[rawData[KEY_NAME.SHARE_NAME]] = rawData[idc];
             });
@@ -62,7 +62,7 @@ const Compare = () => {
         return {
             name: idc,
             xAxisKeyName: "name",
-            dataKey: ['sum'].concat(tgList.map((tg, i) => {
+            dataKey: [AVG].concat(tgList.map((tg, i) => {
                 return tg[KEY_NAME.SHARE_NAME];
             })),
             data: data

@@ -17,7 +17,7 @@ class ShareTargetModelEngine {
     _.forEach(quarterRawDataByShare, (v, k) => {
       const rD = RawDataFilter.getRealData(v);
       const period = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
-      const tgPeriodData = cutPeriodWithCondition(rD, period, term);
+      const tgPeriodData = cutPeriodWithCondition(v, period, term);
       const tgPeriodDataLen = tgPeriodData.length;
 
       // tgPeriodData should not be null: 원바이오젠과 같이 2019년 데이터까지 밖에 없는 지정 기간 내의 데이터가 존재하지 않으므로 걸러냄
@@ -77,7 +77,8 @@ class ShareTargetModelEngine {
     const roeMax = filterStatus[MODELS.BLUECHIP][FILTER_TYPE.ROE_MIN];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
-      const period = filterStatus[MODELS.BLUECHIP][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const rD = RawDataFilter.getRealData(v);
+      const period = filterStatus[MODELS.BLUECHIP][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
       const tgPeriodData = cutPeriodWithCondition(v, period);
       const tgPeriodDataLen = tgPeriodData.length;
 
@@ -108,7 +109,8 @@ class ShareTargetModelEngine {
     const term = filterStatus[MODELS.COLLAPSE][FILTER_TYPE.TERM];
 
     _.forEach(yearRawDataByShare, (v, k) => {
-      const period = filterStatus[MODELS.COLLAPSE][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const rD = RawDataFilter.getRealData(v);
+      const period = filterStatus[MODELS.COLLAPSE][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
       const tgPeriodData = cutPeriodWithCondition(v, period, term);
       const tgPeriodDataLen = tgPeriodData.length;
 
@@ -137,7 +139,8 @@ class ShareTargetModelEngine {
     const mvTimes = filterStatus[MODELS.MRKGROWTH][FILTER_TYPE.MV_TIMES];
 
     _.forEach(quarterRawDataByMrk, (v, k) => {
-      const period = filterStatus[MODELS.MRKGROWTH][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const rD = RawDataFilter.getRealData(v);
+      const period = filterStatus[MODELS.MRKGROWTH][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
       const tgPeriodData = cutPeriodWithCondition(v, period);
       const tgPeriodDataLen = tgPeriodData.length;
 
@@ -168,7 +171,8 @@ class ShareTargetModelEngine {
     const opTimes = filterStatus[MODELS.CPGROWTH][FILTER_TYPE.OP_TIMES];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
-      const period = filterStatus[MODELS.CPGROWTH][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const rD = RawDataFilter.getRealData(v);
+      const period = filterStatus[MODELS.CPGROWTH][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
       const tgPeriodData = cutPeriodWithCondition(v, period, term);
       const tgPeriodDataLen = tgPeriodData.length;
 
@@ -197,7 +201,8 @@ class ShareTargetModelEngine {
     const iaCfTimes = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.IA_CF_TIMES];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
-      const period = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.PERIOD] || v[v.length-1][KEY_NAME.PERIOD];
+      const rD = RawDataFilter.getRealData(v);
+      const period = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
       const tgPeriodData = cutPeriodWithCondition(v, period);
       const tgPeriodDataLen = tgPeriodData.length;
 
