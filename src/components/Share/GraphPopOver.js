@@ -11,17 +11,17 @@ const GraphPopOver = (props) => {
 
     return (
         <MDBPopover
-          placement="left"
+          placement="right"
           popover
           clickable
           id="popper1"
           >
           <Button className="p-0"><p className="text-white pl-1">{value}</p></Button>
           <div>
-          <MDBPopoverHeader>{popOverHeader}</MDBPopoverHeader>
-          <MDBPopoverBody>
-            <AnalysisGraph label={false} graphData={rawData2GraphData(popOverBody, value)}/>
-          </MDBPopoverBody>
+            <MDBPopoverHeader>{popOverHeader}</MDBPopoverHeader>
+            <MDBPopoverBody>
+              <AnalysisGraph label={false} graphData={rawData2GraphData(popOverBody, value)}/>
+            </MDBPopoverBody>
           </div>
         </MDBPopover>
     )

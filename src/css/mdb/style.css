@@ -107,7 +107,6 @@ h5, .h5 {
 /*
 class
  */
-
  .pink {
   background-color: var(--pink) !important;
 }
@@ -404,4 +403,11 @@ optgroup option::before{
 
 .border-base-color-opacity-half {
   border-color: var(--base-color-opacity-half) !important;
+}
+
+/*
+popover
+ */
+.popover {
+  max-width: 50rem;
 }
