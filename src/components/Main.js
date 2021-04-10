@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import _ from "lodash";
 
 import Header from './Share/Header';
-import Notification from './Share/Notification';
+import Navigator from './Share/Navigator';
 import CompareTgContext from '../contexts/CompareTgContext';
 import ShareDataContext from '../contexts/ShareDataContext';
 import ShareSearch from './ShareSearch/ShareSearch';
@@ -30,6 +30,7 @@ const Main = (props) => {
   const [yearRawDataByMrk,setYearRawDataByMrk] = useState(null);
   const [quarterRawDataByMrk,setQuarterRawDataByMrk] = useState(null);
   const [compareTg, setCompareTg] = useState([]);
+  const [bookMark, setBookMark] = useState([]);
   const [isInitDataLoaded,setIsInitDataLoaded] = useState(false);
   const [shareInfos, setShareInfos] = useState(null);
 
@@ -63,7 +64,7 @@ const Main = (props) => {
   }, [])
 
   return (
-    <CompareTgContext.Provider value={{ compareTg, setCompareTg }}>
+    <CompareTgContext.Provider value={{ compareTg, setCompareTg, bookMark, setBookMark}}>
     <ShareDataContext.Provider value={{
       isInitDataLoaded, shareInfos,
       yearRawData, setYearRawData, 
@@ -74,7 +75,7 @@ const Main = (props) => {
       quarterRawDataByMrk, setQuarterRawDataByMrk
     }}>
       <Header rawDataByShare={quarterRawDataByShare} rawDataByMrk={quarterRawDataByMrk}/>
-      <Notification />
+      <Navigator />
       <main className="blue-grey lighten-5">
         <Route path={`${ROUTER_URL.SHARE_SEARCH}/:shareCode?/:shareName?`} component={ShareSearch} exact />
         <Route path={`${ROUTER_URL.MARKET_SEARCH}/:marketCode?/:marketName?`} component={MarketSearch} exact />

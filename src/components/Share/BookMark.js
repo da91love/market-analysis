@@ -1,0 +1,67 @@
+import React, {useState, useContext} from 'react';
+import { MDBIcon, MDBListGroup, MDBListGroupItem,
+} from "mdbreact";
+import _ from "lodash";
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Badge from '@material-ui/core/Badge';
+import { useSnackbar } from 'notistack';
+import SyncStatus from '../../utils/SyncStatus';
+import CompareTgContext from '../../contexts/CompareTgContext';
+import {STRG_KEY_NAME} from "../../consts/localStorage";
+import {KEY_NAME} from "../../consts/keyName";
+import {MSG} from "../../consts/message";
+import {SUCCESS} from "../../consts/alert";
+
+const BookMark = () => {
+  const { setBookMark } = useContext(CompareTgContext);
+  const { enqueueSnackbar } = useSnackbar();
+  const [open, setOpen] = useState(false);
+  const bookMark = JSON.parse(localStorage.getItem(STRG_KEY_NAME.BOOKMARK)) || [];
+
+  const removeBookMarkBtn = (shareCode) => {
+    _.remove(bookMark, v => v[KEY_NAME.SHARE_CODE] == shareCode);
+    SyncStatus.set({
+      storageKey: STRG_KEY_NAME.BOOKMARK, 
+      statusSetter: setBookMark, 
+      data: bookMark
+    });
+
+    enqueueSnackbar(MSG.REMOVE_BOOKMARK_TG, {variant: SUCCESS});
+  }
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+        <Button className="w-100 h-100" variant="outlined" color="primary" onClick={handleClickOpen}>
+            BookMark
+        </Button>
+
+
+        <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+            <DialogTitle id="simple-dialog-title">Bookmark List</DialogTitle>
+            <MDBListGroup>
+            {bookMark.length > 0?
+                bookMark.map((v, i) => {
+                    return (
+                    <MDBListGroupItem>
+                        {`${v.shareCode}:${v.shareName}`}
+                        <MDBIcon className="float-right" onClick={e => {removeBookMarkBtn(v.shareCode)}} icon="times" />
+                    </MDBListGroupItem>
+                )})
+                :<MDBListGroupItem>No data selected</MDBListGroupItem>}
+            </MDBListGroup>
+        </Dialog>
+    </div>
+    );
+}
+
+export default BookMark;

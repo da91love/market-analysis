@@ -1,7 +1,10 @@
 import React, {useState, useContext} from 'react';
-import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon 
+import { MDBIcon, MDBListGroup, MDBListGroupItem,
 } from "mdbreact";
 import _ from "lodash";
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import Badge from '@material-ui/core/Badge';
 import { useSnackbar } from 'notistack';
 import SyncStatus from '../../utils/SyncStatus';
@@ -14,6 +17,7 @@ import {SUCCESS} from "../../consts/alert";
 const Notification = () => {
   const { setCompareTg } = useContext(CompareTgContext);
   const { enqueueSnackbar } = useSnackbar();
+  const [open, setOpen] = useState(false);
   const compareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || [];
 
   const removeCompareTgBtn = (shareCode) => {
@@ -27,29 +31,35 @@ const Notification = () => {
     enqueueSnackbar(MSG.REMOVE_COMPARE_TG, {variant: SUCCESS});
   }
 
-  return (
-    <div className="fixed-bottom mb-4" >
-      <MDBDropdown className="float-right" dropup>
-        <div className="mr-3">
-          <Badge badgeContent={compareTg.length} color="error">
-            <MDBDropdownToggle caret color="warning">
-              Compare Target Shares
-            </MDBDropdownToggle>
-          </Badge>
-        </div>
-        <MDBDropdownMenu basic>
-          {compareTg.length > 0?
-            compareTg.map((v, i) => {
-              return (
-                <MDBDropdownItem>
-                  {`${v.shareCode}:${v.shareName}`}
-                  <MDBIcon className="float-right" onClick={e => {removeCompareTgBtn(v.shareCode)}} icon="times" />
-                </MDBDropdownItem>
-            )})
-          :<MDBDropdownItem>No data selected</MDBDropdownItem>}
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-        </MDBDropdownMenu>
-      </MDBDropdown>
+  const handleClose = (value) => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button className="w-100 h-100" variant="outlined" color="primary" onClick={handleClickOpen}>
+        Compare Target Shares
+      </Button>
+
+
+      <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+        <DialogTitle id="simple-dialog-title">Compare Target List</DialogTitle>
+          <MDBListGroup>
+            {compareTg.length > 0?
+                compareTg.map((v, i) => {
+                  return (
+                    <MDBListGroupItem>
+                      {`${v.shareCode}:${v.shareName}`}
+                      <MDBIcon className="float-right" onClick={e => {removeCompareTgBtn(v.shareCode)}} icon="times" />
+                    </MDBListGroupItem>
+                )})
+              :<MDBListGroupItem>No data selected</MDBListGroupItem>}
+          </MDBListGroup>
+      </Dialog>
     </div>
     );
 }

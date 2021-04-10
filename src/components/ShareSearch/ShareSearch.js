@@ -28,6 +28,7 @@ const ShareSearch = () => {
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
+  const {bookMark, setBookMark} = useContext(CompareTgContext);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
   const {shareCode, shareName} = shareInfo;
 
@@ -48,7 +49,7 @@ const ShareSearch = () => {
   const addToCompareListHandler = (shareCode, shareName) => {
     if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
         enqueueSnackbar(
-            `${MSG.SHARE_CODE_ALREADY_EXIST}(${shareCode}:${shareName})`, 
+            `${MSG.SHARE_CODE_ALREADY_EXIST_IN_CP}(${shareCode}:${shareName})`, 
             {variant: ERROR}
         );
     } else {
@@ -63,6 +64,29 @@ const ShareSearch = () => {
 
       enqueueSnackbar(
         `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, 
+        {variant: SUCCESS}
+      );
+    }
+  };
+
+  const addToBookMarkListHandler = (shareCode, shareName) => {
+    if (_.find(bookMark, [[KEY_NAME.SHARE_CODE], shareCode])) {
+        enqueueSnackbar(
+            `${MSG.SHARE_CODE_ALREADY_EXIST_IN_BM}(${shareCode}:${shareName})`, 
+            {variant: ERROR}
+        );
+    } else {
+      SyncStatus.set({
+        storageKey: STRG_KEY_NAME.BOOKMARK,
+        statusSetter: setBookMark,
+        data: [...bookMark, {
+          [KEY_NAME.SHARE_CODE]: shareCode,
+          [KEY_NAME.SHARE_NAME]: shareName
+        }]
+      });
+
+      enqueueSnackbar(
+        `${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, 
         {variant: SUCCESS}
       );
     }
@@ -87,6 +111,7 @@ const ShareSearch = () => {
             <MDBIcon fab icon="neos" />
           </a>
           <MDBIcon onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="list-alt" />
+          <MDBIcon onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
         </div>
         <div className="mt-3">
           <ModelHitTable
