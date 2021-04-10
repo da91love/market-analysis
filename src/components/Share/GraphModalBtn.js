@@ -21,12 +21,12 @@ import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GR
 const GraphModalBtn = (props) => {
     const {isMarket=false, tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit} = props;
     const {compareTg, setCompareTg} = useContext(CompareTgContext);
+    const {bookMark, setBookMark} = useContext(CompareTgContext);
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [graphData, setGraphData] = useState(null);
     const [selectedGraphType, setSelectedGraphType] = useState(isMarket?BY_MRK_DEFAULT_GRAPH_TYPE:BY_SHARE_DEFAULT_GRAPH_TYPE)
     const { enqueueSnackbar } = useSnackbar();
-    const url = isMarket?EXTERNAL_URL.NAVER_MRK_INFO:EXTERNAL_URL.NAVER_SHARE_INFO;
 
     const tabHandler = (tab) => {
         if (activeTab !== tab) {
@@ -43,7 +43,7 @@ const GraphModalBtn = (props) => {
         win.focus();
     }
 
-    const addToCompareList = (shareCode, shareName) => {
+    const addToCompareListHandler = (shareCode, shareName) => {
         if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
             enqueueSnackbar(
                 `${MSG.SHARE_CODE_ALREADY_EXIST}(${shareCode}:${shareName})`, 
@@ -66,6 +66,29 @@ const GraphModalBtn = (props) => {
         }
     };
 
+    const addToBookMarkListHandler = (shareCode, shareName) => {
+        if (_.find(bookMark, [[KEY_NAME.SHARE_CODE], shareCode])) {
+            enqueueSnackbar(
+                `${MSG.SHARE_CODE_ALREADY_EXIST_IN_BM}(${shareCode}:${shareName})`, 
+                {variant: ERROR}
+            );
+        } else {
+          SyncStatus.set({
+            storageKey: STRG_KEY_NAME.BOOKMARK,
+            statusSetter: setBookMark,
+            data: [...bookMark, {
+              [KEY_NAME.SHARE_CODE]: shareCode,
+              [KEY_NAME.SHARE_NAME]: shareName
+            }]
+          });
+    
+          enqueueSnackbar(
+            `${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, 
+            {variant: SUCCESS}
+          );
+        }
+      };
+
     useEffect(() => {
             const idcByYear = {};
             const idcByQuarter = {};
@@ -86,12 +109,13 @@ const GraphModalBtn = (props) => {
             <MDBIcon icon="chart-bar" onClick={modalHandler}/>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
                 <MDBModalHeader toggle={modalHandler}>
-                    {`${tgName}:${tgCode}`}
-                    <a href={`${url}${tgCode}`} target="_blank">
-                        <MDBIcon icon="external-link-alt" />
+                    <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${tgCode}`} target="_blank">
+                        <span className="h3">{`${tgName}:${tgCode}`}</span>
                     </a>
-                    <MDBIcon onClick={() => {searchPageMoveHandler(tgCode, tgName)}} icon="external-link-alt" />
-                    <MDBIcon onClick={() => {addToCompareList(tgCode, tgName)}}  icon="list-alt" />
+                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {searchPageMoveHandler(tgCode, tgName)}} icon="external-link-alt" />
+                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(tgCode, tgName)}}  icon="plus-square" />
+                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(tgCode, tgName)}}  icon="bookmark" />
+
                 </MDBModalHeader>
                 <MDBModalBody>
                     <MDBNav className="nav-tabs">

@@ -8,7 +8,7 @@ const Navigator = () => {
 
   return (
     <div className="fixed-bottom mb-3" >
-        <MDBListGroup className="float-right" style={{ width: "15rem" }}>
+        <MDBListGroup className="float-right" style={{ width: "auto" }}>
             <MDBListGroupItem className="p-0">
                 <Notification />
             </MDBListGroupItem>

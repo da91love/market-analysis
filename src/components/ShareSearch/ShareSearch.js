@@ -19,6 +19,8 @@ import { EXTERNAL_URL } from '../../consts/common';
 import { ROUTER_URL } from '../../consts/router';
 import { SUCCESS, ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
+import naverBtnImg from '../../statics/image/naver_btn_green.png';
+import googleBtnImg from '../../statics/image/googe_btn.png';
 
 // Temp: import json
 const ShareSearch = () => {
@@ -101,17 +103,17 @@ const ShareSearch = () => {
               <span className="h4">{`  ${marketName}`}</span>
             </a>
           </p>
-          <a href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
+          <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
             <span className="h1">{`${shareName}(${shareCode})`}</span>
           </a>
-          <a href={`${EXTERNAL_URL.GOOGLE_SEARCH}${shareName}`} target="_blank">
-            <MDBIcon fab icon="google" />
+          <a className="mr-1" href={`${EXTERNAL_URL.GOOGLE_SEARCH}${shareName}`} target="_blank">
+           <img className="img-size-2" src={googleBtnImg}/>
           </a>
-          <a href={`${EXTERNAL_URL.NAVER_SEARCH}${shareName}`} target="_blank">
-            <MDBIcon fab icon="neos" />
+          <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SEARCH}${shareName}`} target="_blank">
+            <img className="img-size-2" src={naverBtnImg}/>
           </a>
-          <MDBIcon onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="list-alt" />
-          <MDBIcon onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
+          <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="plus-square" />
+          <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
         </div>
         <div className="mt-3">
           <ModelHitTable

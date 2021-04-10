@@ -97,6 +97,26 @@ h5, .h5 {
   color: black !important;
 }
 
+/* image */
+.img-size-1 {
+  width: 1rem !important;
+}
+
+.img-size-2 {
+  width: 1.2rem !important;
+}
+
+.img-size-3 {
+  width: 1.4rem !important;
+}
+
+.img-size-4 {
+  width: 1.6rem !important;
+}
+
+.img-size-5 {
+  width: 1.8rem !important;
+}
 
 /* color */
 .blue-grey-lighten-5 {

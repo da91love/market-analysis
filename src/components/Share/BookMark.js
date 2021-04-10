@@ -5,7 +5,6 @@ import _ from "lodash";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Badge from '@material-ui/core/Badge';
 import { useSnackbar } from 'notistack';
 import SyncStatus from '../../utils/SyncStatus';
 import CompareTgContext from '../../contexts/CompareTgContext';
@@ -13,6 +12,7 @@ import {STRG_KEY_NAME} from "../../consts/localStorage";
 import {KEY_NAME} from "../../consts/keyName";
 import {MSG} from "../../consts/message";
 import {SUCCESS} from "../../consts/alert";
+import {ROUTER_URL} from "../../consts/router";
 
 const BookMark = () => {
   const { setBookMark } = useContext(CompareTgContext);
@@ -31,20 +31,24 @@ const BookMark = () => {
     enqueueSnackbar(MSG.REMOVE_BOOKMARK_TG, {variant: SUCCESS});
   }
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+    const searchPageMoveHandler = (shareCode, shareName) => {
+        const win = window.open(`${ROUTER_URL.SHARE_SEARCH}/${shareCode}/${shareName}`, "_blank");
+        win.focus();
+    }
 
-  const handleClose = (value) => {
-    setOpen(false);
-  };
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (value) => {
+        setOpen(false);
+    };
 
   return (
     <div>
         <Button className="w-100 h-100" variant="outlined" color="primary" onClick={handleClickOpen}>
             BookMark
         </Button>
-
 
         <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
             <DialogTitle id="simple-dialog-title">Bookmark List</DialogTitle>
@@ -53,7 +57,9 @@ const BookMark = () => {
                 bookMark.map((v, i) => {
                     return (
                     <MDBListGroupItem>
-                        {`${v.shareCode}:${v.shareName}`}
+                        <a className="mr-1" href={`${ROUTER_URL.SHARE_SEARCH}/${v.shareCode}/${v.shareName}`} target="_blank">
+                            <span className="h3">{`${v.shareCode}:${v.shareName}`}</span>
+                        </a>
                         <MDBIcon className="float-right" onClick={e => {removeBookMarkBtn(v.shareCode)}} icon="times" />
                     </MDBListGroupItem>
                 )})
