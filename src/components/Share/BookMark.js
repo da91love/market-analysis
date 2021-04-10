@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import { MDBIcon, MDBListGroup, MDBListGroupItem,
+import { MDBIcon, MDBListGroup, MDBListGroupItem, MDBBadge
 } from "mdbreact";
 import _ from "lodash";
 import Button from '@material-ui/core/Button';
@@ -47,7 +47,8 @@ const BookMark = () => {
   return (
     <div>
         <Button className="w-100 h-100" variant="outlined" color="primary" onClick={handleClickOpen}>
-            BookMark
+            <span>BookMark</span>
+            <MDBBadge color="danger" className="ml-2">{bookMark.length}</MDBBadge>
         </Button>
 
         <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
