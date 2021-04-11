@@ -18,7 +18,7 @@ const Notification = () => {
   const { setCompareTg } = useContext(CompareTgContext);
   const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
-  const compareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || [];
+  const compareTg = SyncStatus.get({storageKey: STRG_KEY_NAME.COMPARE}) || [];
 
   const removeCompareTgBtn = (shareCode) => {
     SyncStatus.remove({

@@ -18,7 +18,7 @@ const BookMark = () => {
   const { setBookMark } = useContext(CompareTgContext);
   const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
-  const bookMark = JSON.parse(localStorage.getItem(STRG_KEY_NAME.BOOKMARK)) || [];
+  const bookMark = SyncStatus.get({storageKey: STRG_KEY_NAME.BOOKMARK}) || [];
 
   const removeBookMarkBtn = (shareCode) => {
     SyncStatus.remove({

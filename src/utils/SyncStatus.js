@@ -4,9 +4,7 @@ class SyncStatus{
     static set({storageKey, statusSetter, data} = {}) {
         localStorage.setItem(storageKey, JSON.stringify(data)); 
 
-        if (statusSetter) {
-            statusSetter(data);
-        }
+        statusSetter(data);
     }
 
     static get({storageKey} = {}) {
@@ -14,13 +12,15 @@ class SyncStatus{
     }
 
     static remove({storageKey, statusSetter, data, rmFunc} = {}) {
-        _.remove(data, rmFunc);
+        if (_.isArray(data)) {
+            _.remove(data, rmFunc);
+        } else if (data.constructor === Object) {
+            Object.keys(data).forEach(rmFunc);
+        }
 
         localStorage.setItem(storageKey, JSON.stringify(data));
         
-        if (statusSetter) {
-            statusSetter(data);
-        }
+        statusSetter(data);
     }
 }
 

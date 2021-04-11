@@ -23,6 +23,7 @@ const Valuation = (props) => {
     const { enqueueSnackbar } = useSnackbar();
     const [activeTab, setActiveTab] = useState(KEY_NAME.PER);
     const [hidden, setHidden] = useState(true);
+    const [savedDataTableDatas, setSavedDataTableDatas] = useState(SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT}) || {});
     const [dataTableData, setDataTableData] = useState();
 
     const pricePrdctnModelOnBlur = (e, tableId, baseDate, rowIdx, colIdx, labelColumnNum) => {
@@ -178,43 +179,43 @@ const Valuation = (props) => {
     }
 
     const dataTableDataSaveHandler = () => {
-        const localStrgData = SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT}) || {};
-        localStrgData[shareCode] = dataTableData;
+        const dpSavedDataTableDatas = {...savedDataTableDatas};
+        dpSavedDataTableDatas[shareCode] = dataTableData;
 
         SyncStatus.set({
             storageKey: STRG_KEY_NAME.SAVE_VLT,
-            data: localStrgData
+            statusSetter: setSavedDataTableDatas,
+            data: dpSavedDataTableDatas
         });
 
         enqueueSnackbar(MSG.VLT_SAVE, {variant: SUCCESS});
     }
 
     const dataTableDataRemoveHandler = () => {
-        const localStrgData = SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT});
+        const dpSavedDataTableDatas = {...savedDataTableDatas};
 
-        if (!_.isEmpty(localStrgData)) {
-            delete localStrgData[shareCode];
-
-            SyncStatus.remove({storageKey: STRG_KEY_NAME.SAVE_VLT});
-            SyncStatus.set({
-                storageKey: STRG_KEY_NAME.SAVE_VLT,
-                data: localStrgData
-            });
+        if (!_.isEmpty(dpSavedDataTableDatas)) {
+            SyncStatus.remove({
+                storageKey: STRG_KEY_NAME.SAVE_VLT, 
+                statusSetter: setSavedDataTableDatas, 
+                data: dpSavedDataTableDatas,
+                rmFunc: (key) => {
+                    if (key === shareCode) {
+                        delete dpSavedDataTableDatas[key];
+                    }
+                }
+              });
         }
 
         enqueueSnackbar(MSG.VLT_REMOVE, {variant: SUCCESS});
-
-        const updRawData = updateRawData(dpLastQuarterRawData);
-        const vltDataByShare = rawData2FixedTableData(updRawData);
-        setDataTableData(vltDataByShare);
     }
 
     useEffect(() => {
         const updRawData = updateRawData(dpLastQuarterRawData);
-        const savedData = SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT})?.[shareCode];
+        const savedData = savedDataTableDatas?.[shareCode];
         const vltDataByShare = rawData2FixedTableData(updRawData, savedData);
         setDataTableData(vltDataByShare);
-    }, [shareCode]);
+    }, [shareCode, savedDataTableDatas]);
 
     return (
     <MDBCard className="card-body">
