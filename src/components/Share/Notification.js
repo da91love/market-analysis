@@ -21,11 +21,11 @@ const Notification = () => {
   const compareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || [];
 
   const removeCompareTgBtn = (shareCode) => {
-    _.remove(compareTg, v => v[KEY_NAME.SHARE_CODE] == shareCode);
-    SyncStatus.set({
+    SyncStatus.remove({
       storageKey: STRG_KEY_NAME.COMPARE, 
       statusSetter: setCompareTg, 
-      data: compareTg
+      data: compareTg,
+      rmFunc: v => v[KEY_NAME.SHARE_CODE] == shareCode,
     });
 
     enqueueSnackbar(MSG.REMOVE_COMPARE_TG, {variant: SUCCESS});

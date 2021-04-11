@@ -195,7 +195,7 @@ const Valuation = (props) => {
         if (!_.isEmpty(localStrgData)) {
             delete localStrgData[shareCode];
 
-            SyncStatus.remove({torageKey: STRG_KEY_NAME.SAVE_VLT});
+            SyncStatus.remove({storageKey: STRG_KEY_NAME.SAVE_VLT});
             SyncStatus.set({
                 storageKey: STRG_KEY_NAME.SAVE_VLT,
                 data: localStrgData

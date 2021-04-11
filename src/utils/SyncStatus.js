@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 class SyncStatus{
     static set({storageKey, statusSetter, data} = {}) {
         localStorage.setItem(storageKey, JSON.stringify(data)); 
@@ -11,8 +13,10 @@ class SyncStatus{
         return JSON.parse(localStorage.getItem(storageKey));
     }
 
-    static remove({storageKey, statusSetter, data} = {}) {
-        localStorage.removeItem(storageKey);
+    static remove({storageKey, statusSetter, data, rmFunc} = {}) {
+        _.remove(data, rmFunc);
+
+        localStorage.setItem(storageKey, JSON.stringify(data));
         
         if (statusSetter) {
             statusSetter(data);

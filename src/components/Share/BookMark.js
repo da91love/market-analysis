@@ -21,11 +21,11 @@ const BookMark = () => {
   const bookMark = JSON.parse(localStorage.getItem(STRG_KEY_NAME.BOOKMARK)) || [];
 
   const removeBookMarkBtn = (shareCode) => {
-    _.remove(bookMark, v => v[KEY_NAME.SHARE_CODE] == shareCode);
-    SyncStatus.set({
+    SyncStatus.remove({
       storageKey: STRG_KEY_NAME.BOOKMARK, 
       statusSetter: setBookMark, 
-      data: bookMark
+      data: bookMark,
+      rmFunc: v => v[KEY_NAME.SHARE_CODE] == shareCode,
     });
 
     enqueueSnackbar(MSG.REMOVE_BOOKMARK_TG, {variant: SUCCESS});
