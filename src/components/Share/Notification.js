@@ -57,7 +57,7 @@ const Notification = () => {
                       <a className="mr-1" href={`${ROUTER_URL.SHARE_SEARCH}/${v.shareCode}/${v.shareName}`} target="_blank">
                           <span className="h3">{`${v.shareCode}:${v.shareName}`}</span>
                       </a>
-                      <MDBIcon className="float-right" onClick={e => {removeCompareTgBtn(v.shareCode)}} icon="times" />
+                      <MDBIcon className="float-right red-text" onClick={e => {removeCompareTgBtn(v.shareCode)}} icon="times" />
                     </MDBListGroupItem>
                 )})
               :<MDBListGroupItem>No data selected</MDBListGroupItem>}
