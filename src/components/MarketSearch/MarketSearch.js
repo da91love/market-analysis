@@ -102,13 +102,14 @@ const MarketSearch = () => {
 
     return (
       <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
+        <div className="h2 mb-3">Market Search</div> 
         <MDBCard className="mb-4">
             <MDBCardBody>
                 <MDBCardTitle>
-                <div className="">
-                    {dataTableData?<FilterWrapper filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
-                    :null}
-                </div>
+                    <div className="">
+                        {dataTableData?<FilterWrapper filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
+                        :null}
+                    </div>
                 </MDBCardTitle>
                 <MDBCardText>
                     <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={dataTableData} />

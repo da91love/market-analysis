@@ -84,7 +84,8 @@ const Header = (props) => {
                 </IconButton>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
-                <MDBDropdownItem href={ROUTER_URL.SHARE_SEARCH}>SEARCH</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.SHARE_SEARCH}>SHARE SEARCH</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.MARKET_SEARCH}>MARKET SEARCH</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.TARGET}>TARGET</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.MODEL_HIT}>MODELHIT</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.ALL_SHARES} >ALLSHARES</MDBDropdownItem>
