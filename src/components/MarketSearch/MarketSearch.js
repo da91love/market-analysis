@@ -9,6 +9,7 @@ import { useSnackbar } from 'notistack';
 import ShareDataContext from "../../contexts/ShareDataContext";
 import GraphModalBtn from "../Share/GraphModalBtn";
 import FilterWrapper from "./FilterWrapper";
+import RawDataFilter from "../../utils/RawDataFilter";
 
 import { DEFAULT_MARKET_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
@@ -69,16 +70,14 @@ const MarketSearch = () => {
         const rawDataByShare = _.groupBy(rawData, v => v[KEY_NAME.SHARE_CODE]);
 
         const tgData = [];
-
         // Filter by period
         _.forEach(rawDataByShare, (data, shareCode) => {
-            if (filterStatus[FILTER_TYPE.PERIOD]) {
-                const tgRawData = _.find(data, [[KEY_NAME.PERIOD], filterStatus[FILTER_TYPE.PERIOD]]);
-                if (tgRawData) {
-                    tgData.push(tgRawData);
-                }
-            } else {
-                tgData.push(data[data.length-1]);
+            const rD = RawDataFilter.getRealData(data);
+            const period = filterStatus[FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
+            const tgRawData = _.find(data, [[KEY_NAME.PERIOD], period]);
+
+            if (tgRawData) {
+                tgData.push(tgRawData);
             }
         });
 
