@@ -115,8 +115,8 @@ const Valuation = (props) => {
                 let records = label.map((rowName, rowNum) => {
                     const cells = [];
                     header.forEach((colName, colNum) => {
-                        // header는 16개이지만 savedRecords는 label이 추가되어 17개 이므로, colNum+1을 해줘야 열이 일치함
-                        const savedValue = savedRecords?savedRecords[rowNum][colNum+1].value:null;
+                        // header는 20개이지만 savedRecords는 label이 추가되어 21개 이므로, colNum+1을 해줘야 열이 일치함
+                        const savedValue = savedRecords?savedRecords[rowNum][colNum+1]?.value:null;
 
                         if (colNum === 0) {
                             cells.push({

@@ -73,7 +73,7 @@ export const MODEL_SEARCH_TABLE_COL = [
     KEY_NAME.PERIOD, KEY_NAME.SHARE_NAME, KEY_NAME.MARKET_NAME, KEY_NAME.MV, KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL, OTHER_KEY_NAME.GRAPH
 ]
 
-export const VLT_TABLE_COL =  ['현재', '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5',  '시나리오6', '시나리오7', '시나리오8', '시나리오9', '시나리오10',  '시나리오11', '시나리오12', '시나리오13', '시나리오14', '시나리오15'];
+export const VLT_TABLE_COL =  ['현재', '시나리오1', '시나리오2', '시나리오3', '시나리오4', '시나리오5',  '시나리오6', '시나리오7', '시나리오8', '시나리오9', '시나리오10', '시나리오11', '시나리오12', '시나리오13', '시나리오14', '시나리오15', '시나리오16',  '시나리오17', '시나리오18', '시나리오19', '시나리오20'];
 
 export const VLT_TABLE_LABEL = {
     [KEY_NAME.PER]: {

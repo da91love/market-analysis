@@ -10,9 +10,11 @@
 - [update] target 화면 테이블 컬럼변경
 - [update] search 화면 responsive 안됨
 - [update] 거래정지 유의 종목 표시하기
-- [update] 관심종목 추가기능
+- [update] compare의 짝을 저장하기
 
 ### Update done
+- [update] 210415 데이터가 0인 그래프는 표시하지 않기
+- [update] 210410 관심종목 추가기능
 - [update] 210410 Financial Summary 추세선 넓게 표시하기
 - [update] 210325 마켓 서칭기능 추가하기
 - [update] 210405 PSR PER POR 계산표
