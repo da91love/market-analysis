@@ -1,5 +1,4829 @@
 [
   {
+    "shareCode": "095570",
+    "shareName": "AJ네트웍스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006840",
+    "shareName": "AK홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "282330",
+    "shareName": "BGF리테일",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "027410",
+    "shareName": "BGF",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "138930",
+    "shareName": "BNK금융지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001460",
+    "shareName": "BYC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001040",
+    "shareName": "CJ",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011150",
+    "shareName": "CJ씨푸드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000590",
+    "shareName": "CS홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012030",
+    "shareName": "DB",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016610",
+    "shareName": "DB금융투자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005830",
+    "shareName": "DB손해보험",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000990",
+    "shareName": "DB하이텍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "139130",
+    "shareName": "DGB금융지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001530",
+    "shareName": "DI동일",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001880",
+    "shareName": "DL건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000210",
+    "shareName": "DL",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "375500",
+    "shareName": "DL이앤씨",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "155660",
+    "shareName": "DSR",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "069730",
+    "shareName": "DSR제강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017940",
+    "shareName": "E1",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "365550",
+    "shareName": "ESR켄달스퀘어리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007700",
+    "shareName": "F&F",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006360",
+    "shareName": "GS건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "078930",
+    "shareName": "GS",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012630",
+    "shareName": "HDC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "294870",
+    "shareName": "HDC현대산업개발",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003560",
+    "shareName": "IHQ",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "175330",
+    "shareName": "JB금융지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "234080",
+    "shareName": "JW생명과학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001060",
+    "shareName": "JW중외제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "096760",
+    "shareName": "JW홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "105560",
+    "shareName": "KB금융",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009070",
+    "shareName": "KCTC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016380",
+    "shareName": "KG동부제철",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001390",
+    "shareName": "KG케미칼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001940",
+    "shareName": "KISCO홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "025000",
+    "shareName": "KPX케미칼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "092230",
+    "shareName": "KPX홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000040",
+    "shareName": "KR모터스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "093050",
+    "shareName": "LF",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "034220",
+    "shareName": "LG디스플레이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003550",
+    "shareName": "LG",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001120",
+    "shareName": "LG상사",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "051900",
+    "shareName": "LG생활건강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "032640",
+    "shareName": "LG유플러스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011070",
+    "shareName": "LG이노텍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "066570",
+    "shareName": "LG전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "051910",
+    "shareName": "LG화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "079550",
+    "shareName": "LIG넥스원",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010120",
+    "shareName": "LS ELECTRIC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000680",
+    "shareName": "LS네트웍스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006260",
+    "shareName": "LS",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "023150",
+    "shareName": "MH에탄올",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "035420",
+    "shareName": "NAVER",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "181710",
+    "shareName": "NHN",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "338100",
+    "shareName": "NH프라임리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "034310",
+    "shareName": "NICE",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008260",
+    "shareName": "NI스틸",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004250",
+    "shareName": "NPC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010060",
+    "shareName": "OCI",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010950",
+    "shareName": "S-Oil",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "101060",
+    "shareName": "SBS미디어홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005090",
+    "shareName": "SGC에너지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001380",
+    "shareName": "SG글로벌",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002360",
+    "shareName": "SH에너지화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009160",
+    "shareName": "SIMPAC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "123700",
+    "shareName": "SJM",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "025530",
+    "shareName": "SJM홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011790",
+    "shareName": "SKC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "018670",
+    "shareName": "SK가스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001740",
+    "shareName": "SK네트웍스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "210980",
+    "shareName": "SK디앤디",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "034730",
+    "shareName": "SK",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "096770",
+    "shareName": "SK이노베이션",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001510",
+    "shareName": "SK증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "285130",
+    "shareName": "SK케미칼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017670",
+    "shareName": "SK텔레콤",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "064960",
+    "shareName": "SNT모티브",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "100840",
+    "shareName": "SNT에너지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003570",
+    "shareName": "SNT중공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "036530",
+    "shareName": "SNT홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005610",
+    "shareName": "SPC삼립",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011810",
+    "shareName": "STX",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "077970",
+    "shareName": "STX엔진",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "071970",
+    "shareName": "STX중공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "084870",
+    "shareName": "TBH글로벌",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002710",
+    "shareName": "TCC스틸",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "024070",
+    "shareName": "WISCOM",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000500",
+    "shareName": "가온전선",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000860",
+    "shareName": "강남제비스코",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "035250",
+    "shareName": "강원랜드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011420",
+    "shareName": "갤럭시아에스엠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002100",
+    "shareName": "경농",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009450",
+    "shareName": "경동나비엔",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "267290",
+    "shareName": "경동도시가스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012320",
+    "shareName": "경동인베스트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000050",
+    "shareName": "경방",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "214390",
+    "shareName": "경보제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012610",
+    "shareName": "경인양행",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009140",
+    "shareName": "경인전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "013580",
+    "shareName": "계룡건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012200",
+    "shareName": "계양전기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002140",
+    "shareName": "고려산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010130",
+    "shareName": "고려아연",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002240",
+    "shareName": "고려제강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009290",
+    "shareName": "광동제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017040",
+    "shareName": "광명전기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017900",
+    "shareName": "광전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "037710",
+    "shareName": "광주신세계",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "030610",
+    "shareName": "교보증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "339770",
+    "shareName": "교촌에프앤비",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007690",
+    "shareName": "국도화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005320",
+    "shareName": "국동",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001140",
+    "shareName": "국보",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002720",
+    "shareName": "국제약품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "114090",
+    "shareName": "GKL",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "083420",
+    "shareName": "그린케미칼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014530",
+    "shareName": "극동유화",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014280",
+    "shareName": "금강공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008870",
+    "shareName": "금비",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001570",
+    "shareName": "금양",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002990",
+    "shareName": "금호건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011780",
+    "shareName": "금호석유",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "214330",
+    "shareName": "금호에이치티",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001210",
+    "shareName": "금호전기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "073240",
+    "shareName": "금호타이어",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "092440",
+    "shareName": "기신정기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000270",
+    "shareName": "기아",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "013700",
+    "shareName": "까뮤이앤씨",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004540",
+    "shareName": "깨끗한나라",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001260",
+    "shareName": "남광토건",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008350",
+    "shareName": "남선알미늄",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004270",
+    "shareName": "남성",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003920",
+    "shareName": "남양유업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "025860",
+    "shareName": "남해화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005720",
+    "shareName": "넥센",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002350",
+    "shareName": "넥센타이어",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003580",
+    "shareName": "넥스트사이언스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "251270",
+    "shareName": "넷마블",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "090350",
+    "shareName": "노루페인트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000320",
+    "shareName": "노루홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006280",
+    "shareName": "녹십자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005250",
+    "shareName": "녹십자홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004370",
+    "shareName": "농심",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "072710",
+    "shareName": "농심홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "058730",
+    "shareName": "다스코",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "023590",
+    "shareName": "다우기술",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "019680",
+    "shareName": "대교",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006370",
+    "shareName": "대구백화점",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008060",
+    "shareName": "대덕",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "353200",
+    "shareName": "대덕전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000490",
+    "shareName": "대동공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008110",
+    "shareName": "대동전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005750",
+    "shareName": "대림B&Co",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006570",
+    "shareName": "대림통상",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001680",
+    "shareName": "대상",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "084690",
+    "shareName": "대상홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "128820",
+    "shareName": "대성산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "117580",
+    "shareName": "대성에너지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016710",
+    "shareName": "대성홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003540",
+    "shareName": "대신증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009190",
+    "shareName": "대양금속",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014160",
+    "shareName": "대영포장",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "047040",
+    "shareName": "대우건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009320",
+    "shareName": "대우부품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "042660",
+    "shareName": "대우조선해양",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003090",
+    "shareName": "대웅",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "069620",
+    "shareName": "대웅제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000430",
+    "shareName": "대원강업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006340",
+    "shareName": "대원전선",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003220",
+    "shareName": "대원제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "024890",
+    "shareName": "대원화성",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002880",
+    "shareName": "대유에이텍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000300",
+    "shareName": "대유플러스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015230",
+    "shareName": "대창단조",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012800",
+    "shareName": "대창",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001070",
+    "shareName": "대한방직",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006650",
+    "shareName": "대한유화",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001440",
+    "shareName": "대한전선",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "084010",
+    "shareName": "대한제강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001790",
+    "shareName": "대한제당",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001130",
+    "shareName": "대한제분",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003490",
+    "shareName": "대한항공",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005880",
+    "shareName": "대한해운",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003830",
+    "shareName": "대한화섬",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016090",
+    "shareName": "대현",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "069460",
+    "shareName": "대호에이엘",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "192080",
+    "shareName": "더블유게임즈",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012510",
+    "shareName": "더존비즈온",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004830",
+    "shareName": "덕성",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "024900",
+    "shareName": "덕양산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "145720",
+    "shareName": "덴티움",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002150",
+    "shareName": "도화엔지니어링",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001230",
+    "shareName": "동국제강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004140",
+    "shareName": "동방",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007590",
+    "shareName": "동방아그로",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005960",
+    "shareName": "동부건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "026960",
+    "shareName": "동서",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002210",
+    "shareName": "동성제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "102260",
+    "shareName": "동성케미컬",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000640",
+    "shareName": "동아쏘시오홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "170900",
+    "shareName": "동아에스티",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "028100",
+    "shareName": "동아지질",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "282690",
+    "shareName": "동아타이어",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "084670",
+    "shareName": "동양고속",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001520",
+    "shareName": "동양",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "082640",
+    "shareName": "동양생명",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008970",
+    "shareName": "동양철관",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "092780",
+    "shareName": "동양피스톤",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "049770",
+    "shareName": "동원F&B",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "018500",
+    "shareName": "동원금속",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006040",
+    "shareName": "동원산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "030720",
+    "shareName": "동원수산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014820",
+    "shareName": "동원시스템즈",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "163560",
+    "shareName": "동일고무벨트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004890",
+    "shareName": "동일산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002690",
+    "shareName": "동일제강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000020",
+    "shareName": "동화약품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "241560",
+    "shareName": "두산밥캣",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000150",
+    "shareName": "두산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "042670",
+    "shareName": "두산인프라코어",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "034020",
+    "shareName": "두산중공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "336260",
+    "shareName": "두산퓨얼셀",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016740",
+    "shareName": "두올",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "192650",
+    "shareName": "드림텍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "024090",
+    "shareName": "디씨엠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003160",
+    "shareName": "디아이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "092200",
+    "shareName": "디아이씨",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004840",
+    "shareName": "DRB동일",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "013570",
+    "shareName": "디와이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "210540",
+    "shareName": "디와이파워",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007340",
+    "shareName": "디티알오토모티브",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "026890",
+    "shareName": "디피씨",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "115390",
+    "shareName": "락앤락",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "032350",
+    "shareName": "롯데관광개발",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "330590",
+    "shareName": "롯데리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000400",
+    "shareName": "롯데손해보험",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "023530",
+    "shareName": "롯데쇼핑",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004000",
+    "shareName": "롯데정밀화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "286940",
+    "shareName": "롯데정보통신",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "280360",
+    "shareName": "롯데제과",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004990",
+    "shareName": "롯데지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005300",
+    "shareName": "롯데칠성",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011170",
+    "shareName": "롯데케미칼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002270",
+    "shareName": "롯데푸드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "071840",
+    "shareName": "롯데하이마트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "027740",
+    "shareName": "마니커",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "204320",
+    "shareName": "만도",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001080",
+    "shareName": "만호제강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "088980",
+    "shareName": "맥쿼리인프라",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "138040",
+    "shareName": "메리츠금융지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008560",
+    "shareName": "메리츠증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000060",
+    "shareName": "메리츠화재",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "090370",
+    "shareName": "메타랩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017180",
+    "shareName": "명문제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009900",
+    "shareName": "명신산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012690",
+    "shareName": "모나리자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005360",
+    "shareName": "모나미",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "204210",
+    "shareName": "모두투어리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009680",
+    "shareName": "모토닉",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009200",
+    "shareName": "무림페이퍼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009580",
+    "shareName": "무림P&P",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "033920",
+    "shareName": "무학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008420",
+    "shareName": "문배철강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "025560",
+    "shareName": "미래산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007120",
+    "shareName": "미래아이앤지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "357250",
+    "shareName": "미래에셋맵스리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "094800",
+    "shareName": "맵스리얼티1",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "085620",
+    "shareName": "미래에셋생명",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006800",
+    "shareName": "미래에셋증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002840",
+    "shareName": "미원상사",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "268280",
+    "shareName": "미원에스씨",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "107590",
+    "shareName": "미원홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "134380",
+    "shareName": "미원화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003650",
+    "shareName": "미창석유",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "155900",
+    "shareName": "바다로19호",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003610",
+    "shareName": "방림",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001340",
+    "shareName": "백광산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "035150",
+    "shareName": "백산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002410",
+    "shareName": "범양건영",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007210",
+    "shareName": "벽산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002760",
+    "shareName": "보락",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003850",
+    "shareName": "보령제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000890",
+    "shareName": "보해양조",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003000",
+    "shareName": "부광약품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001270",
+    "shareName": "부국증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "026940",
+    "shareName": "부국철강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015350",
+    "shareName": "부산가스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011390",
+    "shareName": "부산산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005030",
+    "shareName": "부산주공",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002070",
+    "shareName": "비비안",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "100220",
+    "shareName": "비상교육",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "030790",
+    "shareName": "비케이탑스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005180",
+    "shareName": "빙그레",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003960",
+    "shareName": "사조대림",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008040",
+    "shareName": "사조동아원",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007160",
+    "shareName": "사조산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014710",
+    "shareName": "사조씨푸드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006090",
+    "shareName": "사조오양",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001470",
+    "shareName": "삼부토건",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006400",
+    "shareName": "삼성SDI",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006660",
+    "shareName": "삼성공조",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "028260",
+    "shareName": "삼성물산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "207940",
+    "shareName": "삼성바이오로직스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "032830",
+    "shareName": "삼성생명",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "018260",
+    "shareName": "삼성에스디에스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "028050",
+    "shareName": "삼성엔지니어링",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009150",
+    "shareName": "삼성전기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005930",
+    "shareName": "삼성전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001360",
+    "shareName": "삼성제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010140",
+    "shareName": "삼성중공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016360",
+    "shareName": "삼성증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "068290",
+    "shareName": "삼성출판사",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "029780",
+    "shareName": "삼성카드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000810",
+    "shareName": "삼성화재",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006110",
+    "shareName": "삼아알미늄",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "145990",
+    "shareName": "삼양사",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003230",
+    "shareName": "삼양식품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002170",
+    "shareName": "삼양통상",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "272550",
+    "shareName": "삼양패키징",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000070",
+    "shareName": "삼양홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002810",
+    "shareName": "삼영무역",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005680",
+    "shareName": "삼영전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003720",
+    "shareName": "삼영화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "023000",
+    "shareName": "삼원강재",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004380",
+    "shareName": "삼익THK",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002450",
+    "shareName": "삼익악기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004440",
+    "shareName": "삼일씨엔에스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000520",
+    "shareName": "삼일제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009770",
+    "shareName": "삼정펄프",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005500",
+    "shareName": "삼진제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004690",
+    "shareName": "삼천리",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010960",
+    "shareName": "삼호개발",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004450",
+    "shareName": "삼화왕관",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009470",
+    "shareName": "삼화전기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011230",
+    "shareName": "삼화전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001820",
+    "shareName": "삼화콘덴서",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000390",
+    "shareName": "삼화페인트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001290",
+    "shareName": "상상인증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "041650",
+    "shareName": "상신브레이크",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "075180",
+    "shareName": "새론오토모티브",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007540",
+    "shareName": "샘표",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "248170",
+    "shareName": "샘표식품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007860",
+    "shareName": "서연",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "200880",
+    "shareName": "서연이화",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017390",
+    "shareName": "서울가스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004410",
+    "shareName": "서울식품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "021050",
+    "shareName": "서원",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008490",
+    "shareName": "서흥",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007610",
+    "shareName": "선도전기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002820",
+    "shareName": "SUN&L",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "136490",
+    "shareName": "선진",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014910",
+    "shareName": "성문전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003080",
+    "shareName": "성보화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004980",
+    "shareName": "성신양회",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011300",
+    "shareName": "성안",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000180",
+    "shareName": "성창기업지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002420",
+    "shareName": "세기상사",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004360",
+    "shareName": "세방",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004490",
+    "shareName": "세방전지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001430",
+    "shareName": "세아베스틸",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "306200",
+    "shareName": "세아제강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003030",
+    "shareName": "세아제강지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "019440",
+    "shareName": "세아특수강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "058650",
+    "shareName": "세아홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "013000",
+    "shareName": "세우글로벌",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "091090",
+    "shareName": "세원셀론텍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "021820",
+    "shareName": "세원정공",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "067830",
+    "shareName": "세이브존I&C",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "033530",
+    "shareName": "세종공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "075580",
+    "shareName": "세진중공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "027970",
+    "shareName": "세하",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "145210",
+    "shareName": "세화아이엠씨",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "308170",
+    "shareName": "센트랄모텍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012600",
+    "shareName": "센트럴인사이트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "068270",
+    "shareName": "셀트리온",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "336370",
+    "shareName": "솔루스첨단소재",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "248070",
+    "shareName": "솔루엠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004430",
+    "shareName": "송원산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017550",
+    "shareName": "수산중공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "134790",
+    "shareName": "시디즈",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016590",
+    "shareName": "신대양제지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "029530",
+    "shareName": "신도리코",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004970",
+    "shareName": "신라교역",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011930",
+    "shareName": "신성이엔지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005390",
+    "shareName": "신성통상",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "034300",
+    "shareName": "신세계건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004170",
+    "shareName": "신세계",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "035510",
+    "shareName": "신세계 I&C",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "031430",
+    "shareName": "신세계인터내셔날",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "031440",
+    "shareName": "신세계푸드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006880",
+    "shareName": "신송홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005800",
+    "shareName": "신영와코루",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001720",
+    "shareName": "신영증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009270",
+    "shareName": "신원",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002700",
+    "shareName": "신일전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "019170",
+    "shareName": "신풍제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002870",
+    "shareName": "신풍제지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "055550",
+    "shareName": "신한지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "293940",
+    "shareName": "신한알파리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001770",
+    "shareName": "신화실업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004080",
+    "shareName": "신흥",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "102280",
+    "shareName": "쌍방울",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003410",
+    "shareName": "쌍용C&E",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003620",
+    "shareName": "쌍용차",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004770",
+    "shareName": "써니전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015540",
+    "shareName": "쎌마테라퓨틱스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004920",
+    "shareName": "씨아이테크",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "112610",
+    "shareName": "씨에스윈드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000120",
+    "shareName": "CJ대한통운",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "079160",
+    "shareName": "CJ CGV",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "097950",
+    "shareName": "CJ제일제당",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008700",
+    "shareName": "아남전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002790",
+    "shareName": "아모레G",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "090430",
+    "shareName": "아모레퍼시픽",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002030",
+    "shareName": "아세아",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "183190",
+    "shareName": "아세아시멘트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002310",
+    "shareName": "아세아제지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012170",
+    "shareName": "아센디오",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "267850",
+    "shareName": "아시아나IDT",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "020560",
+    "shareName": "아시아나항공",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "122900",
+    "shareName": "아이마켓코리아",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010780",
+    "shareName": "아이에스동서",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001780",
+    "shareName": "알루코",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "018250",
+    "shareName": "애경산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "161000",
+    "shareName": "애경유화",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011090",
+    "shareName": "에넥스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "034120",
+    "shareName": "SBS",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005850",
+    "shareName": "에스엘",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012750",
+    "shareName": "에스원",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004060",
+    "shareName": "SG세계물산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006120",
+    "shareName": "SK디스커버리",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "068400",
+    "shareName": "SK렌터카",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "302440",
+    "shareName": "SK바이오사이언스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "326030",
+    "shareName": "SK바이오팜",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000660",
+    "shareName": "SK하이닉스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "023960",
+    "shareName": "에쓰씨엔지니어링",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "298690",
+    "shareName": "에어부산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "078520",
+    "shareName": "에이블씨엔씨",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015260",
+    "shareName": "에이엔피",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "140910",
+    "shareName": "에이리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "039570",
+    "shareName": "HDC아이콘트롤스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "089470",
+    "shareName": "HDC현대EP",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "082740",
+    "shareName": "HSD엔진",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011200",
+    "shareName": "HMM",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003060",
+    "shareName": "에이프로젠제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007460",
+    "shareName": "에이프로젠 KIC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "244920",
+    "shareName": "에이플러스에셋",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "036570",
+    "shareName": "엔씨소프트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "138250",
+    "shareName": "엔에스쇼핑",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005940",
+    "shareName": "NH투자증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "085310",
+    "shareName": "엔케이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009810",
+    "shareName": "엔케이물산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "900140",
+    "shareName": "엘브이엠씨홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "229640",
+    "shareName": "LS전선아시아",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "108670",
+    "shareName": "LG하우시스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "037560",
+    "shareName": "LG헬로비전",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014440",
+    "shareName": "영보화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "111770",
+    "shareName": "영원무역",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009970",
+    "shareName": "영원무역홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003520",
+    "shareName": "영진약품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000670",
+    "shareName": "영풍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006740",
+    "shareName": "영풍제지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012280",
+    "shareName": "영화금속",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012160",
+    "shareName": "영흥",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015360",
+    "shareName": "예스코홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007310",
+    "shareName": "오뚜기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002630",
+    "shareName": "오리엔트바이오",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "271560",
+    "shareName": "오리온",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001800",
+    "shareName": "오리온홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "037270",
+    "shareName": "YG PLUS",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "316140",
+    "shareName": "우리금융지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "033660",
+    "shareName": "우리금융캐피탈",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "118000",
+    "shareName": "우리들휴브레인",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010050",
+    "shareName": "우리종금",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006980",
+    "shareName": "우성사료",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017370",
+    "shareName": "우신시스템",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "105840",
+    "shareName": "우진",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010400",
+    "shareName": "우진아이엔에스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "049800",
+    "shareName": "우진플라임",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016880",
+    "shareName": "웅진",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "095720",
+    "shareName": "웅진씽크빅",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005820",
+    "shareName": "원림",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010600",
+    "shareName": "웰바이오텍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008600",
+    "shareName": "윌비스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014830",
+    "shareName": "유니드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "047400",
+    "shareName": "유니온머티리얼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000910",
+    "shareName": "유니온",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011330",
+    "shareName": "유니켐",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "077500",
+    "shareName": "유니퀘스트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002920",
+    "shareName": "유성기업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000700",
+    "shareName": "유수홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003470",
+    "shareName": "유안타증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011690",
+    "shareName": "유양디앤유",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "072130",
+    "shareName": "유엔젤",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000220",
+    "shareName": "유유제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001200",
+    "shareName": "유진투자증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000100",
+    "shareName": "유한양행",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003460",
+    "shareName": "유화증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008730",
+    "shareName": "율촌화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008250",
+    "shareName": "이건산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "025820",
+    "shareName": "이구산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "214320",
+    "shareName": "이노션",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "088260",
+    "shareName": "이리츠코크렙",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "139480",
+    "shareName": "이마트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007660",
+    "shareName": "이수페타시스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005950",
+    "shareName": "이수화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015020",
+    "shareName": "이스타코",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "093230",
+    "shareName": "이아이디",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "074610",
+    "shareName": "이엔플러스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "102460",
+    "shareName": "이연제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "084680",
+    "shareName": "이월드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "350520",
+    "shareName": "이지스레지던스리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "334890",
+    "shareName": "이지스밸류리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000760",
+    "shareName": "이화산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014990",
+    "shareName": "인디에프",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "101140",
+    "shareName": "인바이오젠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006490",
+    "shareName": "인스코비",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "023800",
+    "shareName": "인지컨트롤스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "034590",
+    "shareName": "인천도시가스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "129260",
+    "shareName": "인터지스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "023810",
+    "shareName": "인팩",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "249420",
+    "shareName": "일동제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000230",
+    "shareName": "일동홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "013360",
+    "shareName": "일성건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003120",
+    "shareName": "일성신약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003200",
+    "shareName": "일신방직",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007110",
+    "shareName": "일신석재",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007570",
+    "shareName": "일양약품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008500",
+    "shareName": "일정실업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "081000",
+    "shareName": "일진다이아",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "020760",
+    "shareName": "일진디스플",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "020150",
+    "shareName": "일진머티리얼즈",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "103590",
+    "shareName": "일진전기",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015860",
+    "shareName": "일진홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "226320",
+    "shareName": "잇츠한불",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "317400",
+    "shareName": "자이에스앤디",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "033240",
+    "shareName": "자화전자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000950",
+    "shareName": "전방",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "348950",
+    "shareName": "제이알글로벌리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "194370",
+    "shareName": "제이에스코퍼레이션",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "025620",
+    "shareName": "제이준코스메틱",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "036420",
+    "shareName": "제이콘텐트리",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "030000",
+    "shareName": "제일기획",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "271980",
+    "shareName": "제일약품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001560",
+    "shareName": "제일연마",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002620",
+    "shareName": "제일파마홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006220",
+    "shareName": "제주은행",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "089590",
+    "shareName": "제주항공",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004910",
+    "shareName": "조광페인트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004700",
+    "shareName": "조광피혁",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001550",
+    "shareName": "조비",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000480",
+    "shareName": "조선내화",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "120030",
+    "shareName": "조선선재",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "018470",
+    "shareName": "조일알미늄",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002600",
+    "shareName": "조흥",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "063160",
+    "shareName": "종근당바이오",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "185750",
+    "shareName": "종근당",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001630",
+    "shareName": "종근당홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "070960",
+    "shareName": "용평리조트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "023450",
+    "shareName": "동남합성",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002380",
+    "shareName": "KCC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "044380",
+    "shareName": "주연테크",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "024110",
+    "shareName": "기업은행",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "013890",
+    "shareName": "지누스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001250",
+    "shareName": "GS글로벌",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007070",
+    "shareName": "GS리테일",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "013870",
+    "shareName": "지엠비코리아",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "071320",
+    "shareName": "지역난방공사",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010580",
+    "shareName": "지코",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "035000",
+    "shareName": "지투알",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "088790",
+    "shareName": "진도",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003780",
+    "shareName": "진양산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010640",
+    "shareName": "진양폴리",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "100250",
+    "shareName": "진양홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "051630",
+    "shareName": "진양화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "272450",
+    "shareName": "진에어",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011000",
+    "shareName": "진원생명과학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002780",
+    "shareName": "진흥기업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009310",
+    "shareName": "참엔지니어링",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000650",
+    "shareName": "천일고속",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "033250",
+    "shareName": "체시스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "035720",
+    "shareName": "카카오",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006380",
+    "shareName": "카프로",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "109070",
+    "shareName": "컨버즈",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001620",
+    "shareName": "케이비아이동국실업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009440",
+    "shareName": "KC그린홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "029460",
+    "shareName": "케이씨",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "344820",
+    "shareName": "케이씨씨글라스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "119650",
+    "shareName": "KC코트렐",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "281820",
+    "shareName": "케이씨텍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "044450",
+    "shareName": "KSS해운",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "092220",
+    "shareName": "KEC",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "145270",
+    "shareName": "케이탑리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "030200",
+    "shareName": "KT",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "030210",
+    "shareName": "KTB투자증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "053210",
+    "shareName": "스카이라이프",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "058850",
+    "shareName": "KTcs",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "058860",
+    "shareName": "KTis",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "033780",
+    "shareName": "KT&G",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "357120",
+    "shareName": "코람코에너지리츠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007810",
+    "shareName": "코리아써키트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003690",
+    "shareName": "코리안리",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "192820",
+    "shareName": "코스맥스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "044820",
+    "shareName": "코스맥스비티아이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005070",
+    "shareName": "코스모신소재",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005420",
+    "shareName": "코스모화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "071950",
+    "shareName": "코아스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003070",
+    "shareName": "코오롱글로벌",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "144620",
+    "shareName": "코오롱머티리얼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002020",
+    "shareName": "코오롱",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "120110",
+    "shareName": "코오롱인더",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "138490",
+    "shareName": "코오롱플라스틱",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "021240",
+    "shareName": "코웨이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "031820",
+    "shareName": "콤텍시스템",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "192400",
+    "shareName": "쿠쿠홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "284740",
+    "shareName": "쿠쿠홈시스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015590",
+    "shareName": "큐로",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "264900",
+    "shareName": "크라운제과",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005740",
+    "shareName": "크라운해태홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "020120",
+    "shareName": "키다리스튜디오",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "039490",
+    "shareName": "키움증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014580",
+    "shareName": "태경비케이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015890",
+    "shareName": "태경산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006890",
+    "shareName": "태경케미컬",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003240",
+    "shareName": "태광산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011280",
+    "shareName": "태림포장",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004100",
+    "shareName": "태양금속",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009410",
+    "shareName": "태영건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001420",
+    "shareName": "태원물산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007980",
+    "shareName": "태평양물산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "055490",
+    "shareName": "테이팩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "078000",
+    "shareName": "텔코웨어",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "214420",
+    "shareName": "토니모리",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "019180",
+    "shareName": "티에이치엔",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002900",
+    "shareName": "TYM",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "363280",
+    "shareName": "티와이홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "091810",
+    "shareName": "티웨이항공",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004870",
+    "shareName": "티웨이홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005690",
+    "shareName": "파미셀",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "036580",
+    "shareName": "팜스코",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004720",
+    "shareName": "팜젠사이언스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "028670",
+    "shareName": "팬오션",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010820",
+    "shareName": "퍼스텍",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016800",
+    "shareName": "퍼시스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001020",
+    "shareName": "페이퍼코리아",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "090080",
+    "shareName": "평화산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010770",
+    "shareName": "평화홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "058430",
+    "shareName": "포스코강판",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005490",
+    "shareName": "POSCO",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "047050",
+    "shareName": "포스코인터내셔널",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003670",
+    "shareName": "포스코케미칼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007630",
+    "shareName": "폴루스바이오팜",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017810",
+    "shareName": "풀무원",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "103140",
+    "shareName": "풍산",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005810",
+    "shareName": "풍산홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "950210",
+    "shareName": "프레스티지바이오파마",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "033180",
+    "shareName": "필룩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "086790",
+    "shareName": "하나금융지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "293480",
+    "shareName": "하나제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "039130",
+    "shareName": "하나투어",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "172580",
+    "shareName": "하이골드12호",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "153360",
+    "shareName": "하이골드3호",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "352820",
+    "shareName": "하이브",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "071090",
+    "shareName": "하이스틸",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "019490",
+    "shareName": "하이트론",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000080",
+    "shareName": "하이트진로",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000140",
+    "shareName": "하이트진로홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "036460",
+    "shareName": "한국가스공사",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005430",
+    "shareName": "한국공항",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010040",
+    "shareName": "한국내화",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "025540",
+    "shareName": "한국단자",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "096300",
+    "shareName": "베트남개발1",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004090",
+    "shareName": "한국석유",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002200",
+    "shareName": "한국수출포장",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002960",
+    "shareName": "한국쉘석유",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000240",
+    "shareName": "한국앤컴퍼니",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "033270",
+    "shareName": "유나이티드제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "123890",
+    "shareName": "한국자산신탁",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "015760",
+    "shareName": "한국전력",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "052690",
+    "shareName": "한전기술",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006200",
+    "shareName": "한국전자홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009540",
+    "shareName": "한국조선해양",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "023350",
+    "shareName": "한국종합기술",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "025890",
+    "shareName": "한국주강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000970",
+    "shareName": "한국주철관",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "104700",
+    "shareName": "한국철강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017960",
+    "shareName": "한국카본",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "161890",
+    "shareName": "한국콜마",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "024720",
+    "shareName": "한국콜마홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "161390",
+    "shareName": "한국타이어앤테크놀로지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "034830",
+    "shareName": "한국토지신탁",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "152550",
+    "shareName": "한국ANKOR유전",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "168490",
+    "shareName": "한국패러랠",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "071050",
+    "shareName": "한국금융지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "007280",
+    "shareName": "한국특수형강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010100",
+    "shareName": "한국프랜지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "047810",
+    "shareName": "한국항공우주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "123690",
+    "shareName": "한국화장품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003350",
+    "shareName": "한국화장품제조",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011500",
+    "shareName": "한농화성",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002390",
+    "shareName": "한독",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014790",
+    "shareName": "한라",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "060980",
+    "shareName": "한라홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "053690",
+    "shareName": "한미글로벌",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "042700",
+    "shareName": "한미반도체",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008930",
+    "shareName": "한미사이언스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "128940",
+    "shareName": "한미약품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009240",
+    "shareName": "한샘",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "020000",
+    "shareName": "한섬",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003680",
+    "shareName": "한성기업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "105630",
+    "shareName": "한세실업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "069640",
+    "shareName": "한세엠케이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016450",
+    "shareName": "한세예스24홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010420",
+    "shareName": "한솔PNS",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009180",
+    "shareName": "한솔로지스틱스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "213500",
+    "shareName": "한솔제지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014680",
+    "shareName": "한솔케미칼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004710",
+    "shareName": "한솔테크닉스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004150",
+    "shareName": "한솔홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "025750",
+    "shareName": "한솔홈데코",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004960",
+    "shareName": "한신공영",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011700",
+    "shareName": "한신기계",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001750",
+    "shareName": "한양증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "018880",
+    "shareName": "한온시스템",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009420",
+    "shareName": "한올바이오파마",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "014130",
+    "shareName": "한익스프레스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "300720",
+    "shareName": "한일시멘트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002220",
+    "shareName": "한일철강",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006390",
+    "shareName": "한일현대시멘트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003300",
+    "shareName": "한일홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "051600",
+    "shareName": "한전KPS",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "130660",
+    "shareName": "한전산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002320",
+    "shareName": "한진",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "097230",
+    "shareName": "한진중공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003480",
+    "shareName": "한진중공업홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "180640",
+    "shareName": "한진칼",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005110",
+    "shareName": "한창",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009460",
+    "shareName": "한창제지",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000880",
+    "shareName": "한화",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "088350",
+    "shareName": "한화생명",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000370",
+    "shareName": "한화손해보험",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "009830",
+    "shareName": "한화솔루션",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "272210",
+    "shareName": "한화시스템",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012450",
+    "shareName": "한화에어로스페이스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003530",
+    "shareName": "한화투자증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "195870",
+    "shareName": "해성디에스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "101530",
+    "shareName": "해태제과식품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "143210",
+    "shareName": "핸즈코퍼레이션",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "267270",
+    "shareName": "현대건설기계",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000720",
+    "shareName": "현대건설",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005440",
+    "shareName": "현대그린푸드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "086280",
+    "shareName": "현대글로비스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "064350",
+    "shareName": "현대로템",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "079430",
+    "shareName": "현대리바트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "012330",
+    "shareName": "현대모비스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010620",
+    "shareName": "현대미포조선",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "069960",
+    "shareName": "현대백화점",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004560",
+    "shareName": "현대비앤지스틸",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004310",
+    "shareName": "현대약품",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "322000",
+    "shareName": "현대에너지솔루션",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "017800",
+    "shareName": "현대엘리베이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "307950",
+    "shareName": "현대오토에버",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011210",
+    "shareName": "현대위아",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "267260",
+    "shareName": "현대일렉트릭",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005380",
+    "shareName": "현대차",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004020",
+    "shareName": "현대제철",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "267250",
+    "shareName": "현대중공업지주",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001500",
+    "shareName": "현대차증권",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "011760",
+    "shareName": "현대코퍼레이션",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "227840",
+    "shareName": "현대코퍼레이션홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "126560",
+    "shareName": "현대퓨처넷",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "001450",
+    "shareName": "현대해상",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "057050",
+    "shareName": "현대홈쇼핑",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "093240",
+    "shareName": "형지엘리트",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003010",
+    "shareName": "혜인",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "111110",
+    "shareName": "호전실업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "008770",
+    "shareName": "호텔신라",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "002460",
+    "shareName": "화성산업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "378850",
+    "shareName": "화승알앤에이",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "241590",
+    "shareName": "화승엔터프라이즈",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "006060",
+    "shareName": "화승인더",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "013520",
+    "shareName": "화승코퍼레이션",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010690",
+    "shareName": "화신",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "133820",
+    "shareName": "화인베스틸",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "010660",
+    "shareName": "화천기계",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000850",
+    "shareName": "화천기공",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "016580",
+    "shareName": "환인제약",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "032560",
+    "shareName": "황금에스티",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "004800",
+    "shareName": "효성",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "094280",
+    "shareName": "효성ITX",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "298040",
+    "shareName": "효성중공업",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "298050",
+    "shareName": "효성첨단소재",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "298020",
+    "shareName": "효성티앤씨",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "298000",
+    "shareName": "효성화학",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "093370",
+    "shareName": "후성",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "081660",
+    "shareName": "휠라홀딩스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005870",
+    "shareName": "휴니드",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "079980",
+    "shareName": "휴비스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "005010",
+    "shareName": "휴스틸",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "069260",
+    "shareName": "휴켐스",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "000540",
+    "shareName": "흥국화재",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
+    "shareCode": "003280",
+    "shareName": "흥아해운",
+    "marketType": "KOSPI",
+    "shareType": "보통주"
+  },
+  {
     "shareCode": "098120",
     "shareName": "마이크로컨텍솔",
     "marketType": "KOSDAQ",
@@ -8955,4830 +13779,6 @@
     "shareCode": "238490",
     "shareName": "힘스",
     "marketType": "KOSDAQ",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "095570",
-    "shareName": "AJ네트웍스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006840",
-    "shareName": "AK홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "282330",
-    "shareName": "BGF리테일",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "027410",
-    "shareName": "BGF",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "138930",
-    "shareName": "BNK금융지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001460",
-    "shareName": "BYC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001040",
-    "shareName": "CJ",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011150",
-    "shareName": "CJ씨푸드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000590",
-    "shareName": "CS홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012030",
-    "shareName": "DB",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016610",
-    "shareName": "DB금융투자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005830",
-    "shareName": "DB손해보험",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000990",
-    "shareName": "DB하이텍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "139130",
-    "shareName": "DGB금융지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001530",
-    "shareName": "DI동일",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001880",
-    "shareName": "DL건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000210",
-    "shareName": "DL",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "375500",
-    "shareName": "DL이앤씨",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "155660",
-    "shareName": "DSR",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "069730",
-    "shareName": "DSR제강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017940",
-    "shareName": "E1",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "365550",
-    "shareName": "ESR켄달스퀘어리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007700",
-    "shareName": "F&F",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006360",
-    "shareName": "GS건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "078930",
-    "shareName": "GS",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012630",
-    "shareName": "HDC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "294870",
-    "shareName": "HDC현대산업개발",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003560",
-    "shareName": "IHQ",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "175330",
-    "shareName": "JB금융지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "234080",
-    "shareName": "JW생명과학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001060",
-    "shareName": "JW중외제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "096760",
-    "shareName": "JW홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "105560",
-    "shareName": "KB금융",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009070",
-    "shareName": "KCTC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016380",
-    "shareName": "KG동부제철",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001390",
-    "shareName": "KG케미칼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001940",
-    "shareName": "KISCO홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "025000",
-    "shareName": "KPX케미칼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "092230",
-    "shareName": "KPX홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000040",
-    "shareName": "KR모터스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "093050",
-    "shareName": "LF",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "034220",
-    "shareName": "LG디스플레이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003550",
-    "shareName": "LG",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001120",
-    "shareName": "LG상사",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "051900",
-    "shareName": "LG생활건강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "032640",
-    "shareName": "LG유플러스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011070",
-    "shareName": "LG이노텍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "066570",
-    "shareName": "LG전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "051910",
-    "shareName": "LG화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "079550",
-    "shareName": "LIG넥스원",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010120",
-    "shareName": "LS ELECTRIC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000680",
-    "shareName": "LS네트웍스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006260",
-    "shareName": "LS",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "023150",
-    "shareName": "MH에탄올",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "035420",
-    "shareName": "NAVER",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "181710",
-    "shareName": "NHN",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "338100",
-    "shareName": "NH프라임리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "034310",
-    "shareName": "NICE",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008260",
-    "shareName": "NI스틸",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004250",
-    "shareName": "NPC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010060",
-    "shareName": "OCI",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010950",
-    "shareName": "S-Oil",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "101060",
-    "shareName": "SBS미디어홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005090",
-    "shareName": "SGC에너지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001380",
-    "shareName": "SG글로벌",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002360",
-    "shareName": "SH에너지화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009160",
-    "shareName": "SIMPAC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "123700",
-    "shareName": "SJM",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "025530",
-    "shareName": "SJM홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011790",
-    "shareName": "SKC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "018670",
-    "shareName": "SK가스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001740",
-    "shareName": "SK네트웍스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "210980",
-    "shareName": "SK디앤디",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "034730",
-    "shareName": "SK",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "096770",
-    "shareName": "SK이노베이션",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001510",
-    "shareName": "SK증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "285130",
-    "shareName": "SK케미칼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017670",
-    "shareName": "SK텔레콤",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "064960",
-    "shareName": "SNT모티브",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "100840",
-    "shareName": "SNT에너지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003570",
-    "shareName": "SNT중공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "036530",
-    "shareName": "SNT홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005610",
-    "shareName": "SPC삼립",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011810",
-    "shareName": "STX",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "077970",
-    "shareName": "STX엔진",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "071970",
-    "shareName": "STX중공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "084870",
-    "shareName": "TBH글로벌",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002710",
-    "shareName": "TCC스틸",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "024070",
-    "shareName": "WISCOM",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000500",
-    "shareName": "가온전선",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000860",
-    "shareName": "강남제비스코",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "035250",
-    "shareName": "강원랜드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011420",
-    "shareName": "갤럭시아에스엠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002100",
-    "shareName": "경농",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009450",
-    "shareName": "경동나비엔",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "267290",
-    "shareName": "경동도시가스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012320",
-    "shareName": "경동인베스트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000050",
-    "shareName": "경방",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "214390",
-    "shareName": "경보제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012610",
-    "shareName": "경인양행",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009140",
-    "shareName": "경인전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "013580",
-    "shareName": "계룡건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012200",
-    "shareName": "계양전기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002140",
-    "shareName": "고려산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010130",
-    "shareName": "고려아연",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002240",
-    "shareName": "고려제강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009290",
-    "shareName": "광동제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017040",
-    "shareName": "광명전기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017900",
-    "shareName": "광전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "037710",
-    "shareName": "광주신세계",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "030610",
-    "shareName": "교보증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "339770",
-    "shareName": "교촌에프앤비",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007690",
-    "shareName": "국도화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005320",
-    "shareName": "국동",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001140",
-    "shareName": "국보",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002720",
-    "shareName": "국제약품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "114090",
-    "shareName": "GKL",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "083420",
-    "shareName": "그린케미칼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014530",
-    "shareName": "극동유화",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014280",
-    "shareName": "금강공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008870",
-    "shareName": "금비",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001570",
-    "shareName": "금양",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002990",
-    "shareName": "금호건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011780",
-    "shareName": "금호석유",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "214330",
-    "shareName": "금호에이치티",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001210",
-    "shareName": "금호전기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "073240",
-    "shareName": "금호타이어",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "092440",
-    "shareName": "기신정기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000270",
-    "shareName": "기아",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "013700",
-    "shareName": "까뮤이앤씨",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004540",
-    "shareName": "깨끗한나라",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001260",
-    "shareName": "남광토건",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008350",
-    "shareName": "남선알미늄",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004270",
-    "shareName": "남성",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003920",
-    "shareName": "남양유업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "025860",
-    "shareName": "남해화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005720",
-    "shareName": "넥센",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002350",
-    "shareName": "넥센타이어",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003580",
-    "shareName": "넥스트사이언스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "251270",
-    "shareName": "넷마블",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "090350",
-    "shareName": "노루페인트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000320",
-    "shareName": "노루홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006280",
-    "shareName": "녹십자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005250",
-    "shareName": "녹십자홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004370",
-    "shareName": "농심",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "072710",
-    "shareName": "농심홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "058730",
-    "shareName": "다스코",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "023590",
-    "shareName": "다우기술",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "019680",
-    "shareName": "대교",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006370",
-    "shareName": "대구백화점",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008060",
-    "shareName": "대덕",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "353200",
-    "shareName": "대덕전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000490",
-    "shareName": "대동공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008110",
-    "shareName": "대동전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005750",
-    "shareName": "대림B&Co",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006570",
-    "shareName": "대림통상",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001680",
-    "shareName": "대상",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "084690",
-    "shareName": "대상홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "128820",
-    "shareName": "대성산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "117580",
-    "shareName": "대성에너지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016710",
-    "shareName": "대성홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003540",
-    "shareName": "대신증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009190",
-    "shareName": "대양금속",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014160",
-    "shareName": "대영포장",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "047040",
-    "shareName": "대우건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009320",
-    "shareName": "대우부품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "042660",
-    "shareName": "대우조선해양",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003090",
-    "shareName": "대웅",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "069620",
-    "shareName": "대웅제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000430",
-    "shareName": "대원강업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006340",
-    "shareName": "대원전선",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003220",
-    "shareName": "대원제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "024890",
-    "shareName": "대원화성",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002880",
-    "shareName": "대유에이텍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000300",
-    "shareName": "대유플러스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015230",
-    "shareName": "대창단조",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012800",
-    "shareName": "대창",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001070",
-    "shareName": "대한방직",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006650",
-    "shareName": "대한유화",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001440",
-    "shareName": "대한전선",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "084010",
-    "shareName": "대한제강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001790",
-    "shareName": "대한제당",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001130",
-    "shareName": "대한제분",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003490",
-    "shareName": "대한항공",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005880",
-    "shareName": "대한해운",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003830",
-    "shareName": "대한화섬",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016090",
-    "shareName": "대현",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "069460",
-    "shareName": "대호에이엘",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "192080",
-    "shareName": "더블유게임즈",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012510",
-    "shareName": "더존비즈온",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004830",
-    "shareName": "덕성",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "024900",
-    "shareName": "덕양산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "145720",
-    "shareName": "덴티움",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002150",
-    "shareName": "도화엔지니어링",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001230",
-    "shareName": "동국제강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004140",
-    "shareName": "동방",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007590",
-    "shareName": "동방아그로",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005960",
-    "shareName": "동부건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "026960",
-    "shareName": "동서",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002210",
-    "shareName": "동성제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "102260",
-    "shareName": "동성케미컬",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000640",
-    "shareName": "동아쏘시오홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "170900",
-    "shareName": "동아에스티",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "028100",
-    "shareName": "동아지질",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "282690",
-    "shareName": "동아타이어",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "084670",
-    "shareName": "동양고속",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001520",
-    "shareName": "동양",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "082640",
-    "shareName": "동양생명",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008970",
-    "shareName": "동양철관",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "092780",
-    "shareName": "동양피스톤",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "049770",
-    "shareName": "동원F&B",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "018500",
-    "shareName": "동원금속",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006040",
-    "shareName": "동원산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "030720",
-    "shareName": "동원수산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014820",
-    "shareName": "동원시스템즈",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "163560",
-    "shareName": "동일고무벨트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004890",
-    "shareName": "동일산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002690",
-    "shareName": "동일제강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000020",
-    "shareName": "동화약품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "241560",
-    "shareName": "두산밥캣",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000150",
-    "shareName": "두산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "042670",
-    "shareName": "두산인프라코어",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "034020",
-    "shareName": "두산중공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "336260",
-    "shareName": "두산퓨얼셀",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016740",
-    "shareName": "두올",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "192650",
-    "shareName": "드림텍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "024090",
-    "shareName": "디씨엠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003160",
-    "shareName": "디아이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "092200",
-    "shareName": "디아이씨",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004840",
-    "shareName": "DRB동일",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "013570",
-    "shareName": "디와이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "210540",
-    "shareName": "디와이파워",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007340",
-    "shareName": "디티알오토모티브",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "026890",
-    "shareName": "디피씨",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "115390",
-    "shareName": "락앤락",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "032350",
-    "shareName": "롯데관광개발",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "330590",
-    "shareName": "롯데리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000400",
-    "shareName": "롯데손해보험",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "023530",
-    "shareName": "롯데쇼핑",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004000",
-    "shareName": "롯데정밀화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "286940",
-    "shareName": "롯데정보통신",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "280360",
-    "shareName": "롯데제과",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004990",
-    "shareName": "롯데지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005300",
-    "shareName": "롯데칠성",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011170",
-    "shareName": "롯데케미칼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002270",
-    "shareName": "롯데푸드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "071840",
-    "shareName": "롯데하이마트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "027740",
-    "shareName": "마니커",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "204320",
-    "shareName": "만도",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001080",
-    "shareName": "만호제강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "088980",
-    "shareName": "맥쿼리인프라",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "138040",
-    "shareName": "메리츠금융지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008560",
-    "shareName": "메리츠증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000060",
-    "shareName": "메리츠화재",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "090370",
-    "shareName": "메타랩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017180",
-    "shareName": "명문제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009900",
-    "shareName": "명신산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012690",
-    "shareName": "모나리자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005360",
-    "shareName": "모나미",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "204210",
-    "shareName": "모두투어리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009680",
-    "shareName": "모토닉",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009200",
-    "shareName": "무림페이퍼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009580",
-    "shareName": "무림P&P",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "033920",
-    "shareName": "무학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008420",
-    "shareName": "문배철강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "025560",
-    "shareName": "미래산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007120",
-    "shareName": "미래아이앤지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "357250",
-    "shareName": "미래에셋맵스리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "094800",
-    "shareName": "맵스리얼티1",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "085620",
-    "shareName": "미래에셋생명",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006800",
-    "shareName": "미래에셋증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002840",
-    "shareName": "미원상사",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "268280",
-    "shareName": "미원에스씨",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "107590",
-    "shareName": "미원홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "134380",
-    "shareName": "미원화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003650",
-    "shareName": "미창석유",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "155900",
-    "shareName": "바다로19호",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003610",
-    "shareName": "방림",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001340",
-    "shareName": "백광산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "035150",
-    "shareName": "백산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002410",
-    "shareName": "범양건영",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007210",
-    "shareName": "벽산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002760",
-    "shareName": "보락",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003850",
-    "shareName": "보령제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000890",
-    "shareName": "보해양조",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003000",
-    "shareName": "부광약품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001270",
-    "shareName": "부국증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "026940",
-    "shareName": "부국철강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015350",
-    "shareName": "부산가스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011390",
-    "shareName": "부산산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005030",
-    "shareName": "부산주공",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002070",
-    "shareName": "비비안",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "100220",
-    "shareName": "비상교육",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "030790",
-    "shareName": "비케이탑스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005180",
-    "shareName": "빙그레",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003960",
-    "shareName": "사조대림",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008040",
-    "shareName": "사조동아원",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007160",
-    "shareName": "사조산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014710",
-    "shareName": "사조씨푸드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006090",
-    "shareName": "사조오양",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001470",
-    "shareName": "삼부토건",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006400",
-    "shareName": "삼성SDI",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006660",
-    "shareName": "삼성공조",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "028260",
-    "shareName": "삼성물산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "207940",
-    "shareName": "삼성바이오로직스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "032830",
-    "shareName": "삼성생명",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "018260",
-    "shareName": "삼성에스디에스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "028050",
-    "shareName": "삼성엔지니어링",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009150",
-    "shareName": "삼성전기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005930",
-    "shareName": "삼성전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001360",
-    "shareName": "삼성제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010140",
-    "shareName": "삼성중공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016360",
-    "shareName": "삼성증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "068290",
-    "shareName": "삼성출판사",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "029780",
-    "shareName": "삼성카드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000810",
-    "shareName": "삼성화재",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006110",
-    "shareName": "삼아알미늄",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "145990",
-    "shareName": "삼양사",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003230",
-    "shareName": "삼양식품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002170",
-    "shareName": "삼양통상",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "272550",
-    "shareName": "삼양패키징",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000070",
-    "shareName": "삼양홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002810",
-    "shareName": "삼영무역",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005680",
-    "shareName": "삼영전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003720",
-    "shareName": "삼영화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "023000",
-    "shareName": "삼원강재",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004380",
-    "shareName": "삼익THK",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002450",
-    "shareName": "삼익악기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004440",
-    "shareName": "삼일씨엔에스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000520",
-    "shareName": "삼일제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009770",
-    "shareName": "삼정펄프",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005500",
-    "shareName": "삼진제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004690",
-    "shareName": "삼천리",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010960",
-    "shareName": "삼호개발",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004450",
-    "shareName": "삼화왕관",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009470",
-    "shareName": "삼화전기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011230",
-    "shareName": "삼화전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001820",
-    "shareName": "삼화콘덴서",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000390",
-    "shareName": "삼화페인트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001290",
-    "shareName": "상상인증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "041650",
-    "shareName": "상신브레이크",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "075180",
-    "shareName": "새론오토모티브",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007540",
-    "shareName": "샘표",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "248170",
-    "shareName": "샘표식품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007860",
-    "shareName": "서연",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "200880",
-    "shareName": "서연이화",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017390",
-    "shareName": "서울가스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004410",
-    "shareName": "서울식품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "021050",
-    "shareName": "서원",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008490",
-    "shareName": "서흥",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007610",
-    "shareName": "선도전기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002820",
-    "shareName": "SUN&L",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "136490",
-    "shareName": "선진",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014910",
-    "shareName": "성문전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003080",
-    "shareName": "성보화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004980",
-    "shareName": "성신양회",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011300",
-    "shareName": "성안",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000180",
-    "shareName": "성창기업지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002420",
-    "shareName": "세기상사",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004360",
-    "shareName": "세방",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004490",
-    "shareName": "세방전지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001430",
-    "shareName": "세아베스틸",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "306200",
-    "shareName": "세아제강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003030",
-    "shareName": "세아제강지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "019440",
-    "shareName": "세아특수강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "058650",
-    "shareName": "세아홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "013000",
-    "shareName": "세우글로벌",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "091090",
-    "shareName": "세원셀론텍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "021820",
-    "shareName": "세원정공",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "067830",
-    "shareName": "세이브존I&C",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "033530",
-    "shareName": "세종공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "075580",
-    "shareName": "세진중공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "027970",
-    "shareName": "세하",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "145210",
-    "shareName": "세화아이엠씨",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "308170",
-    "shareName": "센트랄모텍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012600",
-    "shareName": "센트럴인사이트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "068270",
-    "shareName": "셀트리온",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "336370",
-    "shareName": "솔루스첨단소재",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "248070",
-    "shareName": "솔루엠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004430",
-    "shareName": "송원산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017550",
-    "shareName": "수산중공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "134790",
-    "shareName": "시디즈",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016590",
-    "shareName": "신대양제지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "029530",
-    "shareName": "신도리코",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004970",
-    "shareName": "신라교역",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011930",
-    "shareName": "신성이엔지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005390",
-    "shareName": "신성통상",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "034300",
-    "shareName": "신세계건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004170",
-    "shareName": "신세계",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "035510",
-    "shareName": "신세계 I&C",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "031430",
-    "shareName": "신세계인터내셔날",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "031440",
-    "shareName": "신세계푸드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006880",
-    "shareName": "신송홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005800",
-    "shareName": "신영와코루",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001720",
-    "shareName": "신영증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009270",
-    "shareName": "신원",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002700",
-    "shareName": "신일전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "019170",
-    "shareName": "신풍제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002870",
-    "shareName": "신풍제지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "055550",
-    "shareName": "신한지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "293940",
-    "shareName": "신한알파리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001770",
-    "shareName": "신화실업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004080",
-    "shareName": "신흥",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "102280",
-    "shareName": "쌍방울",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003410",
-    "shareName": "쌍용C&E",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003620",
-    "shareName": "쌍용차",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004770",
-    "shareName": "써니전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015540",
-    "shareName": "쎌마테라퓨틱스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004920",
-    "shareName": "씨아이테크",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "112610",
-    "shareName": "씨에스윈드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000120",
-    "shareName": "CJ대한통운",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "079160",
-    "shareName": "CJ CGV",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "097950",
-    "shareName": "CJ제일제당",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008700",
-    "shareName": "아남전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002790",
-    "shareName": "아모레G",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "090430",
-    "shareName": "아모레퍼시픽",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002030",
-    "shareName": "아세아",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "183190",
-    "shareName": "아세아시멘트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002310",
-    "shareName": "아세아제지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012170",
-    "shareName": "아센디오",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "267850",
-    "shareName": "아시아나IDT",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "020560",
-    "shareName": "아시아나항공",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "122900",
-    "shareName": "아이마켓코리아",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010780",
-    "shareName": "아이에스동서",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001780",
-    "shareName": "알루코",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "018250",
-    "shareName": "애경산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "161000",
-    "shareName": "애경유화",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011090",
-    "shareName": "에넥스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "034120",
-    "shareName": "SBS",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005850",
-    "shareName": "에스엘",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012750",
-    "shareName": "에스원",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004060",
-    "shareName": "SG세계물산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006120",
-    "shareName": "SK디스커버리",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "068400",
-    "shareName": "SK렌터카",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "302440",
-    "shareName": "SK바이오사이언스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "326030",
-    "shareName": "SK바이오팜",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000660",
-    "shareName": "SK하이닉스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "023960",
-    "shareName": "에쓰씨엔지니어링",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "298690",
-    "shareName": "에어부산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "078520",
-    "shareName": "에이블씨엔씨",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015260",
-    "shareName": "에이엔피",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "140910",
-    "shareName": "에이리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "039570",
-    "shareName": "HDC아이콘트롤스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "089470",
-    "shareName": "HDC현대EP",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "082740",
-    "shareName": "HSD엔진",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011200",
-    "shareName": "HMM",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003060",
-    "shareName": "에이프로젠제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007460",
-    "shareName": "에이프로젠 KIC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "244920",
-    "shareName": "에이플러스에셋",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "036570",
-    "shareName": "엔씨소프트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "138250",
-    "shareName": "엔에스쇼핑",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005940",
-    "shareName": "NH투자증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "085310",
-    "shareName": "엔케이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009810",
-    "shareName": "엔케이물산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "900140",
-    "shareName": "엘브이엠씨홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "229640",
-    "shareName": "LS전선아시아",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "108670",
-    "shareName": "LG하우시스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "037560",
-    "shareName": "LG헬로비전",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014440",
-    "shareName": "영보화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "111770",
-    "shareName": "영원무역",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009970",
-    "shareName": "영원무역홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003520",
-    "shareName": "영진약품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000670",
-    "shareName": "영풍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006740",
-    "shareName": "영풍제지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012280",
-    "shareName": "영화금속",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012160",
-    "shareName": "영흥",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015360",
-    "shareName": "예스코홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007310",
-    "shareName": "오뚜기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002630",
-    "shareName": "오리엔트바이오",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "271560",
-    "shareName": "오리온",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001800",
-    "shareName": "오리온홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "037270",
-    "shareName": "YG PLUS",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "316140",
-    "shareName": "우리금융지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "033660",
-    "shareName": "우리금융캐피탈",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "118000",
-    "shareName": "우리들휴브레인",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010050",
-    "shareName": "우리종금",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006980",
-    "shareName": "우성사료",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017370",
-    "shareName": "우신시스템",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "105840",
-    "shareName": "우진",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010400",
-    "shareName": "우진아이엔에스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "049800",
-    "shareName": "우진플라임",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016880",
-    "shareName": "웅진",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "095720",
-    "shareName": "웅진씽크빅",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005820",
-    "shareName": "원림",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010600",
-    "shareName": "웰바이오텍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008600",
-    "shareName": "윌비스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014830",
-    "shareName": "유니드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "047400",
-    "shareName": "유니온머티리얼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000910",
-    "shareName": "유니온",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011330",
-    "shareName": "유니켐",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "077500",
-    "shareName": "유니퀘스트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002920",
-    "shareName": "유성기업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000700",
-    "shareName": "유수홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003470",
-    "shareName": "유안타증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011690",
-    "shareName": "유양디앤유",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "072130",
-    "shareName": "유엔젤",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000220",
-    "shareName": "유유제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001200",
-    "shareName": "유진투자증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000100",
-    "shareName": "유한양행",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003460",
-    "shareName": "유화증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008730",
-    "shareName": "율촌화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008250",
-    "shareName": "이건산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "025820",
-    "shareName": "이구산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "214320",
-    "shareName": "이노션",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "088260",
-    "shareName": "이리츠코크렙",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "139480",
-    "shareName": "이마트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007660",
-    "shareName": "이수페타시스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005950",
-    "shareName": "이수화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015020",
-    "shareName": "이스타코",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "093230",
-    "shareName": "이아이디",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "074610",
-    "shareName": "이엔플러스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "102460",
-    "shareName": "이연제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "084680",
-    "shareName": "이월드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "350520",
-    "shareName": "이지스레지던스리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "334890",
-    "shareName": "이지스밸류리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000760",
-    "shareName": "이화산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014990",
-    "shareName": "인디에프",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "101140",
-    "shareName": "인바이오젠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006490",
-    "shareName": "인스코비",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "023800",
-    "shareName": "인지컨트롤스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "034590",
-    "shareName": "인천도시가스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "129260",
-    "shareName": "인터지스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "023810",
-    "shareName": "인팩",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "249420",
-    "shareName": "일동제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000230",
-    "shareName": "일동홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "013360",
-    "shareName": "일성건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003120",
-    "shareName": "일성신약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003200",
-    "shareName": "일신방직",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007110",
-    "shareName": "일신석재",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007570",
-    "shareName": "일양약품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008500",
-    "shareName": "일정실업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "081000",
-    "shareName": "일진다이아",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "020760",
-    "shareName": "일진디스플",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "020150",
-    "shareName": "일진머티리얼즈",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "103590",
-    "shareName": "일진전기",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015860",
-    "shareName": "일진홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "226320",
-    "shareName": "잇츠한불",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "317400",
-    "shareName": "자이에스앤디",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "033240",
-    "shareName": "자화전자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000950",
-    "shareName": "전방",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "348950",
-    "shareName": "제이알글로벌리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "194370",
-    "shareName": "제이에스코퍼레이션",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "025620",
-    "shareName": "제이준코스메틱",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "036420",
-    "shareName": "제이콘텐트리",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "030000",
-    "shareName": "제일기획",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "271980",
-    "shareName": "제일약품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001560",
-    "shareName": "제일연마",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002620",
-    "shareName": "제일파마홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006220",
-    "shareName": "제주은행",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "089590",
-    "shareName": "제주항공",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004910",
-    "shareName": "조광페인트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004700",
-    "shareName": "조광피혁",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001550",
-    "shareName": "조비",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000480",
-    "shareName": "조선내화",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "120030",
-    "shareName": "조선선재",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "018470",
-    "shareName": "조일알미늄",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002600",
-    "shareName": "조흥",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "063160",
-    "shareName": "종근당바이오",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "185750",
-    "shareName": "종근당",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001630",
-    "shareName": "종근당홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "070960",
-    "shareName": "용평리조트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "023450",
-    "shareName": "동남합성",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002380",
-    "shareName": "KCC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "044380",
-    "shareName": "주연테크",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "024110",
-    "shareName": "기업은행",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "013890",
-    "shareName": "지누스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001250",
-    "shareName": "GS글로벌",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007070",
-    "shareName": "GS리테일",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "013870",
-    "shareName": "지엠비코리아",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "071320",
-    "shareName": "지역난방공사",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010580",
-    "shareName": "지코",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "035000",
-    "shareName": "지투알",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "088790",
-    "shareName": "진도",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003780",
-    "shareName": "진양산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010640",
-    "shareName": "진양폴리",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "100250",
-    "shareName": "진양홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "051630",
-    "shareName": "진양화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "272450",
-    "shareName": "진에어",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011000",
-    "shareName": "진원생명과학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002780",
-    "shareName": "진흥기업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009310",
-    "shareName": "참엔지니어링",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000650",
-    "shareName": "천일고속",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "033250",
-    "shareName": "체시스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "035720",
-    "shareName": "카카오",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006380",
-    "shareName": "카프로",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "109070",
-    "shareName": "컨버즈",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001620",
-    "shareName": "케이비아이동국실업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009440",
-    "shareName": "KC그린홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "029460",
-    "shareName": "케이씨",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "344820",
-    "shareName": "케이씨씨글라스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "119650",
-    "shareName": "KC코트렐",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "281820",
-    "shareName": "케이씨텍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "044450",
-    "shareName": "KSS해운",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "092220",
-    "shareName": "KEC",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "145270",
-    "shareName": "케이탑리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "030200",
-    "shareName": "KT",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "030210",
-    "shareName": "KTB투자증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "053210",
-    "shareName": "스카이라이프",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "058850",
-    "shareName": "KTcs",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "058860",
-    "shareName": "KTis",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "033780",
-    "shareName": "KT&G",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "357120",
-    "shareName": "코람코에너지리츠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007810",
-    "shareName": "코리아써키트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003690",
-    "shareName": "코리안리",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "192820",
-    "shareName": "코스맥스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "044820",
-    "shareName": "코스맥스비티아이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005070",
-    "shareName": "코스모신소재",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005420",
-    "shareName": "코스모화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "071950",
-    "shareName": "코아스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003070",
-    "shareName": "코오롱글로벌",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "144620",
-    "shareName": "코오롱머티리얼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002020",
-    "shareName": "코오롱",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "120110",
-    "shareName": "코오롱인더",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "138490",
-    "shareName": "코오롱플라스틱",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "021240",
-    "shareName": "코웨이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "031820",
-    "shareName": "콤텍시스템",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "192400",
-    "shareName": "쿠쿠홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "284740",
-    "shareName": "쿠쿠홈시스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015590",
-    "shareName": "큐로",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "264900",
-    "shareName": "크라운제과",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005740",
-    "shareName": "크라운해태홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "020120",
-    "shareName": "키다리스튜디오",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "039490",
-    "shareName": "키움증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014580",
-    "shareName": "태경비케이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015890",
-    "shareName": "태경산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006890",
-    "shareName": "태경케미컬",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003240",
-    "shareName": "태광산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011280",
-    "shareName": "태림포장",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004100",
-    "shareName": "태양금속",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009410",
-    "shareName": "태영건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001420",
-    "shareName": "태원물산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007980",
-    "shareName": "태평양물산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "055490",
-    "shareName": "테이팩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "078000",
-    "shareName": "텔코웨어",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "214420",
-    "shareName": "토니모리",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "019180",
-    "shareName": "티에이치엔",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002900",
-    "shareName": "TYM",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "363280",
-    "shareName": "티와이홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "091810",
-    "shareName": "티웨이항공",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004870",
-    "shareName": "티웨이홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005690",
-    "shareName": "파미셀",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "036580",
-    "shareName": "팜스코",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004720",
-    "shareName": "팜젠사이언스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "028670",
-    "shareName": "팬오션",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010820",
-    "shareName": "퍼스텍",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016800",
-    "shareName": "퍼시스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001020",
-    "shareName": "페이퍼코리아",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "090080",
-    "shareName": "평화산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010770",
-    "shareName": "평화홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "058430",
-    "shareName": "포스코강판",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005490",
-    "shareName": "POSCO",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "047050",
-    "shareName": "포스코인터내셔널",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003670",
-    "shareName": "포스코케미칼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007630",
-    "shareName": "폴루스바이오팜",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017810",
-    "shareName": "풀무원",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "103140",
-    "shareName": "풍산",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005810",
-    "shareName": "풍산홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "950210",
-    "shareName": "프레스티지바이오파마",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "033180",
-    "shareName": "필룩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "086790",
-    "shareName": "하나금융지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "293480",
-    "shareName": "하나제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "039130",
-    "shareName": "하나투어",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "172580",
-    "shareName": "하이골드12호",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "153360",
-    "shareName": "하이골드3호",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "352820",
-    "shareName": "하이브",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "071090",
-    "shareName": "하이스틸",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "019490",
-    "shareName": "하이트론",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000080",
-    "shareName": "하이트진로",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000140",
-    "shareName": "하이트진로홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "036460",
-    "shareName": "한국가스공사",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005430",
-    "shareName": "한국공항",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010040",
-    "shareName": "한국내화",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "025540",
-    "shareName": "한국단자",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "096300",
-    "shareName": "베트남개발1",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004090",
-    "shareName": "한국석유",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002200",
-    "shareName": "한국수출포장",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002960",
-    "shareName": "한국쉘석유",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000240",
-    "shareName": "한국앤컴퍼니",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "033270",
-    "shareName": "유나이티드제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "123890",
-    "shareName": "한국자산신탁",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "015760",
-    "shareName": "한국전력",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "052690",
-    "shareName": "한전기술",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006200",
-    "shareName": "한국전자홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009540",
-    "shareName": "한국조선해양",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "023350",
-    "shareName": "한국종합기술",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "025890",
-    "shareName": "한국주강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000970",
-    "shareName": "한국주철관",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "104700",
-    "shareName": "한국철강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017960",
-    "shareName": "한국카본",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "161890",
-    "shareName": "한국콜마",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "024720",
-    "shareName": "한국콜마홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "161390",
-    "shareName": "한국타이어앤테크놀로지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "034830",
-    "shareName": "한국토지신탁",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "152550",
-    "shareName": "한국ANKOR유전",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "168490",
-    "shareName": "한국패러랠",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "071050",
-    "shareName": "한국금융지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "007280",
-    "shareName": "한국특수형강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010100",
-    "shareName": "한국프랜지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "047810",
-    "shareName": "한국항공우주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "123690",
-    "shareName": "한국화장품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003350",
-    "shareName": "한국화장품제조",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011500",
-    "shareName": "한농화성",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002390",
-    "shareName": "한독",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014790",
-    "shareName": "한라",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "060980",
-    "shareName": "한라홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "053690",
-    "shareName": "한미글로벌",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "042700",
-    "shareName": "한미반도체",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008930",
-    "shareName": "한미사이언스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "128940",
-    "shareName": "한미약품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009240",
-    "shareName": "한샘",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "020000",
-    "shareName": "한섬",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003680",
-    "shareName": "한성기업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "105630",
-    "shareName": "한세실업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "069640",
-    "shareName": "한세엠케이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016450",
-    "shareName": "한세예스24홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010420",
-    "shareName": "한솔PNS",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009180",
-    "shareName": "한솔로지스틱스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "213500",
-    "shareName": "한솔제지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014680",
-    "shareName": "한솔케미칼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004710",
-    "shareName": "한솔테크닉스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004150",
-    "shareName": "한솔홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "025750",
-    "shareName": "한솔홈데코",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004960",
-    "shareName": "한신공영",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011700",
-    "shareName": "한신기계",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001750",
-    "shareName": "한양증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "018880",
-    "shareName": "한온시스템",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009420",
-    "shareName": "한올바이오파마",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "014130",
-    "shareName": "한익스프레스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "300720",
-    "shareName": "한일시멘트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002220",
-    "shareName": "한일철강",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006390",
-    "shareName": "한일현대시멘트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003300",
-    "shareName": "한일홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "051600",
-    "shareName": "한전KPS",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "130660",
-    "shareName": "한전산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002320",
-    "shareName": "한진",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "097230",
-    "shareName": "한진중공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003480",
-    "shareName": "한진중공업홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "180640",
-    "shareName": "한진칼",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005110",
-    "shareName": "한창",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009460",
-    "shareName": "한창제지",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000880",
-    "shareName": "한화",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "088350",
-    "shareName": "한화생명",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000370",
-    "shareName": "한화손해보험",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "009830",
-    "shareName": "한화솔루션",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "272210",
-    "shareName": "한화시스템",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012450",
-    "shareName": "한화에어로스페이스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003530",
-    "shareName": "한화투자증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "195870",
-    "shareName": "해성디에스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "101530",
-    "shareName": "해태제과식품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "143210",
-    "shareName": "핸즈코퍼레이션",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "267270",
-    "shareName": "현대건설기계",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000720",
-    "shareName": "현대건설",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005440",
-    "shareName": "현대그린푸드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "086280",
-    "shareName": "현대글로비스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "064350",
-    "shareName": "현대로템",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "079430",
-    "shareName": "현대리바트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "012330",
-    "shareName": "현대모비스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010620",
-    "shareName": "현대미포조선",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "069960",
-    "shareName": "현대백화점",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004560",
-    "shareName": "현대비앤지스틸",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004310",
-    "shareName": "현대약품",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "322000",
-    "shareName": "현대에너지솔루션",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "017800",
-    "shareName": "현대엘리베이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "307950",
-    "shareName": "현대오토에버",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011210",
-    "shareName": "현대위아",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "267260",
-    "shareName": "현대일렉트릭",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005380",
-    "shareName": "현대차",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004020",
-    "shareName": "현대제철",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "267250",
-    "shareName": "현대중공업지주",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001500",
-    "shareName": "현대차증권",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "011760",
-    "shareName": "현대코퍼레이션",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "227840",
-    "shareName": "현대코퍼레이션홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "126560",
-    "shareName": "현대퓨처넷",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "001450",
-    "shareName": "현대해상",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "057050",
-    "shareName": "현대홈쇼핑",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "093240",
-    "shareName": "형지엘리트",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003010",
-    "shareName": "혜인",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "111110",
-    "shareName": "호전실업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "008770",
-    "shareName": "호텔신라",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "002460",
-    "shareName": "화성산업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "378850",
-    "shareName": "화승알앤에이",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "241590",
-    "shareName": "화승엔터프라이즈",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "006060",
-    "shareName": "화승인더",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "013520",
-    "shareName": "화승코퍼레이션",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010690",
-    "shareName": "화신",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "133820",
-    "shareName": "화인베스틸",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "010660",
-    "shareName": "화천기계",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000850",
-    "shareName": "화천기공",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "016580",
-    "shareName": "환인제약",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "032560",
-    "shareName": "황금에스티",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "004800",
-    "shareName": "효성",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "094280",
-    "shareName": "효성ITX",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "298040",
-    "shareName": "효성중공업",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "298050",
-    "shareName": "효성첨단소재",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "298020",
-    "shareName": "효성티앤씨",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "298000",
-    "shareName": "효성화학",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "093370",
-    "shareName": "후성",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "081660",
-    "shareName": "휠라홀딩스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005870",
-    "shareName": "휴니드",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "079980",
-    "shareName": "휴비스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "005010",
-    "shareName": "휴스틸",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "069260",
-    "shareName": "휴켐스",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "000540",
-    "shareName": "흥국화재",
-    "marketType": "KOSPI",
-    "shareType": "보통주"
-  },
-  {
-    "shareCode": "003280",
-    "shareName": "흥아해운",
-    "marketType": "KOSPI",
     "shareType": "보통주"
   }
 ]

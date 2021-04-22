@@ -3,6 +3,7 @@ import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse,
   MDBFormInline, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
 } from 'mdbreact';
+import _ from "lodash";
 import IconButton from '@material-ui/core/IconButton';
 import { useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router'
@@ -34,7 +35,7 @@ const Header = (props) => {
   const rawData2ShareSearchData = (rawDataByS) => {
     const result = [];
     for (const shareCode in rawDataByS) {
-        const shareName = rawDataByS[shareCode][0][KEY_NAME.SHARE_NAME];
+        const shareName = _.last(rawDataByS[shareCode])[KEY_NAME.SHARE_NAME];
         result.push({
             [OTHER_KEY_NAME.TYPE]: SHARE_OR_MARKET.SHARE,
             [OTHER_KEY_NAME.TARGET]: `${shareCode}:${shareName}`,
