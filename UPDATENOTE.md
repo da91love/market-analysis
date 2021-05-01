@@ -11,6 +11,8 @@
 - [update] search 화면 responsive 안됨
 - [update] 거래정지 유의 종목 표시하기
 - [update] compare의 짝을 저장하기
+- [update] localStorage데이터 redis에 저장
+- [update] 미국데이터 표시
 
 ### Update done
 - [update] 210415 데이터가 0인 그래프는 표시하지 않기
