@@ -6,6 +6,8 @@ import _ from "lodash";
 
 import CompareTgContext from "../../contexts/CompareTgContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
+import CompareMrkListModal from "./CompareMrkListModal";
+import CompareMrkNameModal from "./CompareMrkNameModal";
 import AnalysisGraph from "../Share/AnalysisGraph";
 import {KEY_NAME} from "../../consts/keyName";
 import {COMPARE_GRAPH_TYPE} from "../../consts/graph";
@@ -105,6 +107,12 @@ const Compare = () => {
                             <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.QUARTER} onClick={() => tabHandler(PERIOD_UNIT.QUARTER)} role="tab" >
                                 Quarterly
                             </MDBNavLink>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <CompareMrkNameModal />
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <CompareMrkListModal />
                         </MDBNavItem>
                     </MDBNav>
                     <MDBTabContent activeItem={activeTab} >

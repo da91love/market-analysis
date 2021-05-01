@@ -11,5 +11,6 @@ export const MSG = {
     REMOVE_BOOKMARK_TG: 'Remove from bookmark list success',
     NAN: 'Inserted value is not a number',
     VLT_SAVE: 'Valuation data is saved',
-    VLT_REMOVE: 'Valuation data is removed'
+    VLT_REMOVE: 'Valuation data is removed',
+    SAVE_COMPARE_MRK_LIST: 'Save compare market list success',
 }
