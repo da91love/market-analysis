@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBListGroup, MDBListGroupItem, MDBCollapse} from 'mdbreact';
+import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBListGroup, MDBListGroupItem, MDBCollapse, MDBIcon} from 'mdbreact';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { useSnackbar } from 'notistack';
+import SyncStatus from '../../utils/SyncStatus';
 import {MSG} from "../../consts/message";
 import {SUCCESS} from "../../consts/alert";
 
 const CompareMrkListModal = (props) => {
+    const {compareMrkList, setCompareMrkList} = props;
+    const { enqueueSnackbar } = useSnackbar();
     const [modalState, setModalState] = useState(false);
     const [collapseStatus, setCollapseStatus] = useState({});
-
-      
-
-    const compareMrkList = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE_MRK_LIST)) || {};
 
     const modalHandler = () => {
         setModalState(!modalState);
@@ -20,7 +19,24 @@ const CompareMrkListModal = (props) => {
     const toggleCollapse = (collapseId) => {
         const prevCollapseStatus = collapseStatus[collapseId];
         setCollapseStatus({...collapseStatus, [collapseId]: !prevCollapseStatus});
-      }
+    }
+
+    const removeMrkNameHandler = (compareMrkName) => {
+        const dpCompareMrkList = {...compareMrkList};
+
+        SyncStatus.remove({
+            storageKey: STRG_KEY_NAME.COMPARE_MRK_LIST, 
+            statusSetter: setCompareMrkList, 
+            data: dpCompareMrkList,
+            rmFunc: key => {
+                if (key == compareMrkName) {
+                    delete dpCompareMrkList[key]
+                }
+            }
+        });
+      
+        enqueueSnackbar(MSG.REMOVE_COMPARE_MRK_LIST, {variant: SUCCESS});
+    }
 
     return (
         <>
@@ -29,23 +45,25 @@ const CompareMrkListModal = (props) => {
                 <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
                 <MDBModalBody>
                     <MDBListGroup>
-                        <MDBListGroupItem onClick={toggleCollapse("basicCollapse")}>Cras justo odio</MDBListGroupItem>
-                        <MDBCollapse id="basicCollapse" isOpen={collapseStatus['basicCollapse']}>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum
-                            </p>
-                        </MDBCollapse>
-
-                        <MDBListGroupItem>Dapibus ac facilisis in</MDBListGroupItem>
-                        <MDBListGroupItem>Morbi leo risus</MDBListGroupItem>
-                        <MDBListGroupItem>Porta ac consectetur ac</MDBListGroupItem>
-                        <MDBListGroupItem>Vestibulum at eros</MDBListGroupItem>
+                    {Object.keys(compareMrkList).map((compareMrkName, i) => {
+                        return (
+                            <>
+                                <MDBListGroupItem onClick={() => {toggleCollapse(i)}}>{compareMrkName}
+                                    <span className="float-right">
+                                        <input className="mr-2" type="checkbox" />
+                                        <MDBIcon className="red-text" onClick={e => {removeMrkNameHandler(compareMrkName)}} icon="times" />
+                                    </span>
+                                </MDBListGroupItem>
+                                <MDBCollapse id={i} isOpen={collapseStatus[i]}>
+                                    <MDBListGroup>
+                                        {compareMrkList[compareMrkName].map((k) => {
+                                            return <MDBListGroupItem color='primary-color'>{`${k.shareName}: (${k.shareCode})`}</MDBListGroupItem>
+                                        })}
+                                    </MDBListGroup>
+                                </MDBCollapse>      
+                            </>
+                        )
+                    })}
                     </MDBListGroup>
                 </MDBModalBody>
                 <MDBModalFooter>

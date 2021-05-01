@@ -13,4 +13,5 @@ export const MSG = {
     VLT_SAVE: 'Valuation data is saved',
     VLT_REMOVE: 'Valuation data is removed',
     SAVE_COMPARE_MRK_LIST: 'Save compare market list success',
+    REMOVE_COMPARE_MRK_LIST: 'Remove compare market list success',
 }

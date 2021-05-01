@@ -20,7 +20,8 @@ const Compare = () => {
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [graphData, setGraphData] = useState();
     const {isInitDataLoaded, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
-    const compareTgFromStrg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || []; 
+    const [compareMrkList, setCompareMrkList] = useState(JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE_MRK_LIST)) || {});
+    const crtSelectedCompareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || []; 
 
     const tabHandler = (tab) => {
         if (activeTab !== tab) {
@@ -78,8 +79,8 @@ const Compare = () => {
                 const idcByQuarter = {};
         
                 COMPARE_GRAPH_TYPE.forEach((idc, i) => {
-                    idcByYear[idc] = rawData2GraphData(compareTgFromStrg, yearRawDataByShare, idc);
-                    idcByQuarter[idc] = rawData2GraphData(compareTgFromStrg, quarterRawDataByShare, idc);
+                    idcByYear[idc] = rawData2GraphData(crtSelectedCompareTg, yearRawDataByShare, idc);
+                    idcByQuarter[idc] = rawData2GraphData(crtSelectedCompareTg, quarterRawDataByShare, idc);
                 })
                 
                 return({
@@ -109,10 +110,10 @@ const Compare = () => {
                             </MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <CompareMrkNameModal />
+                            <CompareMrkNameModal compareMrkList={compareMrkList} setCompareMrkList={setCompareMrkList}/>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <CompareMrkListModal />
+                            <CompareMrkListModal compareMrkList={compareMrkList} setCompareMrkList={setCompareMrkList}/>
                         </MDBNavItem>
                     </MDBNav>
                     <MDBTabContent activeItem={activeTab} >

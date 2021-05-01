@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { useSnackbar } from 'notistack';
+import SyncStatus from '../../utils/SyncStatus';
 import {MSG} from "../../consts/message";
 import {SUCCESS} from "../../consts/alert";
 
 const CompareMrkNameModal = (props) => {
-
+    const {compareMrkList, setCompareMrkList} = props;
     const { enqueueSnackbar } = useSnackbar();
     const [modalState, setModalState] = useState(false);
     const [compareMrkName, setCompareMrkName] = useState();
@@ -21,10 +22,15 @@ const CompareMrkNameModal = (props) => {
     }
 
     const saveHandler = () => {
-        const compareMrkList = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE_MRK_LIST)) || {};
         const addedCompareMrkList = {...compareMrkList, [compareMrkName]: selectedCompareTg};
 
         localStorage.setItem(STRG_KEY_NAME.COMPARE_MRK_LIST, JSON.stringify(addedCompareMrkList));
+        SyncStatus.set({
+            storageKey: STRG_KEY_NAME.COMPARE_MRK_LIST, 
+            statusSetter: setCompareMrkList, 
+            data: addedCompareMrkList
+        });
+
         setModalState(!modalState);
 
         enqueueSnackbar(`${MSG.SAVE_COMPARE_MRK_LIST}: ${compareMrkName}`, {variant: SUCCESS});
