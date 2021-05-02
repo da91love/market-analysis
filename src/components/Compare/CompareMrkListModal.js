@@ -7,10 +7,11 @@ import {MSG} from "../../consts/message";
 import {SUCCESS} from "../../consts/alert";
 
 const CompareMrkListModal = (props) => {
-    const {compareMrkList, setCompareMrkList} = props;
+    const {compareMrkList, setCompareMrkList, setAppliedCompareMrk} = props;
     const { enqueueSnackbar } = useSnackbar();
     const [modalState, setModalState] = useState(false);
     const [collapseStatus, setCollapseStatus] = useState({});
+    const [applySelectedStatus, setApplySelectedStatus] = useState(null);
 
     const modalHandler = () => {
         setModalState(!modalState);
@@ -38,6 +39,17 @@ const CompareMrkListModal = (props) => {
         enqueueSnackbar(MSG.REMOVE_COMPARE_MRK_LIST, {variant: SUCCESS});
     }
 
+    const applySelectedHandler = (compareMrkName) => {
+        setApplySelectedStatus(compareMrkName);
+    }
+
+    const applyHandler = (compareMrkName) => {
+        setAppliedCompareMrk(compareMrkName);
+        setModalState(!modalState);
+
+        enqueueSnackbar(MSG.APPLY_COMPARE_MRK_LIST, {variant: SUCCESS});
+    }
+
     return (
         <>
             <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} onClick={modalHandler}>Apply</MDBBtn>
@@ -48,11 +60,14 @@ const CompareMrkListModal = (props) => {
                     {Object.keys(compareMrkList).map((compareMrkName, i) => {
                         return (
                             <>
-                                <MDBListGroupItem onClick={() => {toggleCollapse(i)}}>{compareMrkName}
-                                    <span className="float-right">
-                                        <input className="mr-2" type="checkbox" />
-                                        <MDBIcon className="red-text" onClick={e => {removeMrkNameHandler(compareMrkName)}} icon="times" />
-                                    </span>
+                                <MDBListGroupItem 
+                                    className={applySelectedStatus===compareMrkName?"gray-light":null}
+                                    onClick={() => {
+                                        toggleCollapse(i);
+                                        applySelectedHandler(compareMrkName);
+                                     }}>
+                                    {compareMrkName}
+                                        <MDBIcon className="float-right red-text" onClick={e => {removeMrkNameHandler(compareMrkName)}} icon="times" />
                                 </MDBListGroupItem>
                                 <MDBCollapse id={i} isOpen={collapseStatus[i]}>
                                     <MDBListGroup>
@@ -67,7 +82,7 @@ const CompareMrkListModal = (props) => {
                     </MDBListGroup>
                 </MDBModalBody>
                 <MDBModalFooter>
-                    <MDBBtn color="secondary" >Apply</MDBBtn>
+                    <MDBBtn color="secondary" onClick={()=>{applyHandler(applySelectedStatus)}}>Apply</MDBBtn>
                     <MDBBtn color="secondary" >Close</MDBBtn>
                 </MDBModalFooter>
             </MDBModal>
