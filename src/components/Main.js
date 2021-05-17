@@ -17,6 +17,8 @@ import rawDataByMarket from '../utils/rawDataByMarket';
 import {KEY_NAME} from '../consts/keyName';
 import {PERIOD_UNIT} from '../consts/common';
 import {ROUTER_URL} from '../consts/router';
+import SyncStatus from '../utils/SyncStatus';
+import { STRG_KEY_NAME } from "../consts/localStorage";
 
 import yData from "../statics/year_result.json";
 import qData from "../statics/quarter_result.json";
@@ -53,6 +55,9 @@ const Main = (props) => {
       quarterDataByGroup[k] = _.sortBy(v, o => o[KEY_NAME.PERIOD]);
     });
 
+
+    setCompareTg(SyncStatus.get({storageKey: STRG_KEY_NAME.COMPARE}) || []);
+    setBookMark(SyncStatus.get({storageKey: STRG_KEY_NAME.BOOKMARK}) || []);
     setYearRawData(yData);
     setQuarterRawData(qData);
     setYearRawDataByShare(yearDataByGroup);
