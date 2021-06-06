@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink} from 'mdbreact';
+import {useTranslation} from "react-i18next";
+
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
 import { SEARCH_TABLE_COL } from '../../consts/tbCol';
 import { KEY_NAME } from '../../consts/keyName';
@@ -7,6 +9,7 @@ import { BLANK, PERIOD_UNIT } from '../../consts/common';
 
 const FinancialSummary = (props) => {
     const {yearRawDataByShare, quarterRawDataByShare} = props;
+    const { t } = useTranslation();
     const [hidden, setHidden] = useState(false);
     const [dataTableData, setDataTableData] = useState();
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
@@ -14,7 +17,7 @@ const FinancialSummary = (props) => {
     const rawData2FixedTableData = (periodRawData, fixedCol) => {
         const header = periodRawData.map((v, i) => {
           return v[KEY_NAME.PERIOD];
-        })
+        });
 
         const records = fixedCol.map((v, i) => {
           const cells = [];
@@ -23,14 +26,15 @@ const FinancialSummary = (props) => {
               value: b[v]?b[v]:BLANK,
               key: i+o,
             })
-          })
+          });
     
           return cells;
-        })
+        });
     
         // cells의 가장 첫번째 엘리먼트로 fixedCol의 값 삽입
         fixedCol.forEach((v, i) => {
           (records[i]).unshift({
+            name: t(`common.rawData.${v}`),
             value: v,
             key: 0,
             popOver: {
@@ -69,7 +73,7 @@ const FinancialSummary = (props) => {
     return (
         <MDBCard className="card-body">
             <MDBCardTitle className="h3">
-                <span className="h3">Financial Summary</span>
+                <span className="h3">{t('shareSearch.label.financialSummary')}</span>
                 {hidden?<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-down" />:<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-up" />}
             </MDBCardTitle>
             <MDBCardText>
@@ -78,12 +82,12 @@ const FinancialSummary = (props) => {
                     <MDBNav className="nav-tabs">
                         <MDBNavItem>
                             <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.YEAR} onClick={() => tabHandler(PERIOD_UNIT.YEAR)} role="tab" >
-                                Yearly
+                                {t('common.tab.yearly')}
                             </MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
                             <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.QUARTER} onClick={() => tabHandler(PERIOD_UNIT.QUARTER)} role="tab" >
-                                Quarterly
+                                {t('common.tab.quarterly')}
                             </MDBNavLink>
                         </MDBNavItem>
                     </MDBNav>

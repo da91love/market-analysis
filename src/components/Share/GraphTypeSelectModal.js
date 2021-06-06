@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBTable, MDBTableBody } from 'mdbreact';
+import {useTranslation} from "react-i18next";
 
 const GraphTypeSelectModal = (props) => {
     const {selectedGraphType, setSelectedGraphType, allGraphType} = props;
+    const { t } = useTranslation();
     const [modalState, setModalState] = useState(false);
     const [selectedRadioStatus, setSelectedRadioStatus] = useState(function(){
         const initSelectedRadioStatus = {};
@@ -50,7 +52,7 @@ const GraphTypeSelectModal = (props) => {
             tds.push(
                 <td>
                     <input onClick={e=>{radioHandler(e.target.value)}} checked={radioStatus[v]} type="radio" value={v} name={v} id={i}/>
-                    <label>{v}</label>
+                    <label>{t(`common.rawData.${v}`)}</label>
                 </td>
             );
 
@@ -65,16 +67,16 @@ const GraphTypeSelectModal = (props) => {
 
     return (
         <>
-            <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} onClick={modalHandler}>Modal</MDBBtn>
+            <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} onClick={modalHandler}>{t('common.button.selectIdc')}</MDBBtn>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
-                <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
+                <MDBModalHeader toggle={modalHandler}>{t('common.button.selectIdc')}</MDBModalHeader>
                 <MDBModalBody>
                     {getRadioTable(selectedRadioStatus)}
                 </MDBModalBody>
                 <MDBModalFooter>
-                    <MDBBtn color="secondary" onClick={unselectAllHandler}>Unselect all</MDBBtn>
-                    <MDBBtn color="secondary" onClick={modalHandler}>Close</MDBBtn>
-                    <MDBBtn color="primary" onClick={radioSaveHandler}>Save changes</MDBBtn>
+                    <MDBBtn color="secondary" onClick={unselectAllHandler}>{t('common.button.cancelAll')}</MDBBtn>
+                    <MDBBtn color="secondary" onClick={modalHandler}>{t('common.button.close')}</MDBBtn>
+                    <MDBBtn color="primary" onClick={radioSaveHandler}>{t('common.button.save')}</MDBBtn>
                 </MDBModalFooter>
             </MDBModal>
         </>

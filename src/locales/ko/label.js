@@ -1,13 +1,35 @@
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 
 export const KO_JSON = {
-  "shareSearch": {},
+  "shareSearch": {
+    "label": {
+      "modelHitSummary": "모델매칭",
+      "financialSummary": "회계요약",
+      "valuation": "벨류에이션",
+      "idcTrendLine": "주요지표추세선"
+    },
+  },
   "marketSearch": {},
-  "target": {},
+  "target": {
+    "addModel": "모델추가",
+    "chooseModel": "모델을 선택해주세요",
+    "noneSelectedModel": "모델이 선택되지 않았습니다",
+  },
   "modelHit": {},
   "allShares": {},
   "compare": {},
   "common": {
+    "button": {
+      "save": "저장",
+      "remove": "삭제",
+      "close": "닫기",
+      "cancelAll": "모두취소",
+      "selectIdc": "지표선택",
+    },
+    "tab": {
+      "yearly": "년도별",
+      "quarterly": "분기별",
+    },
     "mainTitle": "Market Analysis",
     "rawData": {
       [KEY_NAME.PERIOD]: "기간",
@@ -58,6 +80,7 @@ export const KO_JSON = {
       [OTHER_KEY_NAME.GRAPH]: "그래프",
       [OTHER_KEY_NAME.SPS]: "SPS(원)",
       [OTHER_KEY_NAME.OPS]: "OPS(원)",
+      [OTHER_KEY_NAME.PRICE]: "주가",
     }
   }
 }

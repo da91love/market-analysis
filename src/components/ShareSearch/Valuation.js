@@ -4,6 +4,8 @@ import {
 } from 'mdbreact';
 import _ from "lodash";
 import { useSnackbar } from 'notistack';
+import {useTranslation} from "react-i18next";
+
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
 import vltCalc from '../../utils/vltCalc';
 import {isNumber} from '../../utils/numUtil';
@@ -19,6 +21,7 @@ import { STRG_KEY_NAME } from '../../consts/localStorage';
 // Temp: import json
 const Valuation = (props) => {
     const {shareCode, lastQuarterRawData} = props;
+    const { t } = useTranslation();
     const dpLastQuarterRawData = {...lastQuarterRawData};
     const { enqueueSnackbar } = useSnackbar();
     const [activeTab, setActiveTab] = useState(KEY_NAME.PER);
@@ -150,7 +153,7 @@ const Valuation = (props) => {
                 // cells의 가장 첫번째 엘리먼트로 fixedCol의 값 삽입
                 label.forEach((v, i) => {
                     (records[i]).unshift({
-                        value: v,
+                        value: t(`common.rawData.${v}`),
                         key: i,
                     });
                 });
@@ -220,7 +223,7 @@ const Valuation = (props) => {
     return (
     <MDBCard className="card-body">
         <MDBCardTitle>
-            <span className="h3">Valuation</span>
+            <span className="h3">{t('shareSearch.label.valuation')}</span>
             {hidden?<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-down" />:<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-up" />}
         </MDBCardTitle>
         <MDBCardText>
@@ -248,10 +251,10 @@ const Valuation = (props) => {
                     </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                    <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} color="secondary" onClick={dataTableDataSaveHandler}>Save</MDBBtn>
+                    <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} color="secondary" onClick={dataTableDataSaveHandler}>{t('common.button.save')}</MDBBtn>
                 </MDBNavItem>
                 <MDBNavItem>
-                    <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} color="secondary" onClick={dataTableDataRemoveHandler}>Remove</MDBBtn>
+                    <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} color="secondary" onClick={dataTableDataRemoveHandler}>{t('common.button.remove')}</MDBBtn>
                 </MDBNavItem>
             </MDBNav>
             <MDBTabContent activeItem={activeTab} >

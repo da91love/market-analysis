@@ -60,6 +60,7 @@ const FixedSideUnionTable = (props) => {
               <tr key={rowIndex}>
                 {rowData.map((cell, columnIndex) => {
                   if (columnIndex < labelColumnNum) {
+                    const name = rowData[columnIndex].name;
                     const label = rowData[columnIndex].value;
                     const popOver = rowData[columnIndex]?.popOver;
                     const isSameCategoryName = record[rowIndex - 1]?.[columnIndex].value === label;
@@ -69,6 +70,7 @@ const FixedSideUnionTable = (props) => {
                       isSameCategoryName={isSameCategoryName} 
                       key={`${rowIndex}:${columnIndex}`} 
                       value={label}
+                      name={name}
                       popOver={popOver}
                       rowIndex={rowIndex} 
                       columnIndex={columnIndex} 
@@ -101,7 +103,7 @@ const FixedSideUnionTable = (props) => {
 };
 
 const LabelCell = (props) => {
-  const {isSameCategoryName, value, popOver, columnIndex, labelSize, left} = props;
+  const {isSameCategoryName, name, value, popOver, columnIndex, labelSize, left} = props;
 
   return (
     <td
@@ -116,8 +118,8 @@ const LabelCell = (props) => {
       }}
     >
       {popOver ? 
-        <GraphPopOver value={value} popOverHeader={popOver.popOverHeader} popOverBody={popOver.popOverBody}/>
-        :<p className={'text-white pl-1'}>{isSameCategoryName ? BLANK : value}</p>
+        <GraphPopOver name={name} value={value} popOverHeader={popOver.popOverHeader} popOverBody={popOver.popOverBody}/>
+        :<p className={'text-white pl-1'}>{isSameCategoryName ? BLANK : name}</p>
       }                
     </td>
   );

@@ -115,7 +115,7 @@ const ModelBox = (props) => {
             <MDBCardTitle>
                <div className="float-left w-25">
                   <select className="browser-default custom-select" onChange={(e) => {applyModelBtn(e.target.value)}}>
-                     <option value="default" selected={model=="default"}>Choose your model</option>
+                     <option value="default" selected={model=="default"}>{t('target.chooseModel')}</option>
                      {Object.keys(MODELS).map((v, i) => {
                         return <option value={MODELS[v]} selected={model==MODELS[v]}>{MODEL_NAME[v]}</option>
                      })}

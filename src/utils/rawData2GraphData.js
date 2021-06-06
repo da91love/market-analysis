@@ -3,7 +3,7 @@ import { KEY_NAME } from '../consts/keyName';
 const rawData2GraphData = (tgShareRawData, idc) => {
 
     return {
-        name: idc,
+        idc: idc,
         xAxisKeyName: "name",
         dataKey: [idc],
         data: tgShareRawData.map((v) => {

@@ -62,7 +62,6 @@ const Header = (props) => {
     return result;
   }
 
-  const sibal = t('mainTitle');
   const options = rawData2ShareSearchData(rawDataByShare).concat(rawData2MrkSearchData(rawDataByMrk));
 
   return (
@@ -104,8 +103,8 @@ const Header = (props) => {
                 </IconButton>
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-                <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.EN); }}>English</MDBDropdownItem>
-                <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.KO); }}>한국어</MDBDropdownItem>
+                <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.EN) }}>English</MDBDropdownItem>
+                <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.KO) }}>한국어</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
