@@ -1,6 +1,5 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enJson from './locales/en/label';
 import { KO_JSON } from './locales/ko/label';
 import { EN_JSON } from './locales/en/label';
 
@@ -21,7 +20,7 @@ i18n
     lng: 'ko',
     fallbackLng: 'en',
 
-    keySeparator: false, // we do not use keys in form messages.welcome
+    // keySeparator: false, // we do not use keys in form messages.welcome
     react: {
       wait: true,
     },

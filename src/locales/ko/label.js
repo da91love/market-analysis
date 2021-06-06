@@ -8,7 +8,7 @@ export const KO_JSON = {
   "allShares": {},
   "compare": {},
   "common": {
-    "test": "test",
+    "mainTitle": "Market Analysis",
     "rawData": {
       [KEY_NAME.PERIOD]: "기간",
       [KEY_NAME.SHARE_NAME]: "종목명",
@@ -54,7 +54,10 @@ export const KO_JSON = {
       [KEY_NAME.CASH_DPS]: "현금DPS(원)",
       [KEY_NAME.DVD_YIELD]: "현금배당수익률",
       [KEY_NAME.DVD_RATIO]: "현금배당성향(%)",
-      [KEY_NAME.SHARE_NUM]: "발행주식수(보통주)"
+      [KEY_NAME.SHARE_NUM]: "발행주식수(보통주)",
+      [OTHER_KEY_NAME.GRAPH]: "그래프",
+      [OTHER_KEY_NAME.SPS]: "SPS(원)",
+      [OTHER_KEY_NAME.OPS]: "OPS(원)",
     }
   }
 }

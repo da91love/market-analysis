@@ -33,7 +33,7 @@ const ModelBox = (props) => {
       // Create columns
       const columns = tgColList.map((v,i) => {
          return {
-            label: v,
+            label: t(`common.rawData.${v}`),
             field: v,
          }
       })
@@ -62,7 +62,6 @@ const ModelBox = (props) => {
                   }
 
                } else {
-                  const test = t(`common.test`)
                   row[col] = data[col];
                }
             }

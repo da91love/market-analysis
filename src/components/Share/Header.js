@@ -62,12 +62,13 @@ const Header = (props) => {
     return result;
   }
 
+  const sibal = t('mainTitle');
   const options = rawData2ShareSearchData(rawDataByShare).concat(rawData2MrkSearchData(rawDataByMrk));
 
   return (
     <MDBNavbar color="white" dark expand="md" className="fixed-top pl-5 pr-5 mb-5">
       <MDBNavbarBrand>
-        <strong className="black-text h2">{t('mainTitle')}</strong>
+        <strong className="black-text h2">{t('common.mainTitle')}</strong>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={toggleCollapse} />
       <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>

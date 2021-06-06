@@ -1,6 +1,7 @@
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 
 export const EN_JSON = {
+  "mainTitle": "enSibal",
   "shareSearch": {},
   "marketSearch": {},
   "target": {},
