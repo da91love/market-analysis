@@ -198,7 +198,7 @@ class ShareTargetModelEngine {
 
     // Assign default filter value
     const term = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.TERM];
-    const iaCfTimes = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.IA_CF_TIMES];
+    const iaCfTimes = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.CFI_TIMES];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
       const rD = RawDataFilter.getRealData(v);
@@ -208,8 +208,8 @@ class ShareTargetModelEngine {
 
       if (tgPeriodDataLen > 0) {
         const lastValue = _.last(tgPeriodData);
-        const pastIaCf = tgPeriodData[tgPeriodDataLen-2]?.[KEY_NAME.IA_CF];
-        const latestIaCf = lastValue[KEY_NAME.IA_CF];
+        const pastIaCf = tgPeriodData[tgPeriodDataLen-2]?.[KEY_NAME.CFI];
+        const latestIaCf = lastValue[KEY_NAME.CFI];
   
         if (_.isNumber(pastIaCf) && _.isNumber(latestIaCf)) {
           // 1. lastestIaCf is smaller than 0

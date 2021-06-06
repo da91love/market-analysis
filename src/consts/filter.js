@@ -8,7 +8,7 @@ export const FILTER_TYPE = {
     SALES_MIN: "salesMinFilter",
     ROE_MIN: "roeMinFilter",
     OP_TIMES: "opTimesFilter",
-    IA_CF_TIMES: "iaCfTimesFilter",
+    CFI_TIMES: "iaCfTimesFilter",
     MV_TIMES: "mvTimesFilter"
 }
 
@@ -46,7 +46,7 @@ export const FILTER_BY_MDL = {
     },
     [MODELS.INVGROWTH]: {
         [FILTER_TYPE.PERIOD]:null,
-        [FILTER_TYPE.IA_CF_TIMES]: 300,
+        [FILTER_TYPE.CFI_TIMES]: 300,
     }
 }
 

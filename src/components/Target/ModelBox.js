@@ -5,6 +5,7 @@ import {
 import IconButton from '@material-ui/core/IconButton';
 import _ from "lodash";
 import { useSnackbar } from 'notistack';
+import {useTranslation} from "react-i18next";
 
 import NoModelSelected from './NoModelSelected';
 import FilterWrapper from './FilterWrapper';
@@ -22,6 +23,7 @@ import GraphModalBtn from '../Share/GraphModalBtn';
 
 const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
+   const { t } = useTranslation();
    const { enqueueSnackbar } = useSnackbar();
    const {yearRawDataByShare, quarterRawDataByShare, yearRawDataByMrk, quarterRawDataByMrk} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);
@@ -60,6 +62,7 @@ const ModelBox = (props) => {
                   }
 
                } else {
+                  const test = t(`common.test`)
                   row[col] = data[col];
                }
             }
