@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
+import {useTranslation} from "react-i18next";
+
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { useSnackbar } from 'notistack';
 import SyncStatus from '../../utils/SyncStatus';
@@ -8,7 +10,8 @@ import {SUCCESS} from "../../consts/alert";
 
 const CompareMrkNameModal = (props) => {
     const {compareMrkList, setCompareMrkList} = props;
-    const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar()
+    const { t } = useTranslation();
     const [modalState, setModalState] = useState(false);
     const [compareMrkName, setCompareMrkName] = useState();
     const selectedCompareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || []; 
@@ -38,15 +41,15 @@ const CompareMrkNameModal = (props) => {
 
     return (
         <>
-            <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} onClick={modalHandler}>Save</MDBBtn>
+            <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} onClick={modalHandler}>{t('common.button.save')}</MDBBtn>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
-                <MDBModalHeader toggle={modalHandler}>MDBModal title</MDBModalHeader>
+                <MDBModalHeader toggle={modalHandler}>{t('compare.compareTgSave')}</MDBModalHeader>
                 <MDBModalBody>
-                    <MDBInput label="Insert a name" onChange={inputHandler}/>
+                    <MDBInput label={t('compare.insertCompareTgGroup')} onChange={inputHandler}/>
                 </MDBModalBody>
                 <MDBModalFooter>
-                    <MDBBtn color="secondary" onClick={saveHandler}>Save</MDBBtn>
-                    <MDBBtn color="secondary" onClick={modalHandler}>Close</MDBBtn>
+                    <MDBBtn color="secondary" onClick={saveHandler}>{t('common.button.save')}</MDBBtn>
+                    <MDBBtn color="secondary" onClick={modalHandler}>{t('common.button.close')}</MDBBtn>
                 </MDBModalFooter>
             </MDBModal>
         </>

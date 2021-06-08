@@ -2,6 +2,8 @@ import React, {useState, useContext} from 'react';
 import { MDBIcon, MDBListGroup, MDBListGroupItem,MDBBadge
 } from "mdbreact";
 import _ from "lodash";
+import {useTranslation} from "react-i18next";
+
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -14,8 +16,9 @@ import {MSG} from "../../consts/message";
 import {SUCCESS} from "../../consts/alert";
 import {ROUTER_URL} from "../../consts/router";
 
-const Notification = () => {
+const Compare = () => {
   const { setCompareTg } = useContext(CompareTgContext);
+  const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
   const compareTg = SyncStatus.get({storageKey: STRG_KEY_NAME.COMPARE}) || [];
@@ -42,13 +45,13 @@ const Notification = () => {
   return (
     <div>
       <Button className="w-100 h-100" variant="outlined" color="primary" onClick={handleClickOpen}>
-        <span>Compare Target Shares</span>
+        <span>{t('common.compare.compareTgShares')}</span>
         <MDBBadge color="danger" className="ml-2">{compareTg.length}</MDBBadge>
       </Button>
 
 
       <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-        <DialogTitle id="simple-dialog-title">Compare Target List</DialogTitle>
+        <DialogTitle id="simple-dialog-title">{t('common.compare.compareTgList')}</DialogTitle>
           <MDBListGroup>
             {compareTg.length > 0?
                 compareTg.map((v, i) => {
@@ -60,11 +63,11 @@ const Notification = () => {
                       <MDBIcon className="float-right red-text" onClick={e => {removeCompareTgBtn(v.shareCode)}} icon="times" />
                     </MDBListGroupItem>
                 )})
-              :<MDBListGroupItem>No data selected</MDBListGroupItem>}
+              :<MDBListGroupItem>{t('common.compare.noneSelectedCompareTg')}</MDBListGroupItem>}
           </MDBListGroup>
       </Dialog>
     </div>
     );
 }
 
-export default Notification;
+export default Compare;
