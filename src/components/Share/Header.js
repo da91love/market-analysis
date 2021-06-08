@@ -85,12 +85,12 @@ const Header = (props) => {
                 </IconButton>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
-                <MDBDropdownItem href={ROUTER_URL.SHARE_SEARCH}>SHARE SEARCH</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.MARKET_SEARCH}>MARKET SEARCH</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.TARGET}>TARGET</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.MODEL_HIT}>MODELHIT</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.ALL_SHARES} >ALLSHARES</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.COMPARE}>COMPARE</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.SHARE_SEARCH}>{t('common.header.shareSearch')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.MARKET_SEARCH}>{t('common.header.marketSearch')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.TARGET}>{t('common.header.target')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.MODEL_HIT}>{t('common.header.modelHit')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.ALL_SHARES} >{t('common.header.allShares')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.COMPARE}>{t('common.header.compare')}</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>

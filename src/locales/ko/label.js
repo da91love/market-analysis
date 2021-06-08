@@ -17,14 +17,37 @@ export const KO_JSON = {
   },
   "modelHit": {},
   "allShares": {},
-  "compare": {},
+  "compare": {
+    "compareTgSave": "비교종목저장",
+    "compareTgApply": "저장된 비교 그룹 적용",
+    "insertCompareTgGroup": "저장할 비교 그룹명을 입력하세요"
+  },
   "common": {
+    "compare": {
+      "compareTgShares": "compare target shares",
+      "compareTgList": "선택된 비교 대상 종목",
+      "noneSelectedCompareTg": "어떠한 비교대상 종목도 선택되지 않았습니다",
+    },
+    "navigator": {
+      "bookmark": "bookmark",
+      "bookmarkList": "저장된 북마크 리스트",
+      "noneSelectedBookmark": "어떠한 북마크도 저장되지 않았습니다",
+    },
+    "header": {
+      "shareSearch": "종목검색",
+      "marketSearch": "마켓검색",
+      "target": "모델 타게팅",
+      "modelHit": "종목별 모델매칭",
+      "allShares": "모든 종목 검색",
+      "compare": "종목별 비교",
+    },
     "button": {
       "save": "저장",
       "remove": "삭제",
       "close": "닫기",
       "cancelAll": "모두취소",
       "selectIdc": "지표선택",
+      "apply": "적용",
     },
     "tab": {
       "yearly": "년도별",
