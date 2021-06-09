@@ -1,13 +1,58 @@
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 
 export const EN_JSON = {
-  "shareSearch": {},
+  "shareSearch": {
+    "label": {
+      "modelHitSummary": "모델매칭",
+      "financialSummary": "회계요약",
+      "valuation": "벨류에이션",
+      "idcTrendLine": "주요지표추세선"
+    },
+  },
   "marketSearch": {},
-  "target": {},
+  "target": {
+    "addModel": "모델추가",
+    "chooseModel": "모델을 선택해주세요",
+    "noneSelectedModel": "모델이 선택되지 않았습니다",
+  },
   "modelHit": {},
   "allShares": {},
-  "compare": {},
+  "compare": {
+    "compareTgSave": "비교종목저장",
+    "compareTgApply": "저장된 비교 그룹 적용",
+    "insertCompareTgGroup": "저장할 비교 그룹명을 입력하세요"
+  },
   "common": {
+    "compare": {
+      "compareTgShares": "compare target shares",
+      "compareTgList": "선택된 비교 대상 종목",
+      "noneSelectedCompareTg": "어떠한 비교대상 종목도 선택되지 않았습니다",
+    },
+    "navigator": {
+      "bookmark": "bookmark",
+      "bookmarkList": "저장된 북마크 리스트",
+      "noneSelectedBookmark": "어떠한 북마크도 저장되지 않았습니다",
+    },
+    "header": {
+      "shareSearch": "종목검색",
+      "marketSearch": "마켓검색",
+      "target": "모델 타게팅",
+      "modelHit": "종목별 모델매칭",
+      "allShares": "모든 종목 검색",
+      "compare": "종목별 비교",
+    },
+    "button": {
+      "save": "저장",
+      "remove": "삭제",
+      "close": "닫기",
+      "cancelAll": "모두취소",
+      "selectIdc": "지표선택",
+      "apply": "적용",
+    },
+    "tab": {
+      "yearly": "년도별",
+      "quarterly": "분기별",
+    },
     "mainTitle": "Market Analysis",
     "rawData": {
       [KEY_NAME.PERIOD]: "period",
@@ -58,6 +103,7 @@ export const EN_JSON = {
       [OTHER_KEY_NAME.GRAPH]: "그래프",
       [OTHER_KEY_NAME.SPS]: "SPS",
       [OTHER_KEY_NAME.OPS]: "OPS",
+      [OTHER_KEY_NAME.PRICE]: "`price`",
     }
   }
 }

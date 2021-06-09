@@ -1,4 +1,5 @@
 import i18n from 'i18next';
+import detector from "i18next-browser-languagedetector";
 import { initReactI18next } from 'react-i18next';
 import { LANG } from './consts/common';
 import { KO_JSON } from './locales/ko/label';
@@ -16,19 +17,20 @@ const resources = {
 };
 
 i18n
+  // .use(detector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
+    resources,
     lng: LANG.KO,
-    fallbackLng: LANG.EN,
+    fallbackLng: LANG.KO,
 
     // keySeparator: false, // we do not use keys in form messages.welcome
-    react: {
-      wait: true,
-    },
+    // react: {
+    //   wait: true,
+    // },
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
-    resources,
   });
 
 export default i18n;
