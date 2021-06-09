@@ -1,5 +1,4 @@
 import i18n from 'i18next';
-import detector from "i18next-browser-languagedetector";
 import { initReactI18next } from 'react-i18next';
 import { LANG } from './consts/common';
 import { KO_JSON } from './locales/ko/label';
