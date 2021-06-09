@@ -4,6 +4,7 @@ import {
   MDBFormInline, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
 } from 'mdbreact';
 import _ from "lodash";
+import i18n from '../../i18n';
 import IconButton from '@material-ui/core/IconButton';
 import { useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router'
@@ -16,7 +17,7 @@ import { ROUTER_URL } from '../../consts/router';
 const Header = (props) => {
   const {rawDataByShare, rawDataByMrk} = props;
   const {isInitDataLoaded} = useContext(ShareDataContext);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   // Ruturn nothing if init data is loaded
