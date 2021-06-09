@@ -153,7 +153,8 @@ const Valuation = (props) => {
                 // cells의 가장 첫번째 엘리먼트로 fixedCol의 값 삽입
                 label.forEach((v, i) => {
                     (records[i]).unshift({
-                        value: t(`common.rawData.${v}`),
+                        name: t(`common.rawData.${v}`),
+                        value: v,
                         key: i,
                     });
                 });
