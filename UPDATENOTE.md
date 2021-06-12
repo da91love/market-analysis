@@ -9,15 +9,15 @@
 - [update] target 화면 테이블 컬럼변경
 - [update] search 화면 responsive 안됨
 - [update] 거래정지 유의 종목 표시하기
-- [update] compare의 짝을 저장하기
 - [update] localStorage데이터 redis에 저장
 - [update] 미국데이터 표시
-- [update] i18n처리
 - [update] 턴어라운드 모델에 순이익 흑자전환도 포함하기
 - [update] dcf valuation 추가하기: 20년 당기순이익, WACC, CAPM, 자기자본
 
 ### Update done
+- [update] 210607 i18n처리
 - [update] 210606 키네임 변경
+- [update] 210501 compare의 짝을 저장하기
 - [update] 210415 데이터가 0인 그래프는 표시하지 않기
 - [update] 210410 관심종목 추가기능
 - [update] 210410 Financial Summary 추세선 넓게 표시하기

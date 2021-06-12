@@ -21,7 +21,8 @@ import { STRG_KEY_NAME } from '../../consts/localStorage';
 // Temp: import json
 const Valuation = (props) => {
     const {shareCode, lastQuarterRawData} = props;
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const crtLang = i18n.language;
     const dpLastQuarterRawData = {...lastQuarterRawData};
     const { enqueueSnackbar } = useSnackbar();
     const [activeTab, setActiveTab] = useState(KEY_NAME.PER);
@@ -219,7 +220,7 @@ const Valuation = (props) => {
         const savedData = savedDataTableDatas?.[shareCode];
         const vltDataByShare = rawData2FixedTableData(updRawData, savedData);
         setDataTableData(vltDataByShare);
-    }, [shareCode, savedDataTableDatas]);
+    }, [shareCode, savedDataTableDatas, crtLang]);
 
     return (
     <MDBCard className="card-body">

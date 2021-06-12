@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { LANG } from './consts/common';
+import { STRG_KEY_NAME } from './consts/localStorage';
 import { KO_JSON } from './locales/ko/label';
 import { EN_JSON } from './locales/en/label';
 
@@ -20,7 +21,7 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng: LANG.KO,
+    lng: localStorage. getItem(STRG_KEY_NAME.LANG) || LANG.KO,
     fallbackLng: LANG.KO,
 
     // keySeparator: false, // we do not use keys in form messages.welcome

@@ -9,7 +9,8 @@ import { BLANK, PERIOD_UNIT } from '../../consts/common';
 
 const FinancialSummary = (props) => {
     const {yearRawDataByShare, quarterRawDataByShare} = props;
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const crtLang = i18n.language;
     const [hidden, setHidden] = useState(false);
     const [dataTableData, setDataTableData] = useState();
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
@@ -68,7 +69,7 @@ const FinancialSummary = (props) => {
             [PERIOD_UNIT.YEAR]: rawData2FixedTableData(yearRawDataByShare, SEARCH_TABLE_COL),
             [PERIOD_UNIT.QUARTER]: rawData2FixedTableData(quarterRawDataByShare, SEARCH_TABLE_COL),
         });
-    }, [yearRawDataByShare, quarterRawDataByShare])
+    }, [yearRawDataByShare, quarterRawDataByShare, crtLang])
 
     return (
         <MDBCard className="card-body">

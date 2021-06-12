@@ -99,7 +99,7 @@ export const EN_JSON = {
       [KEY_NAME.CASH_DPS]: "Cash DPS",
       [KEY_NAME.DVD_YIELD]: "현금배당수익률",
       [KEY_NAME.DVD_RATIO]: "현금배당성향(%)",
-      [KEY_NAME.SHARE_NUM]: "발행주식수(보통주)",
+      [KEY_NAME.SHARE_NUM]: "ShareNum",
       [OTHER_KEY_NAME.GRAPH]: "Graph",
       [OTHER_KEY_NAME.SPS]: "SPS",
       [OTHER_KEY_NAME.OPS]: "OPS",

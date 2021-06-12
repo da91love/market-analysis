@@ -12,6 +12,7 @@ import ShareDataContext from "../../contexts/ShareDataContext";
 import SearchInput from '../Share/SearchInput';
 import { SHARE_OR_MARKET, LANG } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
+import { STRG_KEY_NAME } from '../../consts/localStorage';
 import { ROUTER_URL } from '../../consts/router';
 
 const Header = (props) => {
@@ -30,6 +31,7 @@ const Header = (props) => {
   };
 
   const changeLang = lang => {
+    localStorage.setItem(STRG_KEY_NAME.LANG, lang);
     i18n.changeLanguage(lang);
   };
 
