@@ -4,6 +4,7 @@ import {
   MDBFormInline, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
 } from 'mdbreact';
 import _ from "lodash";
+import i18n from '../../i18n';
 import IconButton from '@material-ui/core/IconButton';
 import { useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router'
@@ -11,12 +12,13 @@ import ShareDataContext from "../../contexts/ShareDataContext";
 import SearchInput from '../Share/SearchInput';
 import { SHARE_OR_MARKET, LANG } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
+import { STRG_KEY_NAME } from '../../consts/localStorage';
 import { ROUTER_URL } from '../../consts/router';
 
 const Header = (props) => {
   const {rawDataByShare, rawDataByMrk} = props;
   const {isInitDataLoaded} = useContext(ShareDataContext);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   // Ruturn nothing if init data is loaded
@@ -29,6 +31,7 @@ const Header = (props) => {
   };
 
   const changeLang = lang => {
+    localStorage.setItem(STRG_KEY_NAME.LANG, lang);
     i18n.changeLanguage(lang);
   };
 
@@ -67,7 +70,7 @@ const Header = (props) => {
   return (
     <MDBNavbar color="white" dark expand="md" className="fixed-top pl-5 pr-5 mb-5">
       <MDBNavbarBrand>
-        <strong className="black-text h2">{t('mainTitle')}</strong>
+        <strong className="black-text h2">{t('common.mainTitle')}</strong>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={toggleCollapse} />
       <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
@@ -85,12 +88,12 @@ const Header = (props) => {
                 </IconButton>
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default">
-                <MDBDropdownItem href={ROUTER_URL.SHARE_SEARCH}>SHARE SEARCH</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.MARKET_SEARCH}>MARKET SEARCH</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.TARGET}>TARGET</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.MODEL_HIT}>MODELHIT</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.ALL_SHARES} >ALLSHARES</MDBDropdownItem>
-                <MDBDropdownItem href={ROUTER_URL.COMPARE}>COMPARE</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.SHARE_SEARCH}>{t('common.header.shareSearch')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.MARKET_SEARCH}>{t('common.header.marketSearch')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.TARGET}>{t('common.header.target')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.MODEL_HIT}>{t('common.header.modelHit')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.ALL_SHARES} >{t('common.header.allShares')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.COMPARE}>{t('common.header.compare')}</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
@@ -103,8 +106,8 @@ const Header = (props) => {
                 </IconButton>
               </MDBDropdownToggle>
               <MDBDropdownMenu>
-                <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.EN); }}>English</MDBDropdownItem>
-                <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.KO); }}>한국어</MDBDropdownItem>
+                <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.EN) }}>English</MDBDropdownItem>
+                <MDBDropdownItem href="#!" onClick={() => { changeLang(LANG.KO) }}>한국어</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>

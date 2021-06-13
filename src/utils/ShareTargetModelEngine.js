@@ -13,6 +13,7 @@ class ShareTargetModelEngine {
 
     // get filter
     const term = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.TERM];
+    const profitType = filterStatus[MODELS.TURNAROUND][FILTER_TYPE.PROFIT_TYPE];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
       const rD = RawDataFilter.getRealData(v);
@@ -23,9 +24,9 @@ class ShareTargetModelEngine {
       // tgPeriodData should not be null: 원바이오젠과 같이 2019년 데이터까지 밖에 없는 지정 기간 내의 데이터가 존재하지 않으므로 걸러냄
       if (tgPeriodDataLen > 0) {
         // Latest period should be (+)
-        if (tgPeriodData[tgPeriodDataLen - 1][KEY_NAME.OP] > 0) {
+        if (tgPeriodData[tgPeriodDataLen - 1][profitType] > 0) {
           // Past consecutive periods should be (-)
-          if (_.every(tgPeriodData.slice(0, tgPeriodDataLen - 1), o => o[KEY_NAME.OP] < 0)) {
+          if (_.every(tgPeriodData.slice(0, tgPeriodDataLen - 1), o => o[profitType] < 0)) {
             tgShares.push(tgPeriodData[tgPeriodDataLen - 1]);
           }
         }
@@ -198,7 +199,7 @@ class ShareTargetModelEngine {
 
     // Assign default filter value
     const term = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.TERM];
-    const iaCfTimes = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.IA_CF_TIMES];
+    const iaCfTimes = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.CFI_TIMES];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
       const rD = RawDataFilter.getRealData(v);
@@ -208,8 +209,8 @@ class ShareTargetModelEngine {
 
       if (tgPeriodDataLen > 0) {
         const lastValue = _.last(tgPeriodData);
-        const pastIaCf = tgPeriodData[tgPeriodDataLen-2]?.[KEY_NAME.IA_CF];
-        const latestIaCf = lastValue[KEY_NAME.IA_CF];
+        const pastIaCf = tgPeriodData[tgPeriodDataLen-2]?.[KEY_NAME.CFI];
+        const latestIaCf = lastValue[KEY_NAME.CFI];
   
         if (_.isNumber(pastIaCf) && _.isNumber(latestIaCf)) {
           // 1. lastestIaCf is smaller than 0

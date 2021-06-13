@@ -16,7 +16,7 @@ const IaCfTimesFilter = (props) => {
         if(_.isNaN(parseInt(value))){
             enqueueSnackbar(MSG.NAN, {variant: ERROR});
         } else {
-            setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.IA_CF_TIMES]:parseInt(value)})
+            setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.CFI_TIMES]:parseInt(value)})
         }
     }
 
@@ -28,7 +28,7 @@ const IaCfTimesFilter = (props) => {
             <MDBInputGroup
                 onChange={e => filterHandler(e.target.value)}
                 material
-                hint={mdlFilterStatus[FILTER_TYPE.IA_CF_TIMES]}
+                hint={mdlFilterStatus[FILTER_TYPE.CFI_TIMES]}
                 containerClassName="mt-0"
                 append="% higher than"
             />

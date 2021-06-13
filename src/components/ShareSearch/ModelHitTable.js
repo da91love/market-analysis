@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {MDBCard, MDBCardTitle, MDBCardText, MDBIcon} from 'mdbreact';
+import {useTranslation} from "react-i18next";
+
 import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
 import FixedSideTable from '../Share/FixedSideTable';
 import { FILTER_BY_MDL } from '../../consts/filter';
@@ -8,6 +10,7 @@ import { BLANK } from '../../consts/common';
 
 const ModelHitTable = (props) => {
     const {shareCode, marketCode, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = props;
+    const { t } = useTranslation();
     const [hidden, setHidden] = useState(false);
     const [dataTableData, setDataTableData] = useState();
 
@@ -57,7 +60,7 @@ const ModelHitTable = (props) => {
   return (
     <MDBCard className="card-body">
         <MDBCardTitle>
-            <span className="h3">Model Hit Summary</span>
+            <span className="h3">{t('shareSearch.label.modelHitSummary')}</span>
             {hidden?<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-down" />:<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-up" />}
         </MDBCardTitle>
         <MDBCardText>

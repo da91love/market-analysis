@@ -5,6 +5,7 @@ import {
 import IconButton from '@material-ui/core/IconButton';
 import _ from "lodash";
 import { useSnackbar } from 'notistack';
+import {useTranslation} from "react-i18next";
 
 import NoModelSelected from './NoModelSelected';
 import FilterWrapper from './FilterWrapper';
@@ -15,23 +16,27 @@ import { MODEL_TABLE_COL } from "../../consts/tbCol";
 import { MODEL_NAME } from "../../consts/model";
 import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { FILTER_BY_MDL } from "../../consts/filter";
-import { MSG } from "../../consts/message"
+import { MSG } from "../../consts/message";
+import { BY_SHARE_ALL_TABLE_COL_TYPE } from "../../consts/tbCol";
 
 import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
+import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
 
 const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
+   const { t } = useTranslation();
    const { enqueueSnackbar } = useSnackbar();
    const {yearRawDataByShare, quarterRawDataByShare, yearRawDataByMrk, quarterRawDataByMrk} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);
    const [filterStatus, setFilterStatus] = useState(FILTER_BY_MDL);
+   const [selectedGraphType, setSelectedGraphType] = useState();
 
    const rawData2TableData = (modelName, rawData, tgColList) => {
       // Create columns
       const columns = tgColList.map((v,i) => {
          return {
-            label: v,
+            label: t(`common.rawData.${v}`),
             field: v,
          }
       })
@@ -80,7 +85,9 @@ const ModelBox = (props) => {
       } else {
          // Run model
          const tgData = getModelData(value, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
-         setDatatable(rawData2TableData(value, tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === value)]));
+         const colsByModel = MODEL_TABLE_COL[value];
+         setSelectedGraphType(colsByModel);
+         setDatatable(rawData2TableData(value, tgData, colsByModel));
 
          // update modelBoxStatus
          const dcModelBoxStatus = [...modelBoxStatus];
@@ -103,9 +110,9 @@ const ModelBox = (props) => {
    useEffect(() => {
       if(model !== 'default'){ // Do not run on first running
          const tgData = getModelData(model, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
-         setDatatable(rawData2TableData(model, tgData, MODEL_TABLE_COL[_.findKey(MODELS, v => v === model)]));
+         setDatatable(rawData2TableData(model, tgData, selectedGraphType));
       }
-   }, [filterStatus])
+   }, [filterStatus, selectedGraphType])
 
    return (
       <MDBCard className="mb-4">
@@ -113,7 +120,7 @@ const ModelBox = (props) => {
             <MDBCardTitle>
                <div className="float-left w-25">
                   <select className="browser-default custom-select" onChange={(e) => {applyModelBtn(e.target.value)}}>
-                     <option value="default" selected={model=="default"}>Choose your model</option>
+                     <option value="default" selected={model=="default"}>{t('target.chooseModel')}</option>
                      {Object.keys(MODELS).map((v, i) => {
                         return <option value={MODELS[v]} selected={model==MODELS[v]}>{MODEL_NAME[v]}</option>
                      })}
@@ -121,6 +128,7 @@ const ModelBox = (props) => {
                </div>
                <div className="">
                   <FilterWrapper model={model} filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
+                  {model !== "default"? <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_TABLE_COL_TYPE}/>:<></>}
                   <IconButton className="float-right" color="secondary" aria-label="upload picture" component="span">
                      <MDBIcon onClick={() => {removeModelBtn()}} icon="times" />
                   </IconButton>

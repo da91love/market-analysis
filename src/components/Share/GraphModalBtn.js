@@ -5,6 +5,8 @@ import {
   } from 'mdbreact';
 import _ from "lodash";
 import { useSnackbar } from 'notistack';
+import {useTranslation} from "react-i18next";
+
 import AnalysisGraph from './AnalysisGraph';
 import CompareTgContext from "../../contexts/CompareTgContext";
 import GraphTypeSelectModal from './GraphTypeSelectModal';
@@ -20,6 +22,7 @@ import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GR
 
 const GraphModalBtn = (props) => {
     const {isMarket=false, tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit} = props;
+    const { t } = useTranslation();
     // const compareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || [];
     const {compareTg, setCompareTg} = useContext(CompareTgContext);
     // const bookMark = JSON.parse(localStorage.getItem(STRG_KEY_NAME.BOOKMARK)) || [];
@@ -149,7 +152,7 @@ const GraphModalBtn = (props) => {
                     </MDBTabContent>
                 </MDBModalBody>
                 <MDBModalFooter>
-                <MDBBtn color="secondary" onClick={modalHandler}>Close</MDBBtn>
+                <MDBBtn color="secondary" onClick={modalHandler}>{t('common.button.close')}</MDBBtn>
                 </MDBModalFooter>
             </MDBModal>
         </IconButton>

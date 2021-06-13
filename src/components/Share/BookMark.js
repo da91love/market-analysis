@@ -2,6 +2,8 @@ import React, {useState, useContext} from 'react';
 import { MDBIcon, MDBListGroup, MDBListGroupItem, MDBBadge
 } from "mdbreact";
 import _ from "lodash";
+import {useTranslation} from "react-i18next";
+
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -16,6 +18,7 @@ import {ROUTER_URL} from "../../consts/router";
 
 const BookMark = () => {
   const { setBookMark } = useContext(CompareTgContext);
+  const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
   const bookMark = SyncStatus.get({storageKey: STRG_KEY_NAME.BOOKMARK}) || [];
@@ -47,12 +50,12 @@ const BookMark = () => {
   return (
     <div>
         <Button className="w-100 h-100" variant="outlined" color="primary" onClick={handleClickOpen}>
-            <span>BookMark</span>
+            <span>{t('common.navigator.bookmark')}</span>
             <MDBBadge color="danger" className="ml-2">{bookMark.length}</MDBBadge>
         </Button>
 
         <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-            <DialogTitle id="simple-dialog-title">Bookmark List</DialogTitle>
+            <DialogTitle id="simple-dialog-title">{t('common.navigator.bookmarkList')}</DialogTitle>
             <MDBListGroup>
             {bookMark.length > 0?
                 bookMark.map((v, i) => {
@@ -64,7 +67,7 @@ const BookMark = () => {
                         <MDBIcon className="float-right red-text" onClick={e => {removeBookMarkBtn(v.shareCode)}} icon="times" />
                     </MDBListGroupItem>
                 )})
-                :<MDBListGroupItem>No data selected</MDBListGroupItem>}
+                :<MDBListGroupItem>{t('common.navigator.noneSelectedBookmark')}</MDBListGroupItem>}
             </MDBListGroup>
         </Dialog>
     </div>

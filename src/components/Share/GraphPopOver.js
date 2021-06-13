@@ -7,7 +7,7 @@ import AnalysisGraph from './AnalysisGraph';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 
 const GraphPopOver = (props) => {
-    const {value, popOverHeader, popOverBody} = props;
+    const {name, value, popOverHeader, popOverBody} = props;
 
     return (
         <MDBPopover
@@ -16,7 +16,7 @@ const GraphPopOver = (props) => {
           clickable
           id="popper1"
           >
-          <Button className="p-0"><p className="text-white pl-1">{value}</p></Button>
+          <Button className="p-0"><p className="text-white pl-1">{name}</p></Button>
           <div>
             <MDBPopoverHeader>{popOverHeader}</MDBPopoverHeader>
             <MDBPopoverBody>

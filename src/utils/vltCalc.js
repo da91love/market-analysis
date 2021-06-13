@@ -54,17 +54,17 @@ const vltCalc = (result, mltpIdc, vltModel) => {
         }
     } else if (mltpIdc===KEY_NAME.PBR) {
         if (vltModel===VLT_MODELS.PRICE) {
-            result[KEY_NAME.BPS] = _.round((result[KEY_NAME.ASST_CTRL]*NUM_UNIT.OK)/result[KEY_NAME.SHARE_NUM], 2);
+            result[KEY_NAME.BPS] = _.round((result[KEY_NAME.EQT_CTRL]*NUM_UNIT.OK)/result[KEY_NAME.SHARE_NUM], 2);
             result[OTHER_KEY_NAME.PRICE] = _.round(result[KEY_NAME.PBR]*result[KEY_NAME.BPS], 2);
             result[KEY_NAME.MV] = _.round((result[OTHER_KEY_NAME.PRICE]*result[KEY_NAME.SHARE_NUM])/NUM_UNIT.OK, 2);
         } else if (vltModel===VLT_MODELS.PRFM) {
             result[OTHER_KEY_NAME.PRICE] = _.round((result[KEY_NAME.MV]*NUM_UNIT.OK)/result[KEY_NAME.SHARE_NUM], 2);
             result[KEY_NAME.BPS] =_.round(result[OTHER_KEY_NAME.PRICE]/result[KEY_NAME.PBR], 2);
-            result[KEY_NAME.ASST_CTRL] = _.round(result[KEY_NAME.MV]/(result[KEY_NAME.PBR]/100), 2);
+            result[KEY_NAME.EQT_CTRL] = _.round(result[KEY_NAME.MV]/(result[KEY_NAME.PBR]/100), 2);
         } else if (vltModel===VLT_MODELS.MLTP) {
             result[OTHER_KEY_NAME.PRICE] = _.round((result[KEY_NAME.MV]*NUM_UNIT.OK)/result[KEY_NAME.SHARE_NUM], 2);
-            result[KEY_NAME.BPS] = _.round((result[KEY_NAME.ASST_CTRL]*NUM_UNIT.OK)/result[KEY_NAME.SHARE_NUM], 2);
-            result[KEY_NAME.PBR] = _.round(result[KEY_NAME.MV]/result[KEY_NAME.ASST_CTRL], 2);
+            result[KEY_NAME.BPS] = _.round((result[KEY_NAME.EQT_CTRL]*NUM_UNIT.OK)/result[KEY_NAME.SHARE_NUM], 2);
+            result[KEY_NAME.PBR] = _.round(result[KEY_NAME.MV]/result[KEY_NAME.EQT_CTRL], 2);
         }     
     }
 

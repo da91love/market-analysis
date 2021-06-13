@@ -3,6 +3,7 @@ import {
     MDBCard, MDBCardBody, MDBCardText, MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
 } from 'mdbreact';
 import _ from "lodash";
+import {useTranslation} from "react-i18next";
 
 import CompareTgContext from "../../contexts/CompareTgContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
@@ -17,6 +18,7 @@ import { STRG_KEY_NAME } from "../../consts/localStorage";
 // Temp: import json
 const Compare = () => {
     const { compareTg, setCompareTg } = useContext(CompareTgContext);
+    const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [compareMrkList, setCompareMrkList] = useState(JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE_MRK_LIST)) || {});
     const [appliedCompareMrk, setAppliedCompareMrk] = useState(null);
@@ -64,7 +66,7 @@ const Compare = () => {
         })
 
         return {
-            name: idc,
+            idc: idc,
             xAxisKeyName: "name",
             dataKey: [AVG].concat(tgList.map((tg, i) => {
                 return tg[KEY_NAME.SHARE_NAME];
@@ -102,12 +104,12 @@ const Compare = () => {
                 <MDBNav className="nav-tabs">
                         <MDBNavItem>
                             <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.YEAR} onClick={() => tabHandler(PERIOD_UNIT.YEAR)} role="tab" >
-                                Yearly
+                                {t('common.tab.yearly')}
                             </MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
                             <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.QUARTER} onClick={() => tabHandler(PERIOD_UNIT.QUARTER)} role="tab" >
-                                Quarterly
+                            {t('common.tab.quarterly')}
                             </MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
