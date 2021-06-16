@@ -11,6 +11,8 @@
 - [update] 거래정지 유의 종목 표시하기
 - [update] localStorage데이터 redis에 저장
 - [update] 미국데이터 표시
+- [update] investment model CAPEX로 바꾸기
+- [error] investment model에서 numOfCp표시되는 오류
 - [update] 턴어라운드 모델에 순이익 흑자전환도 포함하기
 - [update] dcf valuation 추가하기: 20년 당기순이익, WACC, CAPM, 자기자본
 
