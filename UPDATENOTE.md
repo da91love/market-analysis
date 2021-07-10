@@ -13,10 +13,10 @@
 - [update] 미국데이터 표시
 - [update] investment model CAPEX로 바꾸기
 - [error] investment model에서 numOfCp표시되는 오류
-- [update] 턴어라운드 모델에 순이익 흑자전환도 포함하기
 - [update] dcf valuation 추가하기: 20년 당기순이익, WACC, CAPM, 자기자본
 
 ### Update done
+- [update] 210607 턴어라운드 모델에 순이익 흑자전환도 포함하기
 - [update] 210607 i18n처리
 - [update] 210606 키네임 변경
 - [update] 210501 compare의 짝을 저장하기
