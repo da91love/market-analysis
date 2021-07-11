@@ -25,12 +25,12 @@ import qData from "../statics/quarter_result.json";
 import siData from "../statics/share_infos.json";
 
 const Main = (props) => {
-  const [yearRawData,setYearRawData] = useState(null);
-  const [quarterRawData,setQuarterRawData] = useState(null);
-  const [yearRawDataByShare,setYearRawDataByShare] = useState(null);
-  const [quarterRawDataByShare,setQuarterRawDataByShare] = useState(null);
-  const [yearRawDataByMrk,setYearRawDataByMrk] = useState(null);
-  const [quarterRawDataByMrk,setQuarterRawDataByMrk] = useState(null);
+  const [yearRawData, setYearRawData] = useState(null);
+  const [quarterRawData, setQuarterRawData] = useState(null);
+  const [yearRawDataByShare, setYearRawDataByShare] = useState(null);
+  const [quarterRawDataByShare, setQuarterRawDataByShare] = useState(null);
+  const [yearRawDataByMrk, setYearRawDataByMrk] = useState(null);
+  const [quarterRawDataByMrk, setQuarterRawDataByMrk] = useState(null);
   const [compareTg, setCompareTg] = useState([]);
   const [bookMark, setBookMark] = useState([]);
   const [isInitDataLoaded,setIsInitDataLoaded] = useState(false);
@@ -69,7 +69,7 @@ const Main = (props) => {
   }, [])
 
   return (
-    <CompareTgContext.Provider value={{ compareTg, setCompareTg, bookMark, setBookMark}}>
+    <CompareTgContext.Provider value={{ compareTg, setCompareTg, bookMark, setBookMark }}>
     <ShareDataContext.Provider value={{
       isInitDataLoaded, shareInfos,
       yearRawData, setYearRawData, 
