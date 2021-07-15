@@ -3,5 +3,6 @@ export const STRG_KEY_NAME = {
     COMPARE: "compare",
     BOOKMARK: "bookMark",
     SAVE_VLT: "saveVlt",
-    LANG: "lang"
+    LANG: "lang",
+    AUTH_ID: "auth_id"
 }

@@ -20,10 +20,6 @@ const CompareMrkNameModal = (props) => {
         setModalState(!modalState);
     }
 
-    const inputHandler = (e) => {
-        setCompareMrkName(e.target.value);
-    }
-
     const saveHandler = () => {
         const addedCompareMrkList = {...compareMrkList, [compareMrkName]: selectedCompareTg};
 
@@ -45,7 +41,7 @@ const CompareMrkNameModal = (props) => {
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
                 <MDBModalHeader toggle={modalHandler}>{t('compare.compareTgSave')}</MDBModalHeader>
                 <MDBModalBody>
-                    <MDBInput label={t('compare.insertCompareTgGroup')} onChange={inputHandler}/>
+                    <MDBInput label={t('compare.insertCompareTgGroup')} onChange={e => setCompareMrkName(e.target.value)}/>
                 </MDBModalBody>
                 <MDBModalFooter>
                     <MDBBtn color="secondary" onClick={saveHandler}>{t('common.button.save')}</MDBBtn>
