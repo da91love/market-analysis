@@ -9,10 +9,11 @@ import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
 const App = () => {
-  const [auth, setAuth] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [authId, setAuthId] = useState(null);
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth }}>
+    <AuthContext.Provider value={{ authId, setAuthId, userId, setUserId }}>
     <AppContext.Provider value={{}}>
       <Router history={history}>
         <Switch>

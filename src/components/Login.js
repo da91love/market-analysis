@@ -3,16 +3,19 @@ import { MDBInput, MDBContainer, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText
 import axios from 'axios';
 import AuthContext from '../contexts/AuthContext';
 import { useSnackbar } from 'notistack';
+import { useHistory } from 'react-router-dom';
 import { API } from '../consts/api';
 import { STRG_KEY_NAME } from '../consts/localStorage';
 import {MSG} from "../consts/message";
-import {SUCCESS, ERROR} from "../consts/alert";
+import { SUCCESS, ERROR } from "../consts/alert";
+import { ROUTER_URL } from '../consts/router';
 import SyncStatus from '../utils/SyncStatus';
 
 const Login = () => {
-  const { auth, setAuth } = useContext(AuthContext);
-  const [ userId, setUserId ] = useState();
-  const [ pw, setPw ] = useState();
+  const { setAuthId, setUserId } = useContext(AuthContext);
+  const history = useHistory();
+  const [ tempUserId, setTempUserId ] = useState();
+  const [ tempPw, setTempPw ] = useState();
   const { enqueueSnackbar } = useSnackbar()
 
   const loginBtnHandler = () => {
@@ -21,22 +24,30 @@ const Login = () => {
       url: API.CHECK_LOGIN_INFO,
       data: {
         data: {
-          userId: userId,
-          pw: pw
+          userId: tempUserId,
+          pw: tempPw
         }
       }
     })
     .then(res => {
       if(res.data.status === "success" ) {
         if(res.data.payload.isIdNPwTrue) {
+          // Get authId from API result
           const authId = res.data.payload.authId;
-          SyncStatus.set({
-            storageKey: STRG_KEY_NAME.AUTH_ID,
-            statusSetter: setAuth,
-            data: authId
-          })
+
+          setUserId(tempUserId);
+          setAuthId(authId);
+          // 굳이 context에 저장되어 있으므로 localStrage에 저장할 이유가 없지 않나. 보안상도 안좋고
+          // SyncStatus.set({
+          //   storageKey: STRG_KEY_NAME.AUTH_ID,
+          //   statusSetter: setAuth,
+          //   data: authId
+          // })
   
           enqueueSnackbar(`${MSG.LOGIN_SUCCESS}`, {variant: SUCCESS});
+
+          // Open search page when login done
+          history.push({pathname: ROUTER_URL.SHARE_SEARCH});
         } else {
           enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
         }
@@ -54,9 +65,9 @@ const Login = () => {
             </MDBCardTitle>
             <MDBCardText>
               <label htmlFor="formGroupExampleInput">Default input</label>
-              <MDBInput label="Material input" onChange={e => setUserId(e.target.value)}/>
+              <MDBInput label="Material input" onChange={e => setTempUserId(e.target.value)}/>
               <label htmlFor="formGroupExampleInput">Default input</label>
-              <MDBInput label="Material input" onChange={e => setPw(e.target.value)}/>
+              <MDBInput label="Material input" onChange={e => setTempPw(e.target.value)}/>
               <MDBBtn color="primary" onClick={() => loginBtnHandler()}>Primary</MDBBtn>
             </MDBCardText>
         </MDBCardBody>
