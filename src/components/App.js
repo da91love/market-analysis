@@ -3,10 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AppContext from '../contexts/AppContext';
 import AuthContext from '../contexts/AuthContext';
 import {ROUTER_URL} from '../consts/router';
-import Login from './Login';
-import Main from './Main';
-import { createBrowserHistory } from "history";
-
+import Login from './Login'; 
 const history = createBrowserHistory();
 const App = () => {
   const [userId, setUserId] = useState(null);
