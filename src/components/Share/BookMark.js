@@ -2,76 +2,101 @@ import React, {useState, useContext} from 'react';
 import { MDBIcon, MDBListGroup, MDBListGroupItem, MDBBadge
 } from "mdbreact";
 import _ from "lodash";
+import axios from 'axios';
 import {useTranslation} from "react-i18next";
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useSnackbar } from 'notistack';
-import SyncStatus from '../../utils/SyncStatus';
+import AuthContext from "../../contexts/AuthContext";
 import CompareTgContext from '../../contexts/CompareTgContext';
+import SyncStatus from '../../utils/SyncStatus';
 import {STRG_KEY_NAME} from "../../consts/localStorage";
 import {KEY_NAME} from "../../consts/keyName";
 import {MSG} from "../../consts/message";
+import {API} from '../../consts/api';
 import {SUCCESS} from "../../consts/alert";
 import {ROUTER_URL} from "../../consts/router";
 
 const BookMark = () => {
-  const { setBookMark } = useContext(CompareTgContext);
-  const { t } = useTranslation();
-  const { enqueueSnackbar } = useSnackbar();
-  const [open, setOpen] = useState(false);
-  const bookMark = SyncStatus.get({storageKey: STRG_KEY_NAME.BOOKMARK}) || [];
+    const {userId, authId} = useContext(AuthContext);
+    const { bookMark, setBookMark } = useContext(CompareTgContext);
+    const { t } = useTranslation();
+    const { enqueueSnackbar } = useSnackbar();
+    const [open, setOpen] = useState(false);
 
-  const removeBookMarkBtn = (shareCode) => {
-    SyncStatus.remove({
-      storageKey: STRG_KEY_NAME.BOOKMARK, 
-      statusSetter: setBookMark, 
-      data: bookMark,
-      rmFunc: v => v[KEY_NAME.SHARE_CODE] == shareCode,
-    });
+    const removeBookMarkBtn = (shareCode) => {
+        // SyncStatus.remove({
+        //   storageKey: STRG_KEY_NAME.BOOKMARK, 
+        //   statusSetter: setBookMark, 
+        //   data: bookMark,
+        //   rmFunc: v => v[KEY_NAME.SHARE_CODE] == shareCode,
+        // });
 
-    enqueueSnackbar(MSG.REMOVE_BOOKMARK_TG, {variant: SUCCESS});
-  }
+        // Remove target share from bookMark status
+        const removedBookmark = [...bookMark]
+        _.remove(removedBookmark, v => v[KEY_NAME.SHARE_CODE] == shareCode);
+        setBookMark(removedBookmark)
 
-    const searchPageMoveHandler = (shareCode, shareName) => {
-        const win = window.open(`${ROUTER_URL.SHARE_SEARCH}/${shareCode}/${shareName}`, "_blank");
-        win.focus();
+        axios({
+            method: 'post',
+            url: API.SAVE_BOOKMARK,
+            data: {
+                data: {
+                    userId: userId,
+                    authId: authId,
+                    value: removedBookmark
+                }
+            }
+        })
+        .then(res => {
+            if(res.data.status === "success" ) {
+                enqueueSnackbar(`${MSG.REMOVE_BOOKMARK_TG}`, {variant: SUCCESS});
+            } else {
+            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+            }
+        })
     }
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+        const searchPageMoveHandler = (shareCode, shareName) => {
+            const win = window.open(`${ROUTER_URL.SHARE_SEARCH}/${shareCode}/${shareName}`, "_blank");
+            win.focus();
+        }
 
-    const handleClose = (value) => {
-        setOpen(false);
-    };
+        const handleClickOpen = () => {
+            setOpen(true);
+        };
 
-  return (
-    <div>
-        <Button className="w-100 h-100" variant="outlined" color="primary" onClick={handleClickOpen}>
-            <span>{t('common.navigator.bookmark')}</span>
-            <MDBBadge color="danger" className="ml-2">{bookMark.length}</MDBBadge>
-        </Button>
+        const handleClose = (value) => {
+            setOpen(false);
+        };
 
-        <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-            <DialogTitle id="simple-dialog-title">{t('common.navigator.bookmarkList')}</DialogTitle>
-            <MDBListGroup>
-            {bookMark.length > 0?
-                bookMark.map((v, i) => {
-                    return (
-                    <MDBListGroupItem>
-                        <a className="mr-1" href={`${ROUTER_URL.SHARE_SEARCH}/${v.shareCode}/${v.shareName}`} target="_blank">
-                            <span className="h3">{`${v.shareCode}:${v.shareName}`}</span>
-                        </a>
-                        <MDBIcon className="float-right red-text" onClick={e => {removeBookMarkBtn(v.shareCode)}} icon="times" />
-                    </MDBListGroupItem>
-                )})
-                :<MDBListGroupItem>{t('common.navigator.noneSelectedBookmark')}</MDBListGroupItem>}
-            </MDBListGroup>
-        </Dialog>
-    </div>
-    );
+    return (
+        <div>
+            <Button className="w-100 h-100" variant="outlined" color="primary" onClick={handleClickOpen}>
+                <span>{t('common.navigator.bookmark')}</span>
+                <MDBBadge color="danger" className="ml-2">{bookMark.length}</MDBBadge>
+            </Button>
+
+            <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+                <DialogTitle id="simple-dialog-title">{t('common.navigator.bookmarkList')}</DialogTitle>
+                <MDBListGroup>
+                {bookMark.length > 0?
+                    bookMark.map((v, i) => {
+                        return (
+                        <MDBListGroupItem>
+                            <a className="mr-1" href={`${ROUTER_URL.SHARE_SEARCH}/${v.shareCode}/${v.shareName}`} target="_blank">
+                                <span className="h3">{`${v.shareCode}:${v.shareName}`}</span>
+                            </a>
+                            <MDBIcon className="float-right red-text" onClick={e => {removeBookMarkBtn(v.shareCode)}} icon="times" />
+                        </MDBListGroupItem>
+                    )})
+                    :<MDBListGroupItem>{t('common.navigator.noneSelectedBookmark')}</MDBListGroupItem>}
+                </MDBListGroup>
+            </Dialog>
+        </div>
+        );
 }
 
 export default BookMark;

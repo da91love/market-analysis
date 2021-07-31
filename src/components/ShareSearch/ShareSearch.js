@@ -76,6 +76,12 @@ const ShareSearch = () => {
   };
 
   const addToBookMarkListHandler = (shareCode, shareName) => {
+    const addedBookMark = [...bookMark, {
+      [KEY_NAME.SHARE_CODE]: shareCode,
+      [KEY_NAME.SHARE_NAME]: shareName
+    }]
+    setBookMark(addedBookMark);
+
     if (authId) {
       axios({
         method: 'post',
@@ -84,10 +90,7 @@ const ShareSearch = () => {
           data: {
             userId: userId,
             authId: authId,
-            value: [...bookMark, {
-              [KEY_NAME.SHARE_CODE]: shareCode,
-              [KEY_NAME.SHARE_NAME]: shareName
-            }]
+            value: addedBookMark
           }
         }
       })
