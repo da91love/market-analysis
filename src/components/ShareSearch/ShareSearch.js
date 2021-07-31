@@ -76,48 +76,31 @@ const ShareSearch = () => {
   };
 
   const addToBookMarkListHandler = (shareCode, shareName) => {
-    // if (_.find(bookMark, [[KEY_NAME.SHARE_CODE], shareCode])) {
-    //     enqueueSnackbar(
-    //         `${MSG.SHARE_CODE_ALREADY_EXIST_IN_BM}(${shareCode}:${shareName})`, 
-    //         {variant: ERROR}
-    //     );
-    // } else {
-    //   SyncStatus.set({
-    //     storageKey: STRG_KEY_NAME.BOOKMARK,
-    //     statusSetter: setBookMark,
-    //     data: [...bookMark, {
-    //       [KEY_NAME.SHARE_CODE]: shareCode,
-    //       [KEY_NAME.SHARE_NAME]: shareName
-    //     }]
-    //   });
-
-    //   enqueueSnackbar(
-    //     `${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, 
-    //     {variant: SUCCESS}
-    //   );
-    // }
-
-    axios({
-      method: 'post',
-      url: API.SAVE_BOOKMARK,
-      data: {
+    if (authId) {
+      axios({
+        method: 'post',
+        url: API.SAVE_BOOKMARK,
         data: {
-          userId: userId,
-          authId: authId,
-          value: {
-            [KEY_NAME.SHARE_CODE]: shareCode,
-            [KEY_NAME.SHARE_NAME]: shareName
+          data: {
+            userId: userId,
+            authId: authId,
+            value: [...bookMark, {
+              [KEY_NAME.SHARE_CODE]: shareCode,
+              [KEY_NAME.SHARE_NAME]: shareName
+            }]
           }
         }
-      }
-    })
-    .then(res => {
-      if(res.data.status === "success" ) {
-        enqueueSnackbar(`${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, {variant: SUCCESS});
-      } else {
-        // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
-      }
-    })
+      })
+      .then(res => {
+        if(res.data.status === "success" ) {
+          enqueueSnackbar(`${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, {variant: SUCCESS});
+        } else {
+          // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+        }
+      })
+    } else {
+      enqueueSnackbar(`${MSG.NOT_LOGED_IN}`, {variant: ERROR});
+    }
   };
 
   return (

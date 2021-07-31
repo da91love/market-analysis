@@ -21,7 +21,7 @@ const Login = () => {
   const loginBtnHandler = () => {
     axios({
       method: 'post',
-      url: API.CHECK_LOGIN_INFO,
+      url: API.CHECK_USER_ID_PW,
       data: {
         data: {
           userId: tempUserId,
