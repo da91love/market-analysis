@@ -20,13 +20,11 @@ const Login = () => {
 
   const loginBtnHandler = () => {
     axios({
-      method: 'post',
-      url: API.CHECK_USER_ID_PW,
-      data: {
-        data: {
-          userId: tempUserId,
-          pw: tempPw
-        }
+      method: API.GET_AUTH.METHOD,
+      url: API.GET_AUTH.URL,
+      params: {
+        userId: tempUserId,
+        pw: tempPw
       }
     })
     .then(res => {

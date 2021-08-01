@@ -75,13 +75,11 @@ const Main = (props) => {
     // get bookmark info
     if (authId) {
       axios({
-        method: 'post',
-        url: API.GET_BOOKMARK,
-        data: {
-          data: {
-            userId: userId,
-            authId: authId,
-          }
+        method: API.GET_BOOKMARK.METHOD,
+        url: API.GET_BOOKMARK.URL,
+        params: {
+          userId: userId,
+          authId: authId,
         }
       })
       .then(res => {

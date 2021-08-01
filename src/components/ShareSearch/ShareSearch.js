@@ -84,8 +84,8 @@ const ShareSearch = () => {
 
     if (authId) {
       axios({
-        method: 'post',
-        url: API.SAVE_BOOKMARK,
+        method: API.PUT_BOOKMARK.METHOD,
+        url: API.PUT_BOOKMARK.URL,
         data: {
           data: {
             userId: userId,

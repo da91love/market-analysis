@@ -11,8 +11,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { useSnackbar } from 'notistack';
 import AuthContext from "../../contexts/AuthContext";
 import CompareTgContext from '../../contexts/CompareTgContext';
-import SyncStatus from '../../utils/SyncStatus';
-import {STRG_KEY_NAME} from "../../consts/localStorage";
 import {KEY_NAME} from "../../consts/keyName";
 import {MSG} from "../../consts/message";
 import {API} from '../../consts/api';
@@ -27,21 +25,14 @@ const BookMark = () => {
     const [open, setOpen] = useState(false);
 
     const removeBookMarkBtn = (shareCode) => {
-        // SyncStatus.remove({
-        //   storageKey: STRG_KEY_NAME.BOOKMARK, 
-        //   statusSetter: setBookMark, 
-        //   data: bookMark,
-        //   rmFunc: v => v[KEY_NAME.SHARE_CODE] == shareCode,
-        // });
-
         // Remove target share from bookMark status
         const removedBookmark = [...bookMark]
         _.remove(removedBookmark, v => v[KEY_NAME.SHARE_CODE] == shareCode);
         setBookMark(removedBookmark)
 
         axios({
-            method: 'post',
-            url: API.SAVE_BOOKMARK,
+            method: API.PUT_BOOKMARK.METHOD,
+            url: API.PUT_BOOKMARK.URL,
             data: {
                 data: {
                     userId: userId,
