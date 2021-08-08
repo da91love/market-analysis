@@ -3,14 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AppContext from '../contexts/AppContext';
 import AuthContext from '../contexts/AuthContext';
 import {ROUTER_URL} from '../consts/router';
+import {STRG_KEY_NAME} from '../consts/localStorage';
+import SyncStatus from '../utils/SyncStatus';
 import Login from './Login';
 import Main from './Main';
 import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
 const App = () => {
-  const [userId, setUserId] = useState(null);
-  const [authId, setAuthId] = useState(null);
+  const [userId, setUserId] = useState(SyncStatus.get({storageKey: STRG_KEY_NAME.USER_ID}) || null);
+  const [authId, setAuthId] = useState(SyncStatus.get({storageKey: STRG_KEY_NAME.AUTH_ID}) || null);
 
   return (
     <AuthContext.Provider value={{ authId, setAuthId, userId, setUserId }}>

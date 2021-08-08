@@ -3,14 +3,17 @@ import {
     MDBCard, MDBCardBody, MDBCardText, MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink
 } from 'mdbreact';
 import _ from "lodash";
+import axios from 'axios';
 import {useTranslation} from "react-i18next";
 
 import CompareTgContext from "../../contexts/CompareTgContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
+import AuthContext from '../../contexts/AuthContext';
 import CompareMrkListModal from "./CompareMrkListModal";
 import CompareMrkNameModal from "./CompareMrkNameModal";
 import AnalysisGraph from "../Share/AnalysisGraph";
 import {KEY_NAME} from "../../consts/keyName";
+import {API} from '../../consts/api';
 import {COMPARE_GRAPH_TYPE} from "../../consts/graph";
 import {PERIOD_UNIT, AVG} from "../../consts/common";
 import { STRG_KEY_NAME } from "../../consts/localStorage";
@@ -18,9 +21,10 @@ import { STRG_KEY_NAME } from "../../consts/localStorage";
 // Temp: import json
 const Compare = () => {
     const { compareTg, setCompareTg } = useContext(CompareTgContext);
+    const {authId, userId} = useContext(AuthContext);
     const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
-    const [compareMrkList, setCompareMrkList] = useState(JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE_MRK_LIST)) || {});
+    const [compareMrkList, setCompareMrkList] = useState({});
     const [appliedCompareMrk, setAppliedCompareMrk] = useState(null);
     const [graphData, setGraphData] = useState();
     const {isInitDataLoaded, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
@@ -95,6 +99,28 @@ const Compare = () => {
             setGraphData(gData);
         }
     }, [isInitDataLoaded, compareTg, appliedCompareMrk]);
+
+    useEffect(() => {
+        //Get data from DB
+        if (authId) {
+            axios({
+                method: API.GET_COMP_TG_GRP.METHOD,
+                url: API.GET_COMP_TG_GRP.URL,
+                params: {
+                    userId: userId,
+                    authId: authId,
+                }
+            })
+            .then(res => {
+                if(res.data.status === "success" ) {
+                    setCompareMrkList(res.data.payload.value);
+                } else {
+                    // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+                }
+            })  
+        } else {
+        }
+    }, [authId]);
 
     return (
         <MDBContainer className="mt-5 mb-5 pt-5 pb-5">

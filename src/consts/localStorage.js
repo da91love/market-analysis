@@ -4,5 +4,6 @@ export const STRG_KEY_NAME = {
     BOOKMARK: "bookMark",
     SAVE_VLT: "saveVlt",
     LANG: "lang",
-    AUTH_ID: "auth_id"
+    AUTH_ID: "authId",
+    USER_ID: "userId"
 }

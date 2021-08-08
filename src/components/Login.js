@@ -33,14 +33,19 @@ const Login = () => {
           // Get authId from API result
           const authId = res.data.payload.authId;
 
-          setUserId(tempUserId);
-          setAuthId(authId);
           // 굳이 context에 저장되어 있으므로 localStrage에 저장할 이유가 없지 않나. 보안상도 안좋고
-          // SyncStatus.set({
-          //   storageKey: STRG_KEY_NAME.AUTH_ID,
-          //   statusSetter: setAuth,
-          //   data: authId
-          // })
+          // -> 새로고침시 필요
+          SyncStatus.set({
+            storageKey: STRG_KEY_NAME.USER_ID,
+            statusSetter: setUserId,
+            data: tempUserId
+          });
+
+          SyncStatus.set({
+            storageKey: STRG_KEY_NAME.AUTH_ID,
+            statusSetter: setAuthId,
+            data: authId
+          });
   
           enqueueSnackbar(`${MSG.LOGIN_SUCCESS}`, {variant: SUCCESS});
 

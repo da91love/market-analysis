@@ -219,8 +219,13 @@ const Valuation = (props) => {
     const dataTableDataRemoveHandler = () => {
         if (authId) {
             const dpSavedDataTableDatas = {...savedDataTableDatas};
-            _.remove(dpSavedDataTableDatas, v => v[KEY_NAME.SHARE_CODE] == shareCode);
-            setSavedDataTableDatas(dpSavedDataTableDatas)
+            for (const key in dpSavedDataTableDatas) {
+                if (key === shareCode) {
+                    delete dpSavedDataTableDatas[key];
+                    break;
+                }
+            };
+            setSavedDataTableDatas(dpSavedDataTableDatas);
 
             axios({
                 method: API.PUT_VALUATION.METHOD,
@@ -235,7 +240,7 @@ const Valuation = (props) => {
             })
             .then(res => {
                 if(res.data.status === "success" ) {
-                    enqueueSnackbar(MSG.VLT_SAVE, {variant: SUCCESS});
+                    enqueueSnackbar(MSG.VLT_REMOVE, {variant: SUCCESS});
                 } else {
                     // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
                 }

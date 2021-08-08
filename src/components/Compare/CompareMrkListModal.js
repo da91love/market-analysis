@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBListGroup, MDBListGroupItem, MDBCollapse, MDBIcon} from 'mdbreact';
 import {useTranslation} from "react-i18next";
+import axios from 'axios';
 
+import AuthContext from '../../contexts/AuthContext';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { useSnackbar } from 'notistack';
 import SyncStatus from '../../utils/SyncStatus';
 import {MSG} from "../../consts/message";
-import {SUCCESS} from "../../consts/alert";
+import {API} from '../../consts/api';
+import {SUCCESS, ERROR} from "../../consts/alert";
 
 const CompareMrkListModal = (props) => {
     const {compareMrkList, setCompareMrkList, setAppliedCompareMrk} = props;
+    const {authId, userId} = useContext(AuthContext);
     const { enqueueSnackbar } = useSnackbar();
     const { t } = useTranslation();
     const [modalState, setModalState] = useState(false);
