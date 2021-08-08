@@ -41,6 +41,7 @@ const CompareMrkNameModal = (props) => {
             })
             .then(res => {
                 if(res.data.status === "success" ) {
+                    setCompareMrkList(addedCompareMrkList);
                     setModalState(!modalState);
                     enqueueSnackbar(`${MSG.SAVE_COMPARE_MRK_LIST}: ${compareMrkName}`, {variant: SUCCESS});
                 } else {

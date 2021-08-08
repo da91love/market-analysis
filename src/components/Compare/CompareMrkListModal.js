@@ -30,20 +30,38 @@ const CompareMrkListModal = (props) => {
     }
 
     const removeMrkNameHandler = (compareMrkName) => {
-        const dpCompareMrkList = {...compareMrkList};
+        if (authId) {
+            const dpCompareMrkList = {...compareMrkList};
 
-        SyncStatus.remove({
-            storageKey: STRG_KEY_NAME.COMPARE_MRK_LIST, 
-            statusSetter: setCompareMrkList, 
-            data: dpCompareMrkList,
-            rmFunc: key => {
-                if (key == compareMrkName) {
-                    delete dpCompareMrkList[key]
+            for (const key in dpCompareMrkList) {
+                if (key === compareMrkName) {
+                    delete dpCompareMrkList[key];
+                    break;
                 }
-            }
-        });
-      
-        enqueueSnackbar(MSG.REMOVE_COMPARE_MRK_LIST, {variant: SUCCESS});
+            };
+
+            axios({
+                method: API.PUT_COMP_TG_GRP.METHOD,
+                url: API.PUT_COMP_TG_GRP.URL,
+                data: {
+                    data: {
+                        userId: userId,
+                        authId: authId,
+                        value: dpCompareMrkList
+                    }
+                }    
+            })
+            .then(res => {
+                if(res.data.status === "success" ) {
+                    setCompareMrkList(dpCompareMrkList);
+                    enqueueSnackbar(MSG.REMOVE_COMPARE_MRK_LIST, {variant: SUCCESS});
+                } else {
+                    // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+                }
+            })  
+        } else {
+            enqueueSnackbar(MSG.NOT_LOGED_IN, {variant: ERROR});
+        }
     }
 
     const applySelectedHandler = (compareMrkName) => {

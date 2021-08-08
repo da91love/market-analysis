@@ -225,7 +225,6 @@ const Valuation = (props) => {
                     break;
                 }
             };
-            setSavedDataTableDatas(dpSavedDataTableDatas);
 
             axios({
                 method: API.PUT_VALUATION.METHOD,
@@ -240,6 +239,7 @@ const Valuation = (props) => {
             })
             .then(res => {
                 if(res.data.status === "success" ) {
+                    setSavedDataTableDatas(dpSavedDataTableDatas);
                     enqueueSnackbar(MSG.VLT_REMOVE, {variant: SUCCESS});
                 } else {
                     // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
