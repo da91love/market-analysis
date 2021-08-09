@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Route } from 'react-router-dom';
 import _ from "lodash";
+import axios from 'axios';
 
 import Header from './Share/Header';
 import Navigator from './Share/Navigator';
+import AuthContext from '../contexts/AuthContext';
 import CompareTgContext from '../contexts/CompareTgContext';
 import ShareDataContext from '../contexts/ShareDataContext';
 import ShareSearch from './ShareSearch/ShareSearch';
@@ -17,20 +19,22 @@ import rawDataByMarket from '../utils/rawDataByMarket';
 import {KEY_NAME} from '../consts/keyName';
 import {PERIOD_UNIT} from '../consts/common';
 import {ROUTER_URL} from '../consts/router';
+import {API} from '../consts/api';
 import SyncStatus from '../utils/SyncStatus';
-import { STRG_KEY_NAME } from "../consts/localStorage";
+import {STRG_KEY_NAME} from "../consts/localStorage";
 
 import yData from "../statics/year_result.json";
 import qData from "../statics/quarter_result.json";
 import siData from "../statics/share_infos.json";
 
 const Main = (props) => {
-  const [yearRawData,setYearRawData] = useState(null);
-  const [quarterRawData,setQuarterRawData] = useState(null);
-  const [yearRawDataByShare,setYearRawDataByShare] = useState(null);
-  const [quarterRawDataByShare,setQuarterRawDataByShare] = useState(null);
-  const [yearRawDataByMrk,setYearRawDataByMrk] = useState(null);
-  const [quarterRawDataByMrk,setQuarterRawDataByMrk] = useState(null);
+  const {authId, userId} = useContext(AuthContext);
+  const [yearRawData, setYearRawData] = useState(null);
+  const [quarterRawData, setQuarterRawData] = useState(null);
+  const [yearRawDataByShare, setYearRawDataByShare] = useState(null);
+  const [quarterRawDataByShare, setQuarterRawDataByShare] = useState(null);
+  const [yearRawDataByMrk, setYearRawDataByMrk] = useState(null);
+  const [quarterRawDataByMrk, setQuarterRawDataByMrk] = useState(null);
   const [compareTg, setCompareTg] = useState([]);
   const [bookMark, setBookMark] = useState([]);
   const [isInitDataLoaded,setIsInitDataLoaded] = useState(false);
@@ -55,9 +59,8 @@ const Main = (props) => {
       quarterDataByGroup[k] = _.sortBy(v, o => o[KEY_NAME.PERIOD]);
     });
 
-
     setCompareTg(SyncStatus.get({storageKey: STRG_KEY_NAME.COMPARE}) || []);
-    setBookMark(SyncStatus.get({storageKey: STRG_KEY_NAME.BOOKMARK}) || []);
+    // setBookMark(SyncStatus.get({storageKey: STRG_KEY_NAME.BOOKMARK}) || []);
     setYearRawData(yData);
     setQuarterRawData(qData);
     setYearRawDataByShare(yearDataByGroup);
@@ -68,8 +71,32 @@ const Main = (props) => {
     setIsInitDataLoaded(true);
   }, [])
 
+  useEffect(() => {
+    // get bookmark info
+    if (authId) {
+      axios({
+        method: API.GET_BOOKMARK.METHOD,
+        url: API.GET_BOOKMARK.URL,
+        params: {
+          userId: userId,
+          authId: authId,
+        }
+      })
+      .then(res => {
+        if(res.data.status === "success" ) {
+          setBookMark(res.data.payload.value)
+        } else {
+          // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+        }
+      })  
+    } else {
+
+    }
+
+  }, [authId])
+
   return (
-    <CompareTgContext.Provider value={{ compareTg, setCompareTg, bookMark, setBookMark}}>
+    <CompareTgContext.Provider value={{ compareTg, setCompareTg, bookMark, setBookMark }}>
     <ShareDataContext.Provider value={{
       isInitDataLoaded, shareInfos,
       yearRawData, setYearRawData, 

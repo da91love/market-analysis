@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import {MDBContainer, MDBIcon} from 'mdbreact';
 import _ from "lodash";
+import axios from 'axios';
 import { useLocation, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
@@ -10,6 +11,7 @@ import IndicatorGraph from "./IndicatorGraph";
 import Valuation from "./Valuation";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import CompareTgContext from "../../contexts/CompareTgContext";
+import AuthContext from "../../contexts/AuthContext";
 import SyncStatus from '../../utils/SyncStatus';
 import RawDataFilter from '../../utils/RawDataFilter';
 import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
@@ -17,6 +19,7 @@ import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { EXTERNAL_URL } from '../../consts/common';
 import { ROUTER_URL } from '../../consts/router';
+import { API } from '../../consts/api';
 import { SUCCESS, ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
 import naverBtnImg from '../../statics/image/naver_btn_green.png';
@@ -27,6 +30,7 @@ const ShareSearch = () => {
   const location = useLocation();
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
+  const {userId, authId} = useContext(AuthContext);
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
@@ -72,25 +76,33 @@ const ShareSearch = () => {
   };
 
   const addToBookMarkListHandler = (shareCode, shareName) => {
-    if (_.find(bookMark, [[KEY_NAME.SHARE_CODE], shareCode])) {
-        enqueueSnackbar(
-            `${MSG.SHARE_CODE_ALREADY_EXIST_IN_BM}(${shareCode}:${shareName})`, 
-            {variant: ERROR}
-        );
-    } else {
-      SyncStatus.set({
-        storageKey: STRG_KEY_NAME.BOOKMARK,
-        statusSetter: setBookMark,
-        data: [...bookMark, {
-          [KEY_NAME.SHARE_CODE]: shareCode,
-          [KEY_NAME.SHARE_NAME]: shareName
-        }]
-      });
+    const addedBookMark = [...bookMark, {
+      [KEY_NAME.SHARE_CODE]: shareCode,
+      [KEY_NAME.SHARE_NAME]: shareName
+    }]
+    setBookMark(addedBookMark);
 
-      enqueueSnackbar(
-        `${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, 
-        {variant: SUCCESS}
-      );
+    if (authId) {
+      axios({
+        method: API.PUT_BOOKMARK.METHOD,
+        url: API.PUT_BOOKMARK.URL,
+        data: {
+          data: {
+            userId: userId,
+            authId: authId,
+            value: addedBookMark
+          }
+        }
+      })
+      .then(res => {
+        if(res.data.status === "success" ) {
+          enqueueSnackbar(`${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, {variant: SUCCESS});
+        } else {
+          // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+        }
+      })
+    } else {
+      enqueueSnackbar(`${MSG.NOT_LOGED_IN}`, {variant: ERROR});
     }
   };
 

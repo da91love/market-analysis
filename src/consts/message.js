@@ -15,4 +15,7 @@ export const MSG = {
     SAVE_COMPARE_MRK_LIST: 'Save compare market list success',
     REMOVE_COMPARE_MRK_LIST: 'Remove compare market list success',
     APPLY_COMPARE_MRK_LIST: 'Apply compare market list success',
+    LOGIN_SUCCESS: 'login success',
+    LOGIN_FAIL: 'login fail',
+    NOT_LOGED_IN: 'Please login'
 }

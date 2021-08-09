@@ -3,9 +3,11 @@ import {
     MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBBtn
 } from 'mdbreact';
 import _ from "lodash";
+import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import {useTranslation} from "react-i18next";
 
+import AuthContext from '../../contexts/AuthContext';
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
 import vltCalc from '../../utils/vltCalc';
 import {isNumber} from '../../utils/numUtil';
@@ -13,6 +15,7 @@ import SyncStatus from '../../utils/SyncStatus';
 import { KEY_NAME, OTHER_KEY_NAME} from '../../consts/keyName';
 import { BLANK, NUM_UNIT } from '../../consts/common';
 import { MSG } from '../../consts/message';
+import {API} from '../../consts/api';
 import { ERROR, SUCCESS } from '../../consts/alert';
 import { VLT_TABLE_COL, VLT_TABLE_LABEL} from '../../consts/tbCol';
 import { VLT_MODELS } from '../../consts/model';
@@ -21,13 +24,14 @@ import { STRG_KEY_NAME } from '../../consts/localStorage';
 // Temp: import json
 const Valuation = (props) => {
     const {shareCode, lastQuarterRawData} = props;
+    const {authId, userId} = useContext(AuthContext);
     const { t, i18n } = useTranslation();
     const crtLang = i18n.language;
     const dpLastQuarterRawData = {...lastQuarterRawData};
     const { enqueueSnackbar } = useSnackbar();
     const [activeTab, setActiveTab] = useState(KEY_NAME.PER);
     const [hidden, setHidden] = useState(true);
-    const [savedDataTableDatas, setSavedDataTableDatas] = useState(SyncStatus.get({storageKey: STRG_KEY_NAME.SAVE_VLT}) || {});
+    const [savedDataTableDatas, setSavedDataTableDatas] = useState({});
     const [dataTableData, setDataTableData] = useState();
 
     const pricePrdctnModelOnBlur = (e, tableId, baseDate, rowIdx, colIdx, labelColumnNum) => {
@@ -184,35 +188,66 @@ const Valuation = (props) => {
     }
 
     const dataTableDataSaveHandler = () => {
-        const dpSavedDataTableDatas = {...savedDataTableDatas};
-        dpSavedDataTableDatas[shareCode] = dataTableData;
+        //Get data from DB
+        if (authId) {
+            const dpSavedDataTableDatas = {...savedDataTableDatas};
+            dpSavedDataTableDatas[shareCode] = dataTableData;
 
-        SyncStatus.set({
-            storageKey: STRG_KEY_NAME.SAVE_VLT,
-            statusSetter: setSavedDataTableDatas,
-            data: dpSavedDataTableDatas
-        });
-
-        enqueueSnackbar(MSG.VLT_SAVE, {variant: SUCCESS});
+            axios({
+                method: API.PUT_VALUATION.METHOD,
+                url: API.PUT_VALUATION.URL,
+                data: {
+                    data: {
+                        userId: userId,
+                        authId: authId,
+                        value: dpSavedDataTableDatas
+                    }
+                }    
+            })
+            .then(res => {
+                if(res.data.status === "success" ) {
+                    enqueueSnackbar(MSG.VLT_SAVE, {variant: SUCCESS});
+                } else {
+                    // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+                }
+            })  
+        } else {
+            enqueueSnackbar(MSG.NOT_LOGED_IN, {variant: ERROR});
+        }
     }
 
     const dataTableDataRemoveHandler = () => {
-        const dpSavedDataTableDatas = {...savedDataTableDatas};
-
-        if (!_.isEmpty(dpSavedDataTableDatas)) {
-            SyncStatus.remove({
-                storageKey: STRG_KEY_NAME.SAVE_VLT, 
-                statusSetter: setSavedDataTableDatas, 
-                data: dpSavedDataTableDatas,
-                rmFunc: (key) => {
-                    if (key === shareCode) {
-                        delete dpSavedDataTableDatas[key];
-                    }
+        if (authId) {
+            const dpSavedDataTableDatas = {...savedDataTableDatas};
+            for (const key in dpSavedDataTableDatas) {
+                if (key === shareCode) {
+                    delete dpSavedDataTableDatas[key];
+                    break;
                 }
-              });
-        }
+            };
 
-        enqueueSnackbar(MSG.VLT_REMOVE, {variant: SUCCESS});
+            axios({
+                method: API.PUT_VALUATION.METHOD,
+                url: API.PUT_VALUATION.URL,
+                data: {
+                    data: {
+                        userId: userId,
+                        authId: authId,
+                        value: dpSavedDataTableDatas
+                    }
+                }    
+            })
+            .then(res => {
+                if(res.data.status === "success" ) {
+                    setSavedDataTableDatas(dpSavedDataTableDatas);
+                    enqueueSnackbar(MSG.VLT_REMOVE, {variant: SUCCESS});
+                } else {
+                    // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+                }
+            })  
+        } else {
+            enqueueSnackbar(MSG.NOT_LOGED_IN, {variant: ERROR});
+        }
     }
 
     useEffect(() => {
@@ -221,6 +256,28 @@ const Valuation = (props) => {
         const vltDataByShare = rawData2FixedTableData(updRawData, savedData);
         setDataTableData(vltDataByShare);
     }, [shareCode, savedDataTableDatas, crtLang]);
+
+    useEffect(() => {
+        //Get data from DB
+        if (authId) {
+            axios({
+                method: API.GET_VALUATION.METHOD,
+                url: API.GET_VALUATION.URL,
+                params: {
+                    userId: userId,
+                    authId: authId,
+                }
+            })
+            .then(res => {
+                if(res.data.status === "success" ) {
+                    setSavedDataTableDatas(res.data.payload.value);
+                } else {
+                    // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+                }
+            })  
+        } else {
+        }
+    }, [authId])
 
     return (
     <MDBCard className="card-body">
