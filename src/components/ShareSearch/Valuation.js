@@ -276,6 +276,7 @@ const Valuation = (props) => {
                 }
             })  
         } else {
+            setSavedDataTableDatas({});
         }
     }, [authId])
 

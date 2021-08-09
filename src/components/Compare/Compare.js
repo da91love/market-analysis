@@ -119,6 +119,7 @@ const Compare = () => {
                 }
             })  
         } else {
+            setCompareMrkList({});
         }
     }, [authId]);
 

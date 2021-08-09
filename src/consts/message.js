@@ -17,5 +17,6 @@ export const MSG = {
     APPLY_COMPARE_MRK_LIST: 'Apply compare market list success',
     LOGIN_SUCCESS: 'login success',
     LOGIN_FAIL: 'login fail',
-    NOT_LOGED_IN: 'Please login'
+    NOT_LOGED_IN: 'Please login',
+    LOGOUT_SUCCESS: 'logout success',
 }

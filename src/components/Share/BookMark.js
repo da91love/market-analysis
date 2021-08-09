@@ -26,9 +26,8 @@ const BookMark = () => {
 
     const removeBookMarkBtn = (shareCode) => {
         // Remove target share from bookMark status
-        const removedBookmark = [...bookMark]
+        const removedBookmark = [...bookMark];
         _.remove(removedBookmark, v => v[KEY_NAME.SHARE_CODE] == shareCode);
-        setBookMark(removedBookmark)
 
         axios({
             method: API.PUT_BOOKMARK.METHOD,
@@ -43,6 +42,7 @@ const BookMark = () => {
         })
         .then(res => {
             if(res.data.status === "success" ) {
+                setBookMark(removedBookmark);
                 enqueueSnackbar(`${MSG.REMOVE_BOOKMARK_TG}`, {variant: SUCCESS});
             } else {
             // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});

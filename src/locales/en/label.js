@@ -40,6 +40,8 @@ export const EN_JSON = {
       "modelHit": "Model Hit",
       "allShares": "All Shares Search",
       "compare": "Compare targets",
+      "login": "login",
+      "logout": "logout",
     },
     "button": {
       "save": "save",

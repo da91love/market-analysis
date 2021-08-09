@@ -4,20 +4,30 @@ import {
   MDBFormInline, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
 } from 'mdbreact';
 import _ from "lodash";
+import axios from 'axios';
+import { useSnackbar } from 'notistack';
+
 import i18n from '../../i18n';
 import IconButton from '@material-ui/core/IconButton';
 import { useTranslation } from 'react-i18next';
 import { withRouter } from 'react-router'
 import ShareDataContext from "../../contexts/ShareDataContext";
+import AuthContext from "../../contexts/AuthContext";
 import SearchInput from '../Share/SearchInput';
 import { SHARE_OR_MARKET, LANG } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { STRG_KEY_NAME } from '../../consts/localStorage';
 import { ROUTER_URL } from '../../consts/router';
+import { API } from '../../consts/api';
+import { MSG } from '../../consts/message';
+import { SUCCESS, ERROR } from "../../consts/alert";
+import SyncStatus from '../../utils/SyncStatus';
 
 const Header = (props) => {
   const {rawDataByShare, rawDataByMrk} = props;
   const {isInitDataLoaded} = useContext(ShareDataContext);
+  const {userId, setUserId, authId, setAuthId} = useContext(AuthContext);
+  const { enqueueSnackbar } = useSnackbar()
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,6 +38,42 @@ const Header = (props) => {
 
   const toggleCollapse = () => {
     setIsOpen(!isOpen);
+  };
+
+  const logoutHandler = () => {
+    if (authId) {
+      axios({
+        method: API.DELETE_AUTH.METHOD,
+        url: API.DELETE_AUTH.URL,
+        data: {
+          data: {
+            userId: userId,
+            authId: authId,
+          }
+        }
+      })
+      .then(res => {
+        if(res.data.status === "success" ) {
+          SyncStatus.set({
+            storageKey: STRG_KEY_NAME.USER_ID,
+            statusSetter: setUserId,
+            data: null
+          });
+
+          SyncStatus.set({
+            storageKey: STRG_KEY_NAME.AUTH_ID,
+            statusSetter: setAuthId,
+            data: null
+          });
+
+          enqueueSnackbar(`${MSG.LOGOUT_SUCCESS}`, {variant: SUCCESS});
+        } else {
+          // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+        }
+      })  
+    } else {
+
+    }
   };
 
   const changeLang = lang => {
@@ -111,6 +157,21 @@ const Header = (props) => {
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>
+
+          <MDBNavItem>
+            <MDBDropdown>
+              <MDBDropdownToggle nav caret>
+                <IconButton className="text-center" color="primary" component="span">
+                  <MDBIcon icon="user-alt" />
+                </IconButton>
+              </MDBDropdownToggle>
+              <MDBDropdownMenu>
+                <MDBDropdownItem hidden={authId?true:false} href={ROUTER_URL.LOGIN}>{t('common.header.login')}</MDBDropdownItem>
+                <MDBDropdownItem hidden={!authId?true:false} onClick={() => { logoutHandler() }}>{t('common.header.logout')}</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
+          </MDBNavItem>
+
         </MDBNavbarNav>
       </MDBCollapse>
     </MDBNavbar>

@@ -80,7 +80,6 @@ const ShareSearch = () => {
       [KEY_NAME.SHARE_CODE]: shareCode,
       [KEY_NAME.SHARE_NAME]: shareName
     }]
-    setBookMark(addedBookMark);
 
     if (authId) {
       axios({
@@ -96,6 +95,7 @@ const ShareSearch = () => {
       })
       .then(res => {
         if(res.data.status === "success" ) {
+          setBookMark(addedBookMark);
           enqueueSnackbar(`${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, {variant: SUCCESS});
         } else {
           // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});

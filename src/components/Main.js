@@ -84,13 +84,13 @@ const Main = (props) => {
       })
       .then(res => {
         if(res.data.status === "success" ) {
-          setBookMark(res.data.payload.value)
+          setBookMark(res.data.payload.value);
         } else {
           // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
         }
       })  
     } else {
-
+      setBookMark([]);
     }
 
   }, [authId])

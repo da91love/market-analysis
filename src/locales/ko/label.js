@@ -40,6 +40,8 @@ export const KO_JSON = {
       "modelHit": "종목별 모델매칭",
       "allShares": "모든 종목 검색",
       "compare": "종목별 비교",
+      "login": "로그인",
+      "logout": "로그아웃",
     },
     "button": {
       "save": "저장",
