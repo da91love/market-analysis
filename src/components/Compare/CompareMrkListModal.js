@@ -12,7 +12,7 @@ import {API} from '../../consts/api';
 import {SUCCESS, ERROR} from "../../consts/alert";
 
 const CompareMrkListModal = (props) => {
-    const {compareMrkList, setCompareMrkList, setCompareTg} = props;
+    const {compareMrkList, setCompareTg} = props;
     const {authId, userId} = useContext(AuthContext);
     const { enqueueSnackbar } = useSnackbar();
     const { t } = useTranslation();
@@ -53,7 +53,6 @@ const CompareMrkListModal = (props) => {
             })
             .then(res => {
                 if(res.data.status === "success" ) {
-                    setCompareMrkList(dpCompareMrkList);
                     enqueueSnackbar(MSG.REMOVE_COMPARE_MRK_LIST, {variant: SUCCESS});
                 } else {
                     // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});

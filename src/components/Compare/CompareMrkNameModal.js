@@ -12,7 +12,7 @@ import {API} from '../../consts/api';
 import {SUCCESS, ERROR} from "../../consts/alert";
 
 const CompareMrkNameModal = (props) => {
-    const {compareMrkList, setCompareMrkList} = props;
+    const {compareMrkList} = props;
     const {authId, userId} = useContext(AuthContext);
     const { enqueueSnackbar } = useSnackbar()
     const { t } = useTranslation();
@@ -41,7 +41,6 @@ const CompareMrkNameModal = (props) => {
             })
             .then(res => {
                 if(res.data.status === "success" ) {
-                    setCompareMrkList(addedCompareMrkList);
                     setModalState(!modalState);
                     enqueueSnackbar(`${MSG.SAVE_COMPARE_MRK_LIST}: ${compareMrkName}`, {variant: SUCCESS});
                 } else {
