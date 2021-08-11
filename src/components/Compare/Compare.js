@@ -16,7 +16,6 @@ import {KEY_NAME} from "../../consts/keyName";
 import {API} from '../../consts/api';
 import {COMPARE_GRAPH_TYPE} from "../../consts/graph";
 import {PERIOD_UNIT, AVG} from "../../consts/common";
-import { STRG_KEY_NAME } from "../../consts/localStorage";
 
 // Temp: import json
 const Compare = () => {
@@ -25,10 +24,8 @@ const Compare = () => {
     const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [compareMrkList, setCompareMrkList] = useState({});
-    const [appliedCompareMrk, setAppliedCompareMrk] = useState(null);
     const [graphData, setGraphData] = useState();
     const {isInitDataLoaded, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
-    const crtSelectedCompareTg = appliedCompareMrk?compareMrkList[appliedCompareMrk]: (JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || []); 
 
     const tabHandler = (tab) => {
         if (activeTab !== tab) {
@@ -86,8 +83,8 @@ const Compare = () => {
                 const idcByQuarter = {};
         
                 COMPARE_GRAPH_TYPE.forEach((idc, i) => {
-                    idcByYear[idc] = rawData2GraphData(crtSelectedCompareTg, yearRawDataByShare, idc);
-                    idcByQuarter[idc] = rawData2GraphData(crtSelectedCompareTg, quarterRawDataByShare, idc);
+                    idcByYear[idc] = rawData2GraphData(compareTg, yearRawDataByShare, idc);
+                    idcByQuarter[idc] = rawData2GraphData(compareTg, quarterRawDataByShare, idc);
                 })
                 
                 return({
@@ -98,7 +95,7 @@ const Compare = () => {
     
             setGraphData(gData);
         }
-    }, [isInitDataLoaded, compareTg, appliedCompareMrk]);
+    }, [isInitDataLoaded, compareTg]);
 
     useEffect(() => {
         //Get data from DB
@@ -140,10 +137,10 @@ const Compare = () => {
                             </MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <CompareMrkNameModal compareMrkList={compareMrkList} setCompareMrkList={setCompareMrkList}/>
+                            <CompareMrkNameModal compareMrkList={compareMrkList} setCompareTg={setCompareTg}/>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <CompareMrkListModal compareMrkList={compareMrkList} setCompareMrkList={setCompareMrkList} setAppliedCompareMrk={setAppliedCompareMrk}/>
+                            <CompareMrkListModal compareMrkList={compareMrkList} setCompareTg={setCompareTg}/>
                         </MDBNavItem>
                     </MDBNav>
                     <MDBTabContent activeItem={activeTab} >

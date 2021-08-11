@@ -12,7 +12,7 @@ import {API} from '../../consts/api';
 import {SUCCESS, ERROR} from "../../consts/alert";
 
 const CompareMrkListModal = (props) => {
-    const {compareMrkList, setCompareMrkList, setAppliedCompareMrk} = props;
+    const {compareMrkList, setCompareMrkList, setCompareTg} = props;
     const {authId, userId} = useContext(AuthContext);
     const { enqueueSnackbar } = useSnackbar();
     const { t } = useTranslation();
@@ -69,7 +69,11 @@ const CompareMrkListModal = (props) => {
     }
 
     const applyHandler = (compareMrkName) => {
-        setAppliedCompareMrk(compareMrkName);
+        SyncStatus.set({
+            storageKey: STRG_KEY_NAME.COMPARE,
+            statusSetter: setCompareTg,
+            data: compareMrkList[compareMrkName]
+        });        
         setModalState(!modalState);
 
         enqueueSnackbar(MSG.APPLY_COMPARE_MRK_LIST, {variant: SUCCESS});
