@@ -5,5 +5,4 @@ export const STRG_KEY_NAME = {
     SAVE_VLT: "saveVlt",
     LANG: "lang",
     AUTH_ID: "authId",
-    USER_ID: "userId"
 }

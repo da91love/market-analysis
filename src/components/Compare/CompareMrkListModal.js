@@ -13,7 +13,7 @@ import {SUCCESS, ERROR} from "../../consts/alert";
 
 const CompareMrkListModal = (props) => {
     const {compareMrkList, setCompareTg} = props;
-    const {authId, userId} = useContext(AuthContext);
+    const {authId} = useContext(AuthContext);
     const { enqueueSnackbar } = useSnackbar();
     const { t } = useTranslation();
     const [modalState, setModalState] = useState(false);
@@ -43,10 +43,11 @@ const CompareMrkListModal = (props) => {
             axios({
                 method: API.PUT_COMP_TG_GRP.METHOD,
                 url: API.PUT_COMP_TG_GRP.URL,
+                headers: {
+                    authId: authId,
+                },
                 data: {
                     data: {
-                        userId: userId,
-                        authId: authId,
                         value: dpCompareMrkList
                     }
                 }    

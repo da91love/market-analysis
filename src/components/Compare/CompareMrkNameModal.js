@@ -6,14 +6,13 @@ import axios from 'axios';
 import AuthContext from '../../contexts/AuthContext';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { useSnackbar } from 'notistack';
-import SyncStatus from '../../utils/SyncStatus';
 import {MSG} from "../../consts/message";
 import {API} from '../../consts/api';
 import {SUCCESS, ERROR} from "../../consts/alert";
 
 const CompareMrkNameModal = (props) => {
     const {compareMrkList} = props;
-    const {authId, userId} = useContext(AuthContext);
+    const {authId} = useContext(AuthContext);
     const { enqueueSnackbar } = useSnackbar()
     const { t } = useTranslation();
     const [modalState, setModalState] = useState(false);
@@ -31,10 +30,11 @@ const CompareMrkNameModal = (props) => {
             axios({
                 method: API.PUT_COMP_TG_GRP.METHOD,
                 url: API.PUT_COMP_TG_GRP.URL,
+                headers: {
+                    authId: authId,
+                },
                 data: {
                     data: {
-                        userId: userId,
-                        authId: authId,
                         value: addedCompareMrkList
                     }
                 }    

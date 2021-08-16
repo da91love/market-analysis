@@ -18,7 +18,7 @@ import {SUCCESS} from "../../consts/alert";
 import {ROUTER_URL} from "../../consts/router";
 
 const BookMark = () => {
-    const {userId, authId} = useContext(AuthContext);
+    const {authId} = useContext(AuthContext);
     const { bookMark, setBookMark } = useContext(CompareTgContext);
     const { t } = useTranslation();
     const { enqueueSnackbar } = useSnackbar();
@@ -32,10 +32,11 @@ const BookMark = () => {
         axios({
             method: API.PUT_BOOKMARK.METHOD,
             url: API.PUT_BOOKMARK.URL,
+            headers: {
+                authId: authId
+            },
             data: {
                 data: {
-                    userId: userId,
-                    authId: authId,
                     value: removedBookmark
                 }
             }

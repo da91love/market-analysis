@@ -11,11 +11,10 @@ import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
 const App = () => {
-  const [userId, setUserId] = useState(SyncStatus.get({storageKey: STRG_KEY_NAME.USER_ID}) || null);
   const [authId, setAuthId] = useState(SyncStatus.get({storageKey: STRG_KEY_NAME.AUTH_ID}) || null);
 
   return (
-    <AuthContext.Provider value={{ authId, setAuthId, userId, setUserId }}>
+    <AuthContext.Provider value={{ authId, setAuthId}}>
     <AppContext.Provider value={{}}>
       <Router history={history}>
         <Switch>

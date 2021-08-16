@@ -1,6 +1,6 @@
 export const API = {
     GET_AUTH: {
-        METHOD: 'get',
+        METHOD: 'post',
         URL: 'http://192.168.8.102:8081/dev/api/ma-api/v1/front/auth',
     },
     DELETE_AUTH: {

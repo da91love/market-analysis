@@ -19,4 +19,5 @@ export const MSG = {
     LOGIN_FAIL: 'login fail',
     NOT_LOGED_IN: 'Please login',
     LOGOUT_SUCCESS: 'logout success',
+    AUTH_MISSING: 'Automatically logout, due to authentication missing'
 }

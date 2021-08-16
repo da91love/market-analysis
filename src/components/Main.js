@@ -28,7 +28,7 @@ import qData from "../statics/quarter_result.json";
 import siData from "../statics/share_infos.json";
 
 const Main = (props) => {
-  const {authId, userId} = useContext(AuthContext);
+  const {authId} = useContext(AuthContext);
   const [yearRawData, setYearRawData] = useState(null);
   const [quarterRawData, setQuarterRawData] = useState(null);
   const [yearRawDataByShare, setYearRawDataByShare] = useState(null);
@@ -77,8 +77,7 @@ const Main = (props) => {
       axios({
         method: API.GET_BOOKMARK.METHOD,
         url: API.GET_BOOKMARK.URL,
-        params: {
-          userId: userId,
+        headers: {
           authId: authId,
         }
       })

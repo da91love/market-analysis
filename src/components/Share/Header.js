@@ -26,7 +26,7 @@ import SyncStatus from '../../utils/SyncStatus';
 const Header = (props) => {
   const {rawDataByShare, rawDataByMrk} = props;
   const {isInitDataLoaded} = useContext(ShareDataContext);
-  const {userId, setUserId, authId, setAuthId} = useContext(AuthContext);
+  const {authId, setAuthId} = useContext(AuthContext);
   const { enqueueSnackbar } = useSnackbar()
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -45,21 +45,12 @@ const Header = (props) => {
       axios({
         method: API.DELETE_AUTH.METHOD,
         url: API.DELETE_AUTH.URL,
-        data: {
-          data: {
-            userId: userId,
-            authId: authId,
-          }
+        headers: {
+          authId: authId,
         }
       })
       .then(res => {
         if(res.data.status === "success" ) {
-          SyncStatus.set({
-            storageKey: STRG_KEY_NAME.USER_ID,
-            statusSetter: setUserId,
-            data: null
-          });
-
           SyncStatus.set({
             storageKey: STRG_KEY_NAME.AUTH_ID,
             statusSetter: setAuthId,

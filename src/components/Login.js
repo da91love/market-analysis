@@ -12,7 +12,7 @@ import { ROUTER_URL } from '../consts/router';
 import SyncStatus from '../utils/SyncStatus';
 
 const Login = () => {
-  const { setAuthId, setUserId } = useContext(AuthContext);
+  const { setAuthId } = useContext(AuthContext);
   const history = useHistory();
   const [ tempUserId, setTempUserId ] = useState();
   const [ tempPw, setTempPw ] = useState();
@@ -22,9 +22,11 @@ const Login = () => {
     axios({
       method: API.GET_AUTH.METHOD,
       url: API.GET_AUTH.URL,
-      params: {
-        userId: tempUserId,
-        pw: tempPw
+      data: {
+        data: {
+          userId: tempUserId,
+          pw: tempPw
+        }
       }
     })
     .then(res => {
@@ -35,12 +37,6 @@ const Login = () => {
 
           // 굳이 context에 저장되어 있으므로 localStrage에 저장할 이유가 없지 않나. 보안상도 안좋고
           // -> 새로고침시 필요
-          SyncStatus.set({
-            storageKey: STRG_KEY_NAME.USER_ID,
-            statusSetter: setUserId,
-            data: tempUserId
-          });
-
           SyncStatus.set({
             storageKey: STRG_KEY_NAME.AUTH_ID,
             statusSetter: setAuthId,

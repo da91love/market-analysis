@@ -24,7 +24,7 @@ import { STRG_KEY_NAME } from '../../consts/localStorage';
 // Temp: import json
 const Valuation = (props) => {
     const {shareCode, lastQuarterRawData} = props;
-    const {authId, userId} = useContext(AuthContext);
+    const {authId, setAuthId} = useContext(AuthContext);
     const { t, i18n } = useTranslation();
     const crtLang = i18n.language;
     const dpLastQuarterRawData = {...lastQuarterRawData};
@@ -196,10 +196,11 @@ const Valuation = (props) => {
             axios({
                 method: API.PUT_VALUATION.METHOD,
                 url: API.PUT_VALUATION.URL,
+                headers: {
+                    authId: authId,
+                },
                 data: {
                     data: {
-                        userId: userId,
-                        authId: authId,
                         value: dpSavedDataTableDatas
                     }
                 }    
@@ -229,10 +230,11 @@ const Valuation = (props) => {
             axios({
                 method: API.PUT_VALUATION.METHOD,
                 url: API.PUT_VALUATION.URL,
+                headers: {
+                    authId: authId,
+                },
                 data: {
                     data: {
-                        userId: userId,
-                        authId: authId,
                         value: dpSavedDataTableDatas
                     }
                 }    
@@ -242,6 +244,15 @@ const Valuation = (props) => {
                     setSavedDataTableDatas(dpSavedDataTableDatas);
                     enqueueSnackbar(MSG.VLT_REMOVE, {variant: SUCCESS});
                 } else {
+                    if (res.data.errorCode === 401 ) {
+                        SyncStatus.set({
+                            storageKey: STRG_KEY_NAME.AUTH_ID,
+                            statusSetter: setAuthId,
+                            data: null
+                          });
+                
+                        enqueueSnackbar(`${MSG.AUTH_MISSING}`, {variant: ERROR});
+                    }
                     // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
                 }
             })  
@@ -263,8 +274,7 @@ const Valuation = (props) => {
             axios({
                 method: API.GET_VALUATION.METHOD,
                 url: API.GET_VALUATION.URL,
-                params: {
-                    userId: userId,
+                headers: {
                     authId: authId,
                 }
             })

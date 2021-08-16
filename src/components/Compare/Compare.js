@@ -20,7 +20,7 @@ import {PERIOD_UNIT, AVG} from "../../consts/common";
 // Temp: import json
 const Compare = () => {
     const { compareTg, setCompareTg } = useContext(CompareTgContext);
-    const {authId, userId} = useContext(AuthContext);
+    const {authId} = useContext(AuthContext);
     const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [compareMrkList, setCompareMrkList] = useState({});
@@ -103,8 +103,7 @@ const Compare = () => {
             axios({
                 method: API.GET_COMP_TG_GRP.METHOD,
                 url: API.GET_COMP_TG_GRP.URL,
-                params: {
-                    userId: userId,
+                headers: {
                     authId: authId,
                 }
             })

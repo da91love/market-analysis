@@ -30,7 +30,7 @@ const ShareSearch = () => {
   const location = useLocation();
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
-  const {userId, authId} = useContext(AuthContext);
+  const {authId} = useContext(AuthContext);
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
   const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
@@ -85,10 +85,11 @@ const ShareSearch = () => {
       axios({
         method: API.PUT_BOOKMARK.METHOD,
         url: API.PUT_BOOKMARK.URL,
+        headers: {
+          authId: authId,
+        },
         data: {
           data: {
-            userId: userId,
-            authId: authId,
             value: addedBookMark
           }
         }
