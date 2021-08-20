@@ -5,8 +5,8 @@ import {useTranslation} from "react-i18next";
 import rawData2GraphData from '../../utils/rawData2GraphData';
 import AnalysisGraph from '../Share/AnalysisGraph';
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
-import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE } from '../../consts/graph';
-import { PERIOD_UNIT } from '../../consts/common';
+import {BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE } from '../../consts/graph';
+import {PERIOD_UNIT} from '../../consts/common';
 
 const IndicatorGraph = (props) => {
     const {yearRawDataByShare, quarterRawDataByShare} = props;

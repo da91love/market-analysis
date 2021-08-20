@@ -9,12 +9,15 @@ import {useTranslation} from "react-i18next";
 import CompareTgContext from "../../contexts/CompareTgContext";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import AuthContext from '../../contexts/AuthContext';
+
 import CompareMrkListModal from "./CompareMrkListModal";
 import CompareMrkNameModal from "./CompareMrkNameModal";
+import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
+
 import AnalysisGraph from "../Share/AnalysisGraph";
 import {KEY_NAME} from "../../consts/keyName";
 import {API} from '../../consts/api';
-import {COMPARE_GRAPH_TYPE} from "../../consts/graph";
+import {COMPARE_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE} from "../../consts/graph";
 import {PERIOD_UNIT, AVG} from "../../consts/common";
 
 // Temp: import json
@@ -25,6 +28,7 @@ const Compare = () => {
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [compareMrkList, setCompareMrkList] = useState({});
     const [graphData, setGraphData] = useState();
+    const [selectedGraphType, setSelectedGraphType] = useState(COMPARE_GRAPH_TYPE);
     const {isInitDataLoaded, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
 
     const tabHandler = (tab) => {
@@ -82,7 +86,7 @@ const Compare = () => {
                 const idcByYear = {};
                 const idcByQuarter = {};
         
-                COMPARE_GRAPH_TYPE.forEach((idc, i) => {
+                selectedGraphType.forEach((idc, i) => {
                     idcByYear[idc] = rawData2GraphData(compareTg, yearRawDataByShare, idc);
                     idcByQuarter[idc] = rawData2GraphData(compareTg, quarterRawDataByShare, idc);
                 })
@@ -95,7 +99,7 @@ const Compare = () => {
     
             setGraphData(gData);
         }
-    }, [isInitDataLoaded, compareTg]);
+    }, [isInitDataLoaded, compareTg, selectedGraphType]);
 
     useEffect(() => {
         //Get data from DB
@@ -140,6 +144,9 @@ const Compare = () => {
                         </MDBNavItem>
                         <MDBNavItem>
                             <CompareMrkListModal compareMrkList={compareMrkList} setCompareTg={setCompareTg}/>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_GRAPH_TYPE}/>
                         </MDBNavItem>
                     </MDBNav>
                     <MDBTabContent activeItem={activeTab} >
