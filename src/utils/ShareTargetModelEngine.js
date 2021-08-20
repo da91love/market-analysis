@@ -3,7 +3,7 @@ import cutPeriodWithCondition from "./cutPeriodWithCondition";
 import EconoIndicator from "../utils/EconoIndicator";
 import RawDataFilter from "../utils/RawDataFilter";
 import { KEY_NAME } from '../consts/keyName';
-import { MODELS, MKRGROWTH_MODEL_RAWDATA_KEYNAME } from '../consts/model';
+import { MODELS } from '../consts/model';
 import {FILTER_TYPE} from '../consts/filter';
 
 class ShareTargetModelEngine {

@@ -1,6 +1,7 @@
 import {KEY_NAME, OTHER_KEY_NAME} from './keyName';
 
 export const BY_SHARE_ALL_GRAPH_TYPE = [
+    KEY_NAME.EV,
     KEY_NAME.MV,
     KEY_NAME.SALES,
     KEY_NAME.SALES_VAR,
@@ -10,6 +11,8 @@ export const BY_SHARE_ALL_GRAPH_TYPE = [
     KEY_NAME.OP_CNTN,
     KEY_NAME.NP,
     KEY_NAME.NP_CTRL,
+    KEY_NAME.DA,
+    KEY_NAME.EBITDA,
     KEY_NAME.NP_VAR,
     KEY_NAME.NP_NCTRL,
     KEY_NAME.ASST,
@@ -37,6 +40,7 @@ export const BY_SHARE_ALL_GRAPH_TYPE = [
     KEY_NAME.PER,
     KEY_NAME.BPS,
     KEY_NAME.PBR,
+    KEY_NAME['EV/EBITDA'],
     KEY_NAME.CASH_DPS,
     KEY_NAME.DVD_YIELD,
     KEY_NAME.DVD_RATIO,
@@ -60,12 +64,14 @@ export const BY_SHARE_DEFAULT_GRAPH_TYPE = [
     KEY_NAME.MV,
     KEY_NAME.SALES,
     KEY_NAME.OP,
+    KEY_NAME.EBITDA,
     KEY_NAME.NP_CTRL,
     KEY_NAME.PSR,
     KEY_NAME.POR,
     KEY_NAME.PER,
     KEY_NAME.PCR,
     KEY_NAME.PBR,
+    KEY_NAME['EV/EBITDA'],
     KEY_NAME.CFI,
 ]
 
@@ -87,6 +93,7 @@ export const COMPARE_GRAPH_TYPE = [
     KEY_NAME.SALES,
     KEY_NAME.OP,
     KEY_NAME.OPM,
+    KEY_NAME.EBITDA,
     KEY_NAME.NP_CTRL,
     KEY_NAME.NPM,
     KEY_NAME.PSR,
@@ -94,6 +101,7 @@ export const COMPARE_GRAPH_TYPE = [
     KEY_NAME.PER,
     KEY_NAME.PCR,
     KEY_NAME.PBR,
+    KEY_NAME['EV/EBITDA'],
 ]
 
 export const GRAPH_LINE_COLOR = [

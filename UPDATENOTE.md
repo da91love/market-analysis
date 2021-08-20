@@ -15,6 +15,7 @@
 - [error] investment model에서 numOfCp표시되는 오류
 - [update] ~~dcf valuation 추가하기: 20년 당기순이익, WACC, CAPM, 자기자본~~
 - [update] valuation api 데이터가 모든 종목 데이터가 아닌 종목에 해당하는 데이터만 오도록 수정
+- [update] ebitda데이터를 수용햘수 있도록 추가하기. 특히, ebitda가 없는 rawData도 default처리 할 수 있도록 설계하기
 
 ### Update done
 - [update] 210607 턴어라운드 모델에 순이익 흑자전환도 포함하기
