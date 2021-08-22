@@ -106,6 +106,11 @@ const Valuation = (props) => {
 
         // PSR
         periodRawData[OTHER_KEY_NAME.SPS] = _.round((periodRawData[KEY_NAME.SALES]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
+
+        // EV/EBITDA
+        // periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
+        // periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
+        // periodRawData[KEY_NAME.EPS] = _.round((periodRawData[KEY_NAME.NP_CTRL]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
     
         return periodRawData;
     }

@@ -39,7 +39,7 @@ const FinancialSummary = (props) => {
             value: v,
             key: 0,
             popOver: {
-              popOverHeader: v,
+              popOverHeader: t(`common.rawData.${v}`),
               popOverBody: periodRawData
             }
         })
