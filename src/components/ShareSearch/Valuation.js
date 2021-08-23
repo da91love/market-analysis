@@ -62,6 +62,7 @@ const Valuation = (props) => {
         
                 // 모든 editable의 값들이 들어왔는지 확인
                 if (editable.length === (editable.filter(v => result[v])).length) {
+                    // vltCalc에서 ebitable 값에 대한 계산을 실행
                     const r = vltCalc(result, mltpIdc, vltModel);
                     
                     // update records
@@ -108,9 +109,7 @@ const Valuation = (props) => {
         periodRawData[OTHER_KEY_NAME.SPS] = _.round((periodRawData[KEY_NAME.SALES]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
 
         // EV/EBITDA
-        // periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
-        // periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
-        // periodRawData[KEY_NAME.EPS] = _.round((periodRawData[KEY_NAME.NP_CTRL]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
+        periodRawData[KEY_NAME.EPM] = _.round((periodRawData[KEY_NAME.EBITDA]/periodRawData[KEY_NAME.SALES])*100, 2); 
     
         return periodRawData;
     }
@@ -326,6 +325,11 @@ const Valuation = (props) => {
                     </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
+                    <MDBNavLink link to="#" active={activeTab === KEY_NAME['EV/EBITDA']} onClick={() => tabHandler(KEY_NAME['EV/EBITDA'])} role="tab" >
+                        EV/EBITDA
+                    </MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
                     <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} color="secondary" onClick={dataTableDataSaveHandler}>{t('common.button.save')}</MDBBtn>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -448,7 +452,36 @@ const Valuation = (props) => {
                             </div>
                         :null}
                     </div>
-                </MDBTabPane>               
+                </MDBTabPane>
+                <MDBTabPane tabId={KEY_NAME['EV/EBITDA']} role="tabpanel">
+                    <div className="mt-3">
+                        {dataTableData?
+                            <div>
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME['EV/EBITDA']][VLT_MODELS.PRICE].header}
+                                    records={dataTableData[KEY_NAME['EV/EBITDA']][VLT_MODELS.PRICE].records}
+                                    labelColumnNum={1}
+                                    tableId={`${KEY_NAME['EV/EBITDA']}:${VLT_MODELS.PRICE}`}
+                                    baseDate={dataTableData}
+                                />
+                                {/* <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRFM].header}
+                                    records={dataTableData[KEY_NAME.PBR][VLT_MODELS.PRFM].records}
+                                    labelColumnNum={1}
+                                    tableId={`${KEY_NAME.PBR}:${VLT_MODELS.PRFM}`}
+                                    baseDate={dataTableData}
+                                />
+                                <FixedSideUnionTable
+                                    header={dataTableData[KEY_NAME.PBR][VLT_MODELS.MLTP].header}
+                                    records={dataTableData[KEY_NAME.PBR][VLT_MODELS.MLTP].records}
+                                    labelColumnNum={1}
+                                    tableId={`${KEY_NAME.PBR}:${VLT_MODELS.MLTP}`}
+                                    baseDate={dataTableData}
+                                /> */}
+                            </div>
+                        :null}
+                    </div>
+                </MDBTabPane>            
             </MDBTabContent>
             </>
             :null}

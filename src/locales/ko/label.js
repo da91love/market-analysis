@@ -92,6 +92,7 @@ export const KO_JSON = {
       [KEY_NAME.DBT_I]: "이자발생부채",
       [KEY_NAME.OPM]: "영업이익률(%)",
       [KEY_NAME.NPM]: "순이익률(%)",
+      [KEY_NAME.EPM]: "EBITDA률(%)",
       [KEY_NAME.ROE]: "ROE(%)",
       [KEY_NAME.ROA]: "ROA(%)",
       [KEY_NAME.ROIC]: "ROIC(%)",

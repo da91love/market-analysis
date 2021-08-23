@@ -66,6 +66,15 @@ const vltCalc = (result, mltpIdc, vltModel) => {
             result[KEY_NAME.BPS] = _.round((result[KEY_NAME.EQT_CTRL]*NUM_UNIT.OK)/result[KEY_NAME.SHARE_NUM], 2);
             result[KEY_NAME.PBR] = _.round(result[KEY_NAME.MV]/result[KEY_NAME.EQT_CTRL], 2);
         }     
+    } else if (mltpIdc===KEY_NAME['EV/EBITDA']) {
+        if (vltModel===VLT_MODELS.PRICE) {
+            result[KEY_NAME.EBITDA] = _.round(result[KEY_NAME.SALES]*(result[KEY_NAME.EPM]/100), 2);
+            result[KEY_NAME.EV] = _.round(result[KEY_NAME['EV/EBITDA']]*result[KEY_NAME.EBITDA], 2);
+            result[KEY_NAME.MV] = _.round(result[KEY_NAME.EV] - result[KEY_NAME.DBT_I], 2);
+            result[OTHER_KEY_NAME.PRICE] = _.round((result[KEY_NAME.MV]*NUM_UNIT.OK)/result[KEY_NAME.SHARE_NUM], 2);
+        } else if (vltModel===VLT_MODELS.PRFM) {
+        } else if (vltModel===VLT_MODELS.MLTP) {
+        }     
     }
 
     return result;
