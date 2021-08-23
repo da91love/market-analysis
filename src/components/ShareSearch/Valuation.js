@@ -122,7 +122,7 @@ const Valuation = (props) => {
                 const header = [...VLT_TABLE_COL];
                 const label = VLT_TABLE_LABEL[mltpIdc][vltModel].label;
                 const editable = VLT_TABLE_LABEL[mltpIdc][vltModel].editable;
-                const savedRecords = savedData?.[mltpIdc][vltModel].records;
+                const savedRecords = savedData?.[mltpIdc]?.[vltModel].records;
 
                 let records = label.map((rowName, rowNum) => {
                     const cells = [];
