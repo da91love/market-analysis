@@ -25,7 +25,6 @@ import {STRG_KEY_NAME} from "../consts/localStorage";
 
 import yData from "../statics/year_result.json";
 import qData from "../statics/quarter_result.json";
-import siData from "../statics/share_infos.json";
 
 const Main = (props) => {
   const {authId} = useContext(AuthContext);
@@ -38,7 +37,6 @@ const Main = (props) => {
   const [compareTg, setCompareTg] = useState([]);
   const [bookMark, setBookMark] = useState([]);
   const [isInitDataLoaded,setIsInitDataLoaded] = useState(false);
-  const [shareInfos, setShareInfos] = useState(null);
 
   /**
    * isInitDataLoaded의 장점: 데이터가 로드되기 전에 컴포넌트를 표시하지 않을거면
@@ -67,7 +65,6 @@ const Main = (props) => {
     setQuarterRawDataByShare(quarterDataByGroup);
     setYearRawDataByMrk(rawDataByMarket(PERIOD_UNIT.YEAR, yData));
     setQuarterRawDataByMrk(rawDataByMarket(PERIOD_UNIT.QUARTER, qData));
-    setShareInfos(siData);
     setIsInitDataLoaded(true);
   }, [])
 
@@ -97,7 +94,7 @@ const Main = (props) => {
   return (
     <CompareTgContext.Provider value={{ compareTg, setCompareTg, bookMark, setBookMark }}>
     <ShareDataContext.Provider value={{
-      isInitDataLoaded, shareInfos,
+      isInitDataLoaded,
       yearRawData, setYearRawData, 
       quarterRawData, setQuarterRawData,
       yearRawDataByShare, setYearRawDataByShare,

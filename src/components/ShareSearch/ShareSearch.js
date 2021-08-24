@@ -32,7 +32,7 @@ const ShareSearch = () => {
   const params = useParams();
   const {authId} = useContext(AuthContext);
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
-  const {isInitDataLoaded, shareInfos, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+  const {isInitDataLoaded, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
   const {bookMark, setBookMark} = useContext(CompareTgContext);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
@@ -48,9 +48,9 @@ const ShareSearch = () => {
   };
 
   // Get nessasary data from rawdata
-  const marketType = _.find(shareInfos, [KEY_NAME.SHARE_CODE, shareCode])[OTHER_KEY_NAME.MARKET_TYPE];
-  const marketName = quarterRawDataByShare[shareCode][0][KEY_NAME.MARKET_NAME];
-  const marketCode = quarterRawDataByShare[shareCode][0][KEY_NAME.MARKET_CODE];
+  const marketType = _.last(yearRawDataByShare?.[shareCode])[OTHER_KEY_NAME.MARKET_TYPE];
+  const marketName = _.last(yearRawDataByShare?.[shareCode])[KEY_NAME.MARKET_NAME];
+  const marketCode = _.last(yearRawDataByShare?.[shareCode])[KEY_NAME.MARKET_CODE];
 
   const addToCompareListHandler = (shareCode, shareName) => {
     if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {

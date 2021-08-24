@@ -15,7 +15,7 @@ import { FILTER } from '../../consts/filter';
 
 // Temp: import json
 const AllShares = () => {
-  const {isInitDataLoaded, shareInfos, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+  const {isInitDataLoaded, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
   const [yearFilter, setYearFilter] = useState({});
   const [quarterFilter, setQuarterFilter] = useState({});
   const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
