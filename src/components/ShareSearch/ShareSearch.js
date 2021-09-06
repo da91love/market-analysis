@@ -32,7 +32,10 @@ const ShareSearch = () => {
   const params = useParams();
   const {authId} = useContext(AuthContext);
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
-  const {isInitDataLoaded, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+  const [yearRawDataByShare, setYearRawDataByShare] = useState();
+  const [quarterRawDataByShare, setQuarterRawDataByShare] = useState();
+
+  const {isInitDataLoaded} = useContext(ShareDataContext);
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
   const {bookMark, setBookMark} = useContext(CompareTgContext);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
@@ -132,7 +135,7 @@ const ShareSearch = () => {
           <ModelHitTable
             shareCode={shareCode}
             marketCode={marketCode}
-            quarterRawDataByMrk={quarterRawDataByMrk}
+            // quarterRawDataByMrk={quarterRawDataByMrk}
             yearRawDataByShare={yearRawDataByShare}
             quarterRawDataByShare={quarterRawDataByShare}
           />

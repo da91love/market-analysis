@@ -14,8 +14,8 @@ const ModelHitTable = (props) => {
     const [hidden, setHidden] = useState(false);
     const [dataTableData, setDataTableData] = useState();
 
-    const createTableData = (quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL) => {
-        const allMatchedTgByModel = getAllMatchedTgByModel(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL);
+    const createTableData = (yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL) => {
+        const allMatchedTgByModel = getAllMatchedTgByModel(yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL);
 
         const header = Object.values(MODELS).map((model, i) => {
           return {

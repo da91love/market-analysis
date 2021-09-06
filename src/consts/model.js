@@ -4,7 +4,7 @@ export const MODELS = {
     VALUE: 'value',
     TURNAROUND: 'turnaround',
     CPGROWTH: 'cpgrowth',
-    MRKGROWTH: 'mrkgrowth',
+    // MRKGROWTH: 'mrkgrowth',
     COLLAPSE: 'collapse',
     BLUECHIP: 'bluechip',
     INVGROWTH: 'invgrowth'
@@ -14,7 +14,7 @@ export const MODEL_NAME = {
     VALUE: 'Value Stock Model',
     TURNAROUND: 'Turnaround Stock Model',
     CPGROWTH: 'CpGrowth Stock Model',
-    MRKGROWTH: 'MrkGrowth Stock Model',
+    // MRKGROWTH: 'MrkGrowth Stock Model',
     COLLAPSE: 'Collapse Stock Model',
     BLUECHIP: 'Bluechip Stock Model',
     INVGROWTH: 'Investment Growth Stock Model',
