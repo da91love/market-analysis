@@ -32,28 +32,24 @@ const ShareSearch = () => {
   const params = useParams();
   const {authId} = useContext(AuthContext);
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
-  const [yearRawDataByShare, setYearRawDataByShare] = useState();
-  const [quarterRawDataByShare, setQuarterRawDataByShare] = useState();
+  const {country} = useContext(ShareDataContext);
+  const [isInitDataLoaded, setIsInitDataLoaded] = useState(false);
+  const [yearRawDataByShare, setYearRawDataByShare] = useState([]);
+  const [quarterRawDataByShare, setQuarterRawDataByShare] = useState([]);
 
-  const {isInitDataLoaded} = useContext(ShareDataContext);
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
   const {bookMark, setBookMark} = useContext(CompareTgContext);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
   const {shareCode, shareName} = shareInfo;
-
-  // Ruturn nothing if init data is loaded
-  if (!isInitDataLoaded) { 
-    return null
-  }
 
   if (shareInfoFromExtnl && shareInfoFromExtnl[KEY_NAME.SHARE_CODE] !== shareInfo[KEY_NAME.SHARE_CODE]){
     setShareInfo(shareInfoFromExtnl);
   };
 
   // Get nessasary data from rawdata
-  const marketType = _.last(yearRawDataByShare?.[shareCode])[OTHER_KEY_NAME.MARKET_TYPE];
-  const marketName = _.last(yearRawDataByShare?.[shareCode])[KEY_NAME.MARKET_NAME];
-  const marketCode = _.last(yearRawDataByShare?.[shareCode])[KEY_NAME.MARKET_CODE];
+  const marketType = _.last(yearRawDataByShare)?.[OTHER_KEY_NAME.MARKET_TYPE];
+  const marketName = _.last(yearRawDataByShare)?.[KEY_NAME.MARKET_NAME];
+  const marketCode = _.last(yearRawDataByShare)?.[KEY_NAME.MARKET_CODE];
 
   const addToCompareListHandler = (shareCode, shareName) => {
     if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
@@ -110,55 +106,81 @@ const ShareSearch = () => {
     }
   };
 
+  useEffect(
+    axios({
+      method: API.GET_FS_DATA.METHOD,
+      url: API.GET_FS_DATA.URL,
+      params: {
+        country: country,
+        shareCode: shareCode
+      }
+    })
+    .then(res => {
+      if(res.data.status === "success" ) {
+        const {year_result,quarter_result} = res.data.payload.value;
+        setYearRawDataByShare(year_result);
+        setQuarterRawDataByShare(quarter_result);
+        setIsInitDataLoaded(true);
+      } else {
+        // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+      }
+    })  
+
+  , [shareInfo]);
+
   return (
-      <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
-        <div className="mt-3">
-          <p>
-            <span className="h4">{marketType}</span>
-            <a href={`${ROUTER_URL.MARKET_SEARCH}/${marketCode}/${marketName}`} target="_blank">
-              <span className="h4">{`  ${marketName}`}</span>
+      <>
+        {!isInitDataLoaded?null
+        :<MDBContainer className="mt-5 mb-5 pt-5 pb-5">
+          <div className="mt-3">
+            <p>
+              <span className="h4">{marketType}</span>
+              <a href={`${ROUTER_URL.MARKET_SEARCH}/${marketCode}/${marketName}`} target="_blank">
+                <span className="h4">{`  ${marketName}`}</span>
+              </a>
+            </p>
+            <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
+              <span className="h1">{`${shareName}(${shareCode})`}</span>
             </a>
-          </p>
-          <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
-            <span className="h1">{`${shareName}(${shareCode})`}</span>
-          </a>
-          <a className="mr-1" href={`${EXTERNAL_URL.GOOGLE_SEARCH}${shareName}`} target="_blank">
-           <img className="img-size-2" src={googleBtnImg}/>
-          </a>
-          <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SEARCH}${shareName}`} target="_blank">
-            <img className="img-size-2" src={naverBtnImg}/>
-          </a>
-          <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="plus-square" />
-          <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
-        </div>
-        <div className="mt-3">
-          <ModelHitTable
-            shareCode={shareCode}
-            marketCode={marketCode}
-            // quarterRawDataByMrk={quarterRawDataByMrk}
-            yearRawDataByShare={yearRawDataByShare}
-            quarterRawDataByShare={quarterRawDataByShare}
-          />
-        </div>
-        <div className="mt-3">
-          <Valuation
-            shareCode={shareCode}
-            lastQuarterRawData={_.last(RawDataFilter.getRealData(quarterRawDataByShare[shareCode]))}
-          />
-        </div>
-        <div className="mt-3">
-          <FinancialSummary
-            yearRawDataByShare={yearRawDataByShare[shareCode]}
-            quarterRawDataByShare={quarterRawDataByShare[shareCode]}
-          />
-        </div>
-        <div className="mt-3">
-          <IndicatorGraph
-            yearRawDataByShare={yearRawDataByShare[shareCode]}
-            quarterRawDataByShare={quarterRawDataByShare[shareCode]}
-          />
-        </div>  
-      </MDBContainer>
+            <a className="mr-1" href={`${EXTERNAL_URL.GOOGLE_SEARCH}${shareName}`} target="_blank">
+            <img className="img-size-2" src={googleBtnImg}/>
+            </a>
+            <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SEARCH}${shareName}`} target="_blank">
+              <img className="img-size-2" src={naverBtnImg}/>
+            </a>
+            <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="plus-square" />
+            <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
+          </div>
+          <div className="mt-3">
+            <ModelHitTable
+              shareCode={shareCode}
+              marketCode={marketCode}
+              // quarterRawDataByMrk={quarterRawDataByMrk}
+              yearRawDataByShare={yearRawDataByShare}
+              quarterRawDataByShare={quarterRawDataByShare}
+            />
+          </div>
+          <div className="mt-3">
+            <Valuation
+              shareCode={shareCode}
+              lastQuarterRawData={_.last(RawDataFilter.getRealData(quarterRawDataByShare[shareCode]))}
+            />
+          </div>
+          <div className="mt-3">
+            <FinancialSummary
+              yearRawDataByShare={yearRawDataByShare[shareCode]}
+              quarterRawDataByShare={quarterRawDataByShare[shareCode]}
+            />
+          </div>
+          <div className="mt-3">
+            <IndicatorGraph
+              yearRawDataByShare={yearRawDataByShare[shareCode]}
+              quarterRawDataByShare={quarterRawDataByShare[shareCode]}
+            />
+          </div>  
+        </MDBContainer>
+        }
+      </>
     )
 };
 

@@ -36,6 +36,7 @@ const Main = (props) => {
   const [quarterRawDataByMrk, setQuarterRawDataByMrk] = useState(null);
   const [compareTg, setCompareTg] = useState([]);
   const [bookMark, setBookMark] = useState([]);
+  const [country, setCountry] = useState('ko');
   const [isInitDataLoaded,setIsInitDataLoaded] = useState(false);
 
   /**
@@ -94,7 +95,7 @@ const Main = (props) => {
   return (
     <CompareTgContext.Provider value={{ compareTg, setCompareTg, bookMark, setBookMark }}>
     <ShareDataContext.Provider value={{
-      isInitDataLoaded,
+      isInitDataLoaded, country,
       yearRawData, setYearRawData, 
       quarterRawData, setQuarterRawData,
       yearRawDataByShare, setYearRawDataByShare,
