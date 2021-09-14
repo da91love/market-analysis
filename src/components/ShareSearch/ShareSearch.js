@@ -31,11 +31,11 @@ const ShareSearch = () => {
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
   const {authId} = useContext(AuthContext);
-  const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
   const {country} = useContext(ShareDataContext);
-  const [isInitDataLoaded, setIsInitDataLoaded] = useState(false);
+  const [isApiDataLoaded, setIsApiDataLoaded] = useState(false);
   const [yearRawDataByShare, setYearRawDataByShare] = useState([]);
   const [quarterRawDataByShare, setQuarterRawDataByShare] = useState([]);
+  const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
 
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
   const {bookMark, setBookMark} = useContext(CompareTgContext);
@@ -106,7 +106,7 @@ const ShareSearch = () => {
     }
   };
 
-  useEffect(
+  useEffect(() => {
     axios({
       method: API.GET_FS_DATA.METHOD,
       url: API.GET_FS_DATA.URL,
@@ -120,17 +120,16 @@ const ShareSearch = () => {
         const {year_result,quarter_result} = res.data.payload.value;
         setYearRawDataByShare(year_result);
         setQuarterRawDataByShare(quarter_result);
-        setIsInitDataLoaded(true);
+        setIsApiDataLoaded(true);
       } else {
         // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
       }
     })  
-
-  , [shareInfo]);
+  }, [shareInfo]);
 
   return (
       <>
-        {!isInitDataLoaded?null
+        {!isApiDataLoaded?null
         :<MDBContainer className="mt-5 mb-5 pt-5 pb-5">
           <div className="mt-3">
             <p>
@@ -152,30 +151,30 @@ const ShareSearch = () => {
             <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
           </div>
           <div className="mt-3">
-            <ModelHitTable
+            {/* <ModelHitTable
               shareCode={shareCode}
               marketCode={marketCode}
               // quarterRawDataByMrk={quarterRawDataByMrk}
               yearRawDataByShare={yearRawDataByShare}
               quarterRawDataByShare={quarterRawDataByShare}
-            />
+            /> */}
           </div>
           <div className="mt-3">
             <Valuation
               shareCode={shareCode}
-              lastQuarterRawData={_.last(RawDataFilter.getRealData(quarterRawDataByShare[shareCode]))}
+              lastQuarterRawData={_.last(RawDataFilter.getRealData(quarterRawDataByShare))}
             />
           </div>
           <div className="mt-3">
             <FinancialSummary
-              yearRawDataByShare={yearRawDataByShare[shareCode]}
-              quarterRawDataByShare={quarterRawDataByShare[shareCode]}
+              yearRawDataByShare={yearRawDataByShare}
+              quarterRawDataByShare={quarterRawDataByShare}
             />
           </div>
           <div className="mt-3">
             <IndicatorGraph
-              yearRawDataByShare={yearRawDataByShare[shareCode]}
-              quarterRawDataByShare={quarterRawDataByShare[shareCode]}
+              yearRawDataByShare={yearRawDataByShare}
+              quarterRawDataByShare={quarterRawDataByShare}
             />
           </div>  
         </MDBContainer>
