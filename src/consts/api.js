@@ -1,6 +1,10 @@
 export const API = {
-    GET_FS_DATA: {
-        METHOD: 'get',
+    POST_MODEL: {
+        METHOD: 'post',
+        URL: 'http://192.168.8.102:8081/dev/api/ma-api/v1/front/model',
+    },
+    POST_FS_DATA: {
+        METHOD: 'post',
         URL: 'http://192.168.8.102:8081/dev/api/ma-api/v1/front/fs-data',
     },
     GET_AUTH: {

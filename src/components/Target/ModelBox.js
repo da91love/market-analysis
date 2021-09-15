@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import _ from "lodash";
 import { useSnackbar } from 'notistack';
 import {useTranslation} from "react-i18next";
+import axios from 'axios';
 
 import NoModelSelected from './NoModelSelected';
 import FilterWrapper from './FilterWrapper';
@@ -18,6 +19,7 @@ import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { FILTER_BY_MDL } from "../../consts/filter";
 import { MSG } from "../../consts/message";
 import { BY_SHARE_ALL_TABLE_COL_TYPE } from "../../consts/tbCol";
+import { API } from '../consts/api';
 
 import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
@@ -27,7 +29,7 @@ const ModelBox = (props) => {
    const {id, model, modelBoxStatus, setModelBoxStatus} = props;
    const { t } = useTranslation();
    const { enqueueSnackbar } = useSnackbar();
-   const {yearRawDataByShare, quarterRawDataByShare, yearRawDataByMrk, quarterRawDataByMrk} = useContext(ShareDataContext);
+   const {country} = useContext(ShareDataContext);
    const [datatable, setDatatable] = useState(null);
    const [filterStatus, setFilterStatus] = useState(FILTER_BY_MDL);
    const [selectedGraphType, setSelectedGraphType] = useState();
@@ -47,23 +49,12 @@ const ModelBox = (props) => {
             const row = {};
             for (const col of tgColList) {
                if (col === OTHER_KEY_NAME.GRAPH) {
-                  if (modelName === MODELS.MRKGROWTH) {
-                     row[col] = <GraphModalBtn
-                        isMarket={true}
-                        tgName={data[KEY_NAME.MARKET_NAME]} 
-                        tgCode={data[KEY_NAME.MARKET_CODE]} 
-                        yearRawDataPerUnit={yearRawDataByMrk[data[KEY_NAME.MARKET_CODE]]} 
-                        quarterRawDataPerUnit={quarterRawDataByMrk[data[KEY_NAME.MARKET_CODE]]}
-                     />
-                  } else {
-                     row[col] = <GraphModalBtn
-                        tgName={data[KEY_NAME.SHARE_NAME]} 
-                        tgCode={data[KEY_NAME.SHARE_CODE]} 
-                        yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
-                        quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
-                     />
-                  }
-
+                  row[col] = <GraphModalBtn
+                     tgName={data[KEY_NAME.SHARE_NAME]} 
+                     tgCode={data[KEY_NAME.SHARE_CODE]} 
+                     yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
+                     quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
+                  />
                } else {
                   row[col] = data[col];
                }
@@ -77,22 +68,39 @@ const ModelBox = (props) => {
       }
    }
 
-   const applyModelBtn = (value) => {
+   const applyModelBtn = (modelName) => {
       // Validation
-      if (_.find(modelBoxStatus, ['model', value])) {
+      if (_.find(modelBoxStatus, ['model', modelName])) {
          // Show status msg
          enqueueSnackbar(MSG.BOX_ALREADY_EXIST, {variant: ERROR});
       } else {
          // Run model
-         const tgData = getModelData(value, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
-         const colsByModel = MODEL_TABLE_COL[value];
-         setSelectedGraphType(colsByModel);
-         setDatatable(rawData2TableData(value, tgData, colsByModel));
-
-         // update modelBoxStatus
-         const dcModelBoxStatus = [...modelBoxStatus];
-         dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = value;
-         setModelBoxStatus(dcModelBoxStatus);
+         axios({
+            method: API.POST_MODEL.METHOD,
+            url: API.POST_MODEL.URL,
+            data: {
+               data: {
+                  model:model,
+                  country: country,
+                  filter: filterStatus[modelName]
+               }
+            }
+         })
+         .then(res => {
+            if(res.data.status === "success" ) {
+               const tgData = res.data.payload.value;
+               const colsByModel = MODEL_TABLE_COL[modelName];
+               setSelectedGraphType(colsByModel);
+               setDatatable(rawData2TableData(modelName, tgData, colsByModel));
+      
+               // update modelBoxStatus
+               const dcModelBoxStatus = [...modelBoxStatus];
+               dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = modelName;
+               setModelBoxStatus(dcModelBoxStatus);
+            } else {
+            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+            }
+         });
       }
    }
 

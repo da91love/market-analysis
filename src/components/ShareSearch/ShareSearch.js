@@ -108,11 +108,13 @@ const ShareSearch = () => {
 
   useEffect(() => {
     axios({
-      method: API.GET_FS_DATA.METHOD,
-      url: API.GET_FS_DATA.URL,
-      params: {
-        country: country,
-        shareCode: shareCode
+      method: API.POST_FS_DATA.METHOD,
+      url: API.POST_FS_DATA.URL,
+      data: {
+        data: {
+          country: country,
+          shareCode: shareCode
+        }
       }
     })
     .then(res => {

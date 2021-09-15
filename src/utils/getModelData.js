@@ -1,24 +1,29 @@
 import ShareTargetModelEngine from './ShareTargetModelEngine';
 import {MODELS} from './../consts/model';
+import axios from 'axios';
+import { API } from '../consts/api';
 
-const getModelData = (model, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus) => {
-    let tgData = null;
+const getModelData = (model, country, filter) => {
+   let tgData = null;
 
-   if (model === MODELS.VALUE) {
-      tgData = ShareTargetModelEngine.getValueModel(quarterRawDataByShare, filterStatus);
-   } else if (model === MODELS.TURNAROUND) {
-      tgData = ShareTargetModelEngine.getTurnAroundModel(quarterRawDataByShare, filterStatus);
-   } else if (model === MODELS.CPGROWTH) {
-      tgData = ShareTargetModelEngine.getCpGrowthModel(quarterRawDataByShare, filterStatus);
-   } else if (model === MODELS.MRKGROWTH) {
-      tgData = ShareTargetModelEngine.getMrkGrowthModel(quarterRawDataByMrk, filterStatus);
-   } else if (model === MODELS.COLLAPSE) {
-      tgData = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare, filterStatus);
-   } else if (model === MODELS.BLUECHIP) {
-      tgData = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare, filterStatus);
-   } else if (model === MODELS.INVGROWTH) {
-      tgData = ShareTargetModelEngine.getInvstGrowthModel(quarterRawDataByShare, filterStatus);
-   }
+   axios({
+      method: API.POST_MODEL.METHOD,
+      url: API.POST_MODEL.URL,
+      data: {
+         data: {
+            model:model,
+            country: country,
+            filter: filter
+         }
+      }
+   })
+   .then(res => {
+      if(res.data.status === "success" ) {
+         tgData = res.data.payload.value;
+      } else {
+      // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+      }
+   });
 
      return tgData;
 }
