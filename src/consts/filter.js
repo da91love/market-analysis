@@ -11,7 +11,7 @@ export const FILTER_TYPE = {
     OP_TIMES: "opTimesFilter",
     CFI_TIMES: "iaCfTimesFilter",
     MV_TIMES: "mvTimesFilter",
-    PROFIT_TYPE: "profitType"
+    PROFIT_TYPE: "profitTypeFilter"
 }
 
 export const FILTER_BY_MDL = {

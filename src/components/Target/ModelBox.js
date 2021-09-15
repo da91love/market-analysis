@@ -19,7 +19,7 @@ import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { FILTER_BY_MDL } from "../../consts/filter";
 import { MSG } from "../../consts/message";
 import { BY_SHARE_ALL_TABLE_COL_TYPE } from "../../consts/tbCol";
-import { API } from '../consts/api';
+import { API } from '../../consts/api';
 
 import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
@@ -34,7 +34,7 @@ const ModelBox = (props) => {
    const [filterStatus, setFilterStatus] = useState(FILTER_BY_MDL);
    const [selectedGraphType, setSelectedGraphType] = useState();
 
-   const rawData2TableData = (modelName, rawData, tgColList) => {
+   const rawData2TableData = (rawData, tgColList) => {
       // Create columns
       const columns = tgColList.map((v,i) => {
          return {
@@ -52,8 +52,6 @@ const ModelBox = (props) => {
                   row[col] = <GraphModalBtn
                      tgName={data[KEY_NAME.SHARE_NAME]} 
                      tgCode={data[KEY_NAME.SHARE_CODE]} 
-                     yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
-                     quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
                   />
                } else {
                   row[col] = data[col];
@@ -80,7 +78,7 @@ const ModelBox = (props) => {
             url: API.POST_MODEL.URL,
             data: {
                data: {
-                  model:model,
+                  model: modelName,
                   country: country,
                   filter: filterStatus[modelName]
                }
@@ -91,7 +89,7 @@ const ModelBox = (props) => {
                const tgData = res.data.payload.value;
                const colsByModel = MODEL_TABLE_COL[modelName];
                setSelectedGraphType(colsByModel);
-               setDatatable(rawData2TableData(modelName, tgData, colsByModel));
+               setDatatable(rawData2TableData(tgData, colsByModel));
       
                // update modelBoxStatus
                const dcModelBoxStatus = [...modelBoxStatus];
@@ -115,12 +113,12 @@ const ModelBox = (props) => {
       }
    }
    
-   useEffect(() => {
-      if(model !== 'default'){ // Do not run on first running
-         const tgData = getModelData(model, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
-         setDatatable(rawData2TableData(model, tgData, selectedGraphType));
-      }
-   }, [filterStatus, selectedGraphType])
+   // useEffect(() => {
+   //    if(model !== 'default'){ // Do not run on first running
+   //       const tgData = getModelData(model, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
+   //       setDatatable(rawData2TableData(model, tgData, selectedGraphType));
+   //    }
+   // }, [filterStatus, selectedGraphType])
 
    return (
       <MDBCard className="mb-4">
