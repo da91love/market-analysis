@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import {
-  MDBCol, MDBCard, MDBCardBody, MDBIcon, MDBCardTitle, MDBCardText, MDBDataTableV5 
+  MDBCard, MDBCardBody, MDBIcon, MDBCardTitle, MDBCardText, MDBDataTableV5 
 } from 'mdbreact';
 import IconButton from '@material-ui/core/IconButton';
 import _ from "lodash";
@@ -21,7 +21,6 @@ import { MSG } from "../../consts/message";
 import { BY_SHARE_ALL_TABLE_COL_TYPE } from "../../consts/tbCol";
 import { API } from '../../consts/api';
 
-import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
 
@@ -112,13 +111,6 @@ const ModelBox = (props) => {
          enqueueSnackbar(MSG.MIN_BOX_NUM, {variant: ERROR});
       }
    }
-   
-   // useEffect(() => {
-   //    if(model !== 'default'){ // Do not run on first running
-   //       const tgData = getModelData(model, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
-   //       setDatatable(rawData2TableData(model, tgData, selectedGraphType));
-   //    }
-   // }, [filterStatus, selectedGraphType])
 
    return (
       <MDBCard className="mb-4">
@@ -141,7 +133,6 @@ const ModelBox = (props) => {
                </div>
             </MDBCardTitle>
             <MDBCardText>
-               {/* {model !== "default"? <FixedSideTableTest header={datatable.header} records={datatable.records}/>:<NoModelSelected/>} */}
                {model !== "default"? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={datatable} />:<NoModelSelected/>}
             </MDBCardText>
          </MDBCardBody>

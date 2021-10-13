@@ -14,7 +14,7 @@ import CompareTgContext from "../../contexts/CompareTgContext";
 import AuthContext from "../../contexts/AuthContext";
 import SyncStatus from '../../utils/SyncStatus';
 import RawDataFilter from '../../utils/RawDataFilter';
-import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
+import { DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { EXTERNAL_URL } from '../../consts/common';
