@@ -15,7 +15,8 @@ const Targeting = () => {
   const { t } = useTranslation();
   const [modelBoxStatus, setModelBoxStatus] = useState([{
     id: 0,
-    model: "default"
+    model: "default",
+    tableData: null,
   }]);
 
   const appendModelBtn = (id) => {
@@ -25,7 +26,8 @@ const Targeting = () => {
     } else {
       setModelBoxStatus([...modelBoxStatus, {
         id: id,
-        model: "default"
+        model: "default",
+        rawData: null
       }]);  
     }
  }  
@@ -40,7 +42,7 @@ const Targeting = () => {
       </div>
       <div>
         {modelBoxStatus.map((v, i) => {
-          return <ModelBox className="w-75" id={v.id} model={v.model} modelBoxStatus={modelBoxStatus} setModelBoxStatus={setModelBoxStatus}/>
+          return <ModelBox className="w-75" id={v.id} model={v.model} rawData={v.rawData} modelBoxStatus={modelBoxStatus} setModelBoxStatus={setModelBoxStatus}/>
         })}
       </div>
     </MDBContainer>
