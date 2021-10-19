@@ -65,39 +65,16 @@ const ModelBox = (props) => {
       }
    }
 
-   const applyModelBtn = (modelName) => {
+   const applyModelBtn = (selecedModel) => {
       // Validation
-      if (_.find(modelBoxStatus, ['model', modelName])) {
+      if (_.find(modelBoxStatus, ['model', selecedModel])) {
          // Show status msg
          enqueueSnackbar(MSG.BOX_ALREADY_EXIST, {variant: ERROR});
       } else {
-         // Run model
-         axios({
-            method: API.POST_MODEL.METHOD,
-            url: API.POST_MODEL.URL,
-            data: {
-               data: {
-                  model: modelName,
-                  country: country,
-                  filter: filterStatus[modelName]
-               }
-            }
-         })
-         .then(res => {
-            if(res.data.status === "success" ) {
-               const tgData = res.data.payload.value;
-               const colsByModel = MODEL_TABLE_COL[modelName];
-               setSelectedGraphType(colsByModel);
-               setDatatable(rawData2TableData(tgData, colsByModel));
-      
-               // update modelBoxStatus
-               const dcModelBoxStatus = [...modelBoxStatus];
-               dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = modelName;
-               setModelBoxStatus(dcModelBoxStatus);
-            } else {
-            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
-            }
-         });
+         // update modelBoxStatus
+         const dcModelBoxStatus = [...modelBoxStatus];
+         dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = selecedModel;
+         setModelBoxStatus(dcModelBoxStatus);
       }
    }
 
@@ -111,6 +88,32 @@ const ModelBox = (props) => {
          enqueueSnackbar(MSG.MIN_BOX_NUM, {variant: ERROR});
       }
    }
+
+   useEffect(() => {
+      if (model !== "default") {
+         axios({
+            method: API.POST_MODEL.METHOD,
+            url: API.POST_MODEL.URL,
+            data: {
+               data: {
+                  model: model,
+                  country: country,
+                  filter: filterStatus[model]
+               }
+            }
+         })
+         .then(res => {
+            if(res.data.status === "success" ) {
+               const tgData = res.data.payload.value;
+               const colsByModel = MODEL_TABLE_COL[model];
+               setSelectedGraphType(colsByModel);
+               setDatatable(rawData2TableData(tgData, colsByModel));
+            } else {
+            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+            }
+         });
+      }
+   }, [modelBoxStatus, filterStatus])
 
    return (
       <MDBCard className="mb-4">
