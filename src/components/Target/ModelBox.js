@@ -71,10 +71,32 @@ const ModelBox = (props) => {
          // Show status msg
          enqueueSnackbar(MSG.BOX_ALREADY_EXIST, {variant: ERROR});
       } else {
-         // update modelBoxStatus
-         const dcModelBoxStatus = [...modelBoxStatus];
-         dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = selecedModel;
-         setModelBoxStatus(dcModelBoxStatus);
+         axios({
+            method: API.POST_MODEL.METHOD,
+            url: API.POST_MODEL.URL,
+            data: {
+               data: {
+                  model: selecedModel,
+                  country: country,
+                  filter: filterStatus[selecedModel]
+               }
+            }
+         })
+         .then(res => {
+            if(res.data.status === "success" ) {
+               const tgData = res.data.payload.value;
+               const colsByModel = MODEL_TABLE_COL[selecedModel];
+               setSelectedGraphType(colsByModel);
+               setDatatable(rawData2TableData(tgData, colsByModel));
+
+               // update modelBoxStatus
+               const dcModelBoxStatus = [...modelBoxStatus];
+               dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = selecedModel;
+               setModelBoxStatus(dcModelBoxStatus);
+            } else {
+            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+            }
+         });
       }
    }
 
@@ -113,7 +135,7 @@ const ModelBox = (props) => {
             }
          });
       }
-   }, [modelBoxStatus, filterStatus])
+   }, [selectedGraphType, filterStatus])
 
    return (
       <MDBCard className="mb-4">
@@ -129,14 +151,14 @@ const ModelBox = (props) => {
                </div>
                <div className="">
                   <FilterWrapper model={model} filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
-                  {model !== "default"? <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_TABLE_COL_TYPE}/>:<></>}
+                  {datatable? <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_TABLE_COL_TYPE}/>:<></>}
                   <IconButton className="float-right" color="secondary" aria-label="upload picture" component="span">
                      <MDBIcon onClick={() => {removeModelBtn()}} icon="times" />
                   </IconButton>
                </div>
             </MDBCardTitle>
             <MDBCardText>
-               {model !== "default"? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={datatable} />:<NoModelSelected/>}
+               {datatable? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={datatable} />:<NoModelSelected/>}
             </MDBCardText>
          </MDBCardBody>
       </MDBCard>
