@@ -325,7 +325,7 @@ const Valuation = (props) => {
                     </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                    <MDBNavLink link to="#" active={activeTab === KEY_NAME['EV/EBITDA']} onClick={() => tabHandler(KEY_NAME['EV/EBITDA'])} role="tab" >
+                    <MDBNavLink link to="#" active={activeTab === KEY_NAME.EV_EBITDA} onClick={() => tabHandler(KEY_NAME.EV_EBITDA)} role="tab" >
                         EV/EBITDA
                     </MDBNavLink>
                 </MDBNavItem>
@@ -453,15 +453,15 @@ const Valuation = (props) => {
                         :null}
                     </div>
                 </MDBTabPane>
-                <MDBTabPane tabId={KEY_NAME['EV/EBITDA']} role="tabpanel">
+                <MDBTabPane tabId={KEY_NAME['EV_EBITDA']} role="tabpanel">
                     <div className="mt-3">
                         {dataTableData?
                             <div>
                                 <FixedSideUnionTable
-                                    header={dataTableData[KEY_NAME['EV/EBITDA']][VLT_MODELS.PRICE].header}
-                                    records={dataTableData[KEY_NAME['EV/EBITDA']][VLT_MODELS.PRICE].records}
+                                    header={dataTableData[KEY_NAME['EV_EBITDA']][VLT_MODELS.PRICE].header}
+                                    records={dataTableData[KEY_NAME['EV_EBITDA']][VLT_MODELS.PRICE].records}
                                     labelColumnNum={1}
-                                    tableId={`${KEY_NAME['EV/EBITDA']}:${VLT_MODELS.PRICE}`}
+                                    tableId={`${KEY_NAME['EV_EBITDA']}:${VLT_MODELS.PRICE}`}
                                     baseDate={dataTableData}
                                 />
                                 {/* <FixedSideUnionTable

@@ -17,6 +17,7 @@ const Targeting = () => {
     id: 0,
     model: "default",
     tableData: null,
+    displayCols: null
   }]);
 
   const appendModelBtn = (id) => {
@@ -27,7 +28,8 @@ const Targeting = () => {
       setModelBoxStatus([...modelBoxStatus, {
         id: id,
         model: "default",
-        rawData: null
+        rawData: null,
+        displayCols: null
       }]);  
     }
  }  

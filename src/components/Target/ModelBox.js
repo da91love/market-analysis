@@ -25,12 +25,12 @@ import GraphModalBtn from '../Share/GraphModalBtn';
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
 
 const ModelBox = (props) => {
-   const {id, model, rawData, modelBoxStatus, setModelBoxStatus} = props;
+   const {id, model, rawData, displayCols, modelBoxStatus, setModelBoxStatus} = props;
    const { t } = useTranslation();
    const { enqueueSnackbar } = useSnackbar();
    const {country} = useContext(ShareDataContext);
    const [filterStatus, setFilterStatus] = useState(FILTER_BY_MDL);
-   const [selectedGraphType, setSelectedGraphType] = useState();
+   const [selectedGraphType, setSelectedGraphType] = useState(displayCols);
 
    const rawData2TableData = (rawData, tgColList) => {
       // Create columns
@@ -149,16 +149,15 @@ const ModelBox = (props) => {
 
    // 아래의 API는 컬럼조정을 위한 useEffect
    // 위의 useEffect에서 컨트롤하지 않는 이유는 API통신을 최대한 자제하기 위함
-   // useEffect(() => {
-   //    if (model !== "default") {
-   //       // update modelBoxStatus
-   //       const dcModelBoxStatus = [...modelBoxStatus];
-   //       const tgIdx = _.findIndex(dcModelBoxStatus, ['id', id]);
-   //       dcModelBoxStatus[tgIdx].model = model;
-   //       dcModelBoxStatus[tgIdx].rawData = rawData2TableData(rawData, selectedGraphType);
-   //       setModelBoxStatus(dcModelBoxStatus);
-   //    }
-   // }, [selectedGraphType])
+   useEffect(() => {
+      if (model !== "default") {
+         // update modelBoxStatus
+         const dcModelBoxStatus = [...modelBoxStatus];
+         const tgIdx = _.findIndex(dcModelBoxStatus, ['id', id]);
+         dcModelBoxStatus[tgIdx].displayCols = selectedGraphType;
+         setModelBoxStatus(dcModelBoxStatus);
+      }
+   }, [selectedGraphType])
 
    return (
       <MDBCard className="mb-4">
