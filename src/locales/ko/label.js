@@ -100,7 +100,7 @@ export const KO_JSON = {
       [KEY_NAME.PER]: "PER(배)",
       [KEY_NAME.BPS]: "BPS(원)",
       [KEY_NAME.PBR]: "PBR(배)",
-      [KEY_NAM.EV_EBITDA]: "EV/EBITDA",
+      [KEY_NAME.EV_EBITDA]: "EV/EBITDA",
       [KEY_NAME.CASH_DPS]: "현금DPS(원)",
       [KEY_NAME.DVD_YIELD]: "현금배당수익률(%)",
       [KEY_NAME.DVD_RATIO]: "현금배당성향(%)",
