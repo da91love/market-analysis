@@ -103,10 +103,10 @@ const Valuation = (props) => {
         // POR
         periodRawData[KEY_NAME.OP] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.POR], 2); 
         periodRawData[KEY_NAME.OPM] = _.round((periodRawData[KEY_NAME.OP]/periodRawData[KEY_NAME.SALES])*100, 2); 
-        periodRawData[OTHER_KEY_NAME.OPS] = _.round((periodRawData[KEY_NAME.OP]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
+        periodRawData[KEY_NAME.OPS] = _.round((periodRawData[KEY_NAME.OP]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
 
         // PSR
-        periodRawData[OTHER_KEY_NAME.SPS] = _.round((periodRawData[KEY_NAME.SALES]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
+        periodRawData[KEY_NAME.SPS] = _.round((periodRawData[KEY_NAME.SALES]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
 
         // EV/EBITDA
         periodRawData[KEY_NAME.EPM] = _.round((periodRawData[KEY_NAME.EBITDA]/periodRawData[KEY_NAME.SALES])*100, 2); 

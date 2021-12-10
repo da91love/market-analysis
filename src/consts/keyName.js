@@ -29,6 +29,7 @@ export const KEY_NAME = {
   I_B_LBLT: 'interestBearingLiabilities',
   OPM: 'operationIncomeMargin',
   NPM: 'netIncomeMargin',
+  EPM: 'ebitdaMargin',
   ROE: 'roe',
   ROA: 'roa',
   LBLT_RATIO: 'liabilitiesRatio',
@@ -37,13 +38,15 @@ export const KEY_NAME = {
   PER: 'per',
   BPS: 'bps',
   PBR: 'pbr',
+  OPS: "ops",
   POR: 'por',
   PSR: 'psr',
+  SPS: "sps",
   EV_EBITDA: 'ev/ebitda',
   CASH_DPS: 'cashDps',
   DVD_YIELD: 'dividendYield',
   DVD_POT_RATIO: 'dividendPayoutRatio',
-  
+
   COST_OF_SALES: 'costOfRevenue',
   GROSS_PRFT: 'grossProfit',
   OP_EXP: 'operationExpense',
@@ -55,7 +58,7 @@ export const KEY_NAME = {
   EARN_BF_TAX: 'earningBfTax',
   INC_TAX_EXP: 'incomeTaxExpense',
   NP: 'netIncome',
-  
+
   ASST: 'assets',
   CRT_ASST: 'currentAssets',
   INV: 'inventory',
@@ -103,7 +106,7 @@ export const KEY_NAME = {
   I_B_LBLT: 'interestBearingLiabilities',
   NET_DEBT: 'netDebt',
   CAPEX: 'capex',
-  
+
   CFO: 'operatingCashFlow',
   DPRCT: 'depreciation',
   AMRTZ: 'amortization',
@@ -125,6 +128,4 @@ export const KEY_NAME = {
    NUM_OF_CP: "numOfCp",
    TARGET: "target",
    TYPE: "type",
-   SPS: "sps",
-   OPS: "ops"
  }

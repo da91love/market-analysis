@@ -23,9 +23,6 @@ import {API} from '../consts/api';
 import SyncStatus from '../utils/SyncStatus';
 import {STRG_KEY_NAME} from "../consts/localStorage";
 
-import yData from "../statics/year_result.json";
-import qData from "../statics/quarter_result.json";
-
 const Main = (props) => {
   const {authId} = useContext(AuthContext);
   const [yearRawData, setYearRawData] = useState(null);
@@ -46,6 +43,9 @@ const Main = (props) => {
    */
   useEffect(() => {
     // Get share data from DB(temporary from json)
+    const yData = []
+    const qData = []
+
     let yearDataByGroup = _.groupBy(yData, v => v[KEY_NAME.SHARE_CODE]);
     let quarterDataByGroup = _.groupBy(qData, v => v[KEY_NAME.SHARE_CODE]);
 
