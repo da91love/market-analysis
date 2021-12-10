@@ -16,9 +16,8 @@ const FixedSideUnionTable = (props) => {
   for (let j=0; j<labelColumnNum; j++) {
     labelSize[j] = (header[j].length)+rightPadding;
     for (let i=0; i<records.length; i++) {
-      if(labelSize[j] < records[i][j].value.length+rightPadding) {
-        labelSize[j] = records[i][j].value.length+rightPadding;
-      }
+      if(labelSize[j] < records[i][j].name.length+rightPadding)
+        labelSize[j] = records[i][j].name.length+rightPadding;
     }
   }
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
