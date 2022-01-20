@@ -7,6 +7,10 @@ export const API = {
         METHOD: 'post',
         URL: 'http://localhost:8081/dev/api/ma-api/v1/front/fs-data',
     },
+    GET_SHARE_MARKET_NAME: {
+        METHOD: 'get',
+        URL: 'http://localhost:8081/dev/api/ma-api/v1/front/share-mrk-name',
+    },
     GET_AUTH: {
         METHOD: 'post',
         URL: 'http://localhost:8081/dev/api/ma-api/v1/front/auth',
