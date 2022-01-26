@@ -12,10 +12,11 @@
 - [update] localStorage데이터 redis에 저장
 - [update] 미국데이터 표시
 - [update] investment model CAPEX로 바꾸기
-- [error] investment model에서 numOfCp표시되는 오류
-- [update] ~~dcf valuation 추가하기: 20년 당기순이익, WACC, CAPM, 자기자본~~
 - [update] valuation api 데이터가 모든 종목 데이터가 아닌 종목에 해당하는 데이터만 오도록 수정
 - [update] ebitda의 가치평가 테이블 만들기
+- [update] 재무제표 표시하기
+- [error] investment model에서 numOfCp표시되는 오류
+- [update] ~~dcf valuation 추가하기: 20년 당기순이익, WACC, CAPM, 자기자본~~
 
 ### Update done
 - [update] 210819 ebitda데이터를 수용햘수 있도록 추가하기. 특히, ebitda가 없는 rawData도 default처리 할 수 있도록 설계하기

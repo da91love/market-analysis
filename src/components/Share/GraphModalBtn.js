@@ -25,10 +25,12 @@ import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GR
 
 const GraphModalBtn = (props) => {
     const {isMarket=false, tgCode, tgName} = props;
+    const [shareCode, setShareCode] = useState(tgCode);
+    const [shareName, setShareName] = useState(tgName);
     const { t } = useTranslation();
     const {country} = useContext(ShareDataContext);
     const {compareTg, setCompareTg} = useContext(CompareTgContext);
-    const {bookMark, setBookMark} = useContext(CompareTgContext);
+    const {bookMark, setBookMark} = useContext(CompareTgContext); 
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [graphData, setGraphData] = useState(null);
@@ -109,7 +111,7 @@ const GraphModalBtn = (props) => {
                 data: {
                     data: {
                         country: country,
-                        shareCode: tgCode
+                        shareCode: shareCode
                     }
                 }
             })
@@ -135,19 +137,19 @@ const GraphModalBtn = (props) => {
                 }
             });
         }
-    }, [modalState, selectedGraphType])
+    }, [modalState, selectedGraphType]);
 
     return (
         <IconButton className="p-0" color="default" aria-label="upload picture" component="span">
             <MDBIcon icon="chart-bar" onClick={modalHandler}/>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
                 <MDBModalHeader toggle={modalHandler}>
-                    <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${tgCode}`} target="_blank">
-                        <span className="h3">{`${tgName}:${tgCode}`}</span>
+                    <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
+                        <span className="h3">{`${shareName}:${shareCode}`}</span>
                     </a>
-                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {searchPageMoveHandler(tgCode, tgName)}} icon="external-link-alt" />
-                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(tgCode, tgName)}}  icon="plus-square" />
-                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(tgCode, tgName)}}  icon="bookmark" />
+                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {searchPageMoveHandler(shareCode, shareName)}} icon="external-link-alt" />
+                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="plus-square" />
+                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
 
                 </MDBModalHeader>
                 <MDBModalBody>

@@ -31,6 +31,7 @@ const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState([]);
 
+
   const toggleCollapse = () => {
     setIsOpen(!isOpen);
   };
@@ -83,7 +84,7 @@ const Header = (props) => {
                 enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
             }
         })  
-  });
+  }, []);
 
   return (
     <MDBNavbar color="white" dark expand="md" className="fixed-top pl-5 pr-5 mb-5">
