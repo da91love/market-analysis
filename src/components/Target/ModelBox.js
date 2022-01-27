@@ -93,7 +93,7 @@ const ModelBox = (props) => {
                const dcModelBoxStatus = [...modelBoxStatus];
                const tgIdx = _.findIndex(dcModelBoxStatus, ['id', id]);
                dcModelBoxStatus[tgIdx].model = selectedModel;
-               dcModelBoxStatus[tgIdx].rawData = tgData;
+               dcModelBoxStatus[tgIdx].rawData = rawData2TableData(tgData, colsByModel);
                setModelBoxStatus(dcModelBoxStatus);
             } else {
             // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
@@ -180,7 +180,7 @@ const ModelBox = (props) => {
                </div>
             </MDBCardTitle>
             <MDBCardText>
-               {rawData? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={rawData2TableData(rawData, selectedGraphType)} />:<NoModelSelected/>}
+               {rawData? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={rawData} />:<NoModelSelected/>}
             </MDBCardText>
          </MDBCardBody>
       </MDBCard>
