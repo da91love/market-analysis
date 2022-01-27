@@ -25,14 +25,15 @@ import GraphModalBtn from '../Share/GraphModalBtn';
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
 
 const ModelBox = (props) => {
-   const {id, model, rawData, displayCols, modelBoxStatus, setModelBoxStatus} = props;
+   const {tgIdx, modelBoxStatus, setModelBoxStatus} = props;
+   const {id, model, tableData, displayCols} = modelBoxStatus[tgIdx];
    const { t } = useTranslation();
    const { enqueueSnackbar } = useSnackbar();
    const {country} = useContext(ShareDataContext);
    const [filterStatus, setFilterStatus] = useState(FILTER_BY_MDL);
    const [selectedGraphType, setSelectedGraphType] = useState(displayCols);
 
-   const rawData2TableData = (rawData, tgColList) => {
+   const rawData2TableData = (tableData, tgColList) => {
       // Create columns
       const columns = tgColList.map((v,i) => {
          return {
@@ -43,7 +44,7 @@ const ModelBox = (props) => {
 
       // Create rows
       const rows = []
-      for (const data of rawData) {
+      for (const data of tableData) {
             const row = {};
             for (const col of tgColList) {
                if (col === OTHER_KEY_NAME.GRAPH) {
@@ -91,9 +92,8 @@ const ModelBox = (props) => {
 
                // update modelBoxStatus
                const dcModelBoxStatus = [...modelBoxStatus];
-               const tgIdx = _.findIndex(dcModelBoxStatus, ['id', id]);
                dcModelBoxStatus[tgIdx].model = selectedModel;
-               dcModelBoxStatus[tgIdx].rawData = rawData2TableData(tgData, colsByModel);
+               dcModelBoxStatus[tgIdx].tableData = rawData2TableData(tgData, colsByModel);
                setModelBoxStatus(dcModelBoxStatus);
             } else {
             // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
@@ -136,9 +136,8 @@ const ModelBox = (props) => {
 
                // update modelBoxStatus
                const dcModelBoxStatus = [...modelBoxStatus];
-               const tgIdx = _.findIndex(dcModelBoxStatus, ['id', id]);
                dcModelBoxStatus[tgIdx].model = model;
-               dcModelBoxStatus[tgIdx].rawData = tgData;
+               dcModelBoxStatus[tgIdx].tableData = rawData2TableData(tgData, colsByModel);
                setModelBoxStatus(dcModelBoxStatus);
             } else {
             // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
@@ -153,7 +152,6 @@ const ModelBox = (props) => {
       if (model !== "default") {
          // update modelBoxStatus
          const dcModelBoxStatus = [...modelBoxStatus];
-         const tgIdx = _.findIndex(dcModelBoxStatus, ['id', id]);
          dcModelBoxStatus[tgIdx].displayCols = selectedGraphType;
          setModelBoxStatus(dcModelBoxStatus);
       }
@@ -173,14 +171,14 @@ const ModelBox = (props) => {
                </div>
                <div className="">
                   <FilterWrapper model={model} filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
-                  {rawData? <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_TABLE_COL_TYPE}/>:<></>}
+                  {tableData? <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_TABLE_COL_TYPE}/>:<></>}
                   <IconButton className="float-right" color="secondary" aria-label="upload picture" component="span">
                      <MDBIcon onClick={() => {removeModelBtn()}} icon="times" />
                   </IconButton>
                </div>
             </MDBCardTitle>
             <MDBCardText>
-               {rawData? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={rawData} />:<NoModelSelected/>}
+               {tableData? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={tableData} />:<NoModelSelected/>}
             </MDBCardText>
          </MDBCardBody>
       </MDBCard>
