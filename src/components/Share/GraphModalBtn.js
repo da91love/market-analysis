@@ -25,8 +25,6 @@ import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GR
 
 const GraphModalBtn = (props) => {
     const {isMarket=false, tgCode, tgName} = props;
-    const [shareCode, setShareCode] = useState(tgCode);
-    const [shareName, setShareName] = useState(tgName);
     const { t } = useTranslation();
     const {country} = useContext(ShareDataContext);
     const {compareTg, setCompareTg} = useContext(CompareTgContext);
@@ -47,15 +45,15 @@ const GraphModalBtn = (props) => {
         setModalState(!modalState);
     }
 
-    const searchPageMoveHandler = (shareCode, shareName) => {
-        const win = window.open(`${ROUTER_URL.SHARE_SEARCH}/${shareCode}/${shareName}`, "_blank");
+    const searchPageMoveHandler = (code, name) => {
+        const win = window.open(`${ROUTER_URL.SHARE_SEARCH}/${code}/${name}`, "_blank");
         win.focus();
     }
 
-    const addToCompareListHandler = (shareCode, shareName) => {
-        if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
+    const addToCompareListHandler = (code, name) => {
+        if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], code])) {
             enqueueSnackbar(
-                `${MSG.SHARE_CODE_ALREADY_EXIST}(${shareCode}:${shareName})`, 
+                `${MSG.SHARE_CODE_ALREADY_EXIST}(${code}:${name})`, 
                 {variant: ERROR}
             );
         } else {
@@ -63,22 +61,22 @@ const GraphModalBtn = (props) => {
                 storageKey: STRG_KEY_NAME.COMPARE,
                 statusSetter: setCompareTg,
                 data: [...compareTg, {
-                  [KEY_NAME.SHARE_CODE]: shareCode,
-                  [KEY_NAME.SHARE_NAME]: shareName
+                  [KEY_NAME.SHARE_CODE]: code,
+                  [KEY_NAME.SHARE_NAME]: name
                 }]
             });
     
             enqueueSnackbar(
-                `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, 
+                `${MSG.ADD_COMPARE_TG}(${code}:${name})`, 
                 {variant: SUCCESS}
             );
         }
     };
 
-    const addToBookMarkListHandler = (shareCode, shareName) => {
-        if (_.find(bookMark, [[KEY_NAME.SHARE_CODE], shareCode])) {
+    const addToBookMarkListHandler = (code, name) => {
+        if (_.find(bookMark, [[KEY_NAME.SHARE_CODE], code])) {
             enqueueSnackbar(
-                `${MSG.SHARE_CODE_ALREADY_EXIST_IN_BM}(${shareCode}:${shareName})`, 
+                `${MSG.SHARE_CODE_ALREADY_EXIST_IN_BM}(${code}:${name})`, 
                 {variant: ERROR}
             );
         } else {
@@ -86,13 +84,13 @@ const GraphModalBtn = (props) => {
             storageKey: STRG_KEY_NAME.BOOKMARK,
             statusSetter: setBookMark,
             data: [...bookMark, {
-              [KEY_NAME.SHARE_CODE]: shareCode,
-              [KEY_NAME.SHARE_NAME]: shareName
+              [KEY_NAME.SHARE_CODE]: code,
+              [KEY_NAME.SHARE_NAME]: name
             }]
           });
     
           enqueueSnackbar(
-            `${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, 
+            `${MSG.ADD_BOOKMARK_TG}(${code}:${name})`, 
             {variant: SUCCESS}
           );
         }
@@ -111,7 +109,7 @@ const GraphModalBtn = (props) => {
                 data: {
                     data: {
                         country: country,
-                        shareCode: shareCode
+                        shareCode: tgCode
                     }
                 }
             })
@@ -144,12 +142,12 @@ const GraphModalBtn = (props) => {
             <MDBIcon icon="chart-bar" onClick={modalHandler}/>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
                 <MDBModalHeader toggle={modalHandler}>
-                    <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
-                        <span className="h3">{`${shareName}:${shareCode}`}</span>
+                    <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${tgCode}`} target="_blank">
+                        <span className="h3">{`${tgName}:${tgCode}`}</span>
                     </a>
-                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {searchPageMoveHandler(shareCode, shareName)}} icon="external-link-alt" />
-                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="plus-square" />
-                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
+                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {searchPageMoveHandler(tgCode, tgName)}} icon="external-link-alt" />
+                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(tgCode, tgName)}}  icon="plus-square" />
+                    <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(tgCode, tgName)}}  icon="bookmark" />
 
                 </MDBModalHeader>
                 <MDBModalBody>

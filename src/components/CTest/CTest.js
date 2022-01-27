@@ -1,19 +1,32 @@
-import React from "react";
-import { Modal } from "./Modal";
-import { ModalPublisher } from "./ModalPublisher";
+import React from 'react';
+import {MDBContainer} from 'mdbreact';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import TabPanel from '@material-ui/lab/TabPanel';
 
-export default function CTest() {
+const CTest = () => {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
-    <div className="App mt-5 pt-5">
-      <Modal showModal={true} />
-      <h1
-        onClick={() => {
-          ModalPublisher.message("this is the content from App");
-        }}
+    <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
+      {'WHAT THE FK?'}
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        indicatorColor="primary"
+        textColor="primary"
+        centered
       >
-        Hello CodeSandbox
-      </h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+        <Tab label="Item One" />
+        <Tab label="Item Two" />
+        <Tab label="Item Three" />
+      </Tabs>
+    </MDBContainer>
   );
 }
+
+export default CTest;
