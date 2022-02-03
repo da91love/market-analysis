@@ -69,6 +69,7 @@ export const KO_JSON = {
       [KEY_NAME.OP_PUB]: "영업이익(발표기준)",
       [KEY_NAME.OP_CNTN]: "세전계속사업이익",
       [KEY_NAME.DPRCT]: "감가상각비",
+      [KEY_NAME.AMRTZ]: "무형감가상각비",
       [KEY_NAME.EBITDA]: "EBITDA",
       [KEY_NAME.NP]: "당기순이익",
       [KEY_NAME.NP_CTRL]: "당기순이익(지배)",

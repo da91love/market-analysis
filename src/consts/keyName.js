@@ -106,7 +106,6 @@ export const KEY_NAME = {
   I_B_LBLT: 'interestBearingLiabilities',
   NET_DEBT: 'netDebt',
   CAPEX: 'capex',
-
   CFO: 'operatingCashFlow',
   DPRCT: 'depreciation',
   AMRTZ: 'amortization',
