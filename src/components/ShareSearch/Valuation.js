@@ -90,30 +90,6 @@ const Valuation = (props) => {
         }
     }
 
-    const updateRawData = (periodRawData) => {
-        // Common
-        periodRawData[KEY_NAME.SALES] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PSR], 2); 
-        periodRawData[OTHER_KEY_NAME.PRICE] = _.round(periodRawData[KEY_NAME.MV]*NUM_UNIT.OK/periodRawData[KEY_NAME.SHARE_NUM], 2);
-
-        // PER
-        periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
-        periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
-        periodRawData[KEY_NAME.EPS] = _.round((periodRawData[KEY_NAME.NP_CTRL]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
-
-        // POR
-        periodRawData[KEY_NAME.OP] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.POR], 2); 
-        periodRawData[KEY_NAME.OPM] = _.round((periodRawData[KEY_NAME.OP]/periodRawData[KEY_NAME.SALES])*100, 2); 
-        periodRawData[KEY_NAME.OPS] = _.round((periodRawData[KEY_NAME.OP]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
-
-        // PSR
-        periodRawData[KEY_NAME.SPS] = _.round((periodRawData[KEY_NAME.SALES]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
-
-        // EV/EBITDA
-        periodRawData[KEY_NAME.EPM] = _.round((periodRawData[KEY_NAME.EBITDA]/periodRawData[KEY_NAME.SALES])*100, 2); 
-    
-        return periodRawData;
-    }
-
     const rawData2FixedTableData = (updatedRawData, savedData) => {
         const byIdc = {};
         for (const mltpIdc in VLT_TABLE_LABEL) {
@@ -266,9 +242,8 @@ const Valuation = (props) => {
     }
 
     useEffect(() => {
-        const updRawData = updateRawData(dpLastQuarterRawData);
         const savedData = savedDataTableDatas?.[shareCode];
-        const vltDataByShare = rawData2FixedTableData(updRawData, savedData);
+        const vltDataByShare = rawData2FixedTableData(dpLastQuarterRawData, savedData);
         setDataTableData(vltDataByShare);
     }, [shareCode, savedDataTableDatas, crtLang]);
 
