@@ -34,6 +34,7 @@ const Valuation = (props) => {
     const [savedDataTableDatas, setSavedDataTableDatas] = useState({});
     const [dataTableData, setDataTableData] = useState();
 
+    // PrivateMethod
     const pricePrdctnModelOnBlur = (e, tableId, baseDate, rowIdx, colIdx, labelColumnNum) => {
         const editedValue = e.target.innerText;
         const parsedValue = parseFloat(editedValue);
@@ -88,6 +89,29 @@ const Valuation = (props) => {
                 enqueueSnackbar(MSG.NAN, {variant: ERROR});
             }
         }
+    }
+
+    // PrivateMethod
+    // rawData는 마지막 분기의 데이터만 포함하고 있고, 마지막 분기의 매출 등은 1분기 만의 매출을 의미하기 때문에
+    // PER POR에서 역산하여 최근 4분기의 매출, 영업이익 등을 새롭게 update
+    // 역산하여 반올림한 수치를 사용하기 때문에 실제 값과 조금 상이할 수 있음
+    const updateRawData = (periodRawData) => {
+        // Common
+        periodRawData[KEY_NAME.SALES] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PSR], 2); 
+
+        // PER
+        periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
+        periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
+
+        // POR
+        periodRawData[KEY_NAME.OP] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.POR], 2); 
+        periodRawData[KEY_NAME.OPM] = _.round((periodRawData[KEY_NAME.OP]/periodRawData[KEY_NAME.SALES])*100, 2); 
+
+        // EV/EBITDA
+        periodRawData[KEY_NAME.EBITDA] = _.round(periodRawData[KEY_NAME.EV]/periodRawData[KEY_NAME.EV_EBITDA], 2); 
+        periodRawData[KEY_NAME.EPM] = _.round((periodRawData[KEY_NAME.EBITDA]/periodRawData[KEY_NAME.SALES])*100, 2); 
+    
+        return periodRawData;
     }
 
     const rawData2FixedTableData = (updatedRawData, savedData) => {
@@ -242,8 +266,9 @@ const Valuation = (props) => {
     }
 
     useEffect(() => {
+        const updRawData = updateRawData(dpLastQuarterRawData);
         const savedData = savedDataTableDatas?.[shareCode];
-        const vltDataByShare = rawData2FixedTableData(dpLastQuarterRawData, savedData);
+        const vltDataByShare = rawData2FixedTableData(updRawData, savedData);
         setDataTableData(vltDataByShare);
     }, [shareCode, savedDataTableDatas, crtLang]);
 
