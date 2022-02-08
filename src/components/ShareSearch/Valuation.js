@@ -270,7 +270,7 @@ const Valuation = (props) => {
         const savedData = savedDataTableDatas?.[shareCode];
         const vltDataByShare = rawData2FixedTableData(updRawData, savedData);
         setDataTableData(vltDataByShare);
-    }, [shareCode, savedDataTableDatas, crtLang]);
+    }, [shareCode, savedDataTableDatas, lastQuarterRawData, crtLang]);
 
     useEffect(() => {
         //Get data from DB
