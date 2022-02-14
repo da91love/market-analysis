@@ -104,8 +104,8 @@ const GraphModalBtn = (props) => {
         // 첫 렌더링시 불필요하게 api를 run하지 않게 하기 위함
         if (modalState) {
             axios({
-                method: API.POST_FS_DATA.METHOD,
-                url: API.POST_FS_DATA.URL,
+                method: API.POST_FINANCIAL_SUMMARY.METHOD,
+                url: API.POST_FINANCIAL_SUMMARY.URL,
                 data: {
                     data: {
                         country: country,

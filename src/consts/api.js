@@ -3,9 +3,13 @@ export const API = {
         METHOD: 'post',
         URL: 'http://localhost:8081/dev/api/ma-api/v1/front/model',
     },
-    POST_FS_DATA: {
+    POST_FINANCIAL_SUMMARY: {
         METHOD: 'post',
-        URL: 'http://localhost:8081/dev/api/ma-api/v1/front/fs-data',
+        URL: 'http://localhost:8081/dev/api/ma-api/v1/front/financial-summary',
+    },
+    POST_FINANCIAL_STATUS: {
+        METHOD: 'post',
+        URL: 'http://localhost:8081/dev/api/ma-api/v1/front/financial-status',
     },
     GET_SHARE_MARKET_NAME: {
         METHOD: 'get',

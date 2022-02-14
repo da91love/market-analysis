@@ -108,8 +108,8 @@ const ShareSearch = () => {
 
   useEffect(() => {
     axios({
-      method: API.POST_FS_DATA.METHOD,
-      url: API.POST_FS_DATA.URL,
+      method: API.POST_FINANCIAL_SUMMARY.METHOD,
+      url: API.POST_FINANCIAL_SUMMARY.URL,
       data: {
         data: {
           country: country,
