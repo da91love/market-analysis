@@ -7,6 +7,7 @@ import { useSnackbar } from 'notistack';
 
 import ModelHitTable from "./ModelHitTable";
 import FinancialSummary from "./FinancialSummary";
+import FinancialStatus from "./FinancialStatus";
 import IndicatorGraph from "./IndicatorGraph";
 import Valuation from "./Valuation";
 import ShareDataContext from "../../contexts/ShareDataContext";
@@ -33,8 +34,10 @@ const ShareSearch = () => {
   const {authId} = useContext(AuthContext);
   const {country} = useContext(ShareDataContext);
   const [isApiDataLoaded, setIsApiDataLoaded] = useState(false);
-  const [yearRawDataByShare, setYearRawDataByShare] = useState([]);
-  const [quarterRawDataByShare, setQuarterRawDataByShare] = useState([]);
+  const [yearSummaryByShare, setYearSummaryByShare] = useState([]);
+  const [quarterSummaryByShare, setQuarterSummaryByShare] = useState([]);
+  const [yearFinancialStatusByShare, setYearFinancialStatusByShare] = useState([]);
+  const [quarterFinancialStatusByShare, setQuarterFinancialStatusByShare] = useState([]);
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
 
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
@@ -47,9 +50,9 @@ const ShareSearch = () => {
   };
 
   // Get nessasary data from rawdata
-  const marketType = _.last(yearRawDataByShare)?.[OTHER_KEY_NAME.MARKET_TYPE];
-  const marketName = _.last(yearRawDataByShare)?.[KEY_NAME.MARKET_NAME];
-  const marketCode = _.last(yearRawDataByShare)?.[KEY_NAME.MARKET_CODE];
+  const marketType = _.last(yearSummaryByShare)?.[OTHER_KEY_NAME.MARKET_TYPE];
+  const marketName = _.last(yearSummaryByShare)?.[KEY_NAME.MARKET_NAME];
+  const marketCode = _.last(yearSummaryByShare)?.[KEY_NAME.MARKET_CODE];
 
   const addToCompareListHandler = (shareCode, shareName) => {
     if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
@@ -107,26 +110,53 @@ const ShareSearch = () => {
   };
 
   useEffect(() => {
-    axios({
-      method: API.POST_FINANCIAL_SUMMARY.METHOD,
-      url: API.POST_FINANCIAL_SUMMARY.URL,
-      data: {
-        data: {
-          country: country,
-          shareCode: shareCode
-        }
-      }
-    })
-    .then(res => {
-      if(res.data.status === "success" ) {
-        const {year_result,quarter_result} = res.data.payload.value;
-        setYearRawDataByShare(year_result);
-        setQuarterRawDataByShare(quarter_result);
-        setIsApiDataLoaded(true);
-      } else {
-        // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
-      }
-    })  
+    // Send api for financial summary data
+    axios
+      .all([
+        axios({
+          method: API.POST_FINANCIAL_SUMMARY.METHOD,
+          url: API.POST_FINANCIAL_SUMMARY.URL,
+          data: {
+            data: {
+              country: country,
+              shareCode: shareCode
+            }
+          }
+        }),
+        axios({
+          method: API.POST_FINANCIAL_STATUS.METHOD,
+          url: API.POST_FINANCIAL_STATUS.URL,
+          data: {
+            data: {
+              country: country,
+              shareCode: shareCode
+            }
+          }
+        })
+      ])
+      .then(
+        axios.spread((financialSummary, financialStatus) => {
+          if(financialSummary.data.status === "success" ) {
+            const {year_result: f_smr_year_result, quarter_result: f_smr_quarter_result} = financialSummary.data.payload.value;
+            setYearSummaryByShare(f_smr_year_result);
+            setQuarterSummaryByShare(f_smr_quarter_result);
+          } else {
+            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+          }
+
+          if(financialStatus.data.status === "success" ) {
+            const {year_result: f_status_year_result, quarter_result: f_status_quarter_result} = financialStatus.data.payload.value;
+            setYearFinancialStatusByShare(f_status_year_result);
+            setQuarterFinancialStatusByShare(f_status_quarter_result);
+          }
+
+          setIsApiDataLoaded(true);
+        })
+      )
+      .catch((err) => {
+
+      })
+
   }, [shareInfo]);
 
   return (
@@ -157,26 +187,32 @@ const ShareSearch = () => {
               shareCode={shareCode}
               marketCode={marketCode}
               // quarterRawDataByMrk={quarterRawDataByMrk}
-              yearRawDataByShare={yearRawDataByShare}
-              quarterRawDataByShare={quarterRawDataByShare}
+              yearSummaryByShare={yearSummaryByShare}
+              quarterSummaryByShare={quarterSummaryByShare}
             /> */}
           </div>
           <div className="mt-3">
             <Valuation
               shareCode={shareCode}
-              lastQuarterRawData={_.last(RawDataFilter.getRealData(quarterRawDataByShare))}
+              lastQuarterRawData={_.last(RawDataFilter.getRealData(quarterSummaryByShare))}
             />
           </div>
           <div className="mt-3">
             <FinancialSummary
-              yearRawDataByShare={yearRawDataByShare}
-              quarterRawDataByShare={quarterRawDataByShare}
+              yearSummaryByShare={yearSummaryByShare}
+              quarterSummaryByShare={quarterSummaryByShare}
+            />
+          </div>
+          <div className="mt-3">
+            <FinancialStatus
+              yearSummaryByShare={yearSummaryByShare}
+              quarterSummaryByShare={quarterSummaryByShare}
             />
           </div>
           <div className="mt-3">
             <IndicatorGraph
-              yearRawDataByShare={yearRawDataByShare}
-              quarterRawDataByShare={quarterRawDataByShare}
+              yearSummaryByShare={yearSummaryByShare}
+              quarterSummaryByShare={quarterSummaryByShare}
             />
           </div>  
         </MDBContainer>

@@ -7,7 +7,7 @@ import { SEARCH_TABLE_COL } from '../../consts/tbCol';
 import { KEY_NAME } from '../../consts/keyName';
 import { BLANK, PERIOD_UNIT } from '../../consts/common';
 
-const FinancialSummary = (props) => {
+const FinancialStatus = (props) => {
     const {yearSummaryByShare, quarterSummaryByShare} = props;
     const { t, i18n } = useTranslation();
     const crtLang = i18n.language;
@@ -74,7 +74,7 @@ const FinancialSummary = (props) => {
     return (
         <MDBCard className="card-body">
             <MDBCardTitle className="h3">
-                <span className="h3">{t('shareSearch.label.financialSummary')}</span>
+                <span className="h3">{t('shareSearch.label.FinancialStatus')}</span>
                 {hidden?<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-down" />:<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-up" />}
             </MDBCardTitle>
             <MDBCardText>
@@ -99,7 +99,7 @@ const FinancialSummary = (props) => {
                                     header={dataTableData[PERIOD_UNIT.YEAR].header}
                                     records={dataTableData[PERIOD_UNIT.YEAR].records}
                                     labelColumnNum={1}
-                                    tableId={'yearFinancialSummary'}
+                                    tableId={'yearFinancialStatus'}
                                 />
                             </div>                  
                         </MDBTabPane>
@@ -109,7 +109,7 @@ const FinancialSummary = (props) => {
                                     header={dataTableData[PERIOD_UNIT.QUARTER].header}
                                     records={dataTableData[PERIOD_UNIT.QUARTER].records}
                                     labelColumnNum={1}
-                                    tableId={'quarterFinancialSummary'}
+                                    tableId={'quarterFinancialStatus'}
                                 />
                             </div>
                         </MDBTabPane>
@@ -121,4 +121,4 @@ const FinancialSummary = (props) => {
     )
 };
 
-export default FinancialSummary;
+export default FinancialStatus;
