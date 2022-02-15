@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink} from 'mdbreact';
 import {useTranslation} from "react-i18next";
+import _ from "lodash";
 
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
 import { FINANCIAL_STATUS_TABLE_COL } from '../../consts/tbCol';
@@ -12,9 +13,9 @@ const FinancialStatus = (props) => {
     const {financialStatusByShare} = props;
     const { t, i18n } = useTranslation();
     const crtLang = i18n.language;
-    const [hidden, setHidden] = useState(false);
+    const [hidden, setHidden] = useState(true);
     const [dataTableData, setDataTableData] = useState();
-    const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
+    const [activeTab, setActiveTab] = useState(`${F_STATUS_TYPE.BS}:${PERIOD_UNIT.YEAR}`);
 
     const rawData2FixedTableData = (periodRawData, fixedCol) => {
         const header = periodRawData.map((v, i) => {
@@ -66,10 +67,10 @@ const FinancialStatus = (props) => {
     }
 
     useEffect(() => {
-        const dcFStatusDataFmt = {...F_STATUS_DATA_FMT};
+        const dcFStatusDataFmt = _.cloneDeep(F_STATUS_DATA_FMT);
         for (const status in dcFStatusDataFmt) {
             for (const period in dcFStatusDataFmt[status]) {
-                dcFStatusDataFmt.status.period = rawData2FixedTableData(financialStatusByShare.status.period, FINANCIAL_STATUS_TABLE_COL.status)
+                dcFStatusDataFmt[status][period] = rawData2FixedTableData(financialStatusByShare[status][period], FINANCIAL_STATUS_TABLE_COL[status])
             }
         }
 
@@ -83,64 +84,45 @@ const FinancialStatus = (props) => {
                 {hidden?<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-down" />:<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-up" />}
             </MDBCardTitle>
             <MDBCardText>
-                {dataTableData && !hidden?
+                {!hidden?
                 <>
                     <MDBNav className="nav-tabs">
                     {
                         Object.keys(F_STATUS_DATA_FMT).map((s, i) => {
-                            Object.keys(F_STATUS_DATA_FMT.s).map((p, j) => {
-                                return (
-                                    <MDBNavItem>
-                                        <MDBNavLink link to="#" active={activeTab === `${F_STATUS_DATA_FMT.s}:${F_STATUS_DATA_FMT.s.p}`} onClick={() => tabHandler(`${F_STATUS_DATA_FMT.s}:${F_STATUS_DATA_FMT.s.p}`)} role="tab" >
-                                            {t('common.tab.yearly')}
-                                        </MDBNavLink>
-                                    </MDBNavItem>
-                                )
-                            })
+                            return (
+                                Object.keys(F_STATUS_DATA_FMT[s]).map((p, j) => {
+                                    return (
+                                        <MDBNavItem>
+                                            <MDBNavLink link to="#" active={activeTab === `${s}:${p}`} onClick={() => tabHandler(`${s}:${p}`)} role="tab" >
+                                                {`${s}:${p}`}
+                                            </MDBNavLink>
+                                        </MDBNavItem>
+                                    );
+                                })
+                            );
                         })
                     }
                     </MDBNav>
-                    {/* <MDBNav className="nav-tabs">
-                        <MDBNavItem>
-                            <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.YEAR} onClick={() => tabHandler(PERIOD_UNIT.YEAR)} role="tab" >
-                                {t('common.tab.yearly')}
-                            </MDBNavLink>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.QUARTER} onClick={() => tabHandler(PERIOD_UNIT.QUARTER)} role="tab" >
-                                {t('common.tab.quarterly')}
-                            </MDBNavLink>
-                        </MDBNavItem>
-                    </MDBNav>
-                    <MDBNav className="nav-tabs">
-                        <MDBNavItem>
-                            <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.YEAR} onClick={() => tabHandler(PERIOD_UNIT.YEAR)} role="tab" >
-                                {t('common.tab.yearly')}
-                            </MDBNavLink>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.QUARTER} onClick={() => tabHandler(PERIOD_UNIT.QUARTER)} role="tab" >
-                                {t('common.tab.quarterly')}
-                            </MDBNavLink>
-                        </MDBNavItem>
-                    </MDBNav> */}
+
                     <MDBTabContent activeItem={activeTab} >
                         {
                             Object.keys(F_STATUS_DATA_FMT).map((s, i) => {
-                                Object.keys(F_STATUS_DATA_FMT.s).map((p, j) => {
-                                    return (
-                                        <MDBTabPane tabId={`${F_STATUS_DATA_FMT.s}:${F_STATUS_DATA_FMT.s.p}`} role="tabpanel">
-                                            <div className="mt-3">
-                                                <FixedSideUnionTable
-                                                    header={dataTableData[s][p].header}
-                                                    records={dataTableData[s][p].records}
-                                                    labelColumnNum={1}
-                                                    tableId={`${F_STATUS_DATA_FMT.s}:${F_STATUS_DATA_FMT.s.p}`}
-                                                />
-                                            </div>                  
-                                        </MDBTabPane>
-                                    )
-                                })
+                                return (
+                                    Object.keys(F_STATUS_DATA_FMT[s]).map((p, j) => {
+                                        return (
+                                            <MDBTabPane tabId={`${s}:${p}`} role="tabpanel">
+                                                <div className="mt-3">
+                                                    <FixedSideUnionTable
+                                                        header={dataTableData?.[s][p].header}
+                                                        records={dataTableData?.[s][p].records}
+                                                        labelColumnNum={1}
+                                                        tableId={`${s}:${p}`}
+                                                    />
+                                                </div>                  
+                                            </MDBTabPane>
+                                        );
+                                    })
+                                );
                             })
                         }
 

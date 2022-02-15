@@ -5,11 +5,11 @@ export const F_STATUS_DATA_FMT = {
         [PERIOD_UNIT.YEAR]: [],
         [PERIOD_UNIT.QUARTER]: [],
     },
-    [F_STATUS_TYPE.PL]: {
+    [F_STATUS_TYPE.BS]: {
         [PERIOD_UNIT.YEAR]: [],
         [PERIOD_UNIT.QUARTER]: [],
     },
-    [F_STATUS_TYPE.PL]: {
+    [F_STATUS_TYPE.CF]: {
         [PERIOD_UNIT.YEAR]: [],
         [PERIOD_UNIT.QUARTER]: [],
     }
