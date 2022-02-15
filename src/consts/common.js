@@ -24,6 +24,12 @@ export const PERIOD_UNIT = {
   QUARTER: 'quarter',
 }
 
+export const F_STATUS_TYPE = {
+  BS: 'bs',
+  PL: 'pl',
+  CF: 'cf',
+}
+
 export const SHARE_OR_MARKET = {
   SHARE: 'share',
   MARKET: 'market',

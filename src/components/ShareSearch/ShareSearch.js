@@ -36,8 +36,7 @@ const ShareSearch = () => {
   const [isApiDataLoaded, setIsApiDataLoaded] = useState(false);
   const [yearSummaryByShare, setYearSummaryByShare] = useState([]);
   const [quarterSummaryByShare, setQuarterSummaryByShare] = useState([]);
-  const [yearFinancialStatusByShare, setYearFinancialStatusByShare] = useState([]);
-  const [quarterFinancialStatusByShare, setQuarterFinancialStatusByShare] = useState([]);
+  const [financialStatusByShare, setFinancialStatusByShare] = useState([]);
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
 
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
@@ -145,9 +144,7 @@ const ShareSearch = () => {
           }
 
           if(financialStatus.data.status === "success" ) {
-            const {year_result: f_status_year_result, quarter_result: f_status_quarter_result} = financialStatus.data.payload.value;
-            setYearFinancialStatusByShare(f_status_year_result);
-            setQuarterFinancialStatusByShare(f_status_quarter_result);
+            setFinancialStatusByShare(financialStatus.data.payload.value);
           }
 
           setIsApiDataLoaded(true);
@@ -205,8 +202,7 @@ const ShareSearch = () => {
           </div>
           <div className="mt-3">
             <FinancialStatus
-              yearSummaryByShare={yearSummaryByShare}
-              quarterSummaryByShare={quarterSummaryByShare}
+              financialStatusByShare={financialStatusByShare}
             />
           </div>
           <div className="mt-3">

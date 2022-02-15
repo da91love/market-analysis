@@ -3,12 +3,13 @@ import {MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, 
 import {useTranslation} from "react-i18next";
 
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
-import { SEARCH_TABLE_COL } from '../../consts/tbCol';
+import { FINANCIAL_STATUS_TABLE_COL } from '../../consts/tbCol';
 import { KEY_NAME } from '../../consts/keyName';
-import { BLANK, PERIOD_UNIT } from '../../consts/common';
+import { BLANK, PERIOD_UNIT, F_STATUS_TYPE } from '../../consts/common';
+import { F_STATUS_DATA_FMT } from '../../consts/format';
 
 const FinancialStatus = (props) => {
-    const {yearSummaryByShare, quarterSummaryByShare} = props;
+    const {financialStatusByShare} = props;
     const { t, i18n } = useTranslation();
     const crtLang = i18n.language;
     const [hidden, setHidden] = useState(false);
@@ -65,11 +66,15 @@ const FinancialStatus = (props) => {
     }
 
     useEffect(() => {
-        setDataTableData({
-            [PERIOD_UNIT.YEAR]: rawData2FixedTableData(yearSummaryByShare, SEARCH_TABLE_COL),
-            [PERIOD_UNIT.QUARTER]: rawData2FixedTableData(quarterSummaryByShare, SEARCH_TABLE_COL),
-        });
-    }, [yearSummaryByShare, quarterSummaryByShare, crtLang])
+        const dcFStatusDataFmt = {...F_STATUS_DATA_FMT};
+        for (const status in dcFStatusDataFmt) {
+            for (const period in dcFStatusDataFmt[status]) {
+                dcFStatusDataFmt.status.period = rawData2FixedTableData(financialStatusByShare.status.period, FINANCIAL_STATUS_TABLE_COL.status)
+            }
+        }
+
+        setDataTableData(dcFStatusDataFmt);
+    }, [financialStatusByShare, crtLang])
 
     return (
         <MDBCard className="card-body">
@@ -81,6 +86,21 @@ const FinancialStatus = (props) => {
                 {dataTableData && !hidden?
                 <>
                     <MDBNav className="nav-tabs">
+                    {
+                        Object.keys(F_STATUS_DATA_FMT).map((s, i) => {
+                            Object.keys(F_STATUS_DATA_FMT.s).map((p, j) => {
+                                return (
+                                    <MDBNavItem>
+                                        <MDBNavLink link to="#" active={activeTab === `${F_STATUS_DATA_FMT.s}:${F_STATUS_DATA_FMT.s.p}`} onClick={() => tabHandler(`${F_STATUS_DATA_FMT.s}:${F_STATUS_DATA_FMT.s.p}`)} role="tab" >
+                                            {t('common.tab.yearly')}
+                                        </MDBNavLink>
+                                    </MDBNavItem>
+                                )
+                            })
+                        })
+                    }
+                    </MDBNav>
+                    {/* <MDBNav className="nav-tabs">
                         <MDBNavItem>
                             <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.YEAR} onClick={() => tabHandler(PERIOD_UNIT.YEAR)} role="tab" >
                                 {t('common.tab.yearly')}
@@ -92,27 +112,38 @@ const FinancialStatus = (props) => {
                             </MDBNavLink>
                         </MDBNavItem>
                     </MDBNav>
+                    <MDBNav className="nav-tabs">
+                        <MDBNavItem>
+                            <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.YEAR} onClick={() => tabHandler(PERIOD_UNIT.YEAR)} role="tab" >
+                                {t('common.tab.yearly')}
+                            </MDBNavLink>
+                        </MDBNavItem>
+                        <MDBNavItem>
+                            <MDBNavLink link to="#" active={activeTab === PERIOD_UNIT.QUARTER} onClick={() => tabHandler(PERIOD_UNIT.QUARTER)} role="tab" >
+                                {t('common.tab.quarterly')}
+                            </MDBNavLink>
+                        </MDBNavItem>
+                    </MDBNav> */}
                     <MDBTabContent activeItem={activeTab} >
-                        <MDBTabPane tabId={PERIOD_UNIT.YEAR} role="tabpanel">
-                            <div className="mt-3">
-                                <FixedSideUnionTable
-                                    header={dataTableData[PERIOD_UNIT.YEAR].header}
-                                    records={dataTableData[PERIOD_UNIT.YEAR].records}
-                                    labelColumnNum={1}
-                                    tableId={'yearFinancialStatus'}
-                                />
-                            </div>                  
-                        </MDBTabPane>
-                        <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
-                            <div className="mt-3">
-                                <FixedSideUnionTable
-                                    header={dataTableData[PERIOD_UNIT.QUARTER].header}
-                                    records={dataTableData[PERIOD_UNIT.QUARTER].records}
-                                    labelColumnNum={1}
-                                    tableId={'quarterFinancialStatus'}
-                                />
-                            </div>
-                        </MDBTabPane>
+                        {
+                            Object.keys(F_STATUS_DATA_FMT).map((s, i) => {
+                                Object.keys(F_STATUS_DATA_FMT.s).map((p, j) => {
+                                    return (
+                                        <MDBTabPane tabId={`${F_STATUS_DATA_FMT.s}:${F_STATUS_DATA_FMT.s.p}`} role="tabpanel">
+                                            <div className="mt-3">
+                                                <FixedSideUnionTable
+                                                    header={dataTableData[s][p].header}
+                                                    records={dataTableData[s][p].records}
+                                                    labelColumnNum={1}
+                                                    tableId={`${F_STATUS_DATA_FMT.s}:${F_STATUS_DATA_FMT.s.p}`}
+                                                />
+                                            </div>                  
+                                        </MDBTabPane>
+                                    )
+                                })
+                            })
+                        }
+
                     </MDBTabContent>
                 </>
                 :null}
