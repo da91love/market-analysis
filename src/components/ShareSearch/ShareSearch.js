@@ -118,7 +118,7 @@ const ShareSearch = () => {
           data: {
             data: {
               country: country,
-              shareCode: shareCode
+              shareCode: [shareCode]
             }
           }
         }),
@@ -128,7 +128,7 @@ const ShareSearch = () => {
           data: {
             data: {
               country: country,
-              shareCode: shareCode
+              shareCode: [shareCode]
             }
           }
         })

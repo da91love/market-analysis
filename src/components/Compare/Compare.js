@@ -78,6 +78,7 @@ const Compare = () => {
     }
 
     useEffect(() => {
+        const shareCode = compareTg.map(x => x[KEY_NAME.SHARE_CODE]);
 
         axios({
             method: API.POST_FINANCIAL_SUMMARY.METHOD,
@@ -85,7 +86,7 @@ const Compare = () => {
             data: {
               data: {
                 country: country,
-                shareCode: compareTg
+                shareCode: shareCode
               }
             }
           })

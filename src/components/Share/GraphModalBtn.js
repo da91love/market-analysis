@@ -109,7 +109,7 @@ const GraphModalBtn = (props) => {
                 data: {
                     data: {
                         country: country,
-                        shareCode: tgCode
+                        shareCode: [tgCode]
                     }
                 }
             })
