@@ -5,6 +5,7 @@ export const EN_JSON = {
     "label": {
       "modelHitSummary": "Matched model",
       "financialSummary": "Financial Summary",
+      "financialStatus": "Financial Status",
       "valuation": "Valuation",
       "idcTrendLine": "Indicator's trend line"
     },

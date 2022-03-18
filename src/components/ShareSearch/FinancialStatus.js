@@ -80,7 +80,7 @@ const FinancialStatus = (props) => {
     return (
         <MDBCard className="card-body">
             <MDBCardTitle className="h3">
-                <span className="h3">{t('shareSearch.label.FinancialStatus')}</span>
+                <span className="h3">{t('shareSearch.label.financialStatus')}</span>
                 {hidden?<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-down" />:<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-up" />}
             </MDBCardTitle>
             <MDBCardText>
