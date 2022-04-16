@@ -35,6 +35,8 @@ const FilterWrapper = (props) => {
 
   useEffect(() => {
     if (model!=="default") {
+      // mdlFilterStatus 변수를 둔 이유는 mdlFilterStatus가 없다면 filter modal에서 값이 바뀔 때마다, filterStatus가 있는
+      // modalbox전체가 re-routing 되는 비효율을 야기하기 때문에 이를 방지하기 위함임
       const tempMdlFilterStatus = filterStatus?.[model];
       setMdlFilterStatus(tempMdlFilterStatus);
       setFiltersByModel(getInputsByModel(yearUniqPeriods, quarterUniqPeriods, tempMdlFilterStatus, setMdlFilterStatus));
