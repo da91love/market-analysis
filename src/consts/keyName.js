@@ -32,6 +32,7 @@ export const KEY_NAME = {
   EPM: 'ebitdaMargin',
   ROE: 'roe',
   ROA: 'roa',
+  ROIC: 'roic',
   LBLT_RATIO: 'liabilitiesRatio',
   EQT_RATIO: 'equityRatio',
   EPS: 'eps',

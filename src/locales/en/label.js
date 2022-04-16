@@ -91,6 +91,7 @@ export const EN_JSON = {
       [KEY_NAME.EPM]: "EPM(%)",
       [KEY_NAME.ROE]: "ROE(%)",
       [KEY_NAME.ROA]: "ROA(%)",
+      [KEY_NAME.ROIC]: "ROIC(%)",
       [KEY_NAME.LBLT_RATIO]: "liabilities ratio",
       [KEY_NAME.EQT_RATIO]: "equity ratio",
       [KEY_NAME.PSR]: "PSR",

@@ -3,7 +3,6 @@
    - https://mdbootstrap.com/support/react/mdbdatatable-search-not-returning-results-if-rendered-by-another-component/
    - https://mdbootstrap.com/docs/react/tables/datatables-1/#docsTabsAPI
 - [update] Search 화면에서 지표 옮길수 있게 hover하기
-- [update] 에스코넥같은 주식 찾는 턴어라운드 로직만들기
 - [update] 실제 엑셀처럼 전체 검색 가능한 페이지
    - 컬럼 선택가능하게, 컬럼별 필터 추가
 - [update] target 화면 테이블 컬럼변경
@@ -12,9 +11,6 @@
 - [update] localStorage데이터 redis에 저장
 - [update] 미국데이터 표시
 - [update] investment model CAPEX로 바꾸기
-- [update] valuation api 데이터가 모든 종목 데이터가 아닌 종목에 해당하는 데이터만 오도록 수정
-- [update] ebitda의 가치평가 테이블 만들기
-- [update] 재무제표 표시하기
 - [error] investment model에서 numOfCp표시되는 오류
 - [update] ~~dcf valuation 추가하기: 20년 당기순이익, WACC, CAPM, 자기자본~~
 
@@ -38,3 +34,6 @@
 - [update] 210318 서치 페이지에서 종목명 클릭하면 네이버로 넘어가기
 - [update] Search 화면에서 지표 추가 클릭버튼
 - [update] search 화면에서 지표에 hover하면 추세선 나타나게 하기
+- [update] 211203 valuation api 데이터가 모든 종목 데이터가 아닌 종목에 해당하는 데이터만 오도록 수정
+- [update] 211205 ebitda의 가치평가 테이블 만들기
+- [update] 220214 재무제표 표시하기
