@@ -7,7 +7,8 @@ export const MODELS = {
     // MRKGROWTH: 'mrkgrowth',
     COLLAPSE: 'collapse',
     BLUECHIP: 'bluechip',
-    INVGROWTH: 'invgrowth'
+    INVGROWTH: 'invgrowth',
+    ALLSHARES: 'allshares',
 }
 
 export const MODEL_NAME = {
