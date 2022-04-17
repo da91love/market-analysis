@@ -7,8 +7,6 @@ const GraphTypeSelectModal = (props) => {
     const { t } = useTranslation();
     const [modalState, setModalState] = useState(false);
     const [selectedRadioStatus, setSelectedRadioStatus] = useState();
-    const [radioTable, setRadioTable] = useState();
-
 
     const modalHandler = () => {
         setModalState(!modalState);
@@ -67,7 +65,6 @@ const GraphTypeSelectModal = (props) => {
         });
 
         setSelectedRadioStatus(initSelectedRadioStatus);
-        setRadioTable(getRadioTable(initSelectedRadioStatus));
     } , [selectedGraphType])
 
     return (
@@ -76,7 +73,7 @@ const GraphTypeSelectModal = (props) => {
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
                 <MDBModalHeader toggle={modalHandler}>{t('common.button.selectIdc')}</MDBModalHeader>
                 <MDBModalBody>
-                    {radioTable? radioTable: null}
+                    {selectedRadioStatus? getRadioTable(selectedRadioStatus): null}
                 </MDBModalBody>
                 <MDBModalFooter>
                     <MDBBtn color="secondary" onClick={unselectAllHandler}>{t('common.button.cancelAll')}</MDBBtn>
