@@ -31,6 +31,7 @@ const ModelBox = (props) => {
    const { enqueueSnackbar } = useSnackbar();
    const {country} = useContext(ShareDataContext);
    const [filterStatus, setFilterStatus] = useState(FILTER_BY_MDL);
+   const [rawPeriodData, setRawPeriodData] = useState(null);
    const [selectedGraphType, setSelectedGraphType] = useState(displayCols);
 
    const rawData2TableData = (tableData, tgColList) => {
@@ -85,6 +86,7 @@ const ModelBox = (props) => {
          .then(res => {
             if(res.data.status === "success" ) {
                const tgData = res.data.payload.value;
+               setRawPeriodData(tgData);
 
                // Select showing cols
                const colsByModel = MODEL_TABLE_COL[selectedModel];
@@ -137,6 +139,7 @@ const ModelBox = (props) => {
                // update modelBoxStatus
                const dcModelBoxStatus = [...modelBoxStatus];
                dcModelBoxStatus[tgIdx].model = model;
+               dcModelBoxStatus[tgIdx].displayCols = colsByModel;
                dcModelBoxStatus[tgIdx].tableData = rawData2TableData(tgData, colsByModel);
                setModelBoxStatus(dcModelBoxStatus);
             } else {
@@ -153,6 +156,7 @@ const ModelBox = (props) => {
          // update modelBoxStatus
          const dcModelBoxStatus = [...modelBoxStatus];
          dcModelBoxStatus[tgIdx].displayCols = selectedGraphType;
+         dcModelBoxStatus[tgIdx].tableData = rawData2TableData(rawPeriodData, selectedGraphType);
          setModelBoxStatus(dcModelBoxStatus);
       }
    }, [selectedGraphType])
