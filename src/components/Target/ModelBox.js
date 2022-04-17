@@ -95,6 +95,7 @@ const ModelBox = (props) => {
                // update modelBoxStatus
                const dcModelBoxStatus = [...modelBoxStatus];
                dcModelBoxStatus[tgIdx].model = selectedModel;
+               dcModelBoxStatus[tgIdx].displayCols = colsByModel;
                dcModelBoxStatus[tgIdx].tableData = rawData2TableData(tgData, colsByModel);
                setModelBoxStatus(dcModelBoxStatus);
             } else {
@@ -131,6 +132,7 @@ const ModelBox = (props) => {
          .then(res => {
             if(res.data.status === "success" ) {
                const tgData = res.data.payload.value;
+               setRawPeriodData(tgData);
 
                // Select showing cols
                const colsByModel = MODEL_TABLE_COL[model];
@@ -142,6 +144,7 @@ const ModelBox = (props) => {
                dcModelBoxStatus[tgIdx].displayCols = colsByModel;
                dcModelBoxStatus[tgIdx].tableData = rawData2TableData(tgData, colsByModel);
                setModelBoxStatus(dcModelBoxStatus);
+
             } else {
             // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
             }
