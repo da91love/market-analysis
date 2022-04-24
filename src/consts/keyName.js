@@ -112,10 +112,27 @@ export const KEY_NAME = {
   AMRTZ: 'amortization',
   CFI: 'investingCashFlow',
   CFI_IN: 'investingCashFlowIn',
+  DCRS_IN_TGB_ASST: 'decreaseInTangibleAssets',
+  DCRS_IN_OTH_TGB_ASSET: 'decreaseInOtherTangibleAssets',
+  DCRS_IN_INTGB_ASST: 'decreaseInIntangibleAssets',
   CFI_OUT: 'investingCashFlowOut',
+  INCRS_IN_TGB_ASST: 'increaseInTangibleAssets',
+  INCRS_IN_OTH_INTGB_ASSET: 'increaseInOtherTangibleAssets',
+  INCRS_IN_INTGB_ASST: 'increaseInIntangibleAssets',
+  INCRS_IN_IVST_R_ESTT: 'increaseInInvestmentRealEstate',
+  INCRS_IN_R_ESTT: 'increaseInRealEstate',
   CFF: 'financingCashFlow',
   CFF_IN: 'financingCashFlowIn',
+  INCRS_IN_S_TERM_BRW: 'increaseInShortTermBorrowings',
+  INCRS_IN_DEBT: 'increaseInDebt',
+  INCRS_IN_L_TERM_BRW: 'increaseInLongTermBorrowings',
   CFF_OUT: 'financingCashFlowOut',
+  DCRS_IN_S_TERM_BRW: 'decreaseInShortTermBorrowings',
+  DCRS_IN_DEBT: 'decreaseInDebt',
+  DCRS_IN_L_TERM_BRW: 'decreaseInLongTermBorrowings',
+  ACQST_TRSRY_STC: 'acquisitionOfTreasuryStock',
+  BGN_CSH_N_CSHEQV: 'beginningOfTermCashAndCashEquivalents',
+  END_CSH_N_CSHEQV: 'endOfTermCashAndCashEquivalents'
  }
 
  export const OTHER_KEY_NAME = {
