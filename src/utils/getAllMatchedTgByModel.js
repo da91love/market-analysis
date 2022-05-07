@@ -12,7 +12,7 @@ const getAllMatchedTgByModel = (yearRawDataByShare ,quarterRawDataByShare, filte
     // const mrkgrowthModelMatchedTg = ShareTargetModelEngine.getMrkGrowthModel(quarterRawDataByMrk, filter).map(v => v[KEY_NAME.MARKET_CODE]);
     const collapseModelMatchedTg = ShareTargetModelEngine.getCollapseModel(yearRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
     const blueChipModelMatchedTg = ShareTargetModelEngine.getBluechipModel(quarterRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
-    const invGrowthModelMatchedTg = ShareTargetModelEngine.getInvstGrowthModel(quarterRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
+    const capexGrowthModelMatchedTg = ShareTargetModelEngine.getInvstGrowthModel(quarterRawDataByShare, filter).map(v => v[KEY_NAME.SHARE_CODE]);
 
     for (const model of Object.values(MODELS)) {
         if (model === MODELS.VALUE) {
@@ -27,8 +27,8 @@ const getAllMatchedTgByModel = (yearRawDataByShare ,quarterRawDataByShare, filte
             allMatchedTgByModel[model] = collapseModelMatchedTg;
         } else if (model === MODELS.BLUECHIP) {
             allMatchedTgByModel[model] = blueChipModelMatchedTg;
-        } else if (model === MODELS.INVGROWTH) {
-            allMatchedTgByModel[model] = invGrowthModelMatchedTg;
+        } else if (model === MODELS.CAPEXGROWTH) {
+            allMatchedTgByModel[model] = capexGrowthModelMatchedTg;
         }
     }
 

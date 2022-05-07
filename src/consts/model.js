@@ -7,7 +7,7 @@ export const MODELS = {
     // MRKGROWTH: 'mrkgrowth',
     COLLAPSE: 'collapse',
     BLUECHIP: 'bluechip',
-    INVGROWTH: 'invgrowth',
+    CAPEXGROWTH: 'capexgrowth',
     ALLSHARES: 'allshares',
 }
 
@@ -18,7 +18,7 @@ export const MODEL_NAME = {
     // MRKGROWTH: 'MrkGrowth Stock Model',
     COLLAPSE: 'Collapse Stock Model',
     BLUECHIP: 'Bluechip Stock Model',
-    INVGROWTH: 'Investment Growth Stock Model',
+    CAPEXGROWTH: 'Investment Growth Stock Model',
 }
 
 /**
