@@ -4,20 +4,21 @@ export const MODELS = {
     VALUE: 'value',
     TURNAROUND: 'turnaround',
     CPGROWTH: 'cpgrowth',
-    MRKGROWTH: 'mrkgrowth',
+    // MRKGROWTH: 'mrkgrowth',
     COLLAPSE: 'collapse',
     BLUECHIP: 'bluechip',
-    INVGROWTH: 'invgrowth'
+    CAPEXGROWTH: 'capexgrowth',
+    ALLSHARES: 'allshares',
 }
 
 export const MODEL_NAME = {
     VALUE: 'Value Stock Model',
     TURNAROUND: 'Turnaround Stock Model',
     CPGROWTH: 'CpGrowth Stock Model',
-    MRKGROWTH: 'MrkGrowth Stock Model',
+    // MRKGROWTH: 'MrkGrowth Stock Model',
     COLLAPSE: 'Collapse Stock Model',
     BLUECHIP: 'Bluechip Stock Model',
-    INVGROWTH: 'Investment Growth Stock Model',
+    CAPEXGROWTH: 'Capex Growth Stock Model',
 }
 
 /**
@@ -36,7 +37,6 @@ export const MKRGROWTH_MODEL_RAWDATA_KEYNAME = [
     KEY_NAME.PSR,
     KEY_NAME.POR,
     KEY_NAME.PER,
-    KEY_NAME.PCR,
     KEY_NAME.PBR,
 ]
 

@@ -23,9 +23,6 @@ import {API} from '../consts/api';
 import SyncStatus from '../utils/SyncStatus';
 import {STRG_KEY_NAME} from "../consts/localStorage";
 
-import yData from "../statics/year_result.json";
-import qData from "../statics/quarter_result.json";
-
 const Main = (props) => {
   const {authId} = useContext(AuthContext);
   const [yearRawData, setYearRawData] = useState(null);
@@ -36,6 +33,7 @@ const Main = (props) => {
   const [quarterRawDataByMrk, setQuarterRawDataByMrk] = useState(null);
   const [compareTg, setCompareTg] = useState([]);
   const [bookMark, setBookMark] = useState([]);
+  const [country, setCountry] = useState('ko');
   const [isInitDataLoaded,setIsInitDataLoaded] = useState(false);
 
   /**
@@ -45,6 +43,9 @@ const Main = (props) => {
    */
   useEffect(() => {
     // Get share data from DB(temporary from json)
+    const yData = []
+    const qData = []
+
     let yearDataByGroup = _.groupBy(yData, v => v[KEY_NAME.SHARE_CODE]);
     let quarterDataByGroup = _.groupBy(qData, v => v[KEY_NAME.SHARE_CODE]);
 
@@ -94,7 +95,7 @@ const Main = (props) => {
   return (
     <CompareTgContext.Provider value={{ compareTg, setCompareTg, bookMark, setBookMark }}>
     <ShareDataContext.Provider value={{
-      isInitDataLoaded,
+      isInitDataLoaded, country,
       yearRawData, setYearRawData, 
       quarterRawData, setQuarterRawData,
       yearRawDataByShare, setYearRawDataByShare,

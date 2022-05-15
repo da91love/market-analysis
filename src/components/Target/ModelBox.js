@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import {
-  MDBCol, MDBCard, MDBCardBody, MDBIcon, MDBCardTitle, MDBCardText, MDBDataTableV5 
+  MDBCard, MDBCardBody, MDBIcon, MDBCardTitle, MDBCardText, MDBDataTableV5 
 } from 'mdbreact';
 import IconButton from '@material-ui/core/IconButton';
 import _ from "lodash";
 import { useSnackbar } from 'notistack';
 import {useTranslation} from "react-i18next";
+import axios from 'axios';
 
 import NoModelSelected from './NoModelSelected';
 import FilterWrapper from './FilterWrapper';
@@ -18,21 +19,22 @@ import { KEY_NAME, OTHER_KEY_NAME } from "../../consts/keyName";
 import { FILTER_BY_MDL } from "../../consts/filter";
 import { MSG } from "../../consts/message";
 import { BY_SHARE_ALL_TABLE_COL_TYPE } from "../../consts/tbCol";
+import { API } from '../../consts/api';
 
-import getModelData from '../../utils/getModelData';
 import GraphModalBtn from '../Share/GraphModalBtn';
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
 
 const ModelBox = (props) => {
-   const {id, model, modelBoxStatus, setModelBoxStatus} = props;
+   const {tgIdx, modelBoxStatus, setModelBoxStatus} = props;
+   const {id, model, tableData, displayCols} = modelBoxStatus[tgIdx];
    const { t } = useTranslation();
    const { enqueueSnackbar } = useSnackbar();
-   const {yearRawDataByShare, quarterRawDataByShare, yearRawDataByMrk, quarterRawDataByMrk} = useContext(ShareDataContext);
-   const [datatable, setDatatable] = useState(null);
+   const {country} = useContext(ShareDataContext);
    const [filterStatus, setFilterStatus] = useState(FILTER_BY_MDL);
-   const [selectedGraphType, setSelectedGraphType] = useState();
+   const [rawPeriodData, setRawPeriodData] = useState(null);
+   const [selectedGraphType, setSelectedGraphType] = useState(displayCols);
 
-   const rawData2TableData = (modelName, rawData, tgColList) => {
+   const rawData2TableData = (tableData, tgColList) => {
       // Create columns
       const columns = tgColList.map((v,i) => {
          return {
@@ -43,27 +45,14 @@ const ModelBox = (props) => {
 
       // Create rows
       const rows = []
-      for (const data of rawData) {
+      for (const data of tableData) {
             const row = {};
             for (const col of tgColList) {
                if (col === OTHER_KEY_NAME.GRAPH) {
-                  if (modelName === MODELS.MRKGROWTH) {
-                     row[col] = <GraphModalBtn
-                        isMarket={true}
-                        tgName={data[KEY_NAME.MARKET_NAME]} 
-                        tgCode={data[KEY_NAME.MARKET_CODE]} 
-                        yearRawDataPerUnit={yearRawDataByMrk[data[KEY_NAME.MARKET_CODE]]} 
-                        quarterRawDataPerUnit={quarterRawDataByMrk[data[KEY_NAME.MARKET_CODE]]}
-                     />
-                  } else {
-                     row[col] = <GraphModalBtn
-                        tgName={data[KEY_NAME.SHARE_NAME]} 
-                        tgCode={data[KEY_NAME.SHARE_CODE]} 
-                        yearRawDataPerUnit={yearRawDataByShare[data[KEY_NAME.SHARE_CODE]]} 
-                        quarterRawDataPerUnit={quarterRawDataByShare[data[KEY_NAME.SHARE_CODE]]}
-                     />
-                  }
-
+                  row[col] = <GraphModalBtn
+                     tgName={data[KEY_NAME.SHARE_NAME]} 
+                     tgCode={data[KEY_NAME.SHARE_CODE]} 
+                  />
                } else {
                   row[col] = data[col];
                }
@@ -77,22 +66,42 @@ const ModelBox = (props) => {
       }
    }
 
-   const applyModelBtn = (value) => {
+   const applyModelBtn = (selectedModel) => {
       // Validation
-      if (_.find(modelBoxStatus, ['model', value])) {
+      if (_.find(modelBoxStatus, ['model', selectedModel])) {
          // Show status msg
          enqueueSnackbar(MSG.BOX_ALREADY_EXIST, {variant: ERROR});
       } else {
-         // Run model
-         const tgData = getModelData(value, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
-         const colsByModel = MODEL_TABLE_COL[value];
-         setSelectedGraphType(colsByModel);
-         setDatatable(rawData2TableData(value, tgData, colsByModel));
+         axios({
+            method: API.POST_MODEL.METHOD,
+            url: API.POST_MODEL.URL,
+            data: {
+               data: {
+                  model: selectedModel,
+                  country: country,
+                  filter: filterStatus[selectedModel]
+               }
+            }
+         })
+         .then(res => {
+            if(res.data.status === "success" ) {
+               const tgData = res.data.payload.value;
+               setRawPeriodData(tgData);
 
-         // update modelBoxStatus
-         const dcModelBoxStatus = [...modelBoxStatus];
-         dcModelBoxStatus[_.findIndex(dcModelBoxStatus, ['id', id])].model = value;
-         setModelBoxStatus(dcModelBoxStatus);
+               // Select showing cols
+               const colsByModel = MODEL_TABLE_COL[selectedModel];
+               setSelectedGraphType(colsByModel);
+
+               // update modelBoxStatus
+               const dcModelBoxStatus = [...modelBoxStatus];
+               dcModelBoxStatus[tgIdx].model = selectedModel;
+               dcModelBoxStatus[tgIdx].displayCols = colsByModel;
+               dcModelBoxStatus[tgIdx].tableData = rawData2TableData(tgData, colsByModel);
+               setModelBoxStatus(dcModelBoxStatus);
+            } else {
+            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+            }
+         });
       }
    }
 
@@ -106,13 +115,54 @@ const ModelBox = (props) => {
          enqueueSnackbar(MSG.MIN_BOX_NUM, {variant: ERROR});
       }
    }
-   
+
    useEffect(() => {
-      if(model !== 'default'){ // Do not run on first running
-         const tgData = getModelData(model, yearRawDataByShare, quarterRawDataByShare, quarterRawDataByMrk, filterStatus);
-         setDatatable(rawData2TableData(model, tgData, selectedGraphType));
+      if (model !== "default") {
+         axios({
+            method: API.POST_MODEL.METHOD,
+            url: API.POST_MODEL.URL,
+            data: {
+               data: {
+                  model: model,
+                  country: country,
+                  filter: filterStatus[model]
+               }
+            }
+         })
+         .then(res => {
+            if(res.data.status === "success" ) {
+               const tgData = res.data.payload.value;
+               setRawPeriodData(tgData);
+
+               // Select showing cols
+               const colsByModel = MODEL_TABLE_COL[model];
+               setSelectedGraphType(colsByModel);
+
+               // update modelBoxStatus
+               const dcModelBoxStatus = [...modelBoxStatus];
+               dcModelBoxStatus[tgIdx].model = model;
+               dcModelBoxStatus[tgIdx].displayCols = colsByModel;
+               dcModelBoxStatus[tgIdx].tableData = rawData2TableData(tgData, colsByModel);
+               setModelBoxStatus(dcModelBoxStatus);
+
+            } else {
+            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+            }
+         });
       }
-   }, [filterStatus, selectedGraphType])
+   }, [filterStatus])
+
+   // 아래의 API는 컬럼조정을 위한 useEffect
+   // 위의 useEffect에서 컨트롤하지 않는 이유는 API통신을 최대한 자제하기 위함
+   useEffect(() => {
+      if (model !== "default") {
+         // update modelBoxStatus
+         const dcModelBoxStatus = [...modelBoxStatus];
+         dcModelBoxStatus[tgIdx].displayCols = selectedGraphType;
+         dcModelBoxStatus[tgIdx].tableData = rawData2TableData(rawPeriodData, selectedGraphType);
+         setModelBoxStatus(dcModelBoxStatus);
+      }
+   }, [selectedGraphType])
 
    return (
       <MDBCard className="mb-4">
@@ -128,15 +178,14 @@ const ModelBox = (props) => {
                </div>
                <div className="">
                   <FilterWrapper model={model} filterStatus={filterStatus} setFilterStatus={setFilterStatus}/>
-                  {model !== "default"? <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_TABLE_COL_TYPE}/>:<></>}
+                  {tableData? <GraphTypeSelectModal selectedGraphType={selectedGraphType} setSelectedGraphType={setSelectedGraphType} allGraphType={BY_SHARE_ALL_TABLE_COL_TYPE}/>:<></>}
                   <IconButton className="float-right" color="secondary" aria-label="upload picture" component="span">
                      <MDBIcon onClick={() => {removeModelBtn()}} icon="times" />
                   </IconButton>
                </div>
             </MDBCardTitle>
             <MDBCardText>
-               {/* {model !== "default"? <FixedSideTableTest header={datatable.header} records={datatable.records}/>:<NoModelSelected/>} */}
-               {model !== "default"? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={datatable} />:<NoModelSelected/>}
+               {tableData? <MDBDataTableV5 striped bordered small hover entriesOptions={[5, 10, 20, 30]} entries={10} pagesAmount={4} data={tableData} />:<NoModelSelected/>}
             </MDBCardText>
          </MDBCardBody>
       </MDBCard>

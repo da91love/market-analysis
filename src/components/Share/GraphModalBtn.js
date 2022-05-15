@@ -6,8 +6,10 @@ import {
 import _ from "lodash";
 import { useSnackbar } from 'notistack';
 import {useTranslation} from "react-i18next";
+import axios from 'axios';
 
 import AnalysisGraph from './AnalysisGraph';
+import ShareDataContext from "../../contexts/ShareDataContext";
 import CompareTgContext from "../../contexts/CompareTgContext";
 import GraphTypeSelectModal from './GraphTypeSelectModal';
 import rawData2GraphData from '../../utils/rawData2GraphData';
@@ -18,15 +20,15 @@ import { KEY_NAME } from "../../consts/keyName";
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { SUCCESS, ERROR } from "../../consts/alert";
 import { MSG } from "../../consts/message";
+import { API } from '../../consts/api';
 import { BY_SHARE_DEFAULT_GRAPH_TYPE, BY_MRK_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE, BY_MRK_ALL_GRAPH_TYPE } from "../../consts/graph"
 
 const GraphModalBtn = (props) => {
-    const {isMarket=false, tgCode, tgName, yearRawDataPerUnit, quarterRawDataPerUnit} = props;
+    const {isMarket=false, tgCode, tgName} = props;
     const { t } = useTranslation();
-    // const compareTg = JSON.parse(localStorage.getItem(STRG_KEY_NAME.COMPARE)) || [];
+    const {country} = useContext(ShareDataContext);
     const {compareTg, setCompareTg} = useContext(CompareTgContext);
-    // const bookMark = JSON.parse(localStorage.getItem(STRG_KEY_NAME.BOOKMARK)) || [];
-    const {bookMark, setBookMark} = useContext(CompareTgContext);
+    const {bookMark, setBookMark} = useContext(CompareTgContext); 
     const [modalState, setModalState] = useState(false);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [graphData, setGraphData] = useState(null);
@@ -43,15 +45,15 @@ const GraphModalBtn = (props) => {
         setModalState(!modalState);
     }
 
-    const searchPageMoveHandler = (shareCode, shareName) => {
-        const win = window.open(`${ROUTER_URL.SHARE_SEARCH}/${shareCode}/${shareName}`, "_blank");
+    const searchPageMoveHandler = (code, name) => {
+        const win = window.open(`${ROUTER_URL.SHARE_SEARCH}/${code}/${name}`, "_blank");
         win.focus();
     }
 
-    const addToCompareListHandler = (shareCode, shareName) => {
-        if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
+    const addToCompareListHandler = (code, name) => {
+        if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], code])) {
             enqueueSnackbar(
-                `${MSG.SHARE_CODE_ALREADY_EXIST}(${shareCode}:${shareName})`, 
+                `${MSG.SHARE_CODE_ALREADY_EXIST}(${code}:${name})`, 
                 {variant: ERROR}
             );
         } else {
@@ -59,22 +61,22 @@ const GraphModalBtn = (props) => {
                 storageKey: STRG_KEY_NAME.COMPARE,
                 statusSetter: setCompareTg,
                 data: [...compareTg, {
-                  [KEY_NAME.SHARE_CODE]: shareCode,
-                  [KEY_NAME.SHARE_NAME]: shareName
+                  [KEY_NAME.SHARE_CODE]: code,
+                  [KEY_NAME.SHARE_NAME]: name
                 }]
             });
     
             enqueueSnackbar(
-                `${MSG.ADD_COMPARE_TG}(${shareCode}:${shareName})`, 
+                `${MSG.ADD_COMPARE_TG}(${code}:${name})`, 
                 {variant: SUCCESS}
             );
         }
     };
 
-    const addToBookMarkListHandler = (shareCode, shareName) => {
-        if (_.find(bookMark, [[KEY_NAME.SHARE_CODE], shareCode])) {
+    const addToBookMarkListHandler = (code, name) => {
+        if (_.find(bookMark, [[KEY_NAME.SHARE_CODE], code])) {
             enqueueSnackbar(
-                `${MSG.SHARE_CODE_ALREADY_EXIST_IN_BM}(${shareCode}:${shareName})`, 
+                `${MSG.SHARE_CODE_ALREADY_EXIST_IN_BM}(${code}:${name})`, 
                 {variant: ERROR}
             );
         } else {
@@ -82,32 +84,58 @@ const GraphModalBtn = (props) => {
             storageKey: STRG_KEY_NAME.BOOKMARK,
             statusSetter: setBookMark,
             data: [...bookMark, {
-              [KEY_NAME.SHARE_CODE]: shareCode,
-              [KEY_NAME.SHARE_NAME]: shareName
+              [KEY_NAME.SHARE_CODE]: code,
+              [KEY_NAME.SHARE_NAME]: name
             }]
           });
     
           enqueueSnackbar(
-            `${MSG.ADD_BOOKMARK_TG}(${shareCode}:${shareName})`, 
+            `${MSG.ADD_BOOKMARK_TG}(${code}:${name})`, 
             {variant: SUCCESS}
           );
         }
       };
 
-    useEffect(() => {
-            const idcByYear = {};
-            const idcByQuarter = {};
+    const modalClickHandler = () => {
 
-            selectedGraphType.forEach((idc, i) => {
-                idcByYear[idc] = rawData2GraphData(yearRawDataPerUnit, idc);
-                idcByQuarter[idc] = rawData2GraphData(quarterRawDataPerUnit, idc);
+    }
+
+    useEffect(() => {
+        // 첫 렌더링시 불필요하게 api를 run하지 않게 하기 위함
+        if (modalState) {
+            axios({
+                method: API.POST_FINANCIAL_SUMMARY.METHOD,
+                url: API.POST_FINANCIAL_SUMMARY.URL,
+                data: {
+                    data: {
+                        country: country,
+                        shareCode: [tgCode]
+                    }
+                }
             })
-            
-            setGraphData({
-                year: idcByYear,
-                quarter: idcByQuarter
-            })
-    }, [modalState, selectedGraphType])
+            .then(res => {
+                if(res.data.status === "success" ) {
+                    const {year_result,quarter_result} = res.data.payload.value;
+                    
+                    const idcByYear = {};
+                    const idcByQuarter = {};
+        
+                    selectedGraphType.forEach((idc, i) => {
+                        idcByYear[idc] = rawData2GraphData(year_result, idc);
+                        idcByQuarter[idc] = rawData2GraphData(quarter_result, idc);
+                    });
+                    
+                    setGraphData({
+                        year: idcByYear,
+                        quarter: idcByQuarter
+                    });
+    
+                } else {
+                    // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+                }
+            });
+        }
+    }, [modalState, selectedGraphType]);
 
     return (
         <IconButton className="p-0" color="default" aria-label="upload picture" component="span">

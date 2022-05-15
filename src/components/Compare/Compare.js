@@ -24,12 +24,12 @@ import {PERIOD_UNIT, AVG} from "../../consts/common";
 const Compare = () => {
     const { compareTg, setCompareTg } = useContext(CompareTgContext);
     const {authId} = useContext(AuthContext);
+    const {country} = useContext(ShareDataContext);
     const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [compareMrkList, setCompareMrkList] = useState({});
     const [graphData, setGraphData] = useState();
     const [selectedGraphType, setSelectedGraphType] = useState(COMPARE_GRAPH_TYPE);
-    const {isInitDataLoaded, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
 
     const tabHandler = (tab) => {
         if (activeTab !== tab) {
@@ -37,12 +37,10 @@ const Compare = () => {
         }
     }
 
-    const rawData2GraphData = (tgList, periodRawDataByShare, idc) => {
-        const flatRawData= _.flatMap(tgList, (tg) => {
-            return periodRawDataByShare[tg[KEY_NAME.SHARE_CODE]];
-        });
-        const tgRawDataByPeriod = _.groupBy(flatRawData, v => v[KEY_NAME.PERIOD]);
+    const rawData2GraphData = (tgList, periodRawDataByShares, idc) => {
+        const tgRawDataByPeriod = _.groupBy(periodRawDataByShares, v => v[KEY_NAME.PERIOD]);
 
+        // AVG데이터를 취득하기 위한 각 종목 데이터 sum
         const tgRawDataBySum = Object.values(tgRawDataByPeriod).map((periodRawData) => {
             return periodRawData.reduce((acc, info, i) => {
                 const dcAcc = {...acc};
@@ -60,11 +58,11 @@ const Compare = () => {
         })
 
         const data = Object.keys(tgRawDataByPeriod).map((period,i) => {
-            const d = {}
-            d.name = period;
-            d[AVG] = (_.find(tgRawDataBySum, [[KEY_NAME.PERIOD], period]))[idc];
-            tgRawDataByPeriod[period].forEach((rawData,i) => {
-                d[rawData[KEY_NAME.SHARE_NAME]] = rawData[idc];
+                const d = {}
+                d.name = period;
+                d[AVG] = (_.find(tgRawDataBySum, [[KEY_NAME.PERIOD], period]))[idc];
+                tgRawDataByPeriod[period].forEach((rawData,i) => {
+                    d[rawData[KEY_NAME.SHARE_NAME]] = rawData[idc];
             });
 
             return d;
@@ -76,30 +74,52 @@ const Compare = () => {
             dataKey: [AVG].concat(tgList.map((tg, i) => {
                 return tg[KEY_NAME.SHARE_NAME];
             })),
-            data: data
+            data: _.orderBy(data, ['name'], ['asc'])
         };
     }
 
     useEffect(() => {
-        if (isInitDataLoaded) {
-            const gData = function() {
-                const idcByYear = {};
-                const idcByQuarter = {};
-        
-                selectedGraphType.forEach((idc, i) => {
-                    idcByYear[idc] = rawData2GraphData(compareTg, yearRawDataByShare, idc);
-                    idcByQuarter[idc] = rawData2GraphData(compareTg, quarterRawDataByShare, idc);
-                })
-                
-                return({
-                    year: idcByYear,
-                    quarter: idcByQuarter
-                })
-            }();
+        const shareCode = compareTg.map(x => x[KEY_NAME.SHARE_CODE]);
+
+        // shareCode가 None일시 financial_summary api에서 모든 종목을 리턴하므로 조건을 걸어둠
+        if (shareCode.length > 0) {
+            axios({
+                method: API.POST_FINANCIAL_SUMMARY.METHOD,
+                url: API.POST_FINANCIAL_SUMMARY.URL,
+                data: {
+                  data: {
+                    country: country,
+                    shareCode: shareCode
+                  }
+                }
+              })
+                .then(res => {
+                    if(res.data.status === "success" ) {
+                        const {year_result, quarter_result} = res.data.payload.value;
     
-            setGraphData(gData);
+                        const gData = function() {
+                            const idcByYear = {};
+                            const idcByQuarter = {};
+                    
+                            selectedGraphType.forEach((idc, i) => {
+                                idcByYear[idc] = rawData2GraphData(compareTg, year_result, idc);
+                                idcByQuarter[idc] = rawData2GraphData(compareTg, quarter_result, idc);
+                            })
+                            
+                            return({
+                                year: idcByYear,
+                                quarter: idcByQuarter
+                            })
+                        }();
+                
+                        setGraphData(gData);
+                    } else {
+                        // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+                    }
+                })
         }
-    }, [isInitDataLoaded, compareTg, selectedGraphType]);
+ 
+    }, [compareTg, selectedGraphType]);
 
     useEffect(() => {
         //Get data from DB

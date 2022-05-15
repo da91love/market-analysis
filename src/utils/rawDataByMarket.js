@@ -24,7 +24,7 @@ const rawDataByMarket = (unit, periodRawData) => {
                     const datasInPeriod = periodDataByMrk[mrk][period];
                     if (([KEY_NAME.MV, KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL]).includes(keyName)) {
                         sumByMrkNPrd[keyName] = _.round(_.sumBy(datasInPeriod, v => v[keyName] || 0), 2);
-                    } else if (([KEY_NAME.PSR, KEY_NAME.POR, KEY_NAME.PER, KEY_NAME.PCR, KEY_NAME.PBR]).includes(keyName)) {
+                    } else if (([KEY_NAME.PSR, KEY_NAME.POR, KEY_NAME.PER, KEY_NAME.PBR]).includes(keyName)) {
                         sumByMrkNPrd[keyName] = _.round((_.sumBy(datasInPeriod, v => v[keyName] || 0))/datasInPeriod.length, 2);
                     } else if (keyName === OTHER_KEY_NAME.NUM_OF_CP) {
                         sumByMrkNPrd[keyName] = datasInPeriod.length;

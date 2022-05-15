@@ -34,6 +34,7 @@ const Valuation = (props) => {
     const [savedDataTableDatas, setSavedDataTableDatas] = useState({});
     const [dataTableData, setDataTableData] = useState();
 
+    // PrivateMethod
     const pricePrdctnModelOnBlur = (e, tableId, baseDate, rowIdx, colIdx, labelColumnNum) => {
         const editedValue = e.target.innerText;
         const parsedValue = parseFloat(editedValue);
@@ -90,25 +91,24 @@ const Valuation = (props) => {
         }
     }
 
+    // PrivateMethod
+    // rawData는 마지막 분기의 데이터만 포함하고 있고, 마지막 분기의 매출 등은 1분기 만의 매출을 의미하기 때문에
+    // PER POR에서 역산하여 최근 4분기의 매출, 영업이익 등을 새롭게 update
+    // 역산하여 반올림한 수치를 사용하기 때문에 실제 값과 조금 상이할 수 있음
     const updateRawData = (periodRawData) => {
         // Common
         periodRawData[KEY_NAME.SALES] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PSR], 2); 
-        periodRawData[OTHER_KEY_NAME.PRICE] = _.round(periodRawData[KEY_NAME.MV]*NUM_UNIT.OK/periodRawData[KEY_NAME.SHARE_NUM], 2);
 
         // PER
         periodRawData[KEY_NAME.NP_CTRL] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.PER], 2); 
         periodRawData[KEY_NAME.NPM] = _.round((periodRawData[KEY_NAME.NP_CTRL]/periodRawData[KEY_NAME.SALES])*100, 2); 
-        periodRawData[KEY_NAME.EPS] = _.round((periodRawData[KEY_NAME.NP_CTRL]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
 
         // POR
         periodRawData[KEY_NAME.OP] = _.round(periodRawData[KEY_NAME.MV]/periodRawData[KEY_NAME.POR], 2); 
         periodRawData[KEY_NAME.OPM] = _.round((periodRawData[KEY_NAME.OP]/periodRawData[KEY_NAME.SALES])*100, 2); 
-        periodRawData[OTHER_KEY_NAME.OPS] = _.round((periodRawData[KEY_NAME.OP]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
-
-        // PSR
-        periodRawData[OTHER_KEY_NAME.SPS] = _.round((periodRawData[KEY_NAME.SALES]*NUM_UNIT.OK)/periodRawData[KEY_NAME.SHARE_NUM], 2);
 
         // EV/EBITDA
+        periodRawData[KEY_NAME.EBITDA] = _.round(periodRawData[KEY_NAME.EV]/periodRawData[KEY_NAME.EV_EBITDA], 2); 
         periodRawData[KEY_NAME.EPM] = _.round((periodRawData[KEY_NAME.EBITDA]/periodRawData[KEY_NAME.SALES])*100, 2); 
     
         return periodRawData;
@@ -270,7 +270,7 @@ const Valuation = (props) => {
         const savedData = savedDataTableDatas?.[shareCode];
         const vltDataByShare = rawData2FixedTableData(updRawData, savedData);
         setDataTableData(vltDataByShare);
-    }, [shareCode, savedDataTableDatas, crtLang]);
+    }, [shareCode, savedDataTableDatas, lastQuarterRawData, crtLang]);
 
     useEffect(() => {
         //Get data from DB
@@ -325,7 +325,7 @@ const Valuation = (props) => {
                     </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                    <MDBNavLink link to="#" active={activeTab === KEY_NAME['EV/EBITDA']} onClick={() => tabHandler(KEY_NAME['EV/EBITDA'])} role="tab" >
+                    <MDBNavLink link to="#" active={activeTab === KEY_NAME.EV_EBITDA} onClick={() => tabHandler(KEY_NAME.EV_EBITDA)} role="tab" >
                         EV/EBITDA
                     </MDBNavLink>
                 </MDBNavItem>
@@ -453,15 +453,15 @@ const Valuation = (props) => {
                         :null}
                     </div>
                 </MDBTabPane>
-                <MDBTabPane tabId={KEY_NAME['EV/EBITDA']} role="tabpanel">
+                <MDBTabPane tabId={KEY_NAME['EV_EBITDA']} role="tabpanel">
                     <div className="mt-3">
                         {dataTableData?
                             <div>
                                 <FixedSideUnionTable
-                                    header={dataTableData[KEY_NAME['EV/EBITDA']][VLT_MODELS.PRICE].header}
-                                    records={dataTableData[KEY_NAME['EV/EBITDA']][VLT_MODELS.PRICE].records}
+                                    header={dataTableData[KEY_NAME['EV_EBITDA']][VLT_MODELS.PRICE].header}
+                                    records={dataTableData[KEY_NAME['EV_EBITDA']][VLT_MODELS.PRICE].records}
                                     labelColumnNum={1}
-                                    tableId={`${KEY_NAME['EV/EBITDA']}:${VLT_MODELS.PRICE}`}
+                                    tableId={`${KEY_NAME['EV_EBITDA']}:${VLT_MODELS.PRICE}`}
                                     baseDate={dataTableData}
                                 />
                                 {/* <FixedSideUnionTable

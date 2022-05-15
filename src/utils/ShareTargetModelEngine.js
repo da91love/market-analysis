@@ -198,12 +198,12 @@ class ShareTargetModelEngine {
     const tgShares = [];
 
     // Assign default filter value
-    const term = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.TERM];
-    const iaCfTimes = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.CFI_TIMES];
+    const term = filterStatus[MODELS.CAPEXGROWTH][FILTER_TYPE.TERM];
+    const iaCfTimes = filterStatus[MODELS.CAPEXGROWTH][FILTER_TYPE.CFI_TIMES];
 
     _.forEach(quarterRawDataByShare, (v, k) => {
       const rD = RawDataFilter.getRealData(v);
-      const period = filterStatus[MODELS.INVGROWTH][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
+      const period = filterStatus[MODELS.CAPEXGROWTH][FILTER_TYPE.PERIOD] || rD[rD.length-1][KEY_NAME.PERIOD];
       const tgPeriodData = cutPeriodWithCondition(v, period);
       const tgPeriodDataLen = tgPeriodData.length;
 

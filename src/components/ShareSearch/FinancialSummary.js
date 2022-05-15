@@ -8,7 +8,7 @@ import { KEY_NAME } from '../../consts/keyName';
 import { BLANK, PERIOD_UNIT } from '../../consts/common';
 
 const FinancialSummary = (props) => {
-    const {yearRawDataByShare, quarterRawDataByShare} = props;
+    const {yearSummaryByShare, quarterSummaryByShare} = props;
     const { t, i18n } = useTranslation();
     const crtLang = i18n.language;
     const [hidden, setHidden] = useState(false);
@@ -66,10 +66,10 @@ const FinancialSummary = (props) => {
 
     useEffect(() => {
         setDataTableData({
-            [PERIOD_UNIT.YEAR]: rawData2FixedTableData(yearRawDataByShare, SEARCH_TABLE_COL),
-            [PERIOD_UNIT.QUARTER]: rawData2FixedTableData(quarterRawDataByShare, SEARCH_TABLE_COL),
+            [PERIOD_UNIT.YEAR]: rawData2FixedTableData(yearSummaryByShare, SEARCH_TABLE_COL),
+            [PERIOD_UNIT.QUARTER]: rawData2FixedTableData(quarterSummaryByShare, SEARCH_TABLE_COL),
         });
-    }, [yearRawDataByShare, quarterRawDataByShare, crtLang])
+    }, [yearSummaryByShare, quarterSummaryByShare, crtLang])
 
     return (
         <MDBCard className="card-body">

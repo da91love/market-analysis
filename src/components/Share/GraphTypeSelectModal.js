@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBTable, MDBTableBody } from 'mdbreact';
 import {useTranslation} from "react-i18next";
 
@@ -6,14 +6,7 @@ const GraphTypeSelectModal = (props) => {
     const {selectedGraphType, setSelectedGraphType, allGraphType} = props;
     const { t } = useTranslation();
     const [modalState, setModalState] = useState(false);
-    const [selectedRadioStatus, setSelectedRadioStatus] = useState(function(){
-        const initSelectedRadioStatus = {};
-        allGraphType.forEach((v, i) => {
-            initSelectedRadioStatus[v] = selectedGraphType.includes(v)?true:false;
-        });
-
-        return initSelectedRadioStatus;
-    }());
+    const [selectedRadioStatus, setSelectedRadioStatus] = useState();
 
     const modalHandler = () => {
         setModalState(!modalState);
@@ -47,7 +40,7 @@ const GraphTypeSelectModal = (props) => {
     const getRadioTable = (radioStatus) => {
         let trs = [];
         let tds = [];
-        
+
         Object.keys(radioStatus).forEach((v, i) => {
             tds.push(
                 <td>
@@ -65,13 +58,22 @@ const GraphTypeSelectModal = (props) => {
         return <MDBTable><MDBTableBody>{trs}</MDBTableBody></MDBTable>
     }
 
+    useEffect(() => {
+        const initSelectedRadioStatus = {};
+        allGraphType.forEach((v, i) => {
+            initSelectedRadioStatus[v] = selectedGraphType.includes(v)?true:false;
+        });
+
+        setSelectedRadioStatus(initSelectedRadioStatus);
+    } , [selectedGraphType])
+
     return (
         <>
             <MDBBtn className={"pt-1 pb-1 pr-4 pl-4"} onClick={modalHandler}>{t('common.button.selectIdc')}</MDBBtn>
             <MDBModal isOpen={modalState} toggle={modalHandler} size="lg">
                 <MDBModalHeader toggle={modalHandler}>{t('common.button.selectIdc')}</MDBModalHeader>
                 <MDBModalBody>
-                    {getRadioTable(selectedRadioStatus)}
+                    {selectedRadioStatus? getRadioTable(selectedRadioStatus): null}
                 </MDBModalBody>
                 <MDBModalFooter>
                     <MDBBtn color="secondary" onClick={unselectAllHandler}>{t('common.button.cancelAll')}</MDBBtn>

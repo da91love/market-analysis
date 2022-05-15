@@ -9,7 +9,7 @@ import {BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE } from '../../const
 import {PERIOD_UNIT} from '../../consts/common';
 
 const IndicatorGraph = (props) => {
-    const {yearRawDataByShare, quarterRawDataByShare} = props;
+    const {yearSummaryByShare, quarterSummaryByShare} = props;
     const { t } = useTranslation();
     const [selectedGraphType, setSelectedGraphType] = useState(BY_SHARE_DEFAULT_GRAPH_TYPE);
     const [hidden, setHidden] = useState(false);
@@ -17,14 +17,14 @@ const IndicatorGraph = (props) => {
     const [graphData, setGraphData] = useState();
 
     // Get data for graphData
-    const createGraphData = (selectedGraphType, yearRawDataByShare, quarterRawDataByShare) => {
+    const createGraphData = (selectedGraphType, yearSummaryByShare, quarterSummaryByShare) => {
 
         const idcByYear = {};
         const idcByQuarter = {};
 
         selectedGraphType.forEach((idc, i) => {
-            idcByYear[idc] = rawData2GraphData(yearRawDataByShare, idc);
-            idcByQuarter[idc] = rawData2GraphData(quarterRawDataByShare, idc);
+            idcByYear[idc] = rawData2GraphData(yearSummaryByShare, idc);
+            idcByQuarter[idc] = rawData2GraphData(quarterSummaryByShare, idc);
         })
         
         return({
@@ -44,8 +44,8 @@ const IndicatorGraph = (props) => {
     }
 
     useEffect(() => {
-        setGraphData(createGraphData(selectedGraphType, yearRawDataByShare, quarterRawDataByShare));
-    }, [yearRawDataByShare, quarterRawDataByShare, selectedGraphType])
+        setGraphData(createGraphData(selectedGraphType, yearSummaryByShare, quarterSummaryByShare));
+    }, [yearSummaryByShare, quarterSummaryByShare, selectedGraphType])
 
     return (
     <MDBCard className="card-body">

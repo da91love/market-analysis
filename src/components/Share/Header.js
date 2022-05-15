@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse,
   MDBFormInline, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,
@@ -24,17 +24,13 @@ import { SUCCESS, ERROR } from "../../consts/alert";
 import SyncStatus from '../../utils/SyncStatus';
 
 const Header = (props) => {
-  const {rawDataByShare, rawDataByMrk} = props;
-  const {isInitDataLoaded} = useContext(ShareDataContext);
   const {authId, setAuthId} = useContext(AuthContext);
+  const {country} = useContext(ShareDataContext);
   const { enqueueSnackbar } = useSnackbar()
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const [options, setOptions] = useState([]);
 
-  // Ruturn nothing if init data is loaded
-  if (!isInitDataLoaded) {
-    return null
-  }
 
   const toggleCollapse = () => {
     setIsOpen(!isOpen);
@@ -72,37 +68,23 @@ const Header = (props) => {
     i18n.changeLanguage(lang);
   };
 
-  const rawData2ShareSearchData = (rawDataByS) => {
-    const result = [];
-    for (const shareCode in rawDataByS) {
-        const shareName = _.last(rawDataByS[shareCode])[KEY_NAME.SHARE_NAME];
-        result.push({
-            [OTHER_KEY_NAME.TYPE]: SHARE_OR_MARKET.SHARE,
-            [OTHER_KEY_NAME.TARGET]: `${shareCode}:${shareName}`,
-            [KEY_NAME.SHARE_CODE]: shareCode,
-            [KEY_NAME.SHARE_NAME]: shareName
-        });
-    }
-
-    return result;
-  }
-
-  const rawData2MrkSearchData = (rawDataByM) => {
-    const result = [];
-    for (const marketCode in rawDataByM) {
-        const marketName = rawDataByM[marketCode][0][KEY_NAME.MARKET_NAME];
-        result.push({
-            [OTHER_KEY_NAME.TYPE]: SHARE_OR_MARKET.MARKET,
-            [OTHER_KEY_NAME.TARGET]: `${marketCode}:${marketName}`,
-            [KEY_NAME.MARKET_CODE]: marketCode,
-            [KEY_NAME.MARKET_NAME]: marketName
-        });
-    }
-
-    return result;
-  }
-
-  const options = rawData2ShareSearchData(rawDataByShare).concat(rawData2MrkSearchData(rawDataByMrk));
+  useEffect(() => {
+    //Get data from DB
+        axios({
+            method: API.GET_SHARE_MARKET_NAME.METHOD,
+            url: API.GET_SHARE_MARKET_NAME.URL,
+            params: {
+              country: country,
+            }
+        })
+        .then(res => {
+            if(res.data.status === "success" ) {
+                setOptions(res.data.payload.value);
+            } else {
+                enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+            }
+        })  
+  }, []);
 
   return (
     <MDBNavbar color="white" dark expand="md" className="fixed-top pl-5 pr-5 mb-5">

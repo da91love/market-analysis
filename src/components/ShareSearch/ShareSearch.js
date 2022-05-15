@@ -7,6 +7,7 @@ import { useSnackbar } from 'notistack';
 
 import ModelHitTable from "./ModelHitTable";
 import FinancialSummary from "./FinancialSummary";
+import FinancialStatus from "./FinancialStatus";
 import IndicatorGraph from "./IndicatorGraph";
 import Valuation from "./Valuation";
 import ShareDataContext from "../../contexts/ShareDataContext";
@@ -14,7 +15,7 @@ import CompareTgContext from "../../contexts/CompareTgContext";
 import AuthContext from "../../contexts/AuthContext";
 import SyncStatus from '../../utils/SyncStatus';
 import RawDataFilter from '../../utils/RawDataFilter';
-import { PERIOD_UNIT, DEFAULT_SHARE_INFO } from '../../consts/common';
+import { DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
 import { EXTERNAL_URL } from '../../consts/common';
@@ -31,26 +32,26 @@ const ShareSearch = () => {
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
   const {authId} = useContext(AuthContext);
+  const {country} = useContext(ShareDataContext);
+  const [isApiDataLoaded, setIsApiDataLoaded] = useState(false);
+  const [yearSummaryByShare, setYearSummaryByShare] = useState([]);
+  const [quarterSummaryByShare, setQuarterSummaryByShare] = useState([]);
+  const [financialStatusByShare, setFinancialStatusByShare] = useState([]);
   const shareInfoFromExtnl = location.state || (params[KEY_NAME.SHARE_CODE]?params:undefined); // Search page gets locations or params
-  const {isInitDataLoaded, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = useContext(ShareDataContext);
+
   const {compareTg, setCompareTg} = useContext(CompareTgContext);
   const {bookMark, setBookMark} = useContext(CompareTgContext);
   const [shareInfo, setShareInfo] = useState(DEFAULT_SHARE_INFO);
   const {shareCode, shareName} = shareInfo;
-
-  // Ruturn nothing if init data is loaded
-  if (!isInitDataLoaded) { 
-    return null
-  }
 
   if (shareInfoFromExtnl && shareInfoFromExtnl[KEY_NAME.SHARE_CODE] !== shareInfo[KEY_NAME.SHARE_CODE]){
     setShareInfo(shareInfoFromExtnl);
   };
 
   // Get nessasary data from rawdata
-  const marketType = _.last(yearRawDataByShare?.[shareCode])[OTHER_KEY_NAME.MARKET_TYPE];
-  const marketName = _.last(yearRawDataByShare?.[shareCode])[KEY_NAME.MARKET_NAME];
-  const marketCode = _.last(yearRawDataByShare?.[shareCode])[KEY_NAME.MARKET_CODE];
+  const marketType = _.last(yearSummaryByShare)?.[OTHER_KEY_NAME.MARKET_TYPE];
+  const marketName = _.last(yearSummaryByShare)?.[KEY_NAME.MARKET_NAME];
+  const marketCode = _.last(yearSummaryByShare)?.[KEY_NAME.MARKET_CODE];
 
   const addToCompareListHandler = (shareCode, shareName) => {
     if (_.find(compareTg, [[KEY_NAME.SHARE_CODE], shareCode])) {
@@ -107,55 +108,112 @@ const ShareSearch = () => {
     }
   };
 
+  useEffect(() => {
+    // Send api for financial summary data
+    axios
+      .all([
+        axios({
+          method: API.POST_FINANCIAL_SUMMARY.METHOD,
+          url: API.POST_FINANCIAL_SUMMARY.URL,
+          data: {
+            data: {
+              country: country,
+              shareCode: [shareCode]
+            }
+          }
+        }),
+        axios({
+          method: API.POST_FINANCIAL_STATUS.METHOD,
+          url: API.POST_FINANCIAL_STATUS.URL,
+          data: {
+            data: {
+              country: country,
+              shareCode: [shareCode]
+            }
+          }
+        })
+      ])
+      .then(
+        axios.spread((financialSummary, financialStatus) => {
+          if(financialSummary.data.status === "success" ) {
+            const {year_result: f_smr_year_result, quarter_result: f_smr_quarter_result} = financialSummary.data.payload.value;
+            setYearSummaryByShare(f_smr_year_result);
+            setQuarterSummaryByShare(f_smr_quarter_result);
+          } else {
+            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+          }
+
+          if(financialStatus.data.status === "success" ) {
+            setFinancialStatusByShare(financialStatus.data.payload.value);
+          }
+
+          setIsApiDataLoaded(true);
+        })
+      )
+      .catch((err) => {
+
+      })
+
+  }, [shareInfo]);
+
   return (
-      <MDBContainer className="mt-5 mb-5 pt-5 pb-5">
-        <div className="mt-3">
-          <p>
-            <span className="h4">{marketType}</span>
-            <a href={`${ROUTER_URL.MARKET_SEARCH}/${marketCode}/${marketName}`} target="_blank">
-              <span className="h4">{`  ${marketName}`}</span>
+      <>
+        {!isApiDataLoaded?null
+        :<MDBContainer className="mt-5 mb-5 pt-5 pb-5">
+          <div className="mt-3">
+            <p>
+              <span className="h4">{marketType}</span>
+              <a href={`${ROUTER_URL.MARKET_SEARCH}/${marketCode}/${marketName}`} target="_blank">
+                <span className="h4">{`  ${marketName}`}</span>
+              </a>
+            </p>
+            <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
+              <span className="h1">{`${shareName}(${shareCode})`}</span>
             </a>
-          </p>
-          <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SHARE_INFO}${shareCode}`} target="_blank">
-            <span className="h1">{`${shareName}(${shareCode})`}</span>
-          </a>
-          <a className="mr-1" href={`${EXTERNAL_URL.GOOGLE_SEARCH}${shareName}`} target="_blank">
-           <img className="img-size-2" src={googleBtnImg}/>
-          </a>
-          <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SEARCH}${shareName}`} target="_blank">
-            <img className="img-size-2" src={naverBtnImg}/>
-          </a>
-          <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="plus-square" />
-          <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
-        </div>
-        <div className="mt-3">
-          <ModelHitTable
-            shareCode={shareCode}
-            marketCode={marketCode}
-            quarterRawDataByMrk={quarterRawDataByMrk}
-            yearRawDataByShare={yearRawDataByShare}
-            quarterRawDataByShare={quarterRawDataByShare}
-          />
-        </div>
-        <div className="mt-3">
-          <Valuation
-            shareCode={shareCode}
-            lastQuarterRawData={_.last(RawDataFilter.getRealData(quarterRawDataByShare[shareCode]))}
-          />
-        </div>
-        <div className="mt-3">
-          <FinancialSummary
-            yearRawDataByShare={yearRawDataByShare[shareCode]}
-            quarterRawDataByShare={quarterRawDataByShare[shareCode]}
-          />
-        </div>
-        <div className="mt-3">
-          <IndicatorGraph
-            yearRawDataByShare={yearRawDataByShare[shareCode]}
-            quarterRawDataByShare={quarterRawDataByShare[shareCode]}
-          />
-        </div>  
-      </MDBContainer>
+            <a className="mr-1" href={`${EXTERNAL_URL.GOOGLE_SEARCH}${shareName}`} target="_blank">
+            <img className="img-size-2" src={googleBtnImg}/>
+            </a>
+            <a className="mr-1" href={`${EXTERNAL_URL.NAVER_SEARCH}${shareName}`} target="_blank">
+              <img className="img-size-2" src={naverBtnImg}/>
+            </a>
+            <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="plus-square" />
+            <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
+          </div>
+          <div className="mt-3">
+            {/* <ModelHitTable
+              shareCode={shareCode}
+              marketCode={marketCode}
+              // quarterRawDataByMrk={quarterRawDataByMrk}
+              yearSummaryByShare={yearSummaryByShare}
+              quarterSummaryByShare={quarterSummaryByShare}
+            /> */}
+          </div>
+          <div className="mt-3">
+            <Valuation
+              shareCode={shareCode}
+              lastQuarterRawData={_.last(RawDataFilter.getRealData(quarterSummaryByShare))}
+            />
+          </div>
+          <div className="mt-3">
+            <FinancialSummary
+              yearSummaryByShare={yearSummaryByShare}
+              quarterSummaryByShare={quarterSummaryByShare}
+            />
+          </div>
+          <div className="mt-3">
+            <FinancialStatus
+              financialStatusByShare={financialStatusByShare}
+            />
+          </div>
+          <div className="mt-3">
+            <IndicatorGraph
+              yearSummaryByShare={yearSummaryByShare}
+              quarterSummaryByShare={quarterSummaryByShare}
+            />
+          </div>  
+        </MDBContainer>
+        }
+      </>
     )
 };
 
