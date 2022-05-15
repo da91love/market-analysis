@@ -78,6 +78,7 @@ const getInputsByModel = (uniqYearPeriods, uniqQuarterPeriods, mdlFilterStatus, 
     inputs.push(<TermFilter append={"quarters"} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
   } else if (model === MODELS.CPGROWTH) {
     inputs.push(<PeriodFilter options={uniqQuarterPeriods} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+    inputs.push(<ProfitTypeFilter options={[KEY_NAME.OP, KEY_NAME.EBITDA, KEY_NAME.NP_CTRL]} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     inputs.push(<TermFilter append={"quarters"} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     inputs.push(<OpTimesFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
   } else if (model === MODELS.MRKGROWTH) {
@@ -92,7 +93,7 @@ const getInputsByModel = (uniqYearPeriods, uniqQuarterPeriods, mdlFilterStatus, 
     inputs.push(<SalesFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     inputs.push(<PerFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     inputs.push(<RoeFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
-  } else if (model === MODELS.INVGROWTH) {
+  } else if (model === MODELS.CAPEXGROWTH) {
     inputs.push(<PeriodFilter options={uniqQuarterPeriods} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
     inputs.push(<IaCfTimesFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
   }

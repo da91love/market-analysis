@@ -28,6 +28,7 @@ export const FILTER_BY_MDL = {
     },
     [MODELS.CPGROWTH]: {
         [FILTER_TYPE.PERIOD]: null,
+        [FILTER_TYPE.PROFIT_TYPE]: KEY_NAME.OP,
         [FILTER_TYPE.TERM]: 5,
         [FILTER_TYPE.OP_TIMES]: 300,
     },
@@ -47,7 +48,7 @@ export const FILTER_BY_MDL = {
         [FILTER_TYPE.PER_MIN]: 0,
         [FILTER_TYPE.ROE_MIN]: 15,
     },
-    [MODELS.INVGROWTH]: {
+    [MODELS.CAPEXGROWTH]: {
         [FILTER_TYPE.PERIOD]: null,
         [FILTER_TYPE.CFI_TIMES]: 300,
     }

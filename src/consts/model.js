@@ -18,7 +18,7 @@ export const MODEL_NAME = {
     // MRKGROWTH: 'MrkGrowth Stock Model',
     COLLAPSE: 'Collapse Stock Model',
     BLUECHIP: 'Bluechip Stock Model',
-    CAPEXGROWTH: 'Investment Growth Stock Model',
+    CAPEXGROWTH: 'Capex Growth Stock Model',
 }
 
 /**
