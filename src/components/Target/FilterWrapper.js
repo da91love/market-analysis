@@ -12,7 +12,7 @@ import SalesFilter from '../Share/SalesFilter';
 import PerFilter from '../Share/PerFilter';
 import RoeFilter from '../Share/RoeFilter';
 import OpTimesFilter from '../Share/OpTimesFilter';
-import IaCfTimesFilter from '../Share/IaCfTimesFilter';
+import CapexRatioFilter from '../Share/CapexRatioFilter';
 import MvTimesFilter from '../Share/MvTimesFilter';
 
 import { MODELS } from '../../consts/model';
@@ -95,7 +95,7 @@ const getInputsByModel = (uniqYearPeriods, uniqQuarterPeriods, mdlFilterStatus, 
     inputs.push(<RoeFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
   } else if (model === MODELS.CAPEXGROWTH) {
     inputs.push(<PeriodFilter options={uniqQuarterPeriods} mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
-    inputs.push(<IaCfTimesFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
+    inputs.push(<CapexRatioFilter mdlFilterStatus={mdlFilterStatus} setMdlFilterStatus={setMdlFilterStatus}/>);
   }
 
   return inputs;

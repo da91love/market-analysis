@@ -6,7 +6,7 @@ import {FILTER_TYPE} from '../../consts/filter';
 import {MSG} from '../../consts/message';
 import {ERROR} from '../../consts/alert';
 
-const IaCfTimesFilter = (props) => {
+const CapexRatioFilter = (props) => {
     const {title, mdlFilterStatus, setMdlFilterStatus} = props;
     const { enqueueSnackbar } = useSnackbar();
 
@@ -16,24 +16,24 @@ const IaCfTimesFilter = (props) => {
         if(_.isNaN(parseInt(value))){
             enqueueSnackbar(MSG.NAN, {variant: ERROR});
         } else {
-            setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.CFI_TIMES]:parseInt(value)})
+            setMdlFilterStatus({...mdlFilterStatus, [FILTER_TYPE.CAPEX_RATIO]:parseInt(value)})
         }
     }
 
     return (
         <div className="mt-3">
             <p className="grey-text text-left">
-                {title?title:"Investment CF ratio"}
+                {title?title:"Capex ratio of Assets"}
             </p>
             <MDBInputGroup
                 onChange={e => filterHandler(e.target.value)}
                 material
-                hint={mdlFilterStatus[FILTER_TYPE.CFI_TIMES]}
+                hint={mdlFilterStatus[FILTER_TYPE.CAPEX_RATIO]}
                 containerClassName="mt-0"
-                append="% higher than"
+                append="%"
             />
         </div>
     );
 };
 
-export default IaCfTimesFilter;
+export default CapexRatioFilter;
