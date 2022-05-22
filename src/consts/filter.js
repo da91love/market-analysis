@@ -50,7 +50,7 @@ export const FILTER_BY_MDL = {
     },
     [MODELS.CAPEXGROWTH]: {
         [FILTER_TYPE.PERIOD]: null,
-        [FILTER_TYPE.CAPEX_RATIO]: 3,
+        [FILTER_TYPE.CAPEX_RATIO]: 10,
     }
 }
 
