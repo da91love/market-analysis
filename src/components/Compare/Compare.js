@@ -59,7 +59,7 @@ const Compare = () => {
 
         const data = Object.keys(tgRawDataByPeriod).map((period,i) => {
                 const d = {}
-                d.name = period;
+                d.name = period.slice(2, period.length);
                 d[AVG] = (_.find(tgRawDataBySum, [[KEY_NAME.PERIOD], period]))[idc];
                 tgRawDataByPeriod[period].forEach((rawData,i) => {
                     d[rawData[KEY_NAME.SHARE_NAME]] = rawData[idc];

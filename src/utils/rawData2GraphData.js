@@ -8,7 +8,7 @@ const rawData2GraphData = (tgShareRawData, idc) => {
         dataKey: [idc],
         data: tgShareRawData.map((v) => {
             return {
-                name: v[KEY_NAME.PERIOD],
+                name: (v[KEY_NAME.PERIOD]).slice(2, (v[KEY_NAME.PERIOD]).length),
                 [idc]: v[idc] 
             }
         })

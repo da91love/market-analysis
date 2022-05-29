@@ -13,20 +13,18 @@ const AnalysisGraph = (props) => {
         {label?<label className="mt-2 mb-0 h2 float-left">{t(`common.rawData.${idc}`)}</label>:null}
         <ResponsiveContainer className="p-3" width="100%" height={300}>
             <LineChart
-                width={100}
                 height={300}
                 data={data}
                 margin={{
-                    top: 5,
+                    top: 10,
                     right: 30,
-                    left: 20,
-                    bottom: 5,
+                    bottom: 20,
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey={xAxisKeyName} />
-                <YAxis />
-                {legend?<Legend />:null}
+                <XAxis dataKey={xAxisKeyName} style={{fontSize: '1rem'}}/>
+                <YAxis style={{fontSize: '1rem'}}/>
+                {legend?<Legend verticalAlign="top"/>:null}
                 <Tooltip />
                 {dataKey.map((v, i) => {
                     return <Line type="monotone" dataKey={v} stroke={GRAPH_LINE_COLOR[i]} activeDot={{ r: 8 }} />
