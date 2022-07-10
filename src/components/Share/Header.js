@@ -113,6 +113,7 @@ const Header = (props) => {
                 <MDBDropdownItem href={ROUTER_URL.MODEL_HIT}>{t('common.header.modelHit')}</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.ALL_SHARES} >{t('common.header.allShares')}</MDBDropdownItem>
                 <MDBDropdownItem href={ROUTER_URL.COMPARE}>{t('common.header.compare')}</MDBDropdownItem>
+                <MDBDropdownItem href={ROUTER_URL.MARKET_SUMMARY}>{t('common.header.marketSummary')}</MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>

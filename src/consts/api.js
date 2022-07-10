@@ -1,4 +1,8 @@
 export const API = {
+    MARKET_SUMMARY: {
+        METHOD: 'post',
+        URL: 'http://localhost:8081/dev/api/ma-api/v1/front/market-summary',
+    },
     POST_MODEL: {
         METHOD: 'post',
         URL: 'http://localhost:8081/dev/api/ma-api/v1/front/model',

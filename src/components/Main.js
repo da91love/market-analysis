@@ -14,10 +14,8 @@ import Target from './Target/Target';
 import Compare from './Compare/Compare';
 import ModelHit from './ModelHit/ModelHit';
 import AllShares from './AllShares/AllShares';
+import MarketSummary from './MarketSummary/MarketSummary';
 import CTest from './CTest/CTest';
-import rawDataByMarket from '../utils/rawDataByMarket';
-import {KEY_NAME} from '../consts/keyName';
-import {PERIOD_UNIT} from '../consts/common';
 import {ROUTER_URL} from '../consts/router';
 import {API} from '../consts/api';
 import SyncStatus from '../utils/SyncStatus';
@@ -25,11 +23,6 @@ import {STRG_KEY_NAME} from "../consts/localStorage";
 
 const Main = (props) => {
   const {authId} = useContext(AuthContext);
-  const [yearRawData, setYearRawData] = useState(null);
-  const [quarterRawData, setQuarterRawData] = useState(null);
-  const [yearRawDataByShare, setYearRawDataByShare] = useState(null);
-  const [quarterRawDataByShare, setQuarterRawDataByShare] = useState(null);
-  const [yearRawDataByMrk, setYearRawDataByMrk] = useState(null);
   const [quarterRawDataByMrk, setQuarterRawDataByMrk] = useState(null);
   const [compareTg, setCompareTg] = useState([]);
   const [bookMark, setBookMark] = useState([]);
@@ -42,30 +35,7 @@ const Main = (props) => {
    * 하지만, isInitDataLoaded가 있으면, 로드할 동안 특정 컴포넌트만 표시할 수 있게 되어, 유저빌리티가 높아진다.
    */
   useEffect(() => {
-    // Get share data from DB(temporary from json)
-    const yData = []
-    const qData = []
-
-    let yearDataByGroup = _.groupBy(yData, v => v[KEY_NAME.SHARE_CODE]);
-    let quarterDataByGroup = _.groupBy(qData, v => v[KEY_NAME.SHARE_CODE]);
-
-    // sortBy
-    yearDataByGroup = _.forEach(yearDataByGroup, (v, k) => {
-      yearDataByGroup[k] = _.sortBy(v, o => o[KEY_NAME.PERIOD]);
-    });
-
-    quarterDataByGroup = _.forEach(quarterDataByGroup, (v, k) => {
-      quarterDataByGroup[k] = _.sortBy(v, o => o[KEY_NAME.PERIOD]);
-    });
-
     setCompareTg(SyncStatus.get({storageKey: STRG_KEY_NAME.COMPARE}) || []);
-    // setBookMark(SyncStatus.get({storageKey: STRG_KEY_NAME.BOOKMARK}) || []);
-    setYearRawData(yData);
-    setQuarterRawData(qData);
-    setYearRawDataByShare(yearDataByGroup);
-    setQuarterRawDataByShare(quarterDataByGroup);
-    setYearRawDataByMrk(rawDataByMarket(PERIOD_UNIT.YEAR, yData));
-    setQuarterRawDataByMrk(rawDataByMarket(PERIOD_UNIT.QUARTER, qData));
     setIsInitDataLoaded(true);
   }, [])
 
@@ -95,15 +65,9 @@ const Main = (props) => {
   return (
     <CompareTgContext.Provider value={{ compareTg, setCompareTg, bookMark, setBookMark }}>
     <ShareDataContext.Provider value={{
-      isInitDataLoaded, country,
-      yearRawData, setYearRawData, 
-      quarterRawData, setQuarterRawData,
-      yearRawDataByShare, setYearRawDataByShare,
-      quarterRawDataByShare, setQuarterRawDataByShare,
-      yearRawDataByMrk, setYearRawDataByMrk,
-      quarterRawDataByMrk, setQuarterRawDataByMrk
+      isInitDataLoaded, country, quarterRawDataByMrk, setQuarterRawDataByMrk
     }}>
-      <Header rawDataByShare={quarterRawDataByShare} rawDataByMrk={quarterRawDataByMrk}/>
+      <Header/>
       <Navigator />
       <main className="blue-grey lighten-5">
         <Route path={`${ROUTER_URL.SHARE_SEARCH}/:shareCode?/:shareName?`} component={ShareSearch} exact />
@@ -112,6 +76,7 @@ const Main = (props) => {
         <Route path={`${ROUTER_URL.MODEL_HIT}`} component={ModelHit}  exact />
         <Route path={`${ROUTER_URL.ALL_SHARES}`} component={AllShares}  exact />
         <Route path={`${ROUTER_URL.COMPARE}`} component={Compare}  exact />
+        <Route path={`${ROUTER_URL.MARKET_SUMMARY}`} component={MarketSummary}  exact />
         <Route path={'/contents/test'} component={CTest}  exact />
       </main>
     </ShareDataContext.Provider>

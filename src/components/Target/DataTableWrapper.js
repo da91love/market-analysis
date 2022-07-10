@@ -66,7 +66,6 @@ const DataTableWrapper = (props) => {
                             isMarket={true}
                             tgName={data[KEY_NAME.MARKET_NAME]} 
                             tgCode={data[KEY_NAME.MARKET_CODE]} 
-                            yearRawDataPerUnit={yearRawDataByMrk[data[KEY_NAME.MARKET_CODE]]} 
                             quarterRawDataPerUnit={quarterRawDataByMrk[data[KEY_NAME.MARKET_CODE]]}
                          />,
                    key: i+o,

@@ -13,6 +13,7 @@ import AuthContext from '../../contexts/AuthContext';
 import CompareMrkListModal from "./CompareMrkListModal";
 import CompareMrkNameModal from "./CompareMrkNameModal";
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
+import {convert2YYMM} from '../../utils/dateUtil';
 
 import AnalysisGraph from "../Share/AnalysisGraph";
 import {KEY_NAME} from "../../consts/keyName";
@@ -59,7 +60,7 @@ const Compare = () => {
 
         const data = Object.keys(tgRawDataByPeriod).map((period,i) => {
                 const d = {}
-                d.name = period.slice(2, period.length);
+                d.name = convert2YYMM(period);
                 d[AVG] = (_.find(tgRawDataBySum, [[KEY_NAME.PERIOD], period]))[idc];
                 tgRawDataByPeriod[period].forEach((rawData,i) => {
                     d[rawData[KEY_NAME.SHARE_NAME]] = rawData[idc];

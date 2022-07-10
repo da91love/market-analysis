@@ -7,4 +7,5 @@ export const ROUTER_URL = {
     MODEL_HIT: '/contents/model-hit',
     ALL_SHARES: '/contents/all-shares',
     COMPARE: '/contents/compare',
+    MARKET_SUMMARY: '/contents/market-summary',
 }

@@ -1,4 +1,5 @@
 import { KEY_NAME } from '../consts/keyName';
+import {convert2YYMM} from '../utils/dateUtil';
 
 const rawData2GraphData = (tgShareRawData, idc) => {
 
@@ -8,7 +9,7 @@ const rawData2GraphData = (tgShareRawData, idc) => {
         dataKey: [idc],
         data: tgShareRawData.map((v) => {
             return {
-                name: (v[KEY_NAME.PERIOD]).slice(2, (v[KEY_NAME.PERIOD]).length),
+                name: (convert2YYMM(v[KEY_NAME.PERIOD])),
                 [idc]: v[idc] 
             }
         })
