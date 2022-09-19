@@ -3,7 +3,7 @@ import {
   MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBBtn, 
 } from "mdbreact";
 import Button from '@material-ui/core/Button';
-import AnalysisGraph from './AnalysisGraph';
+import AnalysisLineChart from './AnalysisLineChart';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 
 const GraphPopOver = (props) => {
@@ -20,7 +20,7 @@ const GraphPopOver = (props) => {
           <div>
             <MDBPopoverHeader>{popOverHeader}</MDBPopoverHeader>
             <MDBPopoverBody>
-              <AnalysisGraph label={false} graphData={rawData2GraphData(popOverBody, value)}/>
+              <AnalysisLineChart label={false} graphData={rawData2GraphData(popOverBody, value)}/>
             </MDBPopoverBody>
           </div>
         </MDBPopover>

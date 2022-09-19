@@ -8,7 +8,7 @@ import { useSnackbar } from 'notistack';
 import {useTranslation} from "react-i18next";
 import axios from 'axios';
 
-import AnalysisGraph from './AnalysisGraph';
+import AnalysisLineChart from './AnalysisLineChart';
 import ShareDataContext from "../../contexts/ShareDataContext";
 import CompareTgContext from "../../contexts/CompareTgContext";
 import GraphTypeSelectModal from './GraphTypeSelectModal';
@@ -169,12 +169,12 @@ const GraphModalBtn = (props) => {
                     <MDBTabContent activeItem={activeTab} >
                         <MDBTabPane tabId={PERIOD_UNIT.YEAR} role="tabpanel">
                             {graphData? Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
-                                return <AnalysisGraph graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>})
+                                return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>})
                                 : null}                        
                         </MDBTabPane>
                         <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
                             {graphData? Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
-                                return <AnalysisGraph graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>})
+                                return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>})
                                 : null}         
                         </MDBTabPane>
                     </MDBTabContent>

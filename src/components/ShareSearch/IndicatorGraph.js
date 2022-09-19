@@ -3,7 +3,7 @@ import {MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, 
 import {useTranslation} from "react-i18next";
 
 import rawData2GraphData from '../../utils/rawData2GraphData';
-import AnalysisGraph from '../Share/AnalysisGraph';
+import AnalysisLineChart from '../Share/AnalysisLineChart';
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
 import {BY_SHARE_DEFAULT_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE } from '../../consts/graph';
 import {PERIOD_UNIT} from '../../consts/common';
@@ -73,14 +73,14 @@ const IndicatorGraph = (props) => {
                     <MDBTabPane tabId={PERIOD_UNIT.YEAR} role="tabpanel">
                         <div className="mt-3">
                             {Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
-                                return <AnalysisGraph graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
+                                return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
                             })}
                         </div>
                     </MDBTabPane>
                     <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
                         <div className="mt-3">
                             {Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
-                                return <AnalysisGraph graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
+                                return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
                             })}
                         </div>
                     </MDBTabPane>

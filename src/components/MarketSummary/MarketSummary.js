@@ -5,7 +5,7 @@ import axios from 'axios';
 import {useTranslation} from "react-i18next";
 
 import ShareDataContext from "../../contexts/ShareDataContext";
-import AnalysisGraph from '../Share/AnalysisGraph';
+import AnalysisLineChart from '../Share/AnalysisLineChart';
 import rawData2GraphData from '../../utils/rawData2GraphData';
 
 import {MARKET_SUMMARY_DEFAULT_GRAPH_TYPE} from '../../consts/graph';
@@ -95,14 +95,14 @@ const MarketSummary = () => {
                         <MDBTabPane tabId={PERIOD_UNIT.YEAR} role="tabpanel">
                             <div className="mt-3">
                                 {Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
-                                    return <AnalysisGraph graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
+                                    return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
                                 })}
                             </div>
                         </MDBTabPane>
                         <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
                             <div className="mt-3">
                                 {Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
-                                    return <AnalysisGraph graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
+                                    return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
                                 })}
                             </div>
                         </MDBTabPane>

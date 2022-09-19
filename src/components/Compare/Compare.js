@@ -15,7 +15,7 @@ import CompareMrkNameModal from "./CompareMrkNameModal";
 import GraphTypeSelectModal from '../Share/GraphTypeSelectModal';
 import {convert2YYMM} from '../../utils/dateUtil';
 
-import AnalysisGraph from "../Share/AnalysisGraph";
+import AnalysisLineChart from "../Share/AnalysisLineChart";
 import {KEY_NAME} from "../../consts/keyName";
 import {API} from '../../consts/api';
 import {COMPARE_GRAPH_TYPE, BY_SHARE_ALL_GRAPH_TYPE} from "../../consts/graph";
@@ -173,12 +173,12 @@ const Compare = () => {
                     <MDBTabContent activeItem={activeTab} >
                         <MDBTabPane tabId={PERIOD_UNIT.YEAR} role="tabpanel">
                             {graphData? Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
-                                return <AnalysisGraph legend={true} graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>})
+                                return <AnalysisLineChart legend={true} graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>})
                                 : null}                        
                         </MDBTabPane>
                         <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
                             {graphData? Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
-                                return <AnalysisGraph legend={true} graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>})
+                                return <AnalysisLineChart legend={true} graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>})
                                 : null}         
                         </MDBTabPane>
                     </MDBTabContent> 

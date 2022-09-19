@@ -3,7 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import {useTranslation} from "react-i18next";
 import { GRAPH_LINE_COLOR } from "../../consts/graph";
 
-const AnalysisGraph = (props) => {
+const AnalysisLineChart = (props) => {
     const {label=true, legend=false, graphData, id} = props;
     const { t } = useTranslation();
     const {idc, xAxisKeyName, dataKey, data} = graphData;
@@ -35,4 +35,4 @@ const AnalysisGraph = (props) => {
    )
    };
 
-export default AnalysisGraph;
+export default AnalysisLineChart;
