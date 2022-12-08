@@ -11,7 +11,7 @@
 - [update] localStorage데이터 redis에 저장
 - [update] 미국데이터 표시
 - [update] investment model CAPEX로 바꾸기
-- [error] investment model에서 numOfCp표시되는 오류
+- [error] investment model에서 numOfCp표시되는 오류: 작업중
 - [update] ~~dcf valuation 추가하기: 20년 당기순이익, WACC, CAPM, 자기자본~~
 
 ### Update done
