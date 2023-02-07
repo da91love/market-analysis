@@ -216,8 +216,6 @@ const Valuation = (props) => {
     const dataTableDataSaveHandler = () => {
         //Get data from DB
         if (authId) {
-            const dpSavedDataTableDatas = {...savedDataTableDatas};
-            dpSavedDataTableDatas[shareCode] = dataTableData;
 
             axios({
                 method: API.PUT_VALUATION.METHOD,
@@ -227,7 +225,8 @@ const Valuation = (props) => {
                 },
                 data: {
                     data: {
-                        value: dpSavedDataTableDatas
+                        value: dataTableData,
+                        shareCode: shareCode,
                     }
                 }    
             })
@@ -245,14 +244,6 @@ const Valuation = (props) => {
 
     const dataTableDataRemoveHandler = () => {
         if (authId) {
-            const dpSavedDataTableDatas = {...savedDataTableDatas};
-            for (const key in dpSavedDataTableDatas) {
-                if (key === shareCode) {
-                    delete dpSavedDataTableDatas[key];
-                    break;
-                }
-            };
-
             axios({
                 method: API.PUT_VALUATION.METHOD,
                 url: API.PUT_VALUATION.URL,
@@ -261,13 +252,14 @@ const Valuation = (props) => {
                 },
                 data: {
                     data: {
-                        value: dpSavedDataTableDatas
+                        value: null,
+                        shareCode: shareCode,
                     }
                 }    
             })
             .then(res => {
                 if(res.data.status === "success" ) {
-                    setSavedDataTableDatas(dpSavedDataTableDatas);
+                    setSavedDataTableDatas({});
                     enqueueSnackbar(MSG.VLT_REMOVE, {variant: SUCCESS});
                 } else {
                     if (res.data.errorCode === 401 ) {
