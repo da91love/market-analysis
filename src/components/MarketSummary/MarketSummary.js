@@ -6,10 +6,13 @@ import {useTranslation} from "react-i18next";
 
 import ShareDataContext from "../../contexts/ShareDataContext";
 import AnalysisComposedChart from '../Share/AnalysisComposedChart';
+import AnalysisLineChart from '../Share/AnalysisLineChart';
 import rawData2ComposedGraphData from '../../utils/rawData2ComposedGraphData';
+import rawData2GraphData from '../../utils/rawData2GraphData';
 
 import {MARKET_SUMMARY_DEFAULT_GRAPH_TYPE} from '../../consts/graph';
-import {PERIOD_UNIT} from '../../consts/common';
+import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
+import { PERIOD_UNIT } from '../../consts/common';
 import { API } from '../../consts/api';
 
 // Temp: import json
@@ -33,8 +36,16 @@ const MarketSummary = () => {
         const {'year_result': yearMktSmrData, 'quarter_result': quarterMktSmrData} = marketSummaryData;
 
         selectedGraphType.forEach((idc, i) => {
-            idcByYear[idc] = rawData2ComposedGraphData(yearMktSmrData, idc);
-            idcByQuarter[idc] = rawData2ComposedGraphData(quarterMktSmrData, idc);
+            if ([KEY_NAME.MV, KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL].includes(idc)) {
+                idcByYear[idc] = rawData2ComposedGraphData(yearMktSmrData, idc);
+                idcByQuarter[idc] = rawData2ComposedGraphData(quarterMktSmrData, idc);
+            } else if ([OTHER_KEY_NAME.M2, OTHER_KEY_NAME.GDP].includes(idc)) {
+                idcByYear[idc] = rawData2GraphData(yearMktSmrData, idc);
+                idcByQuarter[idc] = rawData2GraphData(quarterMktSmrData, idc);
+            } else {
+                idcByYear[idc] = rawData2GraphData(yearMktSmrData, idc);
+                idcByQuarter[idc] = rawData2GraphData(quarterMktSmrData, idc);
+            }
         });
         
         return({
@@ -95,14 +106,23 @@ const MarketSummary = () => {
                         <MDBTabPane tabId={PERIOD_UNIT.YEAR} role="tabpanel">
                             <div className="mt-3">
                                 {Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
-                                    return <AnalysisComposedChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
+                                    if (graphData[PERIOD_UNIT.YEAR][v].graphType = "composed") {
+                                        return <AnalysisComposedChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
+                                    } else if (graphData[PERIOD_UNIT.YEAR][v].graphType = "sole") {
+                                        return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
+                                    }
                                 })}
                             </div>
                         </MDBTabPane>
                         <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
                             <div className="mt-3">
                                 {Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
-                                    return <AnalysisComposedChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
+                                    if (graphData[PERIOD_UNIT.QUARTER][v].graphType = "composed") {
+                                        return <AnalysisComposedChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
+                                    } else if (graphData[PERIOD_UNIT.QUARTER][v].graphType = "sole") {
+                                        return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
+                                    }
+
                                 })}
                             </div>
                         </MDBTabPane>

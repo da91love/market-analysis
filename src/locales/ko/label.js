@@ -196,6 +196,8 @@ export const KO_JSON = {
       [KEY_NAME.ACQST_TRSRY_STC]: '자기주식의취득',
       [KEY_NAME.BGN_CSH_N_CSHEQV]: '기초현금및현금성자산',
       [KEY_NAME.END_CSH_N_CSHEQV]: '기말현금및현금성자산',
+      [OTHER_KEY_NAME.M2]: 'M2',
+      [OTHER_KEY_NAME.GDP]: 'GDP',
     }
   }
 }

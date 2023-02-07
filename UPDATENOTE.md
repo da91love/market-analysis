@@ -13,6 +13,7 @@
 - [update] investment model CAPEX로 바꾸기
 - [error] investment model에서 numOfCp표시되는 오류: 작업중
 - [update] ~~dcf valuation 추가하기: 20년 당기순이익, WACC, CAPM, 자기자본~~
+- [update] 마켓 요약 페이지에 버핏 지수 만들기
 
 ### Update done
 - [update] 210819 ebitda데이터를 수용햘수 있도록 추가하기. 특히, ebitda가 없는 rawData도 default처리 할 수 있도록 설계하기

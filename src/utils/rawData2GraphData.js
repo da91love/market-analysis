@@ -5,6 +5,7 @@ const rawData2GraphData = (tgShareRawData, idc) => {
 
     return {
         idc: idc,
+        graphType: "sole",
         xAxisKeyName: "name",
         dataKey: [idc],
         data: tgShareRawData.map((v) => {

@@ -267,8 +267,7 @@ const Valuation = (props) => {
 
     useEffect(() => {
         const updRawData = updateRawData(dpLastQuarterRawData);
-        const savedData = savedDataTableDatas?.[shareCode];
-        const vltDataByShare = rawData2FixedTableData(updRawData, savedData);
+        const vltDataByShare = rawData2FixedTableData(updRawData, savedDataTableDatas);
         setDataTableData(vltDataByShare);
     }, [shareCode, savedDataTableDatas, lastQuarterRawData, crtLang]);
 
@@ -280,6 +279,9 @@ const Valuation = (props) => {
                 url: API.GET_VALUATION.URL,
                 headers: {
                     authId: authId,
+                },
+                params: {
+                    shareCode: shareCode,
                 }
             })
             .then(res => {
