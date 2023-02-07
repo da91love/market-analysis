@@ -183,6 +183,28 @@ const Valuation = (props) => {
 
     const hiddenHandler = () => {
         setHidden(!hidden);
+
+        if (authId) {
+            axios({
+                method: API.GET_VALUATION.METHOD,
+                url: API.GET_VALUATION.URL,
+                headers: {
+                    authId: authId,
+                },
+                params: {
+                    shareCode: shareCode,
+                }
+            })
+            .then(res => {
+                if(res.data.status === "success" ) {
+                    setSavedDataTableDatas(res.data.payload.value);
+                } else {
+                    // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+                }
+            })  
+        } else {
+            setSavedDataTableDatas({});
+        }
     }
 
     const tabHandler = (tab) => {
@@ -270,31 +292,6 @@ const Valuation = (props) => {
         const vltDataByShare = rawData2FixedTableData(updRawData, savedDataTableDatas);
         setDataTableData(vltDataByShare);
     }, [shareCode, savedDataTableDatas, lastQuarterRawData, crtLang]);
-
-    useEffect(() => {
-        //Get data from DB
-        if (authId) {
-            axios({
-                method: API.GET_VALUATION.METHOD,
-                url: API.GET_VALUATION.URL,
-                headers: {
-                    authId: authId,
-                },
-                params: {
-                    shareCode: shareCode,
-                }
-            })
-            .then(res => {
-                if(res.data.status === "success" ) {
-                    setSavedDataTableDatas(res.data.payload.value);
-                } else {
-                    // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
-                }
-            })  
-        } else {
-            setSavedDataTableDatas({});
-        }
-    }, [authId])
 
     return (
     <MDBCard className="card-body">
