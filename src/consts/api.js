@@ -15,6 +15,10 @@ export const API = {
         METHOD: 'post',
         URL: 'http://localhost:8081/dev/api/ma-api/v1/front/financial-status',
     },
+    GET_STOCK_PRICE_INFO: {
+        METHOD: 'get',
+        URL: 'http://localhost:8081/dev/api/ma-api/v1/front/stock-price-info',
+    },
     GET_SHARE_MARKET_NAME: {
         METHOD: 'get',
         URL: 'http://localhost:8081/dev/api/ma-api/v1/front/share-mrk-name',

@@ -4,6 +4,7 @@ import _ from "lodash";
 import axios from 'axios';
 import { useLocation, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import {useTranslation} from "react-i18next";
 
 import ModelHitTable from "./ModelHitTable";
 import FinancialSummary from "./FinancialSummary";
@@ -15,6 +16,8 @@ import CompareTgContext from "../../contexts/CompareTgContext";
 import AuthContext from "../../contexts/AuthContext";
 import SyncStatus from '../../utils/SyncStatus';
 import RawDataFilter from '../../utils/RawDataFilter';
+import { convertNumAsUnit } from '../../utils/numUtil';
+import comma from '../../utils/convertComma';
 import { DEFAULT_SHARE_INFO } from '../../consts/common';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { STRG_KEY_NAME } from "../../consts/localStorage";
@@ -29,11 +32,14 @@ import googleBtnImg from '../../statics/image/googe_btn.png';
 // Temp: import json
 const ShareSearch = () => {
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+  const crtLang = i18n.language;
   const { enqueueSnackbar } = useSnackbar();
   const params = useParams();
   const {authId} = useContext(AuthContext);
   const {country} = useContext(ShareDataContext);
   const [isApiDataLoaded, setIsApiDataLoaded] = useState(false);
+  const [crtStockPriceInfo, setCrtStockPriceInfo] = useState(null);
   const [yearSummaryByShare, setYearSummaryByShare] = useState([]);
   const [quarterSummaryByShare, setQuarterSummaryByShare] = useState([]);
   const [financialStatusByShare, setFinancialStatusByShare] = useState([]);
@@ -131,10 +137,18 @@ const ShareSearch = () => {
               shareCode: [shareCode]
             }
           }
+        }),
+        axios({
+          method: API.GET_STOCK_PRICE_INFO.METHOD,
+          url: API.GET_STOCK_PRICE_INFO.URL,
+          params: {
+            shareCode: shareCode,
+            numOfRows: 1
+          }
         })
       ])
       .then(
-        axios.spread((financialSummary, financialStatus) => {
+        axios.spread((financialSummary, financialStatus, stockPriceInfo) => {
           if(financialSummary.data.status === "success" ) {
             const {year_result: f_smr_year_result, quarter_result: f_smr_quarter_result} = financialSummary.data.payload.value;
             setYearSummaryByShare(f_smr_year_result);
@@ -147,6 +161,12 @@ const ShareSearch = () => {
             setFinancialStatusByShare(financialStatus.data.payload.value);
           }
 
+          if(stockPriceInfo.data.status === "success" ) {
+            const payload = stockPriceInfo.data.payload.value;
+            const latestStockPriceInfo = _.head(payload);
+            setCrtStockPriceInfo(latestStockPriceInfo)
+          }
+
           setIsApiDataLoaded(true);
         })
       )
@@ -154,7 +174,7 @@ const ShareSearch = () => {
 
       })
 
-  }, [shareInfo]);
+  }, [shareInfo, crtLang]);
 
   return (
       <>
@@ -178,6 +198,10 @@ const ShareSearch = () => {
             </a>
             <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="plus-square" />
             <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
+            <p>
+              <span className="h1"><b className={`${(parseInt(crtStockPriceInfo.vs) > 0)? 'text-danger':'text-primary'}`}>{`${comma(crtStockPriceInfo.clpr)}`}</b></span>
+              <span className="h4">{`  시가총액: ${comma(convertNumAsUnit(parseInt(crtStockPriceInfo.mrktTotAmt), "억"))} 억원`}</span>
+            </p>
           </div>
           <div className="mt-3">
             {/* <ModelHitTable
