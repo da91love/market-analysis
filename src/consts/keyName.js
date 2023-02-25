@@ -138,6 +138,7 @@ export const KEY_NAME = {
  export const OTHER_KEY_NAME = {
   GDP: "gdp",
   M2: "m2",
+  MACRO: "macro",
   CODE: "code",
   NAME: "name",
   MARKET_TYPE: "marketType",

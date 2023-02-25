@@ -8,6 +8,8 @@ import ShareDataContext from "../../contexts/ShareDataContext";
 import AnalysisComposedChart from '../Share/AnalysisComposedChart';
 import AnalysisLineChart from '../Share/AnalysisLineChart';
 import rawData2ComposedGraphData from '../../utils/rawData2ComposedGraphData';
+import rawData2ComposedGraphData4Macro from '../../utils/rawData2ComposedGraphData4Macro';
+
 import rawData2GraphData from '../../utils/rawData2GraphData';
 
 import {MARKET_SUMMARY_DEFAULT_GRAPH_TYPE} from '../../consts/graph';
@@ -33,16 +35,17 @@ const MarketSummary = () => {
         const idcByYear = {};
         const idcByQuarter = {};
 
-        const {'year_result': yearMktSmrData, 'quarter_result': quarterMktSmrData} = marketSummaryData;
+        const {'mrk_smr': marketSummary, 'macro': macroSummary} = marketSummaryData;
+        const {'year_result': yearMktSmrData, 'quarter_result': quarterMktSmrData} = marketSummary;
+
 
         selectedGraphType.forEach((idc, i) => {
-            if ([KEY_NAME.MV, KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL].includes(idc)) {
+            if ([KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL].includes(idc)) {
                 idcByYear[idc] = rawData2ComposedGraphData(yearMktSmrData, idc);
                 idcByQuarter[idc] = rawData2ComposedGraphData(quarterMktSmrData, idc);
-            } else if ([OTHER_KEY_NAME.M2, OTHER_KEY_NAME.GDP].includes(idc)) {
-                idcByYear[idc] = rawData2GraphData(yearMktSmrData, idc);
-                idcByQuarter[idc] = rawData2GraphData(quarterMktSmrData, idc);
-            } else {
+            } else if ([OTHER_KEY_NAME.MACRO].includes(idc)) {
+                idcByYear[idc] = rawData2ComposedGraphData4Macro(macroSummary, idc);
+            }else {
                 idcByYear[idc] = rawData2GraphData(yearMktSmrData, idc);
                 idcByQuarter[idc] = rawData2GraphData(quarterMktSmrData, idc);
             }
