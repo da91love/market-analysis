@@ -201,6 +201,8 @@ const ShareSearch = () => {
             <p>
               <span className="h1"><b className={`${(parseInt(crtStockPriceInfo.vs) > 0)? 'text-danger':'text-primary'}`}>{`${comma(crtStockPriceInfo.clpr)}`}</b></span>
               <span className="h4">{`  시가총액: ${comma(convertNumAsUnit(parseInt(crtStockPriceInfo.mrktTotAmt), "억"))} 억원`}</span>
+              <span className="h4">{` (${crtStockPriceInfo.basDt} 기준)`}</span>
+
             </p>
           </div>
           <div className="mt-3">
