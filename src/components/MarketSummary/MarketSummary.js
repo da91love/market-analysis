@@ -127,7 +127,7 @@ const MarketSummary = () => {
                                     if ([KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL].includes(v)) {
                                         return <AnalysisComposedChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
                                     } else if ([OTHER_KEY_NAME.MACRO].includes(v)) {
-                                        return <AnalysisComposedChart4Macro graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
+                                        return <AnalysisComposedChart4Macro graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i} legend={true}/>
                                     } else {
                                         return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
                                     }

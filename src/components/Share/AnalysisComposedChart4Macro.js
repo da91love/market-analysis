@@ -48,11 +48,12 @@ const AnalysisComposedChart4Macro = (props) => {
     return (
     <div className="mb-5">
         {label?<label className="mt-2 mb-0 h2 float-left">{t(`common.rawData.${idc}`)}</label>:null}
-        <MDBBtnGroup className="mb-4 float-right" shadow='0' aria-label='Basic example'>
-            <MDBBtn color='Secondary' outline onClick={()=> {periodClickHandler(null)}}>최대</MDBBtn>
-            <MDBBtn color='Secondary' outline onClick={()=> {periodClickHandler(10)}}>10년</MDBBtn>
-            <MDBBtn color='Secondary' outline onClick={()=> {periodClickHandler(5)}}>5년</MDBBtn>
-            <MDBBtn color='Secondary' outline onClick={()=> {periodClickHandler(1)}}>1년</MDBBtn>
+        <MDBBtnGroup className="mb-3 float-right" shadow='0' aria-label='Basic example'>
+            <MDBBtn outline rounded color='dark' onClick={()=> {periodClickHandler(null)}}>최대</MDBBtn>
+            <MDBBtn outline rounded color='dark' onClick={()=> {periodClickHandler(10)}}>10년</MDBBtn>
+            <MDBBtn outline rounded color='dark' onClick={()=> {periodClickHandler(5)}}>5년</MDBBtn>
+            <MDBBtn outline rounded color='dark' onClick={()=> {periodClickHandler(3)}}>3년</MDBBtn>
+            <MDBBtn outline rounded color='dark' onClick={()=> {periodClickHandler(1)}}>1년</MDBBtn>
         </MDBBtnGroup>
         <ResponsiveContainer className="p-3" width="100%" height={300}>
             <ComposedChart width={730} height={300} data={dataCutByPeriod} margin={{top: 10,right: 30,bottom: 20,}}>
@@ -65,7 +66,7 @@ const AnalysisComposedChart4Macro = (props) => {
                 <Line yAxisId={1} dataKey={'mv'} stroke="#82ca9d" strokeWidth={1} dot={false}/>
                 <Line yAxisId={2} dataKey={'mvPerGdp'} stroke="#000000" strokeWidth={1} dot={false}/>
                 <Line yAxisId={2} dataKey={'mvPerM2'} stroke="#999999" strokeWidth={1} dot={false}/>
-                {legend?<Legend verticalAlign="top"/>:null}
+                {legend?<Legend verticalAlign="bottom"/>:null}
                 <Tooltip />
 
             </ComposedChart>
