@@ -18,8 +18,9 @@ const rawData2ComposedGraphData4Macro = (tgShareRawData, idc, graphMetaData) => 
 
     const data = Object.keys(tgShareRawData['mrkcap']).map((period, i) => {
 
-        const gdp = convertNumAsUnit(tgShareRawData[OTHER_KEY_NAME.GDP][period], '만');;
-        const m2 = convertNumAsUnit(tgShareRawData[OTHER_KEY_NAME.M2][period], '만');;
+        // gdp는 억원, 시총은 원 데이터라 조단위로 맞추기 위해 단위 formatting 실시
+        const gdp = convertNumAsUnit(tgShareRawData[OTHER_KEY_NAME.GDP][period], '만');
+        const m2 = convertNumAsUnit(tgShareRawData[OTHER_KEY_NAME.M2][period], '만');
         const MV = convertNumAsUnit(tgShareRawData['mrkcap'][period]['MKTCAP'], '조');
         const mvPerGdp = isNumber(MV) && isNumber(gdp)? _.round((MV/gdp)*100, 0) : null;
         const mvPerM2 = isNumber(MV) && isNumber(m2)? _.round((MV/m2)*100, 0) : null;

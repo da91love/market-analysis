@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, Bar, Tooltip, Legend, ResponsiveContainer} from 'recharts';
+import { MDBBtnGroup, MDBBtn } from 'mdbreact';
 import {useTranslation} from "react-i18next";
 import { GRAPH_LINE_COLOR } from "../../consts/graph";
 
@@ -14,6 +15,12 @@ const AnalysisComposedChart4Macro = (props) => {
     return (
     <div className="mb-5">
         {label?<label className="mt-2 mb-0 h2 float-left">{t(`common.rawData.${idc}`)}</label>:null}
+        <MDBBtnGroup className="mb-4 float-right" shadow='0' aria-label='Basic example'>
+            <MDBBtn color='Secondary' outline>최대</MDBBtn>
+            <MDBBtn color='Secondary' outline>10년</MDBBtn>
+            <MDBBtn color='Secondary' outline>5년</MDBBtn>
+            <MDBBtn color='Secondary' outline>1년</MDBBtn>
+        </MDBBtnGroup>
         <ResponsiveContainer className="p-3" width="100%" height={300}>
             <ComposedChart width={730} height={300} data={data} margin={{top: 10,right: 30,bottom: 20,}}>
                 <XAxis dataKey={xAxisKeyName} style={{fontSize: '1rem'}}/>

@@ -4,6 +4,7 @@ import _ from "lodash";
 import axios from 'axios';
 import {useTranslation} from "react-i18next";
 
+// Components
 import ShareDataContext from "../../contexts/ShareDataContext";
 import AnalysisComposedChart from '../Share/AnalysisComposedChart';
 import AnalysisComposedChart4Macro from '../Share/AnalysisComposedChart4Macro';
@@ -11,8 +12,10 @@ import AnalysisLineChart from '../Share/AnalysisLineChart';
 import rawData2ComposedGraphData from '../../utils/rawData2ComposedGraphData';
 import rawData2ComposedGraphData4Macro from '../../utils/rawData2ComposedGraphData4Macro';
 
+// Utils
 import rawData2GraphData from '../../utils/rawData2GraphData';
 
+// Consts
 import {MARKET_SUMMARY_DEFAULT_GRAPH_TYPE} from '../../consts/graph';
 import { KEY_NAME, OTHER_KEY_NAME } from '../../consts/keyName';
 import { PERIOD_UNIT } from '../../consts/common';
@@ -45,7 +48,7 @@ const MarketSummary = () => {
                 idcByYear[idc] = rawData2ComposedGraphData(yearMktSmrData, idc);
                 idcByQuarter[idc] = rawData2ComposedGraphData(quarterMktSmrData, idc);
             } else if ([OTHER_KEY_NAME.MACRO].includes(idc)) {
-                idcByYear[idc] = rawData2ComposedGraphData4Macro(macroSummary, idc);
+                idcByQuarter[idc] = rawData2ComposedGraphData4Macro(macroSummary, idc);
             }else {
                 idcByYear[idc] = rawData2GraphData(yearMktSmrData, idc);
                 idcByQuarter[idc] = rawData2GraphData(quarterMktSmrData, idc);
@@ -112,9 +115,7 @@ const MarketSummary = () => {
                                 {Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
                                     if ([KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL].includes(v)) {
                                         return <AnalysisComposedChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
-                                    } else if ([OTHER_KEY_NAME.MACRO].includes(v)) {
-                                        return <AnalysisComposedChart4Macro graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i} legend={true}/>
-                                    } else {
+                                    }  else {
                                         return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
                                     }
                                 })}
@@ -125,6 +126,8 @@ const MarketSummary = () => {
                                 {Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
                                     if ([KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL].includes(v)) {
                                         return <AnalysisComposedChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
+                                    } else if ([OTHER_KEY_NAME.MACRO].includes(v)) {
+                                        return <AnalysisComposedChart4Macro graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
                                     } else {
                                         return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
                                     }

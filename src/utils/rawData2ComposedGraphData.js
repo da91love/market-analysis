@@ -1,18 +1,9 @@
 import { KEY_NAME } from '../consts/keyName';
 import {convert2YYMM} from '../utils/dateUtil';
+import { convertNumAsUnit } from '../utils/numUtil';
+
 
 const rawData2ComposedGraphData = (tgShareRawData, idc, graphMetaData) => {
-
-// graphMetaData = [
-//     {
-//         "graphType": 1,
-//         "dataKey": 1,
-//     },
-//     {
-//         "graphType": 1,
-//         "dataKey": 1,
-//     }
-// ]
 
     return {
         idc: idc,
@@ -22,7 +13,7 @@ const rawData2ComposedGraphData = (tgShareRawData, idc, graphMetaData) => {
         data: tgShareRawData.map((v) => {
             return {
                 name: (convert2YYMM(v[KEY_NAME.PERIOD])),
-                [idc]: v[idc],
+                [idc]: convertNumAsUnit(v[idc], '만'),
                 "noc": v["tg_cmp_nb"]
             }
         })
