@@ -1,4 +1,6 @@
+import _ from 'lodash';
 import { KEY_NAME, OTHER_KEY_NAME } from '../consts/keyName';
+import { isNumber, convertNumAsUnit } from '../utils/numUtil';
 import {convert2YYMM} from '../utils/dateUtil';
 
 const rawData2ComposedGraphData4Macro = (tgShareRawData, idc, graphMetaData) => {
@@ -14,14 +16,22 @@ const rawData2ComposedGraphData4Macro = (tgShareRawData, idc, graphMetaData) => 
 //     }
 // ]
 
-    const data = Object.keys(tgShareRawData[OTHER_KEY_NAME.GDP]).map((period, i) => {
+    const data = Object.keys(tgShareRawData['mrkcap']).map((period, i) => {
+
+        const gdp = convertNumAsUnit(tgShareRawData[OTHER_KEY_NAME.GDP][period], '만');;
+        const m2 = convertNumAsUnit(tgShareRawData[OTHER_KEY_NAME.M2][period], '만');;
+        const MV = convertNumAsUnit(tgShareRawData['mrkcap'][period]['MKTCAP'], '조');
+        const mvPerGdp = isNumber(MV) && isNumber(gdp)? _.round((MV/gdp)*100, 0) : null;
+        const mvPerM2 = isNumber(MV) && isNumber(m2)? _.round((MV/m2)*100, 0) : null;
+
         return {
             name: period,
-            [OTHER_KEY_NAME.GDP] : tgShareRawData[OTHER_KEY_NAME.GDP].period,
-            [OTHER_KEY_NAME.M2]: tgShareRawData[OTHER_KEY_NAME.M2].period,
-            [KEY_NAME.MV]: tgShareRawData['mrkcap'].period,
-
-        }
+            [OTHER_KEY_NAME.GDP] : gdp,
+            [OTHER_KEY_NAME.M2]: m2,
+            [KEY_NAME.MV]: MV,
+            [OTHER_KEY_NAME.MV_PER_GDP]: mvPerGdp,
+            [OTHER_KEY_NAME.MV_PER_M2]: mvPerM2,
+        };
     });
 
     return {

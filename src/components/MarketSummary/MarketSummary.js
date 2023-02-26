@@ -6,6 +6,7 @@ import {useTranslation} from "react-i18next";
 
 import ShareDataContext from "../../contexts/ShareDataContext";
 import AnalysisComposedChart from '../Share/AnalysisComposedChart';
+import AnalysisComposedChart4Macro from '../Share/AnalysisComposedChart4Macro';
 import AnalysisLineChart from '../Share/AnalysisLineChart';
 import rawData2ComposedGraphData from '../../utils/rawData2ComposedGraphData';
 import rawData2ComposedGraphData4Macro from '../../utils/rawData2ComposedGraphData4Macro';
@@ -109,9 +110,11 @@ const MarketSummary = () => {
                         <MDBTabPane tabId={PERIOD_UNIT.YEAR} role="tabpanel">
                             <div className="mt-3">
                                 {Object.keys(graphData[PERIOD_UNIT.YEAR]).map((v, i) => {
-                                    if (graphData[PERIOD_UNIT.YEAR][v].graphType = "composed") {
+                                    if ([KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL].includes(v)) {
                                         return <AnalysisComposedChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
-                                    } else if (graphData[PERIOD_UNIT.YEAR][v].graphType = "sole") {
+                                    } else if ([OTHER_KEY_NAME.MACRO].includes(v)) {
+                                        return <AnalysisComposedChart4Macro graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i} legend={true}/>
+                                    } else {
                                         return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.YEAR][v]} id={i}/>
                                     }
                                 })}
@@ -120,9 +123,9 @@ const MarketSummary = () => {
                         <MDBTabPane tabId={PERIOD_UNIT.QUARTER} role="tabpanel">
                             <div className="mt-3">
                                 {Object.keys(graphData[PERIOD_UNIT.QUARTER]).map((v, i) => {
-                                    if (graphData[PERIOD_UNIT.QUARTER][v].graphType = "composed") {
+                                    if ([KEY_NAME.SALES, KEY_NAME.OP, KEY_NAME.NP_CTRL].includes(v)) {
                                         return <AnalysisComposedChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
-                                    } else if (graphData[PERIOD_UNIT.QUARTER][v].graphType = "sole") {
+                                    } else {
                                         return <AnalysisLineChart graphData={graphData[PERIOD_UNIT.QUARTER][v]} id={i}/>
                                     }
 

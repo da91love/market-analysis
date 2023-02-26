@@ -139,6 +139,8 @@ export const KEY_NAME = {
   GDP: "gdp",
   M2: "m2",
   MACRO: "macro",
+  MV_PER_GDP: "mvPerGdp",
+  MV_PER_M2: "mvPerM2",
   CODE: "code",
   NAME: "name",
   MARKET_TYPE: "marketType",
