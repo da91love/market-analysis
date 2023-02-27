@@ -1,18 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import {MDBCard, MDBCardTitle, MDBCardText, MDBIcon} from 'mdbreact';
+import React, { useState, useEffect } from 'react';
+import _ from "lodash";
+import axios from 'axios';
 import {useTranslation} from "react-i18next";
 
-import getAllMatchedTgByModel from '../../utils/getAllMatchedTgByModel';
-import FixedSideTable from '../Share/FixedSideTable';
-import { FILTER_BY_MDL } from '../../consts/filter';
-import { MODELS } from '../../consts/model';
-import { BLANK } from '../../consts/common';
+import comma from '../../utils/convertComma';
+import { API } from '../../consts/api';
 
 const StockPrice = (props) => {
-    const {shareCode, marketCode, quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare} = props;
+    const {shareCode} = props;
     const { t } = useTranslation();
-    const [hidden, setHidden] = useState(false);
-    const [dataTableData, setDataTableData] = useState();
+    const [crtStockPriceInfo, setCrtStockPriceInfo] = useState(null);
 
     useEffect(() => {
         axios({
@@ -25,7 +22,7 @@ const StockPrice = (props) => {
          })
          .then(res => {
             if(res.data.status === "success" ) {
-                const payload = stockPriceInfo.data.payload.value;
+                const payload = res.data.payload.value;
                 setCrtStockPriceInfo(payload);
 
             } else {
@@ -34,17 +31,18 @@ const StockPrice = (props) => {
          });
     }, []);
 
-
-    useEffect(() => {
-        setDataTableData(createTableData(quarterRawDataByMrk, yearRawDataByShare, quarterRawDataByShare, FILTER_BY_MDL));
-    }, [shareCode])
-
   return (
     <>
+    {!crtStockPriceInfo? null
+    : <p>
         <span className="h1"><b className={`${(crtStockPriceInfo.mt == 2)? 'text-danger':'text-primary'}`}>{`${comma(crtStockPriceInfo.nv)}`}</b></span>
         <span className="h4"><b className={`${(crtStockPriceInfo.mt == 2)? 'text-danger':'text-primary'}`}>{`${(crtStockPriceInfo.mt == 2)? ' (+':' (-'}`}{`${crtStockPriceInfo.cr} %`}</b></span>
         <span className="h4"><b className={`${(crtStockPriceInfo.mt == 2)? 'text-danger':'text-primary'}`}>{`${(crtStockPriceInfo.mt == 2)? ' ▲':' ▼'}`}{`${crtStockPriceInfo.cv} 원)`}</b></span>
+    </p>
+    }
+
     </>
     )
 };
-StockPrice;
+
+export default StockPrice;

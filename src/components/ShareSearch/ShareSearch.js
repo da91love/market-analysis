@@ -11,6 +11,7 @@ import FinancialSummary from "./FinancialSummary";
 import FinancialStatus from "./FinancialStatus";
 import IndicatorGraph from "./IndicatorGraph";
 import Valuation from "./Valuation";
+import StockPrice from "./StockPrice";
 import ShareDataContext from "../../contexts/ShareDataContext";
 import CompareTgContext from "../../contexts/CompareTgContext";
 import AuthContext from "../../contexts/AuthContext";
@@ -39,7 +40,6 @@ const ShareSearch = () => {
   const {authId} = useContext(AuthContext);
   const {country} = useContext(ShareDataContext);
   const [isApiDataLoaded, setIsApiDataLoaded] = useState(false);
-  const [crtStockPriceInfo, setCrtStockPriceInfo] = useState(null);
   const [yearSummaryByShare, setYearSummaryByShare] = useState([]);
   const [quarterSummaryByShare, setQuarterSummaryByShare] = useState([]);
   const [financialStatusByShare, setFinancialStatusByShare] = useState([]);
@@ -137,14 +137,6 @@ const ShareSearch = () => {
               shareCode: [shareCode]
             }
           }
-        }),
-        axios({
-          method: API.GET_STOCK_PRICE_INFO.METHOD,
-          url: API.GET_STOCK_PRICE_INFO.URL,
-          params: {
-            shareCode: shareCode,
-            numOfRows: 1
-          }
         })
       ])
       .then(
@@ -159,11 +151,6 @@ const ShareSearch = () => {
 
           if(financialStatus.data.status === "success" ) {
             setFinancialStatusByShare(financialStatus.data.payload.value);
-          }
-
-          if(stockPriceInfo.data.status === "success" ) {
-            const payload = stockPriceInfo.data.payload.value;
-            setCrtStockPriceInfo(payload);
           }
 
           setIsApiDataLoaded(true);
@@ -197,11 +184,7 @@ const ShareSearch = () => {
             </a>
             <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToCompareListHandler(shareCode, shareName)}}  icon="plus-square" />
             <MDBIcon className="mr-1 indigo-text" size="lg" onClick={() => {addToBookMarkListHandler(shareCode, shareName)}}  icon="bookmark" />
-            <p>
-              <span className="h1"><b className={`${(crtStockPriceInfo.mt == 2)? 'text-danger':'text-primary'}`}>{`${comma(crtStockPriceInfo.nv)}`}</b></span>
-              <span className="h4"><b className={`${(crtStockPriceInfo.mt == 2)? 'text-danger':'text-primary'}`}>{`${(crtStockPriceInfo.mt == 2)? ' (+':' (-'}`}{`${crtStockPriceInfo.cr} %`}</b></span>
-              <span className="h4"><b className={`${(crtStockPriceInfo.mt == 2)? 'text-danger':'text-primary'}`}>{`${(crtStockPriceInfo.mt == 2)? ' ▲':' ▼'}`}{`${crtStockPriceInfo.cv} 원)`}</b></span>
-            </p>
+            <StockPrice shareCode={shareCode}></StockPrice>
           </div>
           <div className="mt-3">
             {/* <ModelHitTable
