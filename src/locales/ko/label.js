@@ -198,6 +198,7 @@ export const KO_JSON = {
       [KEY_NAME.END_CSH_N_CSHEQV]: '기말현금및현금성자산',
       [OTHER_KEY_NAME.M2]: 'M2',
       [OTHER_KEY_NAME.GDP]: 'GDP',
+      [OTHER_KEY_NAME.MACRO]: 'MACRO'
     }
   }
 }
