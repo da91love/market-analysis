@@ -29,15 +29,15 @@ const StockPrice = (props) => {
             // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
             }
          });
-    }, []);
+    }, [shareCode]);
 
   return (
     <>
     {!crtStockPriceInfo? null
     : <p>
-        <span className="h1"><b className={`${(crtStockPriceInfo.mt == 2)? 'text-danger':'text-primary'}`}>{`${comma(crtStockPriceInfo.nv)}`}</b></span>
-        <span className="h4"><b className={`${(crtStockPriceInfo.mt == 2)? 'text-danger':'text-primary'}`}>{`${(crtStockPriceInfo.mt == 2)? ' (+':' (-'}`}{`${crtStockPriceInfo.cr} %`}</b></span>
-        <span className="h4"><b className={`${(crtStockPriceInfo.mt == 2)? 'text-danger':'text-primary'}`}>{`${(crtStockPriceInfo.mt == 2)? ' ▲':' ▼'}`}{`${crtStockPriceInfo.cv} 원)`}</b></span>
+        <span className="h1"><b className={`${(crtStockPriceInfo.rf == 2)? 'text-danger':'text-primary'}`}>{`${comma(crtStockPriceInfo.nv)}`}</b></span>
+        <span className="h4"><b className={`${(crtStockPriceInfo.rf == 2)? 'text-danger':'text-primary'}`}>{`${(crtStockPriceInfo.rf == 2)? ' (+':' (-'}`}{`${crtStockPriceInfo.cr} %`}</b></span>
+        <span className="h4"><b className={`${(crtStockPriceInfo.rf == 2)? 'text-danger':'text-primary'}`}>{`${(crtStockPriceInfo.rf == 2)? ' ▲':' ▼'}`}{`${crtStockPriceInfo.cv} 원)`}</b></span>
     </p>
     }
 
