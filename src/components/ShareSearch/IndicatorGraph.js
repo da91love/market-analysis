@@ -12,7 +12,7 @@ const IndicatorGraph = (props) => {
     const {yearSummaryByShare, quarterSummaryByShare} = props;
     const { t } = useTranslation();
     const [selectedGraphType, setSelectedGraphType] = useState(BY_SHARE_DEFAULT_GRAPH_TYPE);
-    const [hidden, setHidden] = useState(false);
+    const [hidden, setHidden] = useState(true);
     const [activeTab, setActiveTab] = useState(PERIOD_UNIT.QUARTER);
     const [graphData, setGraphData] = useState();
 

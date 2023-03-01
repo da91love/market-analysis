@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import {MDBCard, MDBCardTitle, MDBCardText, MDBIcon, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink} from 'mdbreact';
 import {useTranslation} from "react-i18next";
 import _ from "lodash";
+import axios from 'axios';
 
 import FixedSideUnionTable from '../Share/FixedSideUnionTable';
 import { FINANCIAL_STATUS_TABLE_COL } from '../../consts/tbCol';
 import { KEY_NAME } from '../../consts/keyName';
 import { BLANK, PERIOD_UNIT, F_STATUS_TYPE } from '../../consts/common';
 import { F_STATUS_DATA_FMT } from '../../consts/format';
+import { API } from '../../consts/api';
 
 const FinancialStatus = (props) => {
-    const {financialStatusByShare} = props;
+    const {shareCode, country} = props;
     const { t, i18n } = useTranslation();
     const crtLang = i18n.language;
     const [hidden, setHidden] = useState(true);
@@ -67,15 +69,36 @@ const FinancialStatus = (props) => {
     }
 
     useEffect(() => {
-        const dcFStatusDataFmt = _.cloneDeep(F_STATUS_DATA_FMT);
-        for (const status in dcFStatusDataFmt) {
-            for (const period in dcFStatusDataFmt[status]) {
-                dcFStatusDataFmt[status][period] = rawData2FixedTableData(financialStatusByShare[status][period], FINANCIAL_STATUS_TABLE_COL[status])
+        axios({
+            method: API.POST_FINANCIAL_STATUS.METHOD,
+            url: API.POST_FINANCIAL_STATUS.URL,
+            data: {
+              data: {
+                country: country,
+                shareCode: [shareCode]
+              }
             }
-        }
+          })
+         .then(res => {
+            if(res.data.status === "success" ) {
+                const financialStatusByShare = res.data.payload.value;
 
-        setDataTableData(dcFStatusDataFmt);
-    }, [financialStatusByShare, crtLang])
+                const dcFStatusDataFmt = _.cloneDeep(F_STATUS_DATA_FMT);
+                for (const status in dcFStatusDataFmt) {
+                    for (const period in dcFStatusDataFmt[status]) {
+                        dcFStatusDataFmt[status][period] = rawData2FixedTableData(financialStatusByShare[status][period], FINANCIAL_STATUS_TABLE_COL[status])
+                    }
+                }
+      
+                setDataTableData(dcFStatusDataFmt);
+            } else {
+              // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+            }
+         })
+         .catch((err) => {
+    
+         });
+    }, [shareCode, crtLang])
 
     return (
         <MDBCard className="card-body">
@@ -84,7 +107,7 @@ const FinancialStatus = (props) => {
                 {hidden?<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-down" />:<MDBIcon className={"float-right"} onClick={hiddenHandler} icon="angle-up" />}
             </MDBCardTitle>
             <MDBCardText>
-                {!hidden?
+                {dataTableData && !hidden?
                 <>
                     <MDBNav className="nav-tabs">
                     {

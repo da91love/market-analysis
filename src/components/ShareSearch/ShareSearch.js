@@ -114,53 +114,33 @@ const ShareSearch = () => {
     }
   };
 
-  useEffect(() => {
-    // Send api for financial summary data
-    axios
-      .all([
-        axios({
-          method: API.POST_FINANCIAL_SUMMARY.METHOD,
-          url: API.POST_FINANCIAL_SUMMARY.URL,
-          data: {
-            data: {
-              country: country,
-              shareCode: [shareCode]
-            }
-          }
-        }),
-        axios({
-          method: API.POST_FINANCIAL_STATUS.METHOD,
-          url: API.POST_FINANCIAL_STATUS.URL,
-          data: {
-            data: {
-              country: country,
-              shareCode: [shareCode]
-            }
-          }
-        })
-      ])
-      .then(
-        axios.spread((financialSummary, financialStatus, stockPriceInfo) => {
-          if(financialSummary.data.status === "success" ) {
-            const {year_result: f_smr_year_result, quarter_result: f_smr_quarter_result} = financialSummary.data.payload.value;
-            setYearSummaryByShare(f_smr_year_result);
-            setQuarterSummaryByShare(f_smr_quarter_result);
-          } else {
-            // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
-          }
 
-          if(financialStatus.data.status === "success" ) {
-            setFinancialStatusByShare(financialStatus.data.payload.value);
+  useEffect(() => {
+    axios({
+        method: API.POST_FINANCIAL_SUMMARY.METHOD,
+        url: API.POST_FINANCIAL_SUMMARY.URL,
+        data: {
+          data: {
+            country: country,
+            shareCode: [shareCode]
           }
+        }
+      })
+     .then(res => {
+        if(res.data.status === "success" ) {
+          const {year_result: f_smr_year_result, quarter_result: f_smr_quarter_result} = res.data.payload.value;
+          setYearSummaryByShare(f_smr_year_result);
+          setQuarterSummaryByShare(f_smr_quarter_result);
 
           setIsApiDataLoaded(true);
-        })
-      )
-      .catch((err) => {
+        } else {
+          // enqueueSnackbar(`${MSG.LOGIN_FAIL}`, {variant: ERROR});
+        }
+     })
+     .catch((err) => {
 
-      })
-
-  }, [shareInfo, crtLang]);
+     });
+    }, [shareInfo, crtLang]);
 
   return (
       <>
@@ -209,7 +189,7 @@ const ShareSearch = () => {
           </div>
           <div className="mt-3">
             <FinancialStatus
-              financialStatusByShare={financialStatusByShare}
+              shareCode={shareCode} country={country}
             />
           </div>
           <div className="mt-3">
