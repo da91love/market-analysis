@@ -20,8 +20,9 @@ const AnalysisComposedChart4Macro = (props) => {
             const tgDate = new Date();
             tgDate.setFullYear(tgDate.getFullYear() - tgPeriod);
 
+            // getMonth 함수는 0 ~ 11까지 반환하므로 +1
             const startYear = (tgDate.getFullYear()).toString();
-            const startMonth = `0${tgDate.getMonth()}`.slice(-2);
+            const startMonth = `0${tgDate.getMonth()+1}`.slice(-2);
             const startDay = `0${tgDate.getDate()}`.slice(-2);
 
             const startDate = `${startYear}/${startMonth}/${startDay}`;
