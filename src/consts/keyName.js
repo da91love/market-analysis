@@ -6,6 +6,8 @@ export const KEY_NAME = {
   MARKET_CODE: 'marketCode',
   SHARE_NUM: 'shareNum',
   MV: 'mv',
+  KOSPI_MV: 'kospi_mv',
+  KOSDAQ_MV: 'kosdaq_mv',
   EV: 'ev',
   SALES: 'totalRevenue',
   OP: 'operationIncome',
