@@ -10,15 +10,25 @@ const AnalysisComposedChart4Macro = (props) => {
     const { t } = useTranslation();
     const {idc, xAxisKeyName, dataKey, data} = graphData;
     const [dataCutByPeriod, setDataCutByPeriod] = useState(data);
-    const [graphColor, setGraphColor] = useState({
+    const [isLegendClicked, setIsLegendClicked] = useState({
+        'gdp': false,
+        'm2': false,
+        'mv': false,
+        'kospi_mv': false,
+        'kosdaq_mv': false,
+        'mvPerGdp': false,
+        'mvPerM2': false,
+    });
+
+    const graphColor = {
         'gdp': '#9C27B0',
         'm2': '#ff7300',
         'mv': '#0D47A1',
         'kospi_mv': '#2196F3',
         'kosdaq_mv': '#81D4FA',
         'mvPerGdp': '#000000',
-        'mvPerM2': '#999999',
-    })
+        'mvPerM2': '#808080',
+    };
 
     const cutPeriodBy = (tgPeriod) => {
         if (tgPeriod == null) {
@@ -46,16 +56,18 @@ const AnalysisComposedChart4Macro = (props) => {
             // Set
             setDataCutByPeriod(cutData);
         }
-    }
+    };
 
     const periodClickHandler = (tgPeriod) => {
         cutPeriodBy(tgPeriod);
-    }
+    };
 
     const legendOnClickHandler = (obj) => {
-        const datakey = obj.dataKey;
-
-    }
+        const dataKey = obj.dataKey;
+        const dcIsLegendClicked = _.cloneDeep(isLegendClicked);
+        dcIsLegendClicked[dataKey] = !isLegendClicked[dataKey]
+        setIsLegendClicked(dcIsLegendClicked);
+    };
 
     /**
      * yAxisId, dataKey="noc" 등 하드코딩된 부분이 매우 많아 수정필요
@@ -76,13 +88,13 @@ const AnalysisComposedChart4Macro = (props) => {
                 <YAxis yAxisId={1} orientation={"left"} style={{fontSize: '1rem'}} unit={'조'}/>
                 <YAxis yAxisId={2} orientation={"right"} style={{fontSize: '1rem'}}  unit={'%'}/>
                 <CartesianGrid strokeDasharray="3 3" />
-                <Line yAxisId={1} dataKey={'gdp'} stroke="#9C27B0" strokeWidth={1} dot={false}/>
-                <Line yAxisId={1} dataKey={'m2'} stroke="#ff7300" strokeWidth={1} dot={false}/>
-                <Line yAxisId={1} dataKey={'mv'} stroke="#0D47A1" strokeWidth={1} dot={false}/>
-                <Line yAxisId={1} dataKey={'kospi_mv'} stroke="#2196F3" strokeWidth={1} dot={false}/>
-                <Line yAxisId={1} dataKey={'kosdaq_mv'} stroke="#81D4FA" strokeWidth={1} dot={false}/>
-                <Line yAxisId={2} dataKey={'mvPerGdp'} stroke="#000000" strokeWidth={1} dot={false}/>
-                <Line yAxisId={2} dataKey={'mvPerM2'} stroke="#999999" strokeWidth={1} dot={false}/>
+                <Line yAxisId={1} dataKey={'gdp'} stroke={isLegendClicked['gdp']? '#DFDFDF': graphColor['gdp']} strokeWidth={1} dot={false}/>
+                <Line yAxisId={1} dataKey={'m2'} stroke={isLegendClicked['m2']? '#DFDFDF': graphColor['m2']} strokeWidth={1} dot={false}/>
+                <Line yAxisId={1} dataKey={'mv'} stroke={isLegendClicked['mv']? '#DFDFDF': graphColor['mv']} strokeWidth={1} dot={false}/>
+                <Line yAxisId={1} dataKey={'kospi_mv'} stroke={isLegendClicked['kospi_mv']? '#DFDFDF': graphColor['kospi_mv']} strokeWidth={1} dot={false}/>
+                <Line yAxisId={1} dataKey={'kosdaq_mv'} stroke={isLegendClicked['kosdaq_mv']? '#DFDFDF': graphColor['kosdaq_mv']} strokeWidth={1} dot={false}/>
+                <Line yAxisId={2} dataKey={'mvPerGdp'} stroke={isLegendClicked['mvPerGdp']? '#DFDFDF': graphColor['mvPerGdp']} strokeWidth={1} dot={false}/>
+                <Line yAxisId={2} dataKey={'mvPerM2'} stroke={isLegendClicked['mvPerM2']? '#DFDFDF': graphColor['mvPerM2']} strokeWidth={1} dot={false}/>
                 {legend?<Legend verticalAlign="bottom" onClick={(o)=>{legendOnClickHandler(o)}}/>:null}
                 <Tooltip />
 
